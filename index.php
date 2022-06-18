@@ -1,3 +1,4 @@
 <?php
-
-echo "oi";
+header("Location: http://localhost/web-despachante/visao/visao_index.php");
+exit;
+?>

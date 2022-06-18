@@ -1,0 +1,27 @@
+<?php
+const DOCTYPE = '<!DOCTYPE html>';
+const HTML_OPEN = '<html>';
+const HTML_CLOSE = '</html>';
+const HEAD_OPEN = '<head>';
+const HEAD_CLOSE = '</head>';
+const BODY_OPEN = '<body>';
+const BODY_CLOSE = '</body>';
+const DIV_OPEN = '<div>';
+CONST DIV_CLOSE = '</div>';
+CONST DIV_MAIN_OPEN = '<div class="tela" align="center">';
+CONST TD_OPEN = '<td>';
+CONST TD_CLOSE = '</td>';
+CONST TR_OPEN = '<tr>';
+CONST TR_CLOSE = '</tr>';
+CONST TH_OPEN = '<th>';
+CONST TH_CLOSE = '</th>';
+CONST H1_OPEN = '<h1>';
+CONST H1_CLOSE = '</h1>';
+CONST FORM_CLOSE = '</form>';
+CONST TABLE_OPEN = '<table align="center">';
+CONST TABLE_CLOSE = '</table>';
+CONST LABEL_OPEN = '<label>';
+CONST LABEL_CLOSE = '</label>';
+CONST SELECT_CLOSE = '</select>';
+CONST FIELDSET_OPEN = '<fieldset>';
+const FIELDSET_CLOSE = '</fieldset>';
