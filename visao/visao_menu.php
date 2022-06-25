@@ -1,11 +1,18 @@
 <?php
-echo '<div class="topnav">';
-echo '<a href="view_index.php">Home</a>&nbsp;|&nbsp;';
-echo '<a href="view_registro.php">Registrar</a>&nbsp;|&nbsp;';
-echo '<a href="view_login.php">Entrar</a>&nbsp;|&nbsp;';
-echo '<a href="view_logoff.php">Sair</a>&nbsp;|&nbsp;';
-echo '<a href="../view/view_pessoa.php?acao=carregar">Currículo</a>&nbsp;|&nbsp;';
-echo '<a href="../view/view_vagas.php">Pesquisar Vagas</a>&nbsp;|&nbsp;';
-echo '<a href="../view/view_publica_vaga_lista.php">Publicar Vagas</a>&nbsp;|&nbsp;';
-echo '<a href="../view/view_grafico.php" target="_blank">Gráfico</a>';
+echo DIV_LEFT;
+echo '<a href="visao_index.php">Home</a><br>';
+echo '<a href="visao_registro.php">Registrar</a><br>';
+echo '<a href="visao_login.php">Entrar</a><br>';
+echo '<a href="visao_logoff.php">Sair</a><br>';
+echo '<a href="../visao/visao_pessoa.php?acao=carregar">Cliente</a><br>';
+echo '<a href="../visao/visao_vagas.php">Item de Serviço</a><br>';
+echo '<a href="../visao/visao_publica_vaga_lista.php">Marca de Veículo</a><br>';
+echo '<a href="../visao/visao_publica_vaga_lista.php">Modelo de Veículo</a><br>';
+echo '<a href="../visao/visao_publica_vaga_lista.php">Pedido de Placa</a><br>';
+echo '<a href="../visao/visao_publica_vaga_lista.php">Recibo de Documento</a><br>';
+echo '<a href="../visao/visao_publica_vaga_lista.php">Serviço</a><br>';
+echo '<a href="../visao/visao_publica_vaga_lista.php">Tipo de Documento</a><br>';
+echo '<a href="../visao/visao_publica_vaga_lista.php">Tipo de Placa</a><br>';
+echo '<a href="../visao/visao_publica_vaga_lista.php">Tipo de Serviço</a><br>';
+echo '<a href="../visao/visao_publica_vaga_lista.php">Veículo</a><br>';
 echo '</div>';

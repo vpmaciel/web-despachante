@@ -8,6 +8,6 @@
 <meta name="keywords" content="emprego,vaga,trabalho,currículo,rh,curriculum vitae,bitcurriculos">
 <meta name="robots" content="no-cache">
 <link rel="icon" type="image/ico" href="../img/favicon.png">
-<link rel="stylesheet" href="../css/estilo.css">
+<link rel="stylesheet" href="estilo.css">
 <script src="../lib/lib_funcoes.js"></script>
 <title>BrCurrículo</title>

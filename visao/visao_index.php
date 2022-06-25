@@ -15,14 +15,9 @@ echo BODY_OPEN;
 echo DIV_MAIN_OPEN;
 
 require_once 'visao_menu.php';
-
+echo DIV_RIGHT;
 echo H1_OPEN . 'Bit Curriculos' . H1_CLOSE;
 echo date('Y-m-d')."<br>";
-$dado = 'Vicente Canção' . '<br>';;
-$e = criptografar($dado);
-echo $e . '<br>';
-$e = descriptografar($e);
-echo $e . '<br>';
 echo number_format("1000000")."<br>";
 echo number_format("1000000",2)."<br>";
 echo number_format("1000000",2,",",".");
@@ -34,7 +29,7 @@ $MSG = '<p align="justify">O nosso site oferece serviços para profissionais ser
 			auxilía e prepara um currículo formatado, e você pode candidatar a várias vagas publicadas pelas empresas no site.</p>';	
 echo $MSG;
 #Exibimos o gráfico
-echo "<img src=view_grafico.php>";
+//echo "<img src=view_grafico.php>";
 echo DIV_CLOSE;
 
 echo DIV_CLOSE;
