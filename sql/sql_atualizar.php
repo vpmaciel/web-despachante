@@ -2,7 +2,7 @@
 ini_set('display_errors', TRUE);
 error_reporting(E_ALL);
 
-require_once '../sql/conexao.php';
+require_once 'conexao.php';
 
 function atualizar( string $char_tabela, array $array_model, array $array_condicao) : bool {
     if(!is_array($array_model) || !is_array($array_condicao) || !is_string($char_tabela)) {

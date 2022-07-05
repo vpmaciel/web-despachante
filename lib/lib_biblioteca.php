@@ -1,6 +1,6 @@
 <?php
 require_once 'lib_phplot.php';
-require_once '../sql/sql.php';
+require_once 'sql/sql.php';
 require_once 'lib_remover_acentos.php';
 require_once 'lib_retornar_escolaridade.php';
 require_once 'lib_retornar_cidade.php';

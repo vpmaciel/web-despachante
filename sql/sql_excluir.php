@@ -2,7 +2,7 @@
 ini_set('display_errors', TRUE);
 error_reporting(E_ALL);
 
-require_once '../sql/conexao.php';
+require_once 'conexao.php';
 
 function excluir(string $char_tabela, array $array_condicao) : bool {
     global $pdo;
