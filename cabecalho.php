@@ -7,8 +7,7 @@
 <meta name="description" content="Sistema Web Despachante">
 <meta name="keywords" content="despachante,veículos">
 <meta name="robots" content="no-cache">
-<link rel="icon" type="image/ico" href="img/favicon.png">
+<link rel="icon" type="image/ico" href="favicon.png">
 <link rel="stylesheet" href="estilo.css">
-<script src="lib/lib_funcoes.js"></script>
 <script src="jquery-3.6.0.min.js"></script>
 <title>web-despachante</title>

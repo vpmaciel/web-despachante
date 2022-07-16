@@ -28,31 +28,26 @@ echo $FORM_OPEN;
 
 echo TABLE_OPEN;
 
-echo TR_OPEN . TH_OPEN . 'Login'  . TH_CLOSE . TR_CLOSE; 
+echo TR_OPEN . TH_OPEN . 'Cliente'  . TH_CLOSE . TR_CLOSE; 
 
 echo TR_OPEN . TD_OPEN. LABEL_OPEN . 'Nome' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
 $cliente['CLIENTE_NOME'] = isset($_POST['CLIENTE_NOME']) ? $_POST['CLIENTE_NOME'] : ' ';
 $INPUT = '<input type="email" name="CLIENTE_NOME" required minlength="5" maxlength="100" value="' . $cliente['CLIENTE_NOME'] .'">';
 echo TD_OPEN . $INPUT . TD_CLOSE . TR_CLOSE;
 
-echo TR_OPEN . TD_OPEN. LABEL_OPEN . 'CPF | CNPJ' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
+echo TR_OPEN . TD_OPEN. LABEL_OPEN . 'CPF ou CNPJ' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
 $cliente['CLIENTE_CPF_CNPJ'] = isset($_POST['CLIENTE_CPF_CNPJ']) ? $_POST['CLIENTE_CPF_CNPJ'] : '';
 $INPUT = '<input type="text" name="CLIENTE_CPF_CNPJ" required minlength="4" maxlength="4" value="' . $cliente['CLIENTE_CPF_CNPJ'] .'">';
 echo TR_OPEN . TD_OPEN. $INPUT . TD_CLOSE . TR_CLOSE;
 
 echo TR_OPEN . TD_OPEN. LABEL_OPEN . 'Telefone' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
-$cliente['CLIENTE_TELEFONE_PRINCIPAL'] = isset($_POST['CLIENTE_TELEFONE_PRINCIPAL']) ? $_POST['CLIENTE_TELEFONE_PRINCIPAL'] : '';
-$INPUT = '<input type="text" name="CLIENTE_TELEFONE_PRINCIPAL" required minlength="4" maxlength="4" value="' . $cliente['CLIENTE_TELEFONE_PRINCIPAL'] .'">';
-echo TR_OPEN . TD_OPEN. $INPUT . TD_CLOSE . TR_CLOSE;
-
-echo TR_OPEN . TD_OPEN. LABEL_OPEN . 'Telefone' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
-$cliente['CLIENTE_TELEFONE_SECUNDARIO'] = isset($_POST['CLIENTE_TELEFONE_SECUNDARIO']) ? $_POST['CLIENTE_TELEFONE_SECUNDARIO'] : '';
-$INPUT = '<input type="text" name="CLIENTE_TELEFONE_SECUNDARIO" required minlength="4" maxlength="4" value="' . $cliente['CLIENTE_TELEFONE_SECUNDARIO'] .'">';
+$cliente['CLIENTE_TELEFONE'] = isset($_POST['CLIENTE_TELEFONE']) ? $_POST['CLIENTE_TELEFONE'] : '';
+$INPUT = '<input type="text" name="CLIENTE_TELEFONE" minlength="4" maxlength="4" value="' . $cliente['CLIENTE_TELEFONE'] .'">';
 echo TR_OPEN . TD_OPEN. $INPUT . TD_CLOSE . TR_CLOSE;
 
 echo TR_OPEN . TD_OPEN. LABEL_OPEN . '&nbsp;' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
 
-$SUBMIT = '<input type="submit" value="Pesquisar" onclick=\'return confirmar();\'>';
+$SUBMIT = '<input type="submit" value="Pesquisar" onclick=\'return validarFormulario();\'>';
 echo TR_OPEN . TD_OPEN. $SUBMIT . TD_CLOSE . TR_CLOSE;
 
 

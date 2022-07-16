@@ -9,7 +9,7 @@ echo DOCTYPE;
 echo HTML_OPEN;
 echo HEAD_OPEN;
 require_once 'cabecalho.php';
-require_once 'login_script.js';
+require_once 'login.js';
 echo HEAD_CLOSE;
 
 echo BODY_OPEN;
@@ -20,8 +20,6 @@ require_once 'menu.php';
 
 echo DIV_RIGHT;
 
-$FORM_OPEN = '<button id="btn">Click me!</button>';
-echo $FORM_OPEN;
 $usuario = array();
 
 $FORM_OPEN = '<form action="../controller/ctrl_login.php" method="post">';

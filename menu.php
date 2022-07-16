@@ -1,6 +1,7 @@
 <?php
 echo DIV_LEFT;
 echo '<a href="index.php">Home</a><br>';
+echo '<a href="usuario_cadastro.php">Usuario</a><br>';
 echo '<a href="registro.php">Registrar</a><br>';
 echo '<a href="login.php">Entrar</a><br>';
 echo '<a href="logoff.php">Sair</a><br>';
@@ -14,5 +15,5 @@ echo '<a href="servico_cadastro.php">Serviço</a><br>';
 echo '<a href="tipo_documento_cadastro.php">Tipo de Documento</a><br>';
 echo '<a href="tipo_placa_cadastro.php">Tipo de Placa</a><br>';
 echo '<a href="tipo_servico_cadastro.php">Tipo de Serviço</a><br>';
-echo '<a href="veicula_cadastro.php">Veículo</a><br>';
+echo '<a href="veiculo_cadastro.php">Veículo</a><br>';
 echo '</div>';
