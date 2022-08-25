@@ -1,31 +1,20 @@
 * {
     box-sizing: border-box;
-    border-radius: 0px;    
+    border-radius: 0px;  
+    text-align: center;  
 }
 .column {
     float: left;
-    padding: 10px;
+    padding: 0px;
     height: min-content; 
     width: 100%;
 }
 .left {
     width: 20%;
-    text-align: right;   	
+    text-align: right;     
 }
 .right {
-    width: 80%;
-}
-@media only screen and (max-width: 800px) 
-{
-    .left {
-        width: 100%;
-        text-align: right;
-        height: min-content; 
-    }
-    .right {
-        width: 100%;
-        height: min-content; 
-    }
+    width: 80%;        
 }
 .row:after {
     content: "";
@@ -35,7 +24,7 @@
 a:link, a:visited {
     text-decoration: none;
     color: #3299bb;  
-    font-weight: bold;  
+    font-weight: initial;  
 }
 a:hover {
     text-decoration: none;
@@ -50,7 +39,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: bold;
 }
 select, input, textarea, select:focus, input:focus, textarea:focus {
-    color: #1E1E1E;
+    color: #3299bb;
     border-radius: 0px;
     outline: none;
     box-shadow: none;
@@ -59,6 +48,7 @@ select, input, textarea, select:focus, input:focus, textarea:focus {
     padding: 5px;
     width: 100%;
     resize: none;
+    text-align: left;
 }
 .botao, input[type="button"], input[type="submit"] {
     border-radius: 0px;
@@ -69,12 +59,8 @@ select, input, textarea, select:focus, input:focus, textarea:focus {
     resize: none;
     padding: 5px;	 
     width: 100px;
-    color: #3299bb;		
-}
-label {
-    color: #3299bb;
-    font-size: 1em;
-    
+    color: #3299bb;	
+    text-align: center;	
 }
 p {
     text-align: justify;
@@ -89,15 +75,16 @@ table
 th, td {
     padding: 5px;
     border:none;    
+    text-align: left;
 }
 th {
     font-weight: bold;   
+    text-align: center;
 }
 html {
     min-height: 100%;
     width: 100%;
-    background-color: #FFFFFF;
-    border: 1px hidden #3299bb;	
+    background-color: #FFFFFF ;    
 }
 body {
     font-family: Tahoma, Verdana, Segoe, sans-serif;
@@ -109,17 +96,13 @@ body {
     min-height: 100%;
     background-color: #FFFFFF;	    
 }
-.sucesso {
-    color: #3299bb; 
+.sucesso {    
     text-align: center;
 }
-.erro {
-    color: #3299bb; 
+.erro {           
+    color: coral;
     text-align: center;
-}
-div {    
-    padding: 0px;
-    display: inline-block;
+    margin: 0 auto;
 }
 input[type="file"] {
     border: none;	
@@ -134,4 +117,60 @@ input[type="file"] {
     resize: none;
     padding: 5px;	 
     width: 150px;
+}
+label {
+    color: #3299bb;
+    font-size: 1em;    
+    text-align: left; 
+}
+span{
+    margin: 0 auto;   
+    text-align: center;     
+}
+.graph {    
+    height: min-height;
+    width: min-width;
+}
+.menu {
+    width: 100%;
+    min-height: 20px;
+    max-height: 20px;
+    height: 20px;
+    background-color: #3299bb;
+    text-align: right; 
+    color: #FFFFFF;
+    border: 1px solid #3299bb;
+    
+}
+.sistema {
+    width: 100%;    
+    min-height: 20px;
+    max-height: 20px;
+    height: 20px;
+    background-color: #3299bb;
+    text-align: center; 
+    color: #FFFFFF;
+    border: 1px solid #3299bb;   
+}
+ul {
+    list-style-type:none;
+}
+ul li {
+    display:inline;
+}
+@media only screen and (max-width: 800px) 
+{
+    .left {
+        width: 100%;
+        text-align: center;
+        height: min-content; 
+        padding-bottom: 20px;
+    }
+    .right {
+        width: 100%;
+        height: min-content; 
+    }
+    .menu {                
+        text-align: center;         
+    }    
 }

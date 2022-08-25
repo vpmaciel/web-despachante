@@ -1,14 +1,8 @@
 <?php
-namespace modelo;
-
-use DateTime;
-
-$R = (array) new tipo_placa;
-var_dump($R);
 
 final class usuario
 {
-    public string $usuario_cpf;
+    public string $usuario_nome;
     public string $usuario_senha;
 
     public function __construct()
@@ -85,8 +79,7 @@ final class cliente
 {    
     public string $cliente_cpf_cnpj;
     public string $cliente_nome;
-    public string $cliente_telefone_principal;
-    public string $cliente_telefone_secundario;    
+    public string $cliente_telefone; 
 
     public function __construct()
     {

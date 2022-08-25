@@ -1,5 +1,5 @@
 <?php
-$dsn = "mysql:host=localhost;dbname=db_brcurriculo";
+$dsn = "mysql:host=localhost;dbname=DB_DESPACHANTE";
 $usuario = "root";
 $senha = "";
 
