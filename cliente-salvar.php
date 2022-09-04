@@ -2,46 +2,44 @@
 session_start();
 
 if(!isset($_SESSION['usu_id'])) {
-	header('location:erro.php?e=UNL');
-	exit;
+	//header('location:erro.php?e=UNL');
+	//exit;
 }
 require_once 'lib/lib-biblioteca.php';
-require_once 'modelo/modelo.php';
 
-$cliente = new cliente();
+$cliente['CLIENTE_CPF_CNPJ'] = trim($_GET['CLIENTE_CPF_CNPJ']);
+$cliente['CLIENTE_NOME'] = trim($_GET['CLIENTE_NOME']);
+$cliente['CLIENTE_TELEFONE'] = trim($_GET['CLIENTE_TELEFONE']);
 
-$cliente->cliente_cpf_cnpj = $_GET['CLIENTE_NOME'];
-$cliente->cliente_nome = $_GET['CLIENTE_CPF_CNPJ'];
-$cliente->cliente_telefone = $_GET['CLIENTE_TELEFONE_PRINCIPAL'];
+$cliente_cpf_cnpj = array ('CLIENTE_CPF_CNPJ' =>$cliente['CLIENTE_CPF_CNPJ']);
 
-
-####################################################################################################
-
-
-if (!isset($publica_vaga_model['pub_vag_id'])) {
-    $resultado_inserir = inserir('publica_vaga', $publica_vaga_model);
+$total_registro = retornar_numero_registros('CLIENTE', $cliente_cpf_cnpj);
+//exit($total_registro);
+if($total_registro == 0){
+	$resultado_inserir = inserir('CLIENTE', $cliente);
     
     if ($resultado_inserir == TRUE) {
-		header('location:..\view\view_sucesso.php?url_voltar=view_publica_vaga_lista');
+		header('location:sucesso.php');
 		exit;
 	} else {
-		header('location: ..\view\view_erro.php?e=OPN');
+		header('location:erro.php');
 		exit;
 	} 
-} else {
-    
-	
-	$condicao['pub_vag_id'] = $_GET['pub_vag_id'];
+}
+else {
 
+	$condicao = $cliente_cpf_cnpj;
 	
-	$resultado_atualizar = atualizar('publica_vaga', $publica_vaga_model, $condicao);
+	unset($cliente['CLIENTE_CPF_CNPJ']);
+		
+	$resultado_atualizar = atualizar('CLIENTE', $cliente, $condicao);
 	
 	if ($resultado_atualizar == TRUE) {
 		
-		header('location:..\view\view_sucesso.php?url_voltar=view_publica_vaga_lista');
+		header('location:sucesso.php');
 		exit;
 	} else {
-		header('location: ..\view\view_erro.php?e=OPN');
+		header('location:erro.php');
 		exit;
 	}   
 }

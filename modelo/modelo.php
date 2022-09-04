@@ -75,18 +75,6 @@ final class pedido_placa
         
     }
 }
-final class cliente
-{    
-    public string $cliente_cpf_cnpj;
-    public string $cliente_nome;
-    public string $cliente_telefone; 
-
-    public function __construct()
-    {
-        
-    }
-}
-
 final class tipo_servico
 {
     public string $tipo_servico_descricao;

@@ -23,9 +23,7 @@ function excluir(string $char_tabela, array $array_condicao) : bool {
         $tamanho = count ($array_condicao);
         foreach($array_condicao as $chave => $valor) { 
             $valor = escapeshellcmd($valor);
-            if(verificarSQL($valor)) {
-                throw new Exception('Tentativa de SQL injection !');               
-            }
+            
             $valor = remover_caracteres($valor);
             if (!is_numeric($valor)) {
                 if (strstr($valor, '@') !== false || strstr($valor, '.') !== false) {
@@ -43,11 +41,11 @@ function excluir(string $char_tabela, array $array_condicao) : bool {
             $contador++;
         }
 
-        $pdo->beginTransaction();
+
         //exit("DELETE FROM $char_tabela WHERE ($char_condicao);");
         $stmt = $pdo->prepare("DELETE FROM $char_tabela WHERE ($char_condicao);--");
         $retorno = ($stmt->execute()) ? TRUE : FALSE; 
-        $pdo->commit();        
+      
         return TRUE;
     
     } catch(PDOException $pdoException) {

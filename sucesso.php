@@ -21,6 +21,8 @@ require_once 'menu.php';
 
 echo DIV_RIGHT;
 
+require_once 'titulo.php';
+
 echo TABLE_OPEN;
 
 $INPUT = '<input type="hidden">';

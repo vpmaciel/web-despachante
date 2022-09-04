@@ -5,7 +5,6 @@ require_once 'lib-remover-acentos.php';
 require_once 'lib-retornar-escolaridade.php';
 require_once 'lib-retornar-cidade.php';
 require_once 'lib-retornar-contrato.php';
-require_once 'lib-retornar-erro.php';
 require_once 'lib-retornar-estado.php';
 require_once 'lib-retornar-html.php';
 require_once 'lib-retornar-pretensao-salarial.php';

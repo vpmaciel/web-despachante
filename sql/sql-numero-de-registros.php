@@ -18,9 +18,7 @@ function retornar_numero_registros(string $char_tabela, array $array_condicao) :
         $contador = 1;
         foreach($array_condicao as $chave => $valor) {
             $valor = escapeshellcmd($valor);
-            if(verificarSQL($valor)) {
-                throw new Exception('Tentativa de SQL injection !');               
-            }
+            
             $valor = remover_caracteres($valor);
             if (!is_numeric($valor)) {
                 if (strstr($valor, '@') !== false || strstr($valor, '.') !== false) {

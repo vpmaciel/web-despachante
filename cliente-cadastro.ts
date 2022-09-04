@@ -78,18 +78,18 @@ function validarTelefone(){
 function validarFormulario(){
     
   if(validarNome() == false) {
-    alert("Nome [ Campo com no máximo 50 caractéres ] !");
-    alert("Nome [ Campo obrigatório ] !");
+    alert("[ Nome ] Campo com no máximo 50 caractéres !");
+    alert("[ Nome ] Campo obrigatório !");
     return false;
   } 
   if(validaCpfCnpj(new String($('#CLIENTE_CPF_CNPJ').val())) == false) {
-    alert("CPF ou CNPJ [ Campo inválido ] !");
-    alert("CPF ou CNPJ [ Campo obrigatório ] !");    
+    alert("[ CPF ou CNPJ ] Campo inválido !");
+    alert("[ CPF ou CNPJ ] Campo obrigatório !");    
     return false;
   } 
   if(validarTelefone() == false){
-    alert('Telefone [ Campo inválido ] !');
-    alert('Telefone [ Campo opcional ] !');
+    alert('[ Telefone ] Campo inválido !');
+    alert('[ Telefone ] Campo opcional !');
     return false;
   }  
   return true;

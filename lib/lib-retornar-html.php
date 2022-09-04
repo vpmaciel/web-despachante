@@ -27,3 +27,5 @@ CONST LABEL_CLOSE = '</label>';
 CONST SELECT_CLOSE = '</select>';
 CONST FIELDSET_OPEN = '<fieldset>';
 const FIELDSET_CLOSE = '</fieldset>';
+CONST BLOCKQUOTE_OPEN = '<blockquote>';
+const BLOCKQUOTE_CLOSE = '</blockquote>';

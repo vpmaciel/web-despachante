@@ -20,6 +20,8 @@ require_once 'menu.php';
 
 echo DIV_RIGHT;
 
+require_once 'titulo.php';
+
 $usuario = array();
 
 $FORM_OPEN = '<form action="login-controle.php" method="post">';

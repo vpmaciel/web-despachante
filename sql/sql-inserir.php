@@ -22,9 +22,7 @@ function inserir( string $char_tabela, array $array_model) : bool {
 
         foreach($array_model as $chave => $valor) {
             $valor = escapeshellcmd($valor);
-            if(verificarSQL($valor)) {
-                throw new Exception('Tentativa de SQL injection !');               
-            }
+          
             $valor = remover_caracteres($valor);
             
             if (!is_numeric($valor)) {

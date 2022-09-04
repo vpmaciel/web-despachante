@@ -24,9 +24,11 @@ require_once 'menu.php';
 
 echo DIV_RIGHT;
 
+require_once 'titulo.php';
+
 $cliente = array();
 
-$FORM_OPEN = '<form action="../controller/ctrl_login.php" method="post">';
+$FORM_OPEN = '<form action="cliente-lista.php" method="get">';
 
 echo $FORM_OPEN;
 
@@ -35,24 +37,24 @@ echo TABLE_OPEN;
 echo TR_OPEN . TH_OPEN . 'Cliente'  . TH_CLOSE . TR_CLOSE; 
 
 echo TR_OPEN . TD_OPEN. LABEL_OPEN . 'Nome' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
-$cliente['CLIENTE_NOME'] = isset($_POST['CLIENTE_NOME']) ? $_POST['CLIENTE_NOME'] : '';
+$cliente['CLIENTE_NOME'] = isset($_GET['CLIENTE_NOME']) ? $_GET['CLIENTE_NOME'] : '';
 $INPUT = '<input type="text" id="CLIENTE_NOME" name="CLIENTE_NOME" maxlength="50" value="' . $cliente['CLIENTE_NOME'] .'">';
 echo TD_OPEN . $INPUT . TD_CLOSE . TR_CLOSE;
 
 echo TR_OPEN . TD_OPEN. LABEL_OPEN . 'CPF ou CNPJ' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
-$cliente['CLIENTE_CPF_CNPJ'] = isset($_POST['CLIENTE_CPF_CNPJ']) ? $_POST['CLIENTE_CPF_CNPJ'] : '';
+$cliente['CLIENTE_CPF_CNPJ'] = isset($_GET['CLIENTE_CPF_CNPJ']) ? $_GET['CLIENTE_CPF_CNPJ'] : '';
 $INPUT = '<input type="text" id="CLIENTE_CPF_CNPJ" name="CLIENTE_CPF_CNPJ" minlength="14" maxlength="18" onkeypress="mascaraMutuario(this,cpfCnpj)" onblur="clearTimeout();" value="' . $cliente['CLIENTE_CPF_CNPJ'] .'">';
 echo TR_OPEN . TD_OPEN. $INPUT . TD_CLOSE . TR_CLOSE;
 
 
 echo TR_OPEN . TD_OPEN. LABEL_OPEN . 'Telefone' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
-$cliente['CLIENTE_TELEFONE'] = isset($_POST['CLIENTE_TELEFONE']) ? $_POST['CLIENTE_TELEFONE'] : '';
+$cliente['CLIENTE_TELEFONE'] = isset($_GET['CLIENTE_TELEFONE']) ? $_GET['CLIENTE_TELEFONE'] : '';
 $INPUT = '<input type="text" id="CLIENTE_TELEFONE" name="CLIENTE_TELEFONE" maxlength="15" onkeypress="mask(this, mphone);" value="' . $cliente['CLIENTE_TELEFONE'] .'">';
 echo TR_OPEN . TD_OPEN. $INPUT . TD_CLOSE . TR_CLOSE;
 
 echo TR_OPEN . TD_OPEN. LABEL_OPEN . '&nbsp;' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
 
-$SUBMIT = '<input type="submit" value="Buscar" onclick=\'return validarFormulario();\'>';
+$SUBMIT = '<input type="submit" value="Buscar" >';
 echo TR_OPEN . TD_OPEN. $SUBMIT . TD_CLOSE . TR_CLOSE;
 
 

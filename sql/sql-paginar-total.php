@@ -4,7 +4,7 @@ error_reporting(E_ALL);
 
 require_once 'sql/conexao.php';
 
-function selecionar( string $char_tabela, array $array_condicao) {
+function paginar_total( string $char_tabela, array $array_condicao) {
     
     global $pdo;
     
@@ -38,7 +38,7 @@ function selecionar( string $char_tabela, array $array_condicao) {
                     $clausula_where = 1;
                     $char_condicao .= $chave . "=" . $valor;
 
-                    if($contador < $tamanho_array_condicao) {
+                    if($contador < $tamanho_array_condicao - 1) {
                         $char_condicao .= ' AND ';
                     }
                 }
@@ -51,28 +51,20 @@ function selecionar( string $char_tabela, array $array_condicao) {
         
         $stmt = NULL;
         
+        
         if ($clausula_where != 0) {
-            die("SELECT * FROM $char_tabela WHERE ($char_condicao);");
-            $stmt = $pdo->prepare("SELECT * FROM $char_tabela WHERE ($char_condicao);--");
+            //die("SELECT * FROM $char_tabela WHERE ($char_condicao);");            
+            $sql = "SELECT count(*) FROM $char_tabela WHERE $char_condicao;--";   
             
-        } else {            
-            $stmt = $pdo->prepare("SELECT * FROM $char_tabela;--");
-        }
-
-        if (!$stmt->execute()) {
-            throw new Exception('Não executou !');            
-            return NULL;
-        }
-        $linhas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } else {                        
+            $sql = "SELECT count(*) FROM $char_tabela;--";   
+        }   
+        //die($stmt);
         
-        if($stmt->rowCount() <= 0) {
-            return json_encode((array) null);
-            $stmt->closeCursor();
-        }
-            
-        
-        $stmt->closeCursor();
-        return json_encode($linhas);
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        $number_of_results =  $stmt->fetchColumn(); 
+        return $number_of_results;
     
     } catch(PDOException $pdoException) {           
         throw new PDOException($pdoException);    
