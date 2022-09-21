@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-setlocale(LC_ALL, 'pt_BR.utf8');
-
 require_once 'lib/lib-biblioteca.php';
+
+setlocale(LC_ALL, 'pt_BR.utf8');
 
 echo DOCTYPE;
 echo HTML_OPEN;
@@ -20,8 +20,6 @@ require_once 'menu.php';
 
 echo DIV_RIGHT;
 
-require_once 'titulo.php';
-
 $usuario = array();
 
 $FORM_OPEN = '<form action="login-controle.php" method="post">';
@@ -33,13 +31,13 @@ echo TABLE_OPEN;
 echo TR_OPEN . TH_OPEN . 'Login'  . TH_CLOSE . TR_CLOSE; 
 
 echo TR_OPEN . TD_OPEN. LABEL_OPEN . 'Usuario' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
-$usuario['usuario_nome'] = isset($_POST['usuario_nome']) ? $_POST['usuario_nome'] : ' ';
-$INPUT = '<input type="nome" id="usuario_nome" name="usuario_nome" value="' . $usuario['usuario_nome'] .'">';
+$usuario['USUARIO_NOME'] = isset($_POST['USUARIO_NOME']) ? $_POST['USUARIO_NOME'] : '';
+$INPUT = '<input type="nome" id="USUARIO_NOME" name="USUARIO_NOME" value="' . $usuario['USUARIO_NOME'] .'">';
 echo TD_OPEN . $INPUT . TD_CLOSE . TR_CLOSE;
 
 echo TR_OPEN . TD_OPEN. LABEL_OPEN . 'Senha' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
-$usuario['usuario_senha'] = isset($_POST['usuario_senha']) ? $_POST['usuario_senha'] : '';
-$INPUT = '<input type="password" id="usuario_senha" name="usuario_senha" value="' . $usuario['usuario_senha'] .'">';
+$usuario['USUARIO_SENHA'] = isset($_POST['USUARIO_SENHA']) ? $_POST['USUARIO_SENHA'] : '';
+$INPUT = '<input type="password" id="USUARIO_SENHA" name="USUARIO_SENHA" value="' . $usuario['USUARIO_SENHA'] .'">';
 echo TR_OPEN . TD_OPEN. $INPUT . TD_CLOSE . TR_CLOSE;
 
 echo TR_OPEN . TD_OPEN. LABEL_OPEN . '&nbsp;' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 

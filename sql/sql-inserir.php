@@ -25,14 +25,8 @@ function inserir( string $char_tabela, array $array_model) : bool {
           
             $valor = remover_caracteres($valor);
             
-            if (!is_numeric($valor)) {
-                if (strstr($valor, '@') !== false || strstr($valor, '.') !== false) {
-                    $valor = "'".  mb_strtolower( $valor, 'UTF-8') . "'";
-                } else {
-                    $valor = "'" . mb_convert_case(mb_strtolower( $valor, 'UTF-8'),  MB_CASE_TITLE) . "'";
-                    
-                }                
-            }
+            $valor = "'" . mb_convert_case(mb_strtoupper( $valor, 'UTF-8'),  MB_CASE_UPPER) . "'";
+
             $valores .= $valor;  
             $campos .= $chave;
 

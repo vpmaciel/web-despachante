@@ -27,13 +27,8 @@ function atualizar( string $char_tabela, array $array_model, array $array_condic
             $valor = escapeshellcmd($valor);
             
             $valor = remover_caracteres($valor);
-            if (!is_numeric($valor)) {
-                if (strstr($valor, '@') !== false || strstr($valor, '.') !== false) {
-                    $valor = "'".  mb_strtolower( $valor, 'UTF-8') . "'";
-                } else {
-                    $valor = "'" . mb_convert_case(mb_strtolower( $valor, 'UTF-8'),  MB_CASE_TITLE) . "'";
-                }                
-            }             
+
+            $valor = "'" . mb_convert_case(mb_strtoupper( $valor, 'UTF-8'),  MB_CASE_UPPER) . "'";
             
             $campos .= $chave . "=". $valor;               
 
@@ -42,25 +37,28 @@ function atualizar( string $char_tabela, array $array_model, array $array_condic
             }                
             $contador++;
         }
-
+        
+        $condicao = 0;        
         $contador = 1;
         $tamanho = count ($array_condicao);
+
         foreach($array_condicao as $chave => $valor) {
             $valor = remover_caracteres($valor);
-            if (!is_numeric($valor)) {
-                if (strstr($valor, '@') !== false || strstr($valor, '.') !== false) {
-                    $valor = "'".  mb_strtolower( $valor, 'UTF-8') . "'";
-                } else {
-                    $valor = "'" . mb_convert_case(mb_strtolower( $valor, 'UTF-8'),  MB_CASE_TITLE) . "'";
-                }                
-            }
+
+            $valor = "'" . mb_convert_case(mb_strtoupper( $valor, 'UTF-8'),  MB_CASE_UPPER) . "'";
+
             $char_condicao .= $chave . "=". $valor;               
 
             if($contador < $tamanho) {
                 $char_condicao .= ' AND ';
             }
             $contador++;
+            $condicao = 1;
         }
+
+        if($condicao == 0) {
+            return FALSE;
+        }        
         
         
         //die("UPDATE $char_tabela SET $campos WHERE ($char_condicao);");

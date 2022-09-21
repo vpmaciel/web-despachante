@@ -23,9 +23,8 @@ require_once 'menu.php';
 
 echo DIV_RIGHT;
 
-require_once 'titulo.php';
-
 echo TABLE_OPEN;
+
 $details["Value"] = "1.5";
 $n = number_format($details["Value"], 2, ",", ".");
 $details["Value"] = "1,5";
@@ -46,13 +45,12 @@ echo TR_OPEN . TH_OPEN . 'Web Despachante'  . TH_CLOSE . TR_CLOSE;
 //echo TR_OPEN . TD_OPEN. LABEL_OPEN . $e . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
 
 $MSG = '<p>O Web despachante é um sistema para rede local e intranet desenvolvido para escritórios de despachantes. Seu negócio está automatizado, controlando todos os serviços prestados.</p>';	
-
-echo TR_OPEN . TD_OPEN. LABEL_OPEN . $MSG . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
+//$MSG = require 'grafico.php';
+echo TR_OPEN . TD_OPEN. $MSG  . TD_CLOSE . TR_CLOSE;
 
 echo TABLE_CLOSE;
 
-echo FORM_CLOSE;
-//require 'grafico.php';
+echo '<br>';
 
 $MSG = 'MTI &copy;<br>';
 
@@ -74,6 +72,8 @@ $MSG = '(31) 9 8285 7372';
 
 echo $MSG; 
 
+
+echo FORM_CLOSE;
 
 echo DIV_CLOSE;
 

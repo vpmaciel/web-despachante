@@ -1,9 +1,7 @@
 <?php
-session_start();
+require_once 'lib/lib-retornar-html.php';
 
 setlocale(LC_ALL, 'pt_BR.utf8');
-
-require_once 'lib/lib-biblioteca.php';
 
 echo DOCTYPE;
 echo HTML_OPEN;
@@ -20,8 +18,6 @@ echo DIV_MAIN_OPEN;
 require_once 'menu.php';
 
 echo DIV_RIGHT;
-
-require_once 'titulo.php';
 
 echo TABLE_OPEN;
 

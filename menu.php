@@ -1,6 +1,5 @@
 <?php
 echo DIV_LEFT;
-echo '<div class="menu">Menu</div><br>';
 echo '<a href="index.php">Home</a><br>';
 echo '<a href="login.php">Entrar</a><br>';
 echo '<a href="logoff.php">Sair</a><br>';

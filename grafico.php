@@ -38,5 +38,4 @@ $plot->SetOutputFile("test.png");
 
 $plot->DrawGraph();
 
-
 echo '<img class="graph" src="test.png" alt="Plot Image">';

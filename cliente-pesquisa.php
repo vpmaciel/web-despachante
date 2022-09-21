@@ -1,9 +1,10 @@
 <?php
 session_start();
 
-setlocale(LC_ALL, 'pt_BR.utf8');
-
+require_once 'lib/lib-sessao.php';
 require_once 'lib/lib-biblioteca.php';
+
+setlocale(LC_ALL, 'pt_BR.utf8');
 
 echo DOCTYPE;
 
@@ -12,6 +13,7 @@ echo HTML_OPEN;
 echo HEAD_OPEN;
 
 require_once 'cabecalho.php';
+
 echo '<script src="cliente-cadastro.ts"></script>';
 
 echo HEAD_CLOSE;
@@ -23,8 +25,6 @@ echo DIV_MAIN_OPEN;
 require_once 'menu.php';
 
 echo DIV_RIGHT;
-
-require_once 'titulo.php';
 
 $cliente = array();
 

@@ -1,10 +1,7 @@
 <?php
 session_start();
 
-if(!isset($_SESSION['usu_id'])) {
-	//header('location:erro.php?e=UNL');
-	//exit;
-}
+require_once 'lib/lib-sessao.php';
 require_once 'lib/lib-biblioteca.php';
 
 $cliente['CLIENTE_CPF_CNPJ'] = trim($_GET['CLIENTE_CPF_CNPJ']);

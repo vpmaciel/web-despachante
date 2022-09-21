@@ -52,7 +52,7 @@ function selecionar( string $char_tabela, array $array_condicao) {
         $stmt = NULL;
         
         if ($clausula_where != 0) {
-            die("SELECT * FROM $char_tabela WHERE ($char_condicao);");
+            //die("SELECT * FROM $char_tabela WHERE ($char_condicao);");
             $stmt = $pdo->prepare("SELECT * FROM $char_tabela WHERE ($char_condicao);--");
             
         } else {            

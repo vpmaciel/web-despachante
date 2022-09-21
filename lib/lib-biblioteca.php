@@ -10,6 +10,5 @@ require_once 'lib-retornar-html.php';
 require_once 'lib-retornar-pretensao-salarial.php';
 require_once 'lib-retornar-sexo.php';
 require_once 'lib-criptografia.php';
-require_once 'lib-sessao.php';
 require_once 'lib-remover-caracteres.php';
 require_once 'lib-formatar-dados.php';

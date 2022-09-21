@@ -5,7 +5,7 @@
 }
 .column {
     float: left;
-    padding: 0px;
+    padding: 5px;
     height: min-content; 
     width: 100%;
 }
@@ -126,10 +126,6 @@ label {
 span{
     margin: 0 auto;   
     text-align: center;     
-}
-.graph {    
-    height: min-height;
-    width: min-width;
 }
 .menu {
     width: 100%;

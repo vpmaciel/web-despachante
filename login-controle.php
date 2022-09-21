@@ -2,24 +2,24 @@
 session_start();
 
 require_once 'lib/lib-biblioteca.php';
-require_once 'modelo/modelo.php';
+$usuario = array();
+$usuario['USUARIO_NOME'] = trim($_POST['USUARIO_NOME']);
+$usuario['USUARIO_SENHA'] = trim($_POST['USUARIO_SENHA']);
 
-$usuario =  new usuario;
-$usuario->usuario_nome = $_POST['usuario_nome'];
-$usuario->usuario_senha = $_POST['usuario_senha'];
+$USUARIO_NOME = array ('USUARIO_NOME' =>$usuario['USUARIO_NOME']);
 
-$registros = retornar_numero_registros('usuario', (array) $usuario);
+$registros = retornar_numero_registros('usuario', $USUARIO_NOME);
 
 if ($registros == 0) {
 	header('location: erro.php?msg=E-mail ou senha incorretos !');
 	exit;
 } else {	
 
-	if (!isset($_SESSION['usuario_nome'])) {
-		$usuario_json = json_decode(selecionar('usuario', (array) $usuario));	
+	if (!isset($_SESSION['USUARIO_NOME'])) {
+		$usuario_json = json_decode(selecionar('usuario', $USUARIO_NOME));	
 		
 		foreach($usuario_json as $registro) {
-			$_SESSION['usuario_nome'] = $registro->USUARIO_NOME;					
+			$_SESSION['USUARIO_NOME'] = $registro->USUARIO_NOME;					
 		}
 		
 		header('location: sucesso.php?msg=Sessão criada com sucesso !');
