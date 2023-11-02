@@ -2,10 +2,8 @@
 ini_set('display_errors', TRUE);
 error_reporting(E_ALL);
 
-require_once 'sql/conexao.php';
-
 function retornar_numero_registros(string $char_tabela, array $array_condicao) : int {
-    global $pdo;
+    global $PDO;
     
     if(!is_string($char_tabela) || !is_array($array_condicao)) {
         throw new Exception('Tipos de parametros imcompatíveis !');
@@ -36,11 +34,11 @@ function retornar_numero_registros(string $char_tabela, array $array_condicao) :
             $contador++;
         }
         //exit("SELECT COUNT(*) FROM $char_tabela WHERE ($char_condicao);");
-        $stmt = $pdo->prepare("SELECT COUNT(*) FROM $char_tabela WHERE ($char_condicao);--");
+        $stmt = $PDO->prepare("SELECT COUNT(*) FROM $char_tabela WHERE ($char_condicao);--");
         if (!$stmt->execute()) {
             return 0;
         }
-        $numero_registros = $stmt->fetchColumn(); 
+        $numero_registros = $stmt->fetchColumn();         
         return $numero_registros;    
     } catch(PDOException $pdoException) {           
         throw new PDOException($pdoException);    

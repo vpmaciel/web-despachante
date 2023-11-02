@@ -5,14 +5,14 @@ error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED);
 
 require_once 'lib/lib-biblioteca.php';
 
-$DADOS = array(array('Qtde', retornar_total_registros('CLIENTE')));
+$DADOS = array(array('Qtde', retornar_total_registros('PEDIDO_DE_PLACA')));
 
 $GRAFICO = new PHPlot(400, 400);
 $GRAFICO->SetImageBorderType('plain');
 $GRAFICO->SetPlotType('bars');
 $GRAFICO->SetDataType('text-data');
 $GRAFICO->SetDataValues($DADOS);
-$GRAFICO->SetTitle(converterParaUTF_8("Clientes"));  
+$GRAFICO->SetTitle(converterParaUTF_8("Pedidos de Placas"));  
 
 # Turn off X tick labels and ticks because they don't apply here:
 $GRAFICO->SetXTickLabelPos('none');

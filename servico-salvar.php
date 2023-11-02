@@ -4,13 +4,11 @@ session_start();
 require_once 'lib/lib-sessao.php';
 require_once 'lib/lib-biblioteca.php';
 
-$CLIENTE['CLIENTE_ID'] = trim($_GET['CLIENTE_ID']);
 $CLIENTE['CLIENTE_CPF_CNPJ'] = trim($_GET['CLIENTE_CPF_CNPJ']);
-$CLIENTE['CLIENTE_NOME_COMPLETO'] = trim($_GET['CLIENTE_NOME_COMPLETO']);
+$CLIENTE['CLIENTE_NOME'] = trim($_GET['CLIENTE_NOME']);
 $CLIENTE['CLIENTE_TELEFONE'] = trim($_GET['CLIENTE_TELEFONE']);
-$CLIENTE['CLIENTE_EMAIL'] = trim($_GET['CLIENTE_EMAIL']);
 
-$CONDICAO = array ('CLIENTE_ID' =>trim($_GET['CLIENTE_ID']));
+$CONDICAO = array ('CLIENTE_CPF_CNPJ' =>trim($_GET['CLIENTE_CPF_CNPJ']));
 
 $TOTAL_REGISTRO = retornar_numero_registros('CLIENTE', $CONDICAO);
 //exit($TOTAL_REGISTRO);
@@ -25,7 +23,22 @@ if($TOTAL_REGISTRO == 0){
 		exit;
 	} 
 }
-else {	
+else {
+	//exit("atualizar");
+	$EDITAR = true;
+	$CONDICAO = array ('CLIENTE_CPF_CNPJ' =>trim($_GET['HIDDEN_CLIENTE_CPF_CNPJ']));
+	if (strlen($CONDICAO['CLIENTE_CPF_CNPJ']) == 0) {
+		$CONDICAO = array ('CLIENTE_CPF_CNPJ' =>trim($_GET['CLIENTE_CPF_CNPJ']));
+		$EDITAR = false;
+	}
+
+	$RESULTADO_PESQUISAR = selecionar('CLIENTE', $CONDICAO);
+
+	if ($RESULTADO_PESQUISAR != NULL && $EDITAR) {
+		//header('location:erro.php?msg=Já existe outro registro com esse CPF | CNPJ');
+		//exit;
+	}
+		
 	$resultado_atualizar = atualizar('CLIENTE', $CLIENTE, $CONDICAO);
 	
 	if ($resultado_atualizar == TRUE) {

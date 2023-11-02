@@ -14,7 +14,7 @@ echo HEAD_OPEN;
 
 require_once 'cabecalho.php';
 
-echo '<script src="cliente-cadastro.ts"></script>';
+echo '<script src="CLIENTE-cadastro.ts"></script>';
 
 echo HEAD_CLOSE;
 
@@ -24,9 +24,7 @@ echo DIV_MAIN_OPEN;
 
 require_once 'menu.php';
 
-echo DIV_RIGHT;
-
-$cliente = array();
+$CLIENTE = array();
 
 $FORM_OPEN = '<form action="cliente-lista.php" method="get">';
 
@@ -37,19 +35,24 @@ echo TABLE_OPEN;
 echo TR_OPEN . TH_OPEN . 'Cliente'  . TH_CLOSE . TR_CLOSE; 
 
 echo TR_OPEN . TD_OPEN. LABEL_OPEN . 'Nome' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
-$cliente['CLIENTE_NOME'] = isset($_GET['CLIENTE_NOME']) ? $_GET['CLIENTE_NOME'] : '';
-$INPUT = '<input type="text" id="CLIENTE_NOME" name="CLIENTE_NOME" maxlength="50" value="' . $cliente['CLIENTE_NOME'] .'">';
+$CLIENTE['CLIENTE_NOME_COMPLETO'] = isset($_GET['CLIENTE_NOME_COMPLETO']) ? $_GET['CLIENTE_NOME_COMPLETO'] : '';
+$INPUT = '<input type="text" id="CLIENTE_NOME_COMPLETO" name="CLIENTE_NOME_COMPLETO" maxlength="50" value="' . $CLIENTE['CLIENTE_NOME_COMPLETO'] .'">';
 echo TD_OPEN . $INPUT . TD_CLOSE . TR_CLOSE;
 
-echo TR_OPEN . TD_OPEN. LABEL_OPEN . 'CPF ou CNPJ' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
-$cliente['CLIENTE_CPF_CNPJ'] = isset($_GET['CLIENTE_CPF_CNPJ']) ? $_GET['CLIENTE_CPF_CNPJ'] : '';
-$INPUT = '<input type="text" id="CLIENTE_CPF_CNPJ" name="CLIENTE_CPF_CNPJ" minlength="14" maxlength="18" onkeypress="mascaraMutuario(this,cpfCnpj)" onblur="clearTimeout();" value="' . $cliente['CLIENTE_CPF_CNPJ'] .'">';
+echo TR_OPEN . TD_OPEN. LABEL_OPEN . 'CPF | CNPJ' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
+$CLIENTE['CLIENTE_CPF_CNPJ'] = isset($_GET['CLIENTE_CPF_CNPJ']) ? $_GET['CLIENTE_CPF_CNPJ'] : '';
+$INPUT = '<input type="text" id="CLIENTE_CPF_CNPJ" name="CLIENTE_CPF_CNPJ" minlength="14" maxlength="18" onkeypress="mascaraMutuario(this,cpfCnpj)" onblur="clearTimeout();" value="' . $CLIENTE['CLIENTE_CPF_CNPJ'] .'">';
 echo TR_OPEN . TD_OPEN. $INPUT . TD_CLOSE . TR_CLOSE;
 
 
 echo TR_OPEN . TD_OPEN. LABEL_OPEN . 'Telefone' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
-$cliente['CLIENTE_TELEFONE'] = isset($_GET['CLIENTE_TELEFONE']) ? $_GET['CLIENTE_TELEFONE'] : '';
-$INPUT = '<input type="text" id="CLIENTE_TELEFONE" name="CLIENTE_TELEFONE" maxlength="15" onkeypress="mask(this, mphone);" value="' . $cliente['CLIENTE_TELEFONE'] .'">';
+$CLIENTE['CLIENTE_TELEFONE'] = isset($_GET['CLIENTE_TELEFONE']) ? $_GET['CLIENTE_TELEFONE'] : '';
+$INPUT = '<input type="text" id="CLIENTE_TELEFONE" name="CLIENTE_TELEFONE" maxlength="15" onkeypress="mask(this, mphone);" value="' . $CLIENTE['CLIENTE_TELEFONE'] .'">';
+echo TR_OPEN . TD_OPEN. $INPUT . TD_CLOSE . TR_CLOSE;
+
+echo TR_OPEN . TD_OPEN. LABEL_OPEN . 'E-Mail' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
+$CLIENTE['CLIENTE_EMAIL'] = isset($_GET['CLIENTE_EMAIL']) ? $_GET['CLIENTE_EMAIL'] : '';
+$INPUT = '<input type="text" id="CLIENTE_EMAIL" name="CLIENTE_EMAIL" maxlength="15" value="' . $CLIENTE['CLIENTE_EMAIL'] .'">';
 echo TR_OPEN . TD_OPEN. $INPUT . TD_CLOSE . TR_CLOSE;
 
 echo TR_OPEN . TD_OPEN. LABEL_OPEN . '&nbsp;' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
@@ -57,12 +60,9 @@ echo TR_OPEN . TD_OPEN. LABEL_OPEN . '&nbsp;' . LABEL_CLOSE . TD_CLOSE . TR_CLOS
 $SUBMIT = '<input type="submit" value="Buscar" >';
 echo TR_OPEN . TD_OPEN. $SUBMIT . TD_CLOSE . TR_CLOSE;
 
-
 echo TABLE_CLOSE;
 
 echo FORM_CLOSE;
-
-echo DIV_CLOSE;
 
 echo DIV_CLOSE;
 

@@ -19,8 +19,6 @@ echo DIV_MAIN_OPEN;
 
 require_once 'menu.php';
 
-echo DIV_RIGHT;
-
 echo TABLE_OPEN;
 
 $INPUT = '<input type="hidden">';
@@ -36,8 +34,6 @@ if (isset($_GET['msg'])) {
 
 $MSG = '<script>setTimeout(function() { window.history.back(); }, 180000);</script>';
 echo $MSG;
-
-echo DIV_CLOSE;
 
 echo DIV_CLOSE;
 

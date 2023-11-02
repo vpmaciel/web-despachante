@@ -1,0 +1,123 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Tempo de geração: 02-Nov-2023 às 14:08
+-- Versão do servidor: 10.4.24-MariaDB
+-- versão do PHP: 8.1.6
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "-03:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Banco de dados: db_despachante
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela cliente
+--
+
+CREATE TABLE cliente (
+  CLIENTE_ID int(11) NOT NULL,
+  CLIENTE_CPF_CNPJ varchar(20) NOT NULL,
+  CLIENTE_TELEFONE varchar(15) NOT NULL,
+  CLIENTE_NOME_COMPLETO varchar(50) NOT NULL,
+  CLIENTE_EMAIL varchar(70) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela pedido_de_placa
+--
+
+CREATE TABLE pedido_de_placa (
+  PEDIDO_DE_PLACA_ID int(11) NOT NULL,
+  PEDIDO_DE_PLACA_DATA date NOT NULL,
+  PEDIDO_DE_PLACA_PLACA_VEICULO varchar(8) NOT NULL,
+  PEDIDO_DE_PLACA_QUANTIDADE int(11) NOT NULL,
+  PEDIDO_DE_PLACA_RENAVAM varchar(20) NOT NULL,
+  PEDIDO_DE_PLACA_CPF_CNPJ_PROPRIETARIO varchar(20) NOT NULL,
+  PEDIDO_DE_PLACA_COR_PLACA varchar(50) NOT NULL,
+  PEDIDO_DE_PLACA_TIPO_PLACA varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela usuario
+--
+
+CREATE TABLE usuario (
+  USUARIO_ID int(11) NOT NULL,
+  USUARIO_NOME varchar(20) NOT NULL,
+  USUARIO_SENHA varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela usuario
+--
+
+INSERT INTO usuario (USUARIO_ID, USUARIO_NOME, USUARIO_SENHA) VALUES
+(1, 'OPERADOR', 'OPERADOR');
+
+--
+-- Índices para tabelas despejadas
+--
+
+--
+-- Índices para tabela cliente
+--
+ALTER TABLE cliente
+  ADD PRIMARY KEY (CLIENTE_ID),
+  ADD UNIQUE KEY INDEX_CLIENTE_CPF_CNPJ (CLIENTE_CPF_CNPJ);
+
+--
+-- Índices para tabela pedido_de_placa
+--
+ALTER TABLE pedido_de_placa
+  ADD PRIMARY KEY (PEDIDO_DE_PLACA_ID);
+
+--
+-- Índices para tabela usuario
+--
+ALTER TABLE usuario
+  ADD PRIMARY KEY (USUARIO_ID),
+  ADD UNIQUE KEY INDEX_USUARIO_NOME (USUARIO_NOME);
+
+--
+-- AUTO_INCREMENT de tabelas despejadas
+--
+
+--
+-- AUTO_INCREMENT de tabela cliente
+--
+ALTER TABLE cliente
+  MODIFY CLIENTE_ID int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de tabela pedido_de_placa
+--
+ALTER TABLE pedido_de_placa
+  MODIFY PEDIDO_DE_PLACA_ID int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela usuario
+--
+ALTER TABLE usuario
+  MODIFY USUARIO_ID int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -1,6 +1,6 @@
 let input;
 
-input = document.querySelector('#CLIENTE_CPF_CNPJ');
+input = document.querySelector('#VEICULO_CPF_CNPJ_PROPRIETARIO');
 
 input.addEventListener('input', function(){
     mascaraMutuario(this, cpfCnpj);
@@ -53,45 +53,13 @@ function cpfCnpj(v){
     return v
 }
 
-function validarNome(){
-
-    var nome = new String($('#CLIENTE_NOME_COMPLETO').val());
-
-    if(nome.length == null || nome.length <= 0 || nome.length > 50) {
-        return false;
-    } else {
-        return true;
-    }
-}
-
-function validarTelefone(){
-
-    var telefone = new String($('#CLIENTE_TELEFONE').val()) 
-    if(telefone.length == null || (telefone.length != 15 && telefone.length > 0)) {
-        return false;
-    } else {
-        return true;
-    }
-    
-}
-
-function validarFormulario(){
-    
-  if(validarNome() == false) {
-    alert("[ Nome ] Campo com no máximo 50 caractéres !");
-    alert("[ Nome ] Campo obrigatório !");
+function validarFormulario(){ 
+  
+  if(validaCpfCnpj(new String($('#VEICULO_CPF_CNPJ_PROPRIETARIO').val())) == false) {
+    alert("[ CPF ou CNPJ do Proprietário] Campo inválido !");
+    alert("[ CPF ou CNPJ  do Proprietário] Campo obrigatório !");    
     return false;
-  } 
-  if(validaCpfCnpj(new String($('#CLIENTE_CPF_CNPJ').val())) == false) {
-    alert("[ CPF ou CNPJ ] Campo inválido !");
-    alert("[ CPF ou CNPJ ] Campo obrigatório !");    
-    return false;
-  } 
-  if(validarTelefone() == false){
-    alert('[ Telefone ] Campo inválido !');
-    alert('[ Telefone ] Campo opcional !');
-    return false;
-  }  
+  }   
   return true;
 }
 

@@ -2,10 +2,8 @@
 ini_set('display_errors', TRUE);
 error_reporting(E_ALL);
 
-require_once 'conexao.php';
-
 function excluir(string $char_tabela, array $array_condicao) : bool {
-    global $pdo;
+    global $PDO;
     if(!is_array($array_condicao) && !is_string($char_tabela)) {
         throw new Exception('Tipos de parametros imcompatíveis !');        
         return FALSE;
@@ -43,15 +41,15 @@ function excluir(string $char_tabela, array $array_condicao) : bool {
 
 
         //exit("DELETE FROM $char_tabela WHERE ($char_condicao);");
-        $stmt = $pdo->prepare("DELETE FROM $char_tabela WHERE ($char_condicao);--");
+        $stmt = $PDO->prepare("DELETE FROM $char_tabela WHERE ($char_condicao);--");
         $retorno = ($stmt->execute()) ? TRUE : FALSE; 
       
         return TRUE;
     
-    } catch(PDOException $pdoException) {
-        throw new PDOException($pdoException);    
-        echo "Erro na exclusão:" . $pdoException->getMessage();
-        $pdo->rollback();
+    } catch(PDOException $PDOException) {
+        throw new PDOException($PDOException);    
+        echo "Erro na exclusão:" . $PDOException->getMessage();
+        $PDO->rollback();
         return FALSE;
     }
 }

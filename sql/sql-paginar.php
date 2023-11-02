@@ -2,8 +2,6 @@
 ini_set('display_errors', TRUE);
 error_reporting(E_ALL);
 
-require_once 'sql/conexao.php';
-
 function paginar( string $char_tabela, array $array_condicao, $pagina_primeiro_resultado = 1, $resultados_por_pagina = 1 ) {
     
     global $pdo;

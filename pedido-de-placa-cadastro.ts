@@ -55,7 +55,7 @@ function cpfCnpj(v){
 
 function validarNome(){
 
-    var nome = new String($('#CLIENTE_NOME_COMPLETO').val());
+    var nome = new String($('#CLIENTE_NOME').val());
 
     if(nome.length == null || nome.length <= 0 || nome.length > 50) {
         return false;

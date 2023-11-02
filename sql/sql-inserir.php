@@ -2,16 +2,13 @@
 ini_set('display_errors', TRUE);
 error_reporting(E_ALL);
 
-require_once 'sql/conexao.php';
-
-
 function inserir( string $char_tabela, array $array_model) : bool {
     
     if(!is_array($array_model) || !is_string($char_tabela)) {
         throw new Exception('Tipos de parametros imcompatíveis !');
     }
 
-    global $pdo;
+    global $PDO;
     $campos = '';
     $valores = '';
     $tamanho = count ($array_model);
@@ -38,16 +35,16 @@ function inserir( string $char_tabela, array $array_model) : bool {
         }
         //exit("INSERT INTO $char_tabela ($campos) VALUES ($valores);");
 
-        $stmt = $pdo->prepare("INSERT INTO $char_tabela ($campos) VALUES ($valores);--");        
+        $stmt = $PDO->prepare("INSERT INTO $char_tabela ($campos) VALUES ($valores);--");        
         $stmt->execute();        
 
         
         return TRUE;
     
-    } catch(PDOException $pdoException) {
-        throw new PDOException($pdoException);    
-        echo "Erro na inserção:" . $pdoException->getMessage();
-        $pdo->rollback();
+    } catch(PDOException $PDOException) {
+        throw new PDOException($PDOException);    
+        echo "Erro na inserção:" . $PDOException->getMessage();
+        $PDO->rollback();
         return FALSE;
     }
 

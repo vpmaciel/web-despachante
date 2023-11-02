@@ -23,7 +23,7 @@ require_once 'menu.php';
 
 echo TABLE_OPEN;
 
-$MSG = require 'cliente-grafico.php';
+$MSG = require 'pedido-de-placa-grafico.php';
 echo TR_OPEN . TD_OPEN. $MSG  . TD_CLOSE . TR_CLOSE;
 
 echo TABLE_CLOSE;

@@ -2,11 +2,9 @@
 ini_set('display_errors', TRUE);
 error_reporting(E_ALL);
 
-require_once 'sql/conexao.php';
-
 function paginar_total( string $char_tabela, array $array_condicao) {
     
-    global $pdo;
+    global $PDO;
     
     if(!is_array($array_condicao) || !is_string($char_tabela)) {
         throw new Exception('Tipos de parametros imcompatíveis !');
@@ -59,9 +57,9 @@ function paginar_total( string $char_tabela, array $array_condicao) {
         } else {                        
             $sql = "SELECT count(*) FROM $char_tabela;--";   
         }   
-        //die($stmt);
+       //die($sql);
         
-        $stmt = $pdo->prepare($sql);
+        $stmt = $PDO->prepare($sql);
         $stmt->execute();
         $number_of_results =  $stmt->fetchColumn(); 
         return $number_of_results;

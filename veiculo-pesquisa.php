@@ -1,0 +1,66 @@
+<?php
+session_start();
+
+require_once 'lib/lib-sessao.php';
+require_once 'lib/lib-biblioteca.php';
+
+setlocale(LC_ALL, 'pt_BR.utf8');
+
+echo DOCTYPE;
+
+echo HTML_OPEN;
+
+echo HEAD_OPEN;
+
+require_once 'cabecalho.php';
+
+echo '<script src="CLIENTE-cadastro.ts"></script>';
+
+echo HEAD_CLOSE;
+
+echo BODY_OPEN;
+
+echo DIV_MAIN_OPEN;
+
+require_once 'menu.php';
+
+$CLIENTE = array();
+
+$FORM_OPEN = '<form action="CLIENTE-lista.php" method="get">';
+
+echo $FORM_OPEN;
+
+echo TABLE_OPEN;
+
+echo TR_OPEN . TH_OPEN . 'Cliente'  . TH_CLOSE . TR_CLOSE; 
+
+echo TR_OPEN . TD_OPEN. LABEL_OPEN . 'Nome' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
+$CLIENTE['CLIENTE_NOME'] = isset($_GET['CLIENTE_NOME']) ? $_GET['CLIENTE_NOME'] : '';
+$INPUT = '<input type="text" id="CLIENTE_NOME" name="CLIENTE_NOME" maxlength="50" value="' . $CLIENTE['CLIENTE_NOME'] .'">';
+echo TD_OPEN . $INPUT . TD_CLOSE . TR_CLOSE;
+
+echo TR_OPEN . TD_OPEN. LABEL_OPEN . 'CPF ou CNPJ' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
+$CLIENTE['CLIENTE_CPF_CNPJ'] = isset($_GET['CLIENTE_CPF_CNPJ']) ? $_GET['CLIENTE_CPF_CNPJ'] : '';
+$INPUT = '<input type="text" id="CLIENTE_CPF_CNPJ" name="CLIENTE_CPF_CNPJ" minlength="14" maxlength="18" onkeypress="mascaraMutuario(this,cpfCnpj)" onblur="clearTimeout();" value="' . $CLIENTE['CLIENTE_CPF_CNPJ'] .'">';
+echo TR_OPEN . TD_OPEN. $INPUT . TD_CLOSE . TR_CLOSE;
+
+
+echo TR_OPEN . TD_OPEN. LABEL_OPEN . 'Telefone' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
+$CLIENTE['CLIENTE_TELEFONE'] = isset($_GET['CLIENTE_TELEFONE']) ? $_GET['CLIENTE_TELEFONE'] : '';
+$INPUT = '<input type="text" id="CLIENTE_TELEFONE" name="CLIENTE_TELEFONE" maxlength="15" onkeypress="mask(this, mphone);" value="' . $CLIENTE['CLIENTE_TELEFONE'] .'">';
+echo TR_OPEN . TD_OPEN. $INPUT . TD_CLOSE . TR_CLOSE;
+
+echo TR_OPEN . TD_OPEN. LABEL_OPEN . '&nbsp;' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
+
+$SUBMIT = '<input type="submit" value="Buscar" >';
+echo TR_OPEN . TD_OPEN. $SUBMIT . TD_CLOSE . TR_CLOSE;
+
+echo TABLE_CLOSE;
+
+echo FORM_CLOSE;
+
+echo DIV_CLOSE;
+
+echo BODY_CLOSE;
+	
+echo HTML_CLOSE;

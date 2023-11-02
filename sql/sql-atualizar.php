@@ -2,14 +2,9 @@
 ini_set('display_errors', TRUE);
 error_reporting(E_ALL);
 
-require_once 'conexao.php';
-
 function atualizar( string $char_tabela, array $array_model, array $array_condicao) : bool {
-    if(!is_array($array_model) || !is_array($array_condicao) || !is_string($char_tabela)) {
-        throw new Exception('Tipos de parametros imcompatíveis !');
-        return FALSE;
-    }
-    global $pdo;
+
+    global $PDO;
     $campos = '';
     $tamanho = count ($array_model);
     $contador = 1;
@@ -63,15 +58,15 @@ function atualizar( string $char_tabela, array $array_model, array $array_condic
         
         //die("UPDATE $char_tabela SET $campos WHERE ($char_condicao);");
         $stmt = NULL;        
-        $stmt = $pdo->prepare("UPDATE $char_tabela SET $campos WHERE ($char_condicao);--");            
+        $stmt = $PDO->prepare("UPDATE $char_tabela SET $campos WHERE ($char_condicao);--");            
         $stmt->execute(); 
         
         
         return TRUE;
-    } catch(PDOException $pdoException) {
-        throw new PDOException($pdoException);    
-        echo "Erro na atualização:" . $pdoException->getMessage();
-        $pdo->rollback();
+    } catch(PDOException $PDOException) {
+        throw new PDOException($PDOException);    
+        echo "Erro na atualização:" . $PDOException->getMessage();
+        $PDO->rollback();
         return FALSE;
     }
     return FALSE;

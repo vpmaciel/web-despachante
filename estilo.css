@@ -1,172 +1,155 @@
 * {
     box-sizing: border-box;
-    border-radius: 0px;  
-    text-align: center;  
-}
-.column {
-    float: left;
-    padding: 5px;
-    height: min-content; 
-    width: 100%;
-}
-.left {
-    width: 20%;
-    text-align: right;     
-}
-.right {
-    width: 80%;        
-}
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-a:link, a:visited {
-    text-decoration: none;
-    color: #3299bb;  
-    font-weight: initial;  
-}
-a:hover {
-    text-decoration: none;
-    color: #F4A460;
-}
-a:active {
-    color: #F4A460;
-    text-decoration: none;
-}
-h1, h2, h3, h4, h5, h6 {
-    text-align: center;		    
-    font-weight: bold;
-}
-select, input, textarea, select:focus, input:focus, textarea:focus {
-    color: #3299bb;
     border-radius: 0px;
-    outline: none;
-    box-shadow: none;
-    border: 1px solid #3299bb;	
-    font-size: 1em;	
-    padding: 5px;
-    width: 100%;
-    resize: none;
-    text-align: left;
+    text-align: center;
+    font-weight: normal;
+    font-size: 18px;    
 }
-.botao, input[type="button"], input[type="submit"] {
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-align: center;
+    color: #3299bb;
+    font-size: 18px;
+}
+
+select,
+input,
+textarea,
+select:focus,
+input:focus,
+textarea:focus {
+    color: #3299bb;
     border-radius: 0px;
     outline: none;
     box-shadow: none;
     border: 1px solid #3299bb;
-    font-size: 1em;			
-    resize: none;
-    padding: 5px;	 
-    width: 100px;
-    color: #3299bb;	
-    text-align: center;	
-}
-p {
-    text-align: justify;
-    text-indent: 2em;	
-}
-table 
-{	
-    table-layout: fixed;
-    width: 50%;
-    border-collapse: collapse;        
-}
-th, td {
+    font-size: 18px;
     padding: 5px;
-    border:none;    
+    width: 100%;
+    resize: none;
     text-align: left;
+    text-transform: capitalize;
 }
-th {
-    font-weight: bold;   
+
+.botao,
+input[type="button"],
+input[type="submit"] {
+    border-radius: 0px;
+    outline: none;
+    box-shadow: none;
+    border: 1px solid #3299bb;
+    font-size: 18px;
+    resize: none;
+    padding: 5px;
+    width: 100px;
+    color: #000;
     text-align: center;
 }
+
+p {
+    text-align: justify;
+    text-indent: 2em;
+}
+
+table {
+    table-layout: fixed;
+    width: 700px;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 5px;
+    border: none;
+    text-align: left;
+}
+
+th {
+    font-weight: bold;
+    text-align: center;
+}
+
 html {
     min-height: 100%;
     width: 100%;
-    background-color: #FFFFFF ;    
+    min-width: 1000px;
+    ;
+    background-color: #FFF;
 }
+
 body {
     font-family: Tahoma, Verdana, Segoe, sans-serif;
-    font-weight: initial;
     color: #3299bb;
-    font-size: 1em;
+    font-size: 18px;
     margin: auto 0;
     width: 100%;
+    min-width: 1000px;
+    ;
     min-height: 100%;
-    background-color: #FFFFFF;	    
+    background-color: #FFF;
 }
-.sucesso {    
+
+.sucesso {
     text-align: center;
 }
-.erro {           
+
+.erro {
     color: coral;
     text-align: center;
     margin: 0 auto;
 }
+
 input[type="file"] {
-    border: none;	
+    border: none;
     border-radius: 0px;
 }
+
 .file::-webkit-file-upload-button {
     border-radius: 0px;
     outline: none;
     box-shadow: none;
-    border: 1px solid #3299bb;
-    font-size: 1em;			
+    border: 1px solid #FFF;
+    font-size: 18px;
     resize: none;
-    padding: 5px;	 
+    padding: 5px;
     width: 150px;
 }
+
 label {
     color: #3299bb;
-    font-size: 1em;    
-    text-align: left; 
+    text-align: left;
 }
-span{
-    margin: 0 auto;   
-    text-align: center;     
+
+span {
+    margin: 0 auto;
+    text-align: center;
+    color: #3299bb;
 }
+
 .menu {
     width: 100%;
-    min-height: 20px;
-    max-height: 20px;
-    height: 20px;
-    background-color: #3299bb;
-    text-align: right; 
-    color: #FFFFFF;
-    border: 1px solid #3299bb;
-    
+    background-color: #FFF;
+    padding: 5px;
+    text-align: center;
+    border: none;
+
 }
-.sistema {
-    width: 100%;    
-    min-height: 20px;
-    max-height: 20px;
-    height: 20px;
-    background-color: #3299bb;
-    text-align: center; 
-    color: #FFFFFF;
-    border: 1px solid #3299bb;   
+
+a:link,
+a:visited,
+a:active {
+    text-decoration: none;
+    font-weight: bold;
+    color: #3299bb;
+    font-size: 18px;
 }
-ul {
-    list-style-type:none;
-}
-ul li {
-    display:inline;
-}
-@media only screen and (max-width: 800px) 
-{
-    .left {
-        width: 100%;
-        text-align: center;
-        height: min-content; 
-        padding-bottom: 20px;
-    }
-    .right {
-        width: 100%;
-        height: min-content; 
-    }
-    .menu {                
-        text-align: center;         
-    }    
+
+a:hover {
+    color: chocolate;
+    text-decoration: none;
 }

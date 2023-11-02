@@ -2,11 +2,9 @@
 ini_set('display_errors', TRUE);
 error_reporting(E_ALL);
 
-require_once 'sql/conexao.php';
-
 function selecionar( string $char_tabela, array $array_condicao) {
     
-    global $pdo;
+    global $PDO;
     
     if(!is_array($array_condicao) || !is_string($char_tabela)) {
         throw new Exception('Tipos de parametros imcompatíveis !');
@@ -53,10 +51,10 @@ function selecionar( string $char_tabela, array $array_condicao) {
         
         if ($clausula_where != 0) {
             //die("SELECT * FROM $char_tabela WHERE ($char_condicao);");
-            $stmt = $pdo->prepare("SELECT * FROM $char_tabela WHERE ($char_condicao);--");
+            $stmt = $PDO->prepare("SELECT * FROM $char_tabela WHERE ($char_condicao);--");
             
         } else {            
-            $stmt = $pdo->prepare("SELECT * FROM $char_tabela;--");
+            $stmt = $PDO->prepare("SELECT * FROM $char_tabela;--");
         }
 
         if (!$stmt->execute()) {
@@ -65,9 +63,9 @@ function selecionar( string $char_tabela, array $array_condicao) {
         }
         $linhas = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
-        if($stmt->rowCount() <= 0) {
-            return json_encode((array) null);
+        if($stmt->rowCount() <= 0) {            
             $stmt->closeCursor();
+            return NULL;
         }
             
         
