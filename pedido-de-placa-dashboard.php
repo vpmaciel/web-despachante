@@ -7,31 +7,31 @@ require_once 'lib/lib-biblioteca.php';
 
 echo doctype;
 
-echo html_open;
+echo open_html;
 
-echo head_open;
+echo open_head;
 
 require_once 'cabecalho.php';
 
-echo head_close;
+echo close_head;
 
-echo body_open;
+echo open_body;
 
-echo div_main_open;
+echo open_div_main;
 
 require_once 'menu.php';
 
-echo table_open;
+echo open_table;
 
 $MSG = require 'pedido-de-placa-grafico.php';
-echo tr_open . td_open. $MSG  . td_close . tr_close;
+echo open_tr . open_td. $MSG  . close_td . close_tr;
 
-echo table_close;
+echo close_table;
 
-echo form_close;
+echo close_form;
 
-echo div_close;
+echo close_div;
 
-echo body_close;
+echo close_body;
 	
-echo htm_close;    
+echo close_html;    

@@ -4,25 +4,25 @@ require_once 'lib/lib-retornar-html.php';
 setlocale(LC_ALL, 'pt_BR.utf8');
 
 echo doctype;
-echo html_open;
-echo head_open;
+echo open_html;
+echo open_head;
 
 require_once 'cabecalho.php';
 
-echo head_close;
+echo close_head;
 
-echo body_open;
+echo open_body;
 
-echo div_main_open;
+echo open_div_main;
 
 require_once 'menu.php';
 
-echo table_open;
+echo open_table;
 
 $input = '<input type="hidden">';
-echo tr_open . td_open. $input . td_close . tr_close;
+echo open_tr . open_td. $input . close_td . close_tr;
 
-echo table_close;
+echo close_table;
 
 echo '<span class="erro">' . 'Operação não realizada !'. '</span>';
 
@@ -33,8 +33,8 @@ if (isset($_GET['msg'])) {
 $MSG = '<script>setTimeout(function() { window.history.back(); }, 180000);</script>';
 echo $MSG;
 
-echo div_close;
+echo close_div;
 
-echo body_close;
+echo close_body;
 	
-echo htm_close;
+echo close_html;

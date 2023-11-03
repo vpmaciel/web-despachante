@@ -8,18 +8,18 @@ setlocale(LC_ALL, 'pt_BR.utf8');
 
 echo doctype;
 
-echo html_open;
+echo open_html;
 
-echo head_open;
+echo open_head;
 
 require_once 'cabecalho.php';
 echo '<script src="cliente-cadastro.ts"></script>';
 
-echo head_close;
+echo close_head;
 
-echo body_open;
+echo open_body;
 
-echo div_main_open;
+echo open_div_main;
 
 require_once 'menu.php';
 
@@ -57,9 +57,9 @@ $SQL = paginar('CLIENTE', $registro, $THIS_PAGE_FIRST_RESULT, $RESULTS_PER_PAGE)
 $stmt = $pdo->prepare($SQL);
 $stmt->execute();
 
-echo table_open;
+echo open_table;
 
-echo tr_open . th_open_3 . 'Cliente'  . th_close . tr_close; 
+echo open_tr . open_th_3 . 'Cliente'  . close_th . close_tr; 
 
 while($registro = $stmt->fetch(PDO::FETCH_ASSOC))
 {
@@ -69,23 +69,23 @@ while($registro = $stmt->fetch(PDO::FETCH_ASSOC))
 		$STRING .= "$chave" . "=" . $valor . "&";                        
 	}
     
-    echo tr_open . td_open . label_open . 'CPF | CNPJ: ' . $registro['cliente_cpf_cnpj'] . lable_close . td_close; 
-    echo td_close . label_open . 'Nome: ' . $registro['cliente_nome'] . lable_close . td_close;     
-    echo td_close . '<a href="cliente-cadastro.php?' . $STRING . '">Editar</a> | '; 
-    echo '<a href="cliente-deletar.php?' . $STRING . ' " onclick="return confirmar();">Excluir</a>' . td_close; 
-    echo tr_open . td_open . label_open . '&nbsp;' . lable_close . td_close . tr_close; 
+    echo open_tr . open_td . open_label . 'CPF | CNPJ: ' . $registro['cliente_cpf_cnpj'] . close_lable . close_td; 
+    echo open_td . open_label . 'Nome: ' . $registro['cliente_nome'] . close_lable . close_td;     
+    echo open_td . '<a href="cliente-cadastro.php?' . $STRING . '">Editar</a> | '; 
+    echo '<a href="cliente-deletar.php?' . $STRING . ' " onclick="return confirmar();">Excluir</a>' . close_td; 
+    echo open_tr . open_td . open_label . '&nbsp;' . close_lable . close_td . close_tr; 
 }
-echo table_close;
+echo close_table;
 
-echo table_close;
+echo close_table;
 
 
 // display the links to the pages
 for ($PAGE=1;$PAGE<=$NUMBER_OF_PAGES;$PAGE++) {
   echo '<a href="cliente-lista.php?page=' . $PAGE . '">|' . $PAGE . '|</a>';
 }
-echo div_close;
+echo close_div;
 
-echo body_close;
+echo close_body;
 	
-echo htm_close;
+echo close_html;

@@ -7,21 +7,21 @@ require_once 'lib/lib-biblioteca.php';
 
 echo doctype;
 
-echo html_open;
+echo open_html;
 
-echo head_open;
+echo open_head;
 
 require_once 'cabecalho.php';
 
-echo head_close;
+echo close_head;
 
-echo body_open;
+echo open_body;
 
-echo div_main_open;
+echo open_div_main;
 
 require_once 'menu.php';
 
-echo table_open;
+echo open_table;
 
 $details["Value"] = "1.5";
 $n = number_format($details["Value"], 2, ",", ".");
@@ -41,10 +41,10 @@ $date = str_replace('/', '-', $var);
 $date = '2020-04-20';
 //echo date('d-m-Y', strtotime($date));
 
-echo tr_open . th_open . 'Web Despachante'  . th_close . tr_close; 
+echo open_tr . open_th . 'Web Despachante'  . close_th . close_tr; 
 
-//echo tr_open . td_open. label_open . $n . lable_close . td_close . tr_close; 
-//echo tr_open . td_open. label_open . $e . lable_close . td_close . tr_close; 
+//echo open_tr . open_td. open_label . $n . close_lable . close_td . close_tr; 
+//echo open_tr . open_td. open_label . $e . close_lable . close_td . close_tr; 
 
 $MSG = '<p>Descubra a solução perfeita para otimizar a gestão da sua empresa! Nosso software inteligente é a ferramenta que você precisa para automatizar processos, gerenciar projetos e equipes, e ter acesso a relatórios precisos e atualizados em tempo real.';
 
@@ -53,9 +53,9 @@ $MSG .= ' Com nossa tecnologia de ponta, você pode ter certeza de que está esc
 $MSG .= ' Além disso, com nosso suporte técnico especializado, você nunca estará sozinho. Estamos sempre disponíveis para ajudá-lo com qualquer dúvida ou problema que surgir, garantindo que você tenha um atendimento rápido e eficiente.';
 
 $MSG .= ' Não perca mais tempo com processos manuais e desorganizados. Invista em nosso software e veja como sua empresa pode crescer ainda mais. Entre em contato conosco e descubra como podemos ajudá-lo!</p>';
-echo tr_open . td_open. $MSG  . td_close . tr_close;
+echo open_tr . open_td. $MSG  . close_td . close_tr;
 
-echo table_close;
+echo close_table;
 
 echo '<br>';
 
@@ -71,8 +71,8 @@ echo $MSG;
 //$cmdResult = shell_exec($comando);
 //echo $cmdResult;
 
-echo div_close;
+echo close_div;
 
-echo body_close;
+echo close_body;
 	
-echo htm_close;    
+echo close_html;    

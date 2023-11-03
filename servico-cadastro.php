@@ -9,19 +9,19 @@ setlocale(LC_ALL, 'pt_BR.utf8');
 
 echo doctype;
 
-echo html_open;
+echo open_html;
 
-echo head_open;
+echo open_head;
 
 require_once 'cabecalho.php';
 
 echo '<script src="cliente-cadastro.ts"></script>';
 
-echo head_close;
+echo close_head;
 
-echo body_open;
+echo open_body;
 
-echo div_main_open;
+echo open_div_main;
 
 require_once 'menu.php';
 
@@ -31,84 +31,84 @@ $form_open = '<form action="cliente-salvar.php" method="get">';
 
 echo $form_open;
 
-echo table_open;
+echo open_table;
 
-echo tr_open . th_open . 'SERVIÇO'  . th_close . tr_close; 
+echo open_tr . open_th . 'SERVIÇO'  . close_th . close_tr; 
 
 $LINK = '<a href="cliente-pesquisa.php">Pesquisar</a>';
 
-echo td_close . $LINK . td_close . tr_close;
+echo open_td . $LINK . close_td . close_tr;
 
 $LINK = '<a href="cliente-dashboard.php">Dashboard</a>';
 
-echo td_close . $LINK . td_close . tr_close;
+echo open_td . $LINK . close_td . close_tr;
 
 
 $registro['servico_id'] = isset($_GET['servico_id']) ? $_GET['servico_id'] : '';
 $input = '<input type="hidden" id="servico_id" name="servico_id" maxlength="50" value="' . $registro['servico_id'] .'">';
 
-echo tr_open . td_open. $input . td_close . tr_close;
+echo open_tr . open_td. $input . close_td . close_tr;
 
 
 $registro['servico_data'] = isset($_GET['servico_data']) ? $_GET['servico_data'] : '';
 $input = '<input type="hidden" id="servico_data" name="servico_data" maxlength="50" value="' . $registro['servico_data'] .'">';
 
-echo tr_open . td_open. $input . td_close . tr_close;
+echo open_tr . open_td. $input . close_td . close_tr;
 
-echo tr_open . td_open. label_open . 'PLACA DO VEÍCULO' . lable_close . td_close . tr_close; 
+echo open_tr . open_td. open_label . 'PLACA DO VEÍCULO' . close_lable . close_td . close_tr; 
 
 $registro['servico_placa_veiculo'] = isset($_GET['servico_placa_veiculo']) ? $_GET['servico_placa_veiculo'] : '';
 $input = '<input type="text" id="servico_placa_veiculo" name="servico_placa_veiculo" maxlength="50" value="' . $registro['servico_placa_veiculo'] .'">';
 
-echo td_close . $input . td_close . tr_close;
+echo open_td . $input . close_td . close_tr;
 
-echo tr_open . td_open. label_open . 'valor' . lable_close . td_close . tr_close; 
+echo open_tr . open_td. open_label . 'valor' . close_lable . close_td . close_tr; 
 
 $registro['servico_valor'] = isset($_GET['servico_valor']) ? $_GET['servico_valor'] : '';
 $input = '<input type="text" id="servico_valor" name="servico_valor" maxlength="15" onkeypress="mask(this, mphone);" value="' . $registro['servico_valor'] .'">';
 
-echo tr_open . td_open. $input . td_close . tr_close;
+echo open_tr . open_td. $input . close_td . close_tr;
 
-echo tr_open . td_open. label_open . 'DESCRIÇÃO' . lable_close . td_close . tr_close; 
+echo open_tr . open_td. open_label . 'DESCRIÇÃO' . close_lable . close_td . close_tr; 
 
 $registro['servico_descricao'] = isset($_GET['servico_descricao']) ? $_GET['servico_descricao'] : '';
 $input = '<input type="text" id="servico_descricao" name="servico_descricao" maxlength="15" onkeypress="mask(this, mphone);" value="' . $registro['servico_descricao'] .'">';
 
-echo tr_open . td_open. $input . td_close . tr_close;
+echo open_tr . open_td. $input . close_td . close_tr;
 
-echo tr_open . td_open. label_open . 'CPF | CNPJ DO CLIENTE' . lable_close . td_close . tr_close; 
+echo open_tr . open_td. open_label . 'CPF | CNPJ DO CLIENTE' . close_lable . close_td . close_tr; 
 
 $registro['servico_cpf_cnpj_cliente'] = isset($_GET['servico_cpf_cnpj_cliente']) ? $_GET['servico_cpf_cnpj_cliente'] : '';
 $input = '<input type="text" id="servico_cpf_cnpj_cliente" name="servico_cpf_cnpj_cliente" minlength="14" maxlength="18" onkeypress="mascaraMutuario(this,cpfCnpj)" onblur="clearTimeout();" value="' . $registro['servico_cpf_cnpj_cliente'] .'">';
 
-echo tr_open . td_open. $input . td_close . tr_close;
+echo open_tr . open_td. $input . close_td . close_tr;
 
-echo tr_open . td_open. label_open . 'NOME DO CLIENTE' . lable_close . td_close . tr_close; 
+echo open_tr . open_td. open_label . 'NOME DO CLIENTE' . close_lable . close_td . close_tr; 
 
 $registro['servico_nome_cliente'] = isset($_GET['servico_nome_cliente']) ? $_GET['servico_nome_cliente'] : '';
 $input = '<input type="text" id="servico_nome_cliente" name="servico_nome_cliente" maxlength="15" onkeypress="mask(this, mphone);" value="' . $registro['servico_nome_cliente'] .'">';
 
-echo tr_open . td_open. $input . td_close . tr_close;
+echo open_tr . open_td. $input . close_td . close_tr;
 
-echo tr_open . td_open. label_open . 'TELEFONE DO CLIENTE' . lable_close . td_close . tr_close; 
+echo open_tr . open_td. open_label . 'TELEFONE DO CLIENTE' . close_lable . close_td . close_tr; 
 
 $registro['servico_telefone_cliente'] = isset($_GET['servico_telefone_cliente']) ? $_GET['servico_telefone_cliente'] : '';
 $input = '<input type="text" id="servico_telefone_cliente" name="servico_telefone_cliente" maxlength="15" onkeypress="mask(this, mphone);" value="' . $registro['servico_telefone_cliente'] .'">';
 
-echo tr_open . td_open. $input . td_close . tr_close;
+echo open_tr . open_td. $input . close_td . close_tr;
 
-echo tr_open . td_open. label_open . '&nbsp;' . lable_close . td_close . tr_close; 
+echo open_tr . open_td. open_label . '&nbsp;' . close_lable . close_td . close_tr; 
 
 $submit = '<input type="submit" value="Salvar" onclick=\'return validarFormulario();\'>';
 
-echo tr_open . td_open. $submit . td_close . tr_close;
+echo open_tr . open_td. $submit . close_td . close_tr;
 
-echo table_close;
+echo close_table;
 
-echo form_close;
+echo close_form;
 
-echo div_close;
+echo close_div;
 
-echo body_close;
+echo close_body;
 	
-echo htm_close;
+echo close_html;

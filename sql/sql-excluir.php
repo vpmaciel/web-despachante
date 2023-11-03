@@ -42,7 +42,7 @@ function excluir(string $string_tabela, array $array_condicao) : bool {
 
         //exit("DELETE FROM $string_tabela where ($string_condicao);");
         $stmt = $pdo->prepare("DELETE FROM $string_tabela where ($string_condicao);--");
-        return = ($stmt->execute()) ? true : false; 
+        return ($stmt->execute()) ? true : false; 
 
     } catch(PDOException $pdoException) {
         throw new PDOException($pdoException);    
