@@ -4,21 +4,21 @@ session_start();
 require_once 'lib/lib-sessao.php';
 require_once 'lib/lib-biblioteca.php';
 
-$CLIENTE['VEICULO_ID'] = trim($_GET['VEICULO_ID']);
-$CLIENTE['VEICULO_PLACA'] = trim($_GET['VEICULO_PLACA']);
-$CLIENTE['VEICULO_CPF_CNPJ_PROPRIETARIO_PROPRIETARIO'] = trim($_GET['VEICULO_CPF_CNPJ_PROPRIETARIO_PROPRIETARIO']);
-$CLIENTE['VEICULO_NOME_PROPRIETARIO'] = trim($_GET['VEICULO_NOME_PROPRIETARIO']);
-$CLIENTE['VEICULO_MARCA'] = trim($_GET['VEICULO_MARCA']);
-$CLIENTE['VEICULO_MODELO'] = trim($_GET['VEICULO_MODELO']);
+$registro['veiculo_id'] = trim($_GET['veiculo_id']);
+$registro['veiculo_placa'] = trim($_GET['veiculo_placa']);
+$registro['veiculo_cpf_cnpj_proprietario_PROPRIETARIO'] = trim($_GET['veiculo_cpf_cnpj_proprietario_PROPRIETARIO']);
+$registro['veiculo_nome_proprietario'] = trim($_GET['veiculo_nome_proprietario']);
+$registro['veiculo_marca'] = trim($_GET['veiculo_marca']);
+$registro['veiculo_modelo'] = trim($_GET['veiculo_modelo']);
 
-$CONDICAO = array ('VEICULO_ID' =>trim($_GET['VEICULO_ID']));
+$condicao = array ('veiculo_id' =>trim($_GET['veiculo_id']));
 
-$TOTAL_REGISTRO = retornar_numero_registros('CLIENTE', $CONDICAO);
-//exit($TOTAL_REGISTRO);
-if($TOTAL_REGISTRO == 0){
-	$RESULTADO_INSERIR = inserir('CLIENTE', $CLIENTE);
+$TOTAL_registro = retornar_numero_registros('CLIENTE', $condicao);
+//exit($TOTAL_registro);
+if($TOTAL_registro == 0){
+	$RESULTADO_INSERIR = inserir('CLIENTE', $registro);
     
-    if ($RESULTADO_INSERIR == TRUE) {
+    if ($RESULTADO_INSERIR == true) {
 		header('location:sucesso.php');
 		exit;
 	} else {
@@ -27,9 +27,9 @@ if($TOTAL_REGISTRO == 0){
 	} 
 }
 else {	
-	$resultado_atualizar = atualizar('CLIENTE', $CLIENTE, $CONDICAO);
+	$resultado_atualizar = atualizar('CLIENTE', $registro, $condicao);
 	
-	if ($resultado_atualizar == TRUE) {
+	if ($resultado_atualizar == true) {
 		
 		header('location:sucesso.php');
 		exit;

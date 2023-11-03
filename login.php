@@ -5,50 +5,50 @@ require_once 'lib/lib-biblioteca.php';
 
 setlocale(LC_ALL, 'pt_BR.utf8');
 
-echo DOCTYPE;
-echo HTML_OPEN;
-echo HEAD_OPEN;
+echo doctype;
+echo html_open;
+echo head_open;
 require_once 'cabecalho.php';
 require_once 'login.js';
-echo HEAD_CLOSE;
+echo head_close;
 
-echo BODY_OPEN;
+echo body_open;
 
-echo DIV_MAIN_OPEN;
+echo div_main_open;
 
 require_once 'menu.php';
 
 $USUARIO = array();
 
-$FORM_OPEN = '<form action="login-controle.php" method="post">';
+$form_open = '<form action="login-controle.php" method="post">';
 
-echo $FORM_OPEN;
+echo $form_open;
 
-echo TABLE_OPEN;
+echo table_open;
 
-echo TR_OPEN . TH_OPEN . 'Login'  . TH_CLOSE . TR_CLOSE; 
+echo tr_open . th_open . 'Login'  . th_close . tr_close; 
 
-echo TR_OPEN . TD_OPEN. LABEL_OPEN . 'Usuario' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
+echo tr_open . td_open. label_open . 'Usuario' . lable_close . td_close . tr_close; 
 $USUARIO['USUARIO_NOME'] = isset($_POST['USUARIO_NOME']) ? $_POST['USUARIO_NOME'] : '';
-$INPUT = '<input type="text" id="USUARIO_NOME" name="USUARIO_NOME" value="' . $USUARIO['USUARIO_NOME'] .'">';
-echo TD_OPEN . $INPUT . TD_CLOSE . TR_CLOSE;
+$input = '<input type="text" id="USUARIO_NOME" name="USUARIO_NOME" value="' . $USUARIO['USUARIO_NOME'] .'">';
+echo td_close . $input . td_close . tr_close;
 
-echo TR_OPEN . TD_OPEN. LABEL_OPEN . 'Senha' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
+echo tr_open . td_open. label_open . 'Senha' . lable_close . td_close . tr_close; 
 $USUARIO['USUARIO_SENHA'] = isset($_POST['USUARIO_SENHA']) ? $_POST['USUARIO_SENHA'] : '';
-$INPUT = '<input type="password" id="USUARIO_SENHA" name="USUARIO_SENHA" value="' . $USUARIO['USUARIO_SENHA'] .'">';
-echo TR_OPEN . TD_OPEN. $INPUT . TD_CLOSE . TR_CLOSE;
+$input = '<input type="password" id="USUARIO_SENHA" name="USUARIO_SENHA" value="' . $USUARIO['USUARIO_SENHA'] .'">';
+echo tr_open . td_open. $input . td_close . tr_close;
 
-echo TR_OPEN . TD_OPEN. LABEL_OPEN . '&nbsp;' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
+echo tr_open . td_open. label_open . '&nbsp;' . lable_close . td_close . tr_close; 
 
-$SUBMIT = '<input type="submit" value="ENVIAR" onclick=\'return confirmar();\'>';
-echo TR_OPEN . TD_OPEN. $SUBMIT . TD_CLOSE . TR_CLOSE;
+$submit = '<input type="submit" value="ENVIAR" onclick=\'return confirmar();\'>';
+echo tr_open . td_open. $submit . td_close . tr_close;
 
-echo TABLE_CLOSE;
+echo table_close;
 
-echo FORM_CLOSE;
+echo form_close;
 
-echo DIV_CLOSE;
+echo div_close;
 
-echo BODY_CLOSE;
+echo body_close;
 	
-echo HTML_CLOSE;
+echo htm_close;

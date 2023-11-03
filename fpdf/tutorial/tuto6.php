@@ -27,7 +27,7 @@ function WriteHTML($html)
 		{
 			// Tag
 			if($e[0]=='/')
-				$this->CloseTag(strtoupper(substr($e,1)));
+				$this->Closetag(strtoupper(substr($e,1)));
 			else
 			{
 				// Extract attributes
@@ -49,23 +49,23 @@ function OpenTag($tag, $attr)
 {
 	// Opening tag
 	if($tag=='B' || $tag=='I' || $tag=='U')
-		$this->SetStyle($tag,true);
+		$this->setStyle($tag,true);
 	if($tag=='A')
 		$this->HREF = $attr['HREF'];
 	if($tag=='BR')
 		$this->Ln(5);
 }
 
-function CloseTag($tag)
+function Closetag($tag)
 {
 	// Closing tag
 	if($tag=='B' || $tag=='I' || $tag=='U')
-		$this->SetStyle($tag,false);
+		$this->setStyle($tag,false);
 	if($tag=='A')
 		$this->HREF = '';
 }
 
-function SetStyle($tag, $enable)
+function setStyle($tag, $enable)
 {
 	// Modify style and select corresponding font
 	$this->$tag += ($enable ? 1 : -1);
@@ -75,17 +75,17 @@ function SetStyle($tag, $enable)
 		if($this->$s>0)
 			$style .= $s;
 	}
-	$this->SetFont('',$style);
+	$this->setFont('',$style);
 }
 
 function PutLink($URL, $txt)
 {
 	// Put a hyperlink
-	$this->SetTextColor(0,0,255);
-	$this->SetStyle('U',true);
+	$this->setTextColor(0,0,255);
+	$this->setStyle('U',true);
 	$this->Write(5,$txt,$URL);
-	$this->SetStyle('U',false);
-	$this->SetTextColor(0);
+	$this->setStyle('U',false);
+	$this->setTextColor(0);
 }
 }
 
@@ -96,18 +96,18 @@ text, such as <a href="http://www.fpdf.org">www.fpdf.org</a>, or on an image: cl
 $pdf = new PDF();
 // First page
 $pdf->AddPage();
-$pdf->SetFont('Arial','',20);
+$pdf->setFont('Arial','',20);
 $pdf->Write(5,"To find out what's new in this tutorial, click ");
-$pdf->SetFont('','U');
+$pdf->setFont('','U');
 $link = $pdf->AddLink();
 $pdf->Write(5,'here',$link);
-$pdf->SetFont('');
+$pdf->setFont('');
 // Second page
 $pdf->AddPage();
-$pdf->SetLink($link);
+$pdf->setLink($link);
 $pdf->Image('logo.png',10,12,30,0,'','http://www.fpdf.org');
-$pdf->SetLeftMargin(45);
-$pdf->SetFontSize(14);
+$pdf->setLeftMargin(45);
+$pdf->setFontSize(14);
 $pdf->WriteHTML($html);
 $pdf->Output();
 ?>

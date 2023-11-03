@@ -7,111 +7,111 @@ require_once 'lib/lib-biblioteca.php';
 
 setlocale(LC_ALL, 'pt_BR.utf8');
 
-echo DOCTYPE;
+echo doctype;
 
-echo HTML_OPEN;
+echo html_open;
 
-echo HEAD_OPEN;
+echo head_open;
 
 require_once 'cabecalho.php';
 
-echo HEAD_CLOSE;
+echo head_close;
 
-echo BODY_OPEN;
+echo body_open;
 
-echo DIV_MAIN_OPEN;
+echo div_main_open;
 
 require_once 'menu.php';
 
-$REGISTRO = array();
+$registro = array();
 
-$FORM_OPEN = '<form action="cliente-salvar.php" method="get">';
+$form_open = '<form action="cliente-salvar.php" method="get">';
 
-IF (!isset($_GET['CLIENTE_ID'])) {
-    $REGISTRO['CLIENTE_ID'] = '';
+IF (!isset($_GET['cliente_id'])) {
+    $registro['cliente_id'] = '';
 }
 
 IF (isset($_GET['EDITAR'])) {
 
-    $SQL="SELECT * FROM CLIENTE WHERE CLIENTE_ID = '" . $_GET['CLIENTE_ID'] . "';" ;
-    $STMT = $PDO->prepare($SQL);
-    $STMT->execute();
+    $SQL="SELECT * FROM CLIENTE where cliente_id = '" . $_GET['cliente_id'] . "';" ;
+    $stmt = $pdo->prepare($SQL);
+    $stmt->execute();
     
-    while($REGISTRO = $STMT->fetch(PDO::FETCH_ASSOC))
+    while($registro = $stmt->fetch(PDO::FETCH_ASSOC))
     {
-        $REGISTRO['CLIENTE_ID'] = $REGISTRO['CLIENTE_ID'];
-        $REGISTRO['CLIENTE_CPF_CNPJ'] = $REGISTRO['CLIENTE_CPF_CNPJ'];
-        $REGISTRO['CLIENTE_TELEFONE'] = $REGISTRO['CLIENTE_TELEFONE']; 
-        $REGISTRO['CLIENTE_NOME_COMPLETO'] = $REGISTRO['CLIENTE_NOME_COMPLETO'];
-        $REGISTRO['CLIENTE_EMAIL'] = $REGISTRO['CLIENTE_EMAIL'];
+        $registro['cliente_id'] = $registro['cliente_id'];
+        $registro['cliente_cpf_cnpj'] = $registro['cliente_cpf_cnpj'];
+        $registro['cliente_telefone'] = $registro['cliente_telefone']; 
+        $registro['cliente_nome_completo'] = $registro['cliente_nome_completo'];
+        $registro['cliente_email'] = $registro['cliente_email'];
     }  
 
 }
    
 
-echo $FORM_OPEN;
+echo $form_open;
 
-echo TABLE_OPEN;
+echo table_open;
 
-echo TR_OPEN . TH_OPEN . 'CLIENTE'  . TH_CLOSE . TR_CLOSE; 
+echo tr_open . th_open . 'CLIENTE'  . th_close . tr_close; 
 
 $LINK = '<a href="cliente-pesquisa.php">Pesquisar</a>';
 
-echo TD_OPEN . $LINK . TD_CLOSE . TR_CLOSE;
+echo td_close . $LINK . td_close . tr_close;
 $LINK = '<a href="cliente-dashboard.php">Dashboard</a>';
 
-echo TD_OPEN . $LINK . TD_CLOSE . TR_CLOSE;
+echo td_close . $LINK . td_close . tr_close;
 
-echo TR_OPEN . TD_OPEN. LABEL_OPEN . 'NOME' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
+echo tr_open . td_open. label_open . 'NOME' . lable_close . td_close . tr_close; 
 
-$REGISTRO = [];
+$registro = [];
 
-$REGISTRO['CLIENTE_ID'] = isset($_GET['CLIENTE_ID']) ? $_GET['CLIENTE_ID'] : '';
-$INPUT = '<input type="hidden" id="CLIENTE_ID" name="CLIENTE_ID" maxlength="50" value="' . $REGISTRO['CLIENTE_ID'] .'">';
+$registro['cliente_id'] = isset($_GET['cliente_id']) ? $_GET['cliente_id'] : '';
+$input = '<input type="hidden" id="cliente_id" name="cliente_id" maxlength="50" value="' . $registro['cliente_id'] .'">';
 
-echo $INPUT;
+echo $input;
 
 
-$REGISTRO['CLIENTE_NOME_COMPLETO'] = isset($_GET['CLIENTE_NOME_COMPLETO']) ? $_GET['CLIENTE_NOME_COMPLETO'] : '';
-$INPUT = '<input type="text" id="CLIENTE_NOME_COMPLETO" name="CLIENTE_NOME_COMPLETO" maxlength="50" value="' . $REGISTRO['CLIENTE_NOME_COMPLETO'] .'">';
+$registro['cliente_nome_completo'] = isset($_GET['cliente_nome_completo']) ? $_GET['cliente_nome_completo'] : '';
+$input = '<input type="text" id="cliente_nome_completo" name="cliente_nome_completo" maxlength="50" value="' . $registro['cliente_nome_completo'] .'">';
 
-echo TD_OPEN . $INPUT . TD_CLOSE . TR_CLOSE;
+echo td_close . $input . td_close . tr_close;
 
-echo TR_OPEN . TD_OPEN. LABEL_OPEN . 'CPF | CNPJ' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
+echo tr_open . td_open. label_open . 'CPF | CNPJ' . lable_close . td_close . tr_close; 
 
-$REGISTRO['CLIENTE_CPF_CNPJ'] = isset($_GET['CLIENTE_CPF_CNPJ']) ? $_GET['CLIENTE_CPF_CNPJ'] : '';
-$INPUT = '<input type="text" id="CLIENTE_CPF_CNPJ" name="CLIENTE_CPF_CNPJ" minlength="14" maxlength="18" onkeypress="mascaraMutuario(this,cpfCnpj)" onblur="clearTimeout();" value="' . $REGISTRO['CLIENTE_CPF_CNPJ'] .'">';
+$registro['cliente_cpf_cnpj'] = isset($_GET['cliente_cpf_cnpj']) ? $_GET['cliente_cpf_cnpj'] : '';
+$input = '<input type="text" id="cliente_cpf_cnpj" name="cliente_cpf_cnpj" minlength="14" maxlength="18" onkeypress="mascaraMutuario(this,cpfCnpj)" onblur="clearTimeout();" value="' . $registro['cliente_cpf_cnpj'] .'">';
 
-echo TR_OPEN . TD_OPEN. $INPUT . TD_CLOSE . TR_CLOSE;
+echo tr_open . td_open. $input . td_close . tr_close;
 
-echo TR_OPEN . TD_OPEN. LABEL_OPEN . 'TELEFONE' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
+echo tr_open . td_open. label_open . 'TELEFONE' . lable_close . td_close . tr_close; 
 
-$REGISTRO['CLIENTE_TELEFONE'] = isset($_GET['CLIENTE_TELEFONE']) ? $_GET['CLIENTE_TELEFONE'] : '';
-$INPUT = '<input type="text" id="CLIENTE_TELEFONE" name="CLIENTE_TELEFONE" maxlength="15" onkeypress="mask(this, mphone);" value="' . $REGISTRO['CLIENTE_TELEFONE'] .'">';
+$registro['cliente_telefone'] = isset($_GET['cliente_telefone']) ? $_GET['cliente_telefone'] : '';
+$input = '<input type="text" id="cliente_telefone" name="cliente_telefone" maxlength="15" onkeypress="mask(this, mphone);" value="' . $registro['cliente_telefone'] .'">';
 
-echo TR_OPEN . TD_OPEN. $INPUT . TD_CLOSE . TR_CLOSE;
+echo tr_open . td_open. $input . td_close . tr_close;
 
-echo TR_OPEN . TD_OPEN. LABEL_OPEN . 'E-MAIL' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
+echo tr_open . td_open. label_open . 'E-MAIL' . lable_close . td_close . tr_close; 
 
-$REGISTRO['CLIENTE_EMAIL'] = isset($_GET['CLIENTE_EMAIL']) ? $_GET['CLIENTE_EMAIL'] : '';
-$INPUT = '<input type="text" id="CLIENTE_EMAIL" name="CLIENTE_EMAIL" maxlength="70"  value="' . $REGISTRO['CLIENTE_EMAIL'] .'">';
+$registro['cliente_email'] = isset($_GET['cliente_email']) ? $_GET['cliente_email'] : '';
+$input = '<input type="text" id="cliente_email" name="cliente_email" maxlength="70"  value="' . $registro['cliente_email'] .'">';
 
-echo TR_OPEN . TD_OPEN. $INPUT . TD_CLOSE . TR_CLOSE;
+echo tr_open . td_open. $input . td_close . tr_close;
 
-echo TR_OPEN . TD_OPEN. LABEL_OPEN . '&nbsp;' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
+echo tr_open . td_open. label_open . '&nbsp;' . lable_close . td_close . tr_close; 
 
-$SUBMIT = '<input type="submit" value="Salvar" onclick=\'return validarFormulario();\'>';
+$submit = '<input type="submit" value="Salvar" onclick=\'return validarFormulario();\'>';
 
-echo TR_OPEN . TD_OPEN. $SUBMIT . TD_CLOSE . TR_CLOSE;
+echo tr_open . td_open. $submit . td_close . tr_close;
 
-echo TABLE_CLOSE;
+echo table_close;
 
-echo FORM_CLOSE;
+echo form_close;
 
 echo '<script src="cliente-cadastro.ts"></script>';
 
-echo DIV_CLOSE;
+echo div_close;
 
-echo BODY_CLOSE;
+echo body_close;
 	
-echo HTML_CLOSE;
+echo htm_close;

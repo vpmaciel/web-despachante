@@ -56,20 +56,20 @@ function ImprovedTable($header, $data)
 function FancyTable($header, $data)
 {
 	// Colors, line width and bold font
-	$this->SetFillColor(255,0,0);
-	$this->SetTextColor(255);
-	$this->SetDrawColor(128,0,0);
-	$this->SetLineWidth(.3);
-	$this->SetFont('','B');
+	$this->setFillColor(255,0,0);
+	$this->setTextColor(255);
+	$this->setDrawColor(128,0,0);
+	$this->setLineWidth(.3);
+	$this->setFont('','B');
 	// Header
 	$w = array(40, 35, 40, 45);
 	for($i=0;$i<count($header);$i++)
 		$this->Cell($w[$i],7,$header[$i],1,0,'C',true);
 	$this->Ln();
 	// Color and font restoration
-	$this->SetFillColor(224,235,255);
-	$this->SetTextColor(0);
-	$this->SetFont('');
+	$this->setFillColor(224,235,255);
+	$this->setTextColor(0);
+	$this->setFont('');
 	// Data
 	$fill = false;
 	foreach($data as $row)
@@ -91,7 +91,7 @@ $pdf = new PDF();
 $header = array('Country', 'Capital', 'Area (sq km)', 'Pop. (thousands)');
 // Data loading
 $data = $pdf->LoadData('countries.txt');
-$pdf->SetFont('Arial','',14);
+$pdf->setFont('Arial','',14);
 $pdf->AddPage();
 $pdf->BasicTable($header,$data);
 $pdf->AddPage();

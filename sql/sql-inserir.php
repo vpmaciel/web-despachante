@@ -1,60 +1,60 @@
 <?php
-ini_set('display_errors', TRUE);
+ini_set('display_errors', true);
 error_reporting(E_ALL);
 
-function inserir( string $CHAR_TABELA, array $ARRAY_MODEL) : bool {
+function inserir( string $string_tabela, array $array_modelo) : bool {
     
-    if(!is_array($ARRAY_MODEL) || !is_string($CHAR_TABELA)) {
+    if(!is_array($array_modelo) || !is_string($string_tabela)) {
         throw new Exception('Tipos de parametros imcompatíveis !');
     }
 
-    global $PDO;
-    $CAMPOS = '';
-    $VALORES = '';
-    $TAMANHO = count ($ARRAY_MODEL);
-    $CONTADOR = 1;
-    $RETORNO = FALSE;
+    global $pdo;
+    $campos = '';
+    $valores = '';
+    $tamanho = count ($array_modelo);
+    $contador = 1;
+    
 
     try {
 
-        foreach($ARRAY_MODEL as $chave => $VALOR) {
-            $VALOR = escapeshellcmd($VALOR);
+        foreach($array_modelo as $chave => $valor) {
+            $valor = escapeshellcmd($valor);
           
-            $VALOR = remover_caracteres($VALOR);
+            $valor = remover_caracteres($valor);
             
-            $VALOR = "'" . mb_convert_case(mb_strtoupper( $VALOR, 'UTF-8'),  MB_CASE_UPPER) . "'";
+            $valor = "'" . mb_convert_case(mb_strtoupper( $valor, 'UTF-8'),  MB_CASE_UPPER) . "'";
 
-            $VALORES .= $VALOR;  
-            $CAMPOS .= $chave;
+            $valores .= $valor;  
+            $campos .= $chave;
 
-            if($CONTADOR < $TAMANHO) {
-                $CAMPOS .= ',';
-                $VALORES .= ',';
+            if($contador < $tamanho) {
+                $campos .= ',';
+                $valores .= ',';
             }
-            $CONTADOR++;
+            $contador++;
         }
-        //exit("INSERT INTO $CHAR_TABELA ($CAMPOS) VALUES ($VALORES);");
+        //exit("insert into $string_tabela ($campos) values ($valores);");
 
-        $STMT = $PDO->prepare("INSERT INTO $CHAR_TABELA ($CAMPOS) VALUES ($VALORES);--");        
-        $STMT->execute();        
+        $stmt = $pdo->prepare("insert into $string_tabela ($campos) values ($valores);--");        
+        $stmt->execute();        
 
         
-        return TRUE;
+        return true;
     
-    } catch(PDOException $PDOException) {
+    } catch(PDOException $pdoException) {
           
-        $MENSAGEM =  $PDOException->getMessage();
+        $mensagem =  $pdoException->getMessage();
 
-        if (strpos($MENSAGEM, "Integrity") !== false) {
-            header('location: erro.php?msg=Erro na inserção ! Verifique se já não possui um registro com CAMPOS únicos já cadastrados');    
+        if (strpos($mensagem, "Integrity") !== false) {
+            header('location: erro.php?msg=Erro na inserção ! Verifique se já não possui um registro com campos únicos já cadastrados');    
             exit;
         } else {
             echo "A string não contém a palavra 'Integrity'.";
         }       
 
-        $PDO->rollback();
-        return FALSE;
+        $pdo->rollback();
+        return false;
     }
 
-    return FALSE;
+    return false;
 }

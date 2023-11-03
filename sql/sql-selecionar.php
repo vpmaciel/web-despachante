@@ -1,72 +1,72 @@
 <?php
-function selecionar( string $CHAR_TABELA, array $ARRAY_CONDICAO) {
+function selecionar( string $string_tabela, array $array_condicao) {
     
-    global $PDO;
+    global $pdo;
     
-    if(!is_array($ARRAY_CONDICAO) || !is_string($CHAR_TABELA)) {
+    if(!is_array($array_condicao) || !is_string($string_tabela)) {
         throw new Exception('Tipos de parametros imcompatíveis !');
         //return NULL;
     }
 
-    $CHAR_CONDICAO = '';
-    $TAMANHO_ARRAY_CONDICAO = 0;
-    $TAMANHO_ARRAY_CONDICAO = count ($ARRAY_CONDICAO);
+    $string_condicao = '';
+    $tamanho_array_condicao = 0;
+    $tamanho_array_condicao = count ($array_condicao);
     
-    $CONTADOR = 1;   
-    $CLAUSULA_WHERE = 0;    
+    $contador = 1;   
+    $CLAUSULA_where = 0;    
 
     try {
-        if($TAMANHO_ARRAY_CONDICAO > 0) {
-            foreach($ARRAY_CONDICAO as $CHAVE => $VALOR) {
-                $VALOR = escapeshellcmd($VALOR);
+        if($tamanho_array_condicao > 0) {
+            foreach($array_condicao as $chave => $valor) {
+                $valor = escapeshellcmd($valor);
 
-                $VALOR = remover_caracteres($VALOR);
-                if (!is_numeric($VALOR)) {
-                    if (strstr($VALOR, '@') !== false || strstr($VALOR, '.') !== false) {
-                        $VALOR = "'".  mb_strtolower( $VALOR, 'UTF-8') . "'";
+                $valor = remover_caracteres($valor);
+                if (!is_numeric($valor)) {
+                    if (strstr($valor, '@') !== false || strstr($valor, '.') !== false) {
+                        $valor = "'".  mb_strtolower( $valor, 'UTF-8') . "'";
                     } else {
-                        $VALOR = "'" . mb_convert_case(mb_strtolower( $VALOR, 'UTF-8'),  MB_CASE_TITLE) . "'";
+                        $valor = "'" . mb_convert_case(mb_strtolower( $valor, 'UTF-8'),  MB_CASE_TITLE) . "'";
                     }                
                 }
-                //exit($VALOR);
-                if($VALOR != "''"){
-                    $CLAUSULA_WHERE = 1;
-                    $CHAR_CONDICAO .= $CHAVE . "=" . $VALOR;
+                //exit($valor);
+                if($valor != "''"){
+                    $CLAUSULA_where = 1;
+                    $string_condicao .= $chave . "=" . $valor;
 
-                    if($CONTADOR < $TAMANHO_ARRAY_CONDICAO) {
-                        $CHAR_CONDICAO .= ' AND ';
+                    if($contador < $tamanho_array_condicao) {
+                        $string_condicao .= ' and ';
                     }
                 }
 
                 
-                $CONTADOR++;
+                $contador++;
             }
         }
 
         
-        $STMT = NULL;
+        $stmt = NULL;
         
-        if ($CLAUSULA_WHERE != 0) {
-            //die("SELECT * FROM $CHAR_TABELA WHERE ($CHAR_CONDICAO);");
-            $STMT = $PDO->prepare("SELECT * FROM $CHAR_TABELA WHERE ($CHAR_CONDICAO);--");
+        if ($CLAUSULA_where != 0) {
+            //die("SELECT * FROM $string_tabela where ($string_condicao);");
+            $stmt = $pdo->prepare("SELECT * FROM $string_tabela where ($string_condicao);--");
             
         } else {            
-            $STMT = $PDO->prepare("SELECT * FROM $CHAR_TABELA;--");
+            $stmt = $pdo->prepare("SELECT * FROM $string_tabela;--");
         }
 
-        if (!$STMT->execute()) {
+        if (!$stmt->execute()) {
             throw new Exception('Não executou !');            
             return NULL;
         }
-        $linhas = $STMT->fetchAll(PDO::FETCH_ASSOC);
+        $linhas = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
-        if($STMT->rowCount() <= 0) {            
-            $STMT->closeCursor();
+        if($stmt->rowCount() <= 0) {            
+            $stmt->closeCursor();
             return NULL;
         }
             
         
-        $STMT->closeCursor();
+        $stmt->closeCursor();
         return json_encode($linhas);
     
     } catch(PDOException $pdoException) {           

@@ -6,37 +6,37 @@ require_once 'lib/lib-biblioteca.php';
 
 setlocale(LC_ALL, 'pt_BR.utf8');
 
-echo DOCTYPE;
+echo doctype;
 
-echo HTML_OPEN;
+echo html_open;
 
-echo HEAD_OPEN;
+echo head_open;
 
 require_once 'cabecalho.php';
 echo '<script src="cliente-cadastro.ts"></script>';
 
-echo HEAD_CLOSE;
+echo head_close;
 
-echo BODY_OPEN;
+echo body_open;
 
-echo DIV_MAIN_OPEN;
+echo div_main_open;
 
 require_once 'menu.php';
 
-$CLIENTE = array();
+$registro = array();
 
 $SQL = '';
 
-$CLIENTE['CLIENTE_CPF_CNPJ'] = (isset ($_GET['CLIENTE_CPF_CNPJ'])) ? trim($_GET['CLIENTE_CPF_CNPJ']) : '';
-$CLIENTE['CLIENTE_NOME_COMPLETO'] = (isset ($_GET['CLIENTE_NOME_COMPLETO'])) ? trim($_GET['CLIENTE_NOME_COMPLETO']) : '';
-$CLIENTE['CLIENTE_TELEFONE'] = (isset ($_GET['CLIENTE_CPF_CNPJ'])) ? trim($_GET['CLIENTE_TELEFONE']) : '';
-$CLIENTE['CLIENTE_EMAIL'] = (isset ($_GET['CLIENTE_EMAIL'])) ? trim($_GET['CLIENTE_EMAIL']) : '';
+$registro['cliente_cpf_cnpj'] = (isset ($_GET['cliente_cpf_cnpj'])) ? trim($_GET['cliente_cpf_cnpj']) : '';
+$registro['cliente_nome_completo'] = (isset ($_GET['cliente_nome_completo'])) ? trim($_GET['cliente_nome_completo']) : '';
+$registro['cliente_telefone'] = (isset ($_GET['cliente_cpf_cnpj'])) ? trim($_GET['cliente_telefone']) : '';
+$registro['cliente_email'] = (isset ($_GET['cliente_email'])) ? trim($_GET['cliente_email']) : '';
 
 // define how many results you want per page
 $RESULTS_PER_PAGE = 10000;
 
 // find out the number of results stored in database
-$NUMBER_OF_RESULTS =  paginar_total("CLIENTE", $CLIENTE); 
+$NUMBER_OF_RESULTS =  paginar_total("CLIENTE", $registro); 
 
 
 // determine number of total pages available
@@ -54,40 +54,40 @@ $THIS_PAGE_FIRST_RESULT = ($PAGE-1)*$RESULTS_PER_PAGE;
 
 // retrieve selected results from database and display them on page
 $SQL='SELECT * FROM CLIENTE LIMIT ' . $THIS_PAGE_FIRST_RESULT . "," .$RESULTS_PER_PAGE;
-$SQL = paginar('CLIENTE', $CLIENTE, $THIS_PAGE_FIRST_RESULT, $RESULTS_PER_PAGE);
-$STMT = $PDO->prepare($SQL);
-$STMT->execute();
+$SQL = paginar('CLIENTE', $registro, $THIS_PAGE_FIRST_RESULT, $RESULTS_PER_PAGE);
+$stmt = $pdo->prepare($SQL);
+$stmt->execute();
 
-echo TABLE_OPEN;
+echo table_open;
 
-echo TR_OPEN . TH_OPEN . 'Cliente'  . TH_CLOSE . TR_CLOSE; 
+echo tr_open . th_open . 'Cliente'  . th_close . tr_close; 
 
-while($REGISTRO = $STMT->fetch(PDO::FETCH_ASSOC))
+while($registro = $stmt->fetch(PDO::FETCH_ASSOC))
 {
     	
 	$STRING = '';
-	foreach ($REGISTRO as $CHAVE=>$VALOR){ 
-		$STRING .= "$CHAVE" . "=" . $VALOR . "&";                        
+	foreach ($registro as $chave=>$valor){ 
+		$STRING .= "$chave" . "=" . $valor . "&";                        
 	}
-    echo TR_OPEN . TD_OPEN . LABEL_OPEN . 'IDENTIFICADOR: ' . $REGISTRO['CLIENTE_ID'] . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
-    echo TR_OPEN . TD_OPEN . LABEL_OPEN . 'CPF | CNPJ: ' . $REGISTRO['CLIENTE_CPF_CNPJ'] . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
-    echo TR_OPEN . TD_OPEN . LABEL_OPEN . 'NOME: ' . $REGISTRO['CLIENTE_NOME_COMPLETO'] . LABEL_CLOSE . TD_CLOSE . TR_CLOSE;     
-    echo TR_OPEN . TD_OPEN . LABEL_OPEN . 'E-MAIL: ' . $REGISTRO['CLIENTE_EMAIL'] . LABEL_CLOSE . TD_CLOSE . TR_CLOSE;         
-    echo TD_OPEN . '<a href="cliente-cadastro.php?EDITAR=TRUE&' . $STRING . '">Editar</a> | '; 
-    echo '<a href="cliente-deletar.php?' . $STRING . ' " onclick="return confirmar();">Excluir</a>' . TD_CLOSE . TR_CLOSE; 
-    echo TR_OPEN . TD_OPEN . LABEL_OPEN . '&nbsp;' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
+    echo tr_open . td_open . label_open . 'IDENTIFICADOR: ' . $registro['cliente_id'] . lable_close . td_close . tr_close; 
+    echo tr_open . td_open . label_open . 'CPF | CNPJ: ' . $registro['cliente_cpf_cnpj'] . lable_close . td_close . tr_close; 
+    echo tr_open . td_open . label_open . 'NOME: ' . $registro['cliente_nome_completo'] . lable_close . td_close . tr_close;     
+    echo tr_open . td_open . label_open . 'E-MAIL: ' . $registro['cliente_email'] . lable_close . td_close . tr_close;         
+    echo td_close . '<a href="cliente-cadastro.php?EDITAR=true&' . $STRING . '">Editar</a> | '; 
+    echo '<a href="cliente-deletar.php?' . $STRING . ' " onclick="return confirmar();">Excluir</a>' . td_close . tr_close; 
+    echo tr_open . td_open . label_open . '&nbsp;' . lable_close . td_close . tr_close; 
 }
-echo TABLE_CLOSE;
+echo table_close;
 
-echo TABLE_CLOSE;
+echo table_close;
 
 
 // display the links to the pages
 for ($PAGE=1;$PAGE<=$NUMBER_OF_PAGES;$PAGE++) {
   echo '<a href="cliente-lista.php?page=' . $PAGE . '">|' . $PAGE . '|</a>';
 }
-echo DIV_CLOSE;
+echo div_close;
 
-echo BODY_CLOSE;
+echo body_close;
 	
-echo HTML_CLOSE;
+echo htm_close;

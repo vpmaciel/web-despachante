@@ -1,9 +1,9 @@
 <?php
-ini_set('display_errors', TRUE);
+ini_set('display_errors', true);
 error_reporting(E_ALL);
 
-function REMOVER_caracteres(string $VALOR) : string {
-    $REMOVER = array("\\", "'", "\"", "\r\n", "\n", "\r", "^", " AND ", " OR ");
-    $RETORNO = str_replace($REMOVER, "", $VALOR);
-    return trim($RETORNO);
+function remover_caracteres(string $valor) : string {
+    $remover = array("\\", "'", "\"", "\r\n", "\n", "\r", "^", " AND ", " OR ");
+    $retorno = str_replace($remover, "", $valor);
+    return trim($retorno);
 }

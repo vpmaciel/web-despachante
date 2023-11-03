@@ -8,35 +8,35 @@ require_once 'lib/lib-biblioteca.php';
 $DADOS = array(array('Qtde', retornar_total_registros('CLIENTE')));
 
 $GRAFICO = new PHPlot(400, 400);
-$GRAFICO->SetImageBorderType('plain');
-$GRAFICO->SetPlotType('bars');
-$GRAFICO->SetDataType('text-data');
-$GRAFICO->SetDataValues($DADOS);
-$GRAFICO->SetTitle(converterParaUTF_8("Clientes"));  
+$GRAFICO->setImageBorderType('plain');
+$GRAFICO->setPlotType('bars');
+$GRAFICO->setDataType('text-data');
+$GRAFICO->setDataValues($DADOS);
+$GRAFICO->setTitle(converterParaUTF_8("Clientes"));  
 
 # Turn off X tick labels and ticks because they don't apply here:
-$GRAFICO->SetXTickLabelPos('none');
-$GRAFICO->SetXTickPos('none');
+$GRAFICO->setXTickLabelPos('none');
+$GRAFICO->setXTickPos('none');
 
 # Make sure Y=0 is displayed:
-$GRAFICO->SetPlotAreaWorld(NULL, 0);
+$GRAFICO->setPlotAreaWorld(NULL, 0);
 # Y Tick marks are off, but Y Tick Increment also controls the Y grid lines:
-$GRAFICO->SetYTickIncrement(100);
+$GRAFICO->setYTickIncrement(100);
 
 # Turn on Y data labels:
-$GRAFICO->SetYDataLabelPos('plotin');
+$GRAFICO->setYDataLabelPos('plotin');
 
 # With Y data labels, we don't need Y ticks or their labels, so turn them off.
-$GRAFICO->SetYTickLabelPos('none');
-$GRAFICO->SetYTickPos('none');
+$GRAFICO->setYTickLabelPos('none');
+$GRAFICO->setYTickPos('none');
 
 # Format the Y Data Labels as numbers with 1 decimal place.
-# Note that this automatically calls SetYLabelType('data').
-$GRAFICO->SetPrecisionY(0);
+# Note that this automatically calls setYLabelType('data').
+$GRAFICO->setPrecisionY(0);
 
 #Exibimos o gráfico
 //Draw it
-$GRAFICO->SetIsInline(True);
-$GRAFICO->SetOutputFile("plot.png");
+$GRAFICO->setIsInline(true);
+$GRAFICO->setOutputFile("plot.png");
 $GRAFICO->DrawGraph(400,400);
 echo '<img src="plot.png" width="400px" height="400px">';

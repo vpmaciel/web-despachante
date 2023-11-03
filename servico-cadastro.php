@@ -7,108 +7,108 @@ require_once 'lib/lib-biblioteca.php';
 
 setlocale(LC_ALL, 'pt_BR.utf8');
 
-echo DOCTYPE;
+echo doctype;
 
-echo HTML_OPEN;
+echo html_open;
 
-echo HEAD_OPEN;
+echo head_open;
 
 require_once 'cabecalho.php';
 
 echo '<script src="cliente-cadastro.ts"></script>';
 
-echo HEAD_CLOSE;
+echo head_close;
 
-echo BODY_OPEN;
+echo body_open;
 
-echo DIV_MAIN_OPEN;
+echo div_main_open;
 
 require_once 'menu.php';
 
-$REGISTRO = array();
+$registro = array();
 
-$FORM_OPEN = '<form action="cliente-salvar.php" method="get">';
+$form_open = '<form action="cliente-salvar.php" method="get">';
 
-echo $FORM_OPEN;
+echo $form_open;
 
-echo TABLE_OPEN;
+echo table_open;
 
-echo TR_OPEN . TH_OPEN . 'SERVIÇO'  . TH_CLOSE . TR_CLOSE; 
+echo tr_open . th_open . 'SERVIÇO'  . th_close . tr_close; 
 
 $LINK = '<a href="cliente-pesquisa.php">Pesquisar</a>';
 
-echo TD_OPEN . $LINK . TD_CLOSE . TR_CLOSE;
+echo td_close . $LINK . td_close . tr_close;
 
 $LINK = '<a href="cliente-dashboard.php">Dashboard</a>';
 
-echo TD_OPEN . $LINK . TD_CLOSE . TR_CLOSE;
+echo td_close . $LINK . td_close . tr_close;
 
 
-$REGISTRO['SERVICO_ID'] = isset($_GET['SERVICO_ID']) ? $_GET['SERVICO_ID'] : '';
-$INPUT = '<input type="hidden" id="SERVICO_ID" name="SERVICO_ID" maxlength="50" value="' . $REGISTRO['SERVICO_ID'] .'">';
+$registro['servico_id'] = isset($_GET['servico_id']) ? $_GET['servico_id'] : '';
+$input = '<input type="hidden" id="servico_id" name="servico_id" maxlength="50" value="' . $registro['servico_id'] .'">';
 
-echo TR_OPEN . TD_OPEN. $INPUT . TD_CLOSE . TR_CLOSE;
+echo tr_open . td_open. $input . td_close . tr_close;
 
 
-$REGISTRO['SERVICO_DATA'] = isset($_GET['SERVICO_DATA']) ? $_GET['SERVICO_DATA'] : '';
-$INPUT = '<input type="hidden" id="SERVICO_DATA" name="SERVICO_DATA" maxlength="50" value="' . $REGISTRO['SERVICO_DATA'] .'">';
+$registro['servico_data'] = isset($_GET['servico_data']) ? $_GET['servico_data'] : '';
+$input = '<input type="hidden" id="servico_data" name="servico_data" maxlength="50" value="' . $registro['servico_data'] .'">';
 
-echo TR_OPEN . TD_OPEN. $INPUT . TD_CLOSE . TR_CLOSE;
+echo tr_open . td_open. $input . td_close . tr_close;
 
-echo TR_OPEN . TD_OPEN. LABEL_OPEN . 'PLACA DO VEÍCULO' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
+echo tr_open . td_open. label_open . 'PLACA DO VEÍCULO' . lable_close . td_close . tr_close; 
 
-$REGISTRO['SERVICO_PLACA_VEICULO'] = isset($_GET['SERVICO_PLACA_VEICULO']) ? $_GET['SERVICO_PLACA_VEICULO'] : '';
-$INPUT = '<input type="text" id="SERVICO_PLACA_VEICULO" name="SERVICO_PLACA_VEICULO" maxlength="50" value="' . $REGISTRO['SERVICO_PLACA_VEICULO'] .'">';
+$registro['servico_placa_veiculo'] = isset($_GET['servico_placa_veiculo']) ? $_GET['servico_placa_veiculo'] : '';
+$input = '<input type="text" id="servico_placa_veiculo" name="servico_placa_veiculo" maxlength="50" value="' . $registro['servico_placa_veiculo'] .'">';
 
-echo TD_OPEN . $INPUT . TD_CLOSE . TR_CLOSE;
+echo td_close . $input . td_close . tr_close;
 
-echo TR_OPEN . TD_OPEN. LABEL_OPEN . 'VALOR' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
+echo tr_open . td_open. label_open . 'valor' . lable_close . td_close . tr_close; 
 
-$REGISTRO['SERVICO_VALOR'] = isset($_GET['SERVICO_VALOR']) ? $_GET['SERVICO_VALOR'] : '';
-$INPUT = '<input type="text" id="SERVICO_VALOR" name="SERVICO_VALOR" maxlength="15" onkeypress="mask(this, mphone);" value="' . $REGISTRO['SERVICO_VALOR'] .'">';
+$registro['servico_valor'] = isset($_GET['servico_valor']) ? $_GET['servico_valor'] : '';
+$input = '<input type="text" id="servico_valor" name="servico_valor" maxlength="15" onkeypress="mask(this, mphone);" value="' . $registro['servico_valor'] .'">';
 
-echo TR_OPEN . TD_OPEN. $INPUT . TD_CLOSE . TR_CLOSE;
+echo tr_open . td_open. $input . td_close . tr_close;
 
-echo TR_OPEN . TD_OPEN. LABEL_OPEN . 'DESCRIÇÃO' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
+echo tr_open . td_open. label_open . 'DESCRIÇÃO' . lable_close . td_close . tr_close; 
 
-$REGISTRO['SERVICO_DESCRICAO'] = isset($_GET['SERVICO_DESCRICAO']) ? $_GET['SERVICO_DESCRICAO'] : '';
-$INPUT = '<input type="text" id="SERVICO_DESCRICAO" name="SERVICO_DESCRICAO" maxlength="15" onkeypress="mask(this, mphone);" value="' . $REGISTRO['SERVICO_DESCRICAO'] .'">';
+$registro['servico_descricao'] = isset($_GET['servico_descricao']) ? $_GET['servico_descricao'] : '';
+$input = '<input type="text" id="servico_descricao" name="servico_descricao" maxlength="15" onkeypress="mask(this, mphone);" value="' . $registro['servico_descricao'] .'">';
 
-echo TR_OPEN . TD_OPEN. $INPUT . TD_CLOSE . TR_CLOSE;
+echo tr_open . td_open. $input . td_close . tr_close;
 
-echo TR_OPEN . TD_OPEN. LABEL_OPEN . 'CPF | CNPJ DO CLIENTE' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
+echo tr_open . td_open. label_open . 'CPF | CNPJ DO CLIENTE' . lable_close . td_close . tr_close; 
 
-$REGISTRO['SERVICO_CPF_CNPJ_CLIENTE'] = isset($_GET['SERVICO_CPF_CNPJ_CLIENTE']) ? $_GET['SERVICO_CPF_CNPJ_CLIENTE'] : '';
-$INPUT = '<input type="text" id="SERVICO_CPF_CNPJ_CLIENTE" name="SERVICO_CPF_CNPJ_CLIENTE" minlength="14" maxlength="18" onkeypress="mascaraMutuario(this,cpfCnpj)" onblur="clearTimeout();" value="' . $REGISTRO['SERVICO_CPF_CNPJ_CLIENTE'] .'">';
+$registro['servico_cpf_cnpj_cliente'] = isset($_GET['servico_cpf_cnpj_cliente']) ? $_GET['servico_cpf_cnpj_cliente'] : '';
+$input = '<input type="text" id="servico_cpf_cnpj_cliente" name="servico_cpf_cnpj_cliente" minlength="14" maxlength="18" onkeypress="mascaraMutuario(this,cpfCnpj)" onblur="clearTimeout();" value="' . $registro['servico_cpf_cnpj_cliente'] .'">';
 
-echo TR_OPEN . TD_OPEN. $INPUT . TD_CLOSE . TR_CLOSE;
+echo tr_open . td_open. $input . td_close . tr_close;
 
-echo TR_OPEN . TD_OPEN. LABEL_OPEN . 'NOME DO CLIENTE' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
+echo tr_open . td_open. label_open . 'NOME DO CLIENTE' . lable_close . td_close . tr_close; 
 
-$REGISTRO['SERVICO_NOME_CLIENTE'] = isset($_GET['SERVICO_NOME_CLIENTE']) ? $_GET['SERVICO_NOME_CLIENTE'] : '';
-$INPUT = '<input type="text" id="SERVICO_NOME_CLIENTE" name="SERVICO_NOME_CLIENTE" maxlength="15" onkeypress="mask(this, mphone);" value="' . $REGISTRO['SERVICO_NOME_CLIENTE'] .'">';
+$registro['servico_nome_cliente'] = isset($_GET['servico_nome_cliente']) ? $_GET['servico_nome_cliente'] : '';
+$input = '<input type="text" id="servico_nome_cliente" name="servico_nome_cliente" maxlength="15" onkeypress="mask(this, mphone);" value="' . $registro['servico_nome_cliente'] .'">';
 
-echo TR_OPEN . TD_OPEN. $INPUT . TD_CLOSE . TR_CLOSE;
+echo tr_open . td_open. $input . td_close . tr_close;
 
-echo TR_OPEN . TD_OPEN. LABEL_OPEN . 'TELEFONE DO CLIENTE' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
+echo tr_open . td_open. label_open . 'TELEFONE DO CLIENTE' . lable_close . td_close . tr_close; 
 
-$REGISTRO['SERVICO_TELEFONE_CLIENTE'] = isset($_GET['SERVICO_TELEFONE_CLIENTE']) ? $_GET['SERVICO_TELEFONE_CLIENTE'] : '';
-$INPUT = '<input type="text" id="SERVICO_TELEFONE_CLIENTE" name="SERVICO_TELEFONE_CLIENTE" maxlength="15" onkeypress="mask(this, mphone);" value="' . $REGISTRO['SERVICO_TELEFONE_CLIENTE'] .'">';
+$registro['servico_telefone_cliente'] = isset($_GET['servico_telefone_cliente']) ? $_GET['servico_telefone_cliente'] : '';
+$input = '<input type="text" id="servico_telefone_cliente" name="servico_telefone_cliente" maxlength="15" onkeypress="mask(this, mphone);" value="' . $registro['servico_telefone_cliente'] .'">';
 
-echo TR_OPEN . TD_OPEN. $INPUT . TD_CLOSE . TR_CLOSE;
+echo tr_open . td_open. $input . td_close . tr_close;
 
-echo TR_OPEN . TD_OPEN. LABEL_OPEN . '&nbsp;' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
+echo tr_open . td_open. label_open . '&nbsp;' . lable_close . td_close . tr_close; 
 
-$SUBMIT = '<input type="submit" value="Salvar" onclick=\'return validarFormulario();\'>';
+$submit = '<input type="submit" value="Salvar" onclick=\'return validarFormulario();\'>';
 
-echo TR_OPEN . TD_OPEN. $SUBMIT . TD_CLOSE . TR_CLOSE;
+echo tr_open . td_open. $submit . td_close . tr_close;
 
-echo TABLE_CLOSE;
+echo table_close;
 
-echo FORM_CLOSE;
+echo form_close;
 
-echo DIV_CLOSE;
+echo div_close;
 
-echo BODY_CLOSE;
+echo body_close;
 	
-echo HTML_CLOSE;
+echo htm_close;

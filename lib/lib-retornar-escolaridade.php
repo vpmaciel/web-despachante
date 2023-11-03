@@ -1,6 +1,6 @@
 <?php
 function retornar_escolaridade() : array {
-    $VALOR = array(        
+    $valor = array(        
         'Pós Doutorado',
         'Doutorado',
         'Mestrado',
@@ -10,6 +10,6 @@ function retornar_escolaridade() : array {
         'Segundo Grau',
         'Primeiro Grau'
     );
-    return $VALOR;
+    return $valor;
 }
 $array_escolaridade = retornar_escolaridade();

@@ -4,19 +4,19 @@ session_start();
 require_once 'lib/lib-sessao.php';
 require_once 'lib/lib-biblioteca.php';
 
-$CLIENTE['CLIENTE_CPF_CNPJ'] = trim($_GET['CLIENTE_CPF_CNPJ']);
-$CLIENTE['CLIENTE_NOME'] = trim($_GET['CLIENTE_NOME']);
-$CLIENTE['CLIENTE_TELEFONE'] = trim($_GET['CLIENTE_TELEFONE']);
+$registro['cliente_cpf_cnpj'] = trim($_GET['cliente_cpf_cnpj']);
+$registro['cliente_nome'] = trim($_GET['cliente_nome']);
+$registro['cliente_telefone'] = trim($_GET['cliente_telefone']);
 
-$CLIENTE_cpf_cnpj = array ('CLIENTE_CPF_CNPJ' =>$CLIENTE['CLIENTE_CPF_CNPJ']);
+$registro_cpf_cnpj = array ('cliente_cpf_cnpj' =>$registro['cliente_cpf_cnpj']);
 
-$TOTAL_REGISTRO = retornar_numero_registros('CLIENTE', $CLIENTE_cpf_cnpj);
+$TOTAL_registro = retornar_numero_registros('CLIENTE', $registro_cpf_cnpj);
 
-if($TOTAL_REGISTRO > 0){
-    $RESULTADO_EXCLUIR = excluir('CLIENTE', $CLIENTE);
+if($TOTAL_registro > 0){
+    $RESULTADO_EXCLUIR = excluir('CLIENTE', $registro);
 	
     
-    if ($RESULTADO_EXCLUIR == TRUE) {
+    if ($RESULTADO_EXCLUIR == true) {
 		header('location:sucesso.php');
 		exit;
 	} else {

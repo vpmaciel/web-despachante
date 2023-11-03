@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
-* Class to parse and subset TrueType fonts                                     *
+* Class to parse and subset trueType fonts                                     *
 *                                                                              *
 * Version: 1.1                                                                 *
 * Date:    2015-11-29                                                          *
@@ -159,7 +159,7 @@ class TTFParser
 		{
 			if($glyph['length']>0)
 			{
-				fseek($this->f, $tableOffset+$glyph['offset'], SEEK_SET);
+				fseek($this->f, $tableOffset+$glyph['offset'], SEEK_set);
 				if($this->ReadShort()<0)
 				{
 					// Composite glyph
@@ -213,7 +213,7 @@ class TTFParser
 		$idDelta = array();
 		$idRangeOffset = array();
 		$this->chars = array();
-		fseek($this->f, $this->tables['cmap']['offset']+$offset31, SEEK_SET);
+		fseek($this->f, $this->tables['cmap']['offset']+$offset31, SEEK_set);
 		$format = $this->ReadUShort();
 		if($format!=4)
 			$this->Error('Unexpected subtable format: '.$format);
@@ -238,7 +238,7 @@ class TTFParser
 			$d = $idDelta[$i];
 			$ro = $idRangeOffset[$i];
 			if($ro>0)
-				fseek($this->f, $offset+2*$i+$ro, SEEK_SET);
+				fseek($this->f, $offset+2*$i+$ro, SEEK_set);
 			for($c=$c1;$c<=$c2;$c++)
 			{
 				if($c==0xFFFF)
@@ -276,7 +276,7 @@ class TTFParser
 			if($nameID==6)
 			{
 				// PostScript name
-				fseek($this->f, $tableOffset+$stringOffset+$offset, SEEK_SET);
+				fseek($this->f, $tableOffset+$stringOffset+$offset, SEEK_set);
 				$s = $this->Read($length);
 				$s = str_replace(chr(0), '', $s);
 				$s = preg_replace('|[ \[\](){}<>/%]|', '', $s);
@@ -483,7 +483,7 @@ class TTFParser
 		$data .= pack('nnN', 3, 1, 12); // platformID, encodingID, offset
 		$data .= pack('nnn', 4, 6+strlen($cmap), 0); // format, length, language
 		$data .= $cmap;
-		$this->SetTable('cmap', $data);
+		$this->setTable('cmap', $data);
 	}
 
 	function BuildHhea()
@@ -491,7 +491,7 @@ class TTFParser
 		$this->LoadTable('hhea');
 		$numberOfHMetrics = count($this->subsettedGlyphs);
 		$data = substr_replace($this->tables['hhea']['data'], pack('n',$numberOfHMetrics), 4+15*2, 2);
-		$this->SetTable('hhea', $data);
+		$this->setTable('hhea', $data);
 	}
 
 	function BuildHmtx()
@@ -502,7 +502,7 @@ class TTFParser
 			$glyph = $this->glyphs[$id];
 			$data .= pack('nn', $glyph['w'], $glyph['lsb']);
 		}
-		$this->SetTable('hmtx', $data);
+		$this->setTable('hmtx', $data);
 	}
 
 	function BuildLoca()
@@ -521,7 +521,7 @@ class TTFParser
 			$data .= pack('n', $offset/2);
 		else
 			$data .= pack('N', $offset);
-		$this->SetTable('loca', $data);
+		$this->setTable('loca', $data);
 	}
 
 	function BuildGlyf()
@@ -531,7 +531,7 @@ class TTFParser
 		foreach($this->subsettedGlyphs as $id)
 		{
 			$glyph = $this->glyphs[$id];
-			fseek($this->f, $tableOffset+$glyph['offset'], SEEK_SET);
+			fseek($this->f, $tableOffset+$glyph['offset'], SEEK_set);
 			$glyph_data = $this->Read($glyph['length']);
 			if(isset($glyph['components']))
 			{
@@ -544,7 +544,7 @@ class TTFParser
 			}
 			$data .= $glyph_data;
 		}
-		$this->SetTable('glyf', $data);
+		$this->setTable('glyf', $data);
 	}
 
 	function BuildMaxp()
@@ -552,7 +552,7 @@ class TTFParser
 		$this->LoadTable('maxp');
 		$numGlyphs = count($this->subsettedGlyphs);
 		$data = substr_replace($this->tables['maxp']['data'], pack('n',$numGlyphs), 4, 2);
-		$this->SetTable('maxp', $data);
+		$this->setTable('maxp', $data);
 	}
 
 	function BuildPost()
@@ -587,7 +587,7 @@ class TTFParser
 			$data = "\x00\x03\x00\x00";
 			$data .= $this->Read(4+2*2+5*4);
 		}
-		$this->SetTable('post', $data);
+		$this->setTable('post', $data);
 	}
 
 	function BuildFont()
@@ -653,7 +653,7 @@ class TTFParser
 		$this->tables[$tag]['data'] = $this->Read($length);
 	}
 
-	function SetTable($tag, $data)
+	function setTable($tag, $data)
 	{
 		$length = strlen($data);
 		$n = $length % 4;
@@ -668,7 +668,7 @@ class TTFParser
 	{
 		if(!isset($this->tables[$tag]))
 			$this->Error('Table not found: '.$tag);
-		fseek($this->f, $this->tables[$tag]['offset'], SEEK_SET);
+		fseek($this->f, $this->tables[$tag]['offset'], SEEK_set);
 	}
 
 	function Skip($n)

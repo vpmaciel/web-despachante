@@ -5,33 +5,33 @@ setlocale(LC_ALL, 'pt_BR.utf8');
 
 require_once 'lib/lib-biblioteca.php';
 
-echo DOCTYPE;
+echo doctype;
 
-echo HTML_OPEN;
+echo html_open;
 
-echo HEAD_OPEN;
+echo head_open;
 
 require_once 'cabecalho.php';
 
-echo HEAD_CLOSE;
+echo head_close;
 
-echo BODY_OPEN;
+echo body_open;
 
-echo DIV_MAIN_OPEN;
+echo div_main_open;
 
 require_once 'menu.php';
 
-echo TABLE_OPEN;
+echo table_open;
 
 $MSG = require 'pedido-de-placa-grafico.php';
-echo TR_OPEN . TD_OPEN. $MSG  . TD_CLOSE . TR_CLOSE;
+echo tr_open . td_open. $MSG  . td_close . tr_close;
 
-echo TABLE_CLOSE;
+echo table_close;
 
-echo FORM_CLOSE;
+echo form_close;
 
-echo DIV_CLOSE;
+echo div_close;
 
-echo BODY_CLOSE;
+echo body_close;
 	
-echo HTML_CLOSE;    
+echo htm_close;    

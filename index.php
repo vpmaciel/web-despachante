@@ -5,23 +5,23 @@ setlocale(LC_ALL, 'pt_BR.utf8');
 
 require_once 'lib/lib-biblioteca.php';
 
-echo DOCTYPE;
+echo doctype;
 
-echo HTML_OPEN;
+echo html_open;
 
-echo HEAD_OPEN;
+echo head_open;
 
 require_once 'cabecalho.php';
 
-echo HEAD_CLOSE;
+echo head_close;
 
-echo BODY_OPEN;
+echo body_open;
 
-echo DIV_MAIN_OPEN;
+echo div_main_open;
 
 require_once 'menu.php';
 
-echo TABLE_OPEN;
+echo table_open;
 
 $details["Value"] = "1.5";
 $n = number_format($details["Value"], 2, ",", ".");
@@ -41,10 +41,10 @@ $date = str_replace('/', '-', $var);
 $date = '2020-04-20';
 //echo date('d-m-Y', strtotime($date));
 
-echo TR_OPEN . TH_OPEN . 'Web Despachante'  . TH_CLOSE . TR_CLOSE; 
+echo tr_open . th_open . 'Web Despachante'  . th_close . tr_close; 
 
-//echo TR_OPEN . TD_OPEN. LABEL_OPEN . $n . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
-//echo TR_OPEN . TD_OPEN. LABEL_OPEN . $e . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
+//echo tr_open . td_open. label_open . $n . lable_close . td_close . tr_close; 
+//echo tr_open . td_open. label_open . $e . lable_close . td_close . tr_close; 
 
 $MSG = '<p>Descubra a solução perfeita para otimizar a gestão da sua empresa! Nosso software inteligente é a ferramenta que você precisa para automatizar processos, gerenciar projetos e equipes, e ter acesso a relatórios precisos e atualizados em tempo real.';
 
@@ -53,9 +53,9 @@ $MSG .= ' Com nossa tecnologia de ponta, você pode ter certeza de que está esc
 $MSG .= ' Além disso, com nosso suporte técnico especializado, você nunca estará sozinho. Estamos sempre disponíveis para ajudá-lo com qualquer dúvida ou problema que surgir, garantindo que você tenha um atendimento rápido e eficiente.';
 
 $MSG .= ' Não perca mais tempo com processos manuais e desorganizados. Invista em nosso software e veja como sua empresa pode crescer ainda mais. Entre em contato conosco e descubra como podemos ajudá-lo!</p>';
-echo TR_OPEN . TD_OPEN. $MSG  . TD_CLOSE . TR_CLOSE;
+echo tr_open . td_open. $MSG  . td_close . tr_close;
 
-echo TABLE_CLOSE;
+echo table_close;
 
 echo '<br>';
 
@@ -71,8 +71,8 @@ echo $MSG;
 //$cmdResult = shell_exec($comando);
 //echo $cmdResult;
 
-echo DIV_CLOSE;
+echo div_close;
 
-echo BODY_CLOSE;
+echo body_close;
 	
-echo HTML_CLOSE;    
+echo htm_close;    

@@ -4,15 +4,15 @@ session_start();
 require_once 'lib/lib-sessao.php';
 require_once 'lib/lib-biblioteca.php';
 
-$CLIENTE = array ('CLIENTE_ID' => trim($_GET['CLIENTE_ID']));
+$registro = array ('cliente_id' => trim($_GET['cliente_id']));
 
-$TOTAL_REGISTRO = retornar_numero_registros('CLIENTE', $CLIENTE);
+$TOTAL_registro = retornar_numero_registros('CLIENTE', $registro);
 
-if($TOTAL_REGISTRO > 0){
-    $RESULTADO_EXCLUIR = excluir('CLIENTE', $CLIENTE);
+if($TOTAL_registro > 0){
+    $RESULTADO_EXCLUIR = excluir('CLIENTE', $registro);
 	
     
-    if ($RESULTADO_EXCLUIR == TRUE) {
+    if ($RESULTADO_EXCLUIR == true) {
 		header('location:sucesso.php');
 		exit;
 	} else {

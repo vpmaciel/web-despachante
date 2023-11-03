@@ -1,6 +1,6 @@
 <?php
 function retornar_estado() : array {
-    $VALOR = array(        
+    $valor = array(        
         'ACRE',
         'ALAGOAS',
         'AMAPÁ',
@@ -29,6 +29,6 @@ function retornar_estado() : array {
         'SERGIPE',
         'TOCANTINS'
     );
-    return $VALOR;
+    return $valor;
 }
 $array_estado = retornar_estado();

@@ -1,14 +1,14 @@
 <?php
-function retornar_total_registros(string $CHAR_TABELA) : int {
-    global $PDO;
+function retornar_total_registros(string $string_tabela) : int {
+    global $pdo;
     try {
     
-        $STMT = $PDO->prepare("SELECT COUNT(*) FROM $CHAR_TABELA;--");
-        if (!$STMT->execute()) {
+        $stmt = $pdo->prepare("SELECT COUNT(*) FROM $string_tabela;--");
+        if (!$stmt->execute()) {
             return 0;
         }
-        $NUMERO_REGISTROS = $STMT->fetchColumn(); 
-        return $NUMERO_REGISTROS;    
+        $numero_registros = $stmt->fetchColumn(); 
+        return $numero_registros;    
     } catch(PDOException $pdoException) {           
         throw new PDOException($pdoException);    
         echo "Erro na inserção:" . $pdoException->getMessage();

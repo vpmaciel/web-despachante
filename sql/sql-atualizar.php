@@ -1,73 +1,72 @@
 <?php
-ini_set('display_errors', TRUE);
+ini_set('display_errors', true);
 error_reporting(E_ALL);
 
-function atualizar( string $CHAR_TABELA, array $ARRAY_MODEL, array $ARRAY_CONDICAO) : bool {
+function atualizar(string $string_tabela, array $array_modelo, array $array_condicao) : bool {
 
-    global $PDO;
-    $CAMPOS = '';
-    $TAMANHO = count ($ARRAY_MODEL);
-    $CONTADOR = 1;
-    $CHAR_CONDICAO = '';
-    $RETORNO = FALSE;
+    global $pdo;
+    $campos = '';
+    $tamanho = count ($array_modelo);
+    $contador = 1;
+    $string_condicao = '';
+    
 
-    if($TAMANHO == 0)
-    {
-        return FALSE;
+    if($tamanho == 0) {
+        return false;
     }   
 
     try {
 
-        foreach($ARRAY_MODEL as $CHAVE => $VALOR) {
-            $VALOR = escapeshellcmd($VALOR);
+        foreach($array_modelo as $chave => $valor) {
+            $valor = escapeshellcmd($valor);
             
-            $VALOR = remover_caracteres($VALOR);
+            $valor = remover_caracteres($valor);
 
-            $VALOR = "'" . mb_convert_case(mb_strtoupper( $VALOR, 'UTF-8'),  MB_CASE_UPPER) . "'";
+            $valor = "'" . mb_convert_case(mb_strtoupper( $valor, 'UTF-8'),  MB_CASE_UPPER) . "'";
             
-            $CAMPOS .= $CHAVE . "=". $VALOR;               
+            $campos .= $chave . "=". $valor;               
 
-            if($CONTADOR < $TAMANHO) {
-                $CAMPOS .= ',';
+            if($contador < $tamanho) {
+                $campos .= ',';
             }                
-            $CONTADOR++;
+            $contador++;
         }
         
-        $CONDICAO = 0;        
-        $CONTADOR = 1;
-        $TAMANHO = count ($ARRAY_CONDICAO);
+        $condicao = 0;        
+        $contador = 1;
+        $tamanho = count ($array_condicao);
 
-        foreach($ARRAY_CONDICAO as $CHAVE => $VALOR) {
-            $VALOR = remover_caracteres($VALOR);
+        foreach($array_condicao as $chave => $valor) {
+            $valor = remover_caracteres($valor);
 
-            $VALOR = "'" . mb_convert_case(mb_strtoupper( $VALOR, 'UTF-8'),  MB_CASE_UPPER) . "'";
+            $valor = "'" . mb_convert_case(mb_strtoupper( $valor, 'UTF-8'),  MB_CASE_UPPER) . "'";
 
-            $CHAR_CONDICAO .= $CHAVE . "=". $VALOR;               
+            $string_condicao .= $chave . "=". $valor;               
 
-            if($CONTADOR < $TAMANHO) {
-                $CHAR_CONDICAO .= ' AND ';
+            if($contador < $tamanho) {
+                $string_condicao .= ' and ';
             }
-            $CONTADOR++;
-            $CONDICAO = 1;
+            $contador++;
+            $condicao = 1;
         }
 
-        if($CONDICAO == 0) {
-            return FALSE;
+        if($condicao == 0) {
+            return false;
         }        
         
         
-        //die("UPDATE $CHAR_TABELA SET $CAMPOS WHERE ($CHAR_CONDICAO);");
-        $STMT = NULL;        
-        $STMT = $PDO->prepare("UPDATE $CHAR_TABELA SET $CAMPOS WHERE ($CHAR_CONDICAO);--");            
-        $STMT->execute(); 
+        //die("update $string_tabela set $campos where ($string_condicao);");
+        $stmt = NULL;        
+        $stmt = $pdo->prepare("update $string_tabela set $campos where ($string_condicao);--");            
+        $stmt->execute(); 
         
         
-        return TRUE;
-    } catch(PDOException $PDOException) {
-        throw new PDOException($PDOException);    
-        echo "Erro na atualização:" . $PDOException->getMessage();
-        $PDO->rollback();
-        return FALSE;
+        return true;
+    } catch(PDOException $pdoException) {
+        throw new PDOException($pdoException);    
+        echo "Erro na atualização:" . $pdoException->getMessage();
+        $pdo->rollback();
+        return false;
     }
-    return FALSE;
+    return false;
 }

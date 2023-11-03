@@ -24,17 +24,17 @@ $example_data = array(
  array('11',7),
  array('12',7),
 );
-$plot->SetDataValues($example_data);
-//Set titles
-$plot->SetTitle("A Simple Plot\nMade with PHPlot");
-$plot->SetXTitle('Mes');
-$plot->SetYTitle('Itens Vendidos');
+$plot->setDataValues($example_data);
+//set titles
+$plot->setTitle("A Simple Plot\nMade with PHPlot");
+$plot->setXTitle('Mes');
+$plot->setYTitle('Itens Vendidos');
 //Turn off X axis ticks and labels because they get in the way:
-$plot->SetXTickLabelPos('none');
-$plot->SetXTickPos('none');
+$plot->setXTickLabelPos('none');
+$plot->setXTickPos('none');
 //Draw it
-$plot->SetIsInline(True);
-$plot->SetOutputFile("test.png");
+$plot->setIsInline(true);
+$plot->setOutputFile("test.png");
 
 $plot->DrawGraph();
 

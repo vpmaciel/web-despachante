@@ -154,24 +154,24 @@ function __construct($orientation='P', $unit='mm', $size='A4')
 	$this->CurRotation = 0;
 	// Page margins (1 cm)
 	$margin = 28.35/$this->k;
-	$this->SetMargins($margin,$margin);
+	$this->setMargins($margin,$margin);
 	// Interior cell margin (1 mm)
 	$this->cMargin = $margin/10;
 	// Line width (0.2 mm)
 	$this->LineWidth = .567/$this->k;
 	// Automatic page break
-	$this->SetAutoPageBreak(true,2*$margin);
+	$this->setAutoPageBreak(true,2*$margin);
 	// Default display mode
-	$this->SetDisplayMode('default');
+	$this->setDisplayMode('default');
 	// Enable compression
-	$this->SetCompression(true);
-	// Set default PDF version number
+	$this->setCompression(true);
+	// set default PDF version number
 	$this->PDFVersion = '1.3';
 }
 
-function SetMargins($left, $top, $right=null)
+function setMargins($left, $top, $right=null)
 {
-	// Set left, top and right margins
+	// set left, top and right margins
 	$this->lMargin = $left;
 	$this->tMargin = $top;
 	if($right===null)
@@ -179,37 +179,37 @@ function SetMargins($left, $top, $right=null)
 	$this->rMargin = $right;
 }
 
-function SetLeftMargin($margin)
+function setLeftMargin($margin)
 {
-	// Set left margin
+	// set left margin
 	$this->lMargin = $margin;
 	if($this->page>0 && $this->x<$margin)
 		$this->x = $margin;
 }
 
-function SetTopMargin($margin)
+function setTopMargin($margin)
 {
-	// Set top margin
+	// set top margin
 	$this->tMargin = $margin;
 }
 
-function SetRightMargin($margin)
+function setRightMargin($margin)
 {
-	// Set right margin
+	// set right margin
 	$this->rMargin = $margin;
 }
 
-function SetAutoPageBreak($auto, $margin=0)
+function setAutoPageBreak($auto, $margin=0)
 {
-	// Set auto page break mode and triggering margin
+	// set auto page break mode and triggering margin
 	$this->AutoPageBreak = $auto;
 	$this->bMargin = $margin;
 	$this->PageBreakTrigger = $this->h-$margin;
 }
 
-function SetDisplayMode($zoom, $layout='default')
+function setDisplayMode($zoom, $layout='default')
 {
-	// Set display mode in viewer
+	// set display mode in viewer
 	if($zoom=='fullpage' || $zoom=='fullwidth' || $zoom=='real' || $zoom=='default' || !is_string($zoom))
 		$this->ZoomMode = $zoom;
 	else
@@ -220,40 +220,40 @@ function SetDisplayMode($zoom, $layout='default')
 		$this->Error('Incorrect layout display mode: '.$layout);
 }
 
-function SetCompression($compress)
+function setCompression($compress)
 {
-	// Set page compression
+	// set page compression
 	if(function_exists('gzcompress'))
 		$this->compress = $compress;
 	else
 		$this->compress = false;
 }
 
-function SetTitle($title, $isUTF8=false)
+function setTitle($title, $isUTF8=false)
 {
 	// Title of document
 	$this->metadata['Title'] = $isUTF8 ? $title : utf8_encode($title);
 }
 
-function SetAuthor($author, $isUTF8=false)
+function setAuthor($author, $isUTF8=false)
 {
 	// Author of document
 	$this->metadata['Author'] = $isUTF8 ? $author : utf8_encode($author);
 }
 
-function SetSubject($subject, $isUTF8=false)
+function setSubject($subject, $isUTF8=false)
 {
 	// Subject of document
 	$this->metadata['Subject'] = $isUTF8 ? $subject : utf8_encode($subject);
 }
 
-function SetKeywords($keywords, $isUTF8=false)
+function setKeywords($keywords, $isUTF8=false)
 {
 	// Keywords of document
 	$this->metadata['Keywords'] = $isUTF8 ? $keywords : utf8_encode($keywords);
 }
 
-function SetCreator($creator, $isUTF8=false)
+function setCreator($creator, $isUTF8=false)
 {
 	// Creator of document
 	$this->metadata['Creator'] = $isUTF8 ? $creator : utf8_encode($creator);
@@ -312,15 +312,15 @@ function AddPage($orientation='', $size='', $rotation=0)
 	}
 	// Start new page
 	$this->_beginpage($orientation,$size,$rotation);
-	// Set line cap style to square
+	// set line cap style to square
 	$this->_out('2 J');
-	// Set line width
+	// set line width
 	$this->LineWidth = $lw;
 	$this->_out(sprintf('%.2F w',$lw*$this->k));
-	// Set font
+	// set font
 	if($family)
-		$this->SetFont($family,$style,$fontsize);
-	// Set colors
+		$this->setFont($family,$style,$fontsize);
+	// set colors
 	$this->DrawColor = $dc;
 	if($dc!='0 G')
 		$this->_out($dc);
@@ -341,7 +341,7 @@ function AddPage($orientation='', $size='', $rotation=0)
 	}
 	// Restore font
 	if($family)
-		$this->SetFont($family,$style,$fontsize);
+		$this->setFont($family,$style,$fontsize);
 	// Restore colors
 	if($this->DrawColor!=$dc)
 	{
@@ -373,9 +373,9 @@ function PageNo()
 	return $this->page;
 }
 
-function SetDrawColor($r, $g=null, $b=null)
+function setDrawColor($r, $g=null, $b=null)
 {
-	// Set color for all stroking operations
+	// set color for all stroking operations
 	if(($r==0 && $g==0 && $b==0) || $g===null)
 		$this->DrawColor = sprintf('%.3F G',$r/255);
 	else
@@ -384,9 +384,9 @@ function SetDrawColor($r, $g=null, $b=null)
 		$this->_out($this->DrawColor);
 }
 
-function SetFillColor($r, $g=null, $b=null)
+function setFillColor($r, $g=null, $b=null)
 {
-	// Set color for all filling operations
+	// set color for all filling operations
 	if(($r==0 && $g==0 && $b==0) || $g===null)
 		$this->FillColor = sprintf('%.3F g',$r/255);
 	else
@@ -396,9 +396,9 @@ function SetFillColor($r, $g=null, $b=null)
 		$this->_out($this->FillColor);
 }
 
-function SetTextColor($r, $g=null, $b=null)
+function setTextColor($r, $g=null, $b=null)
 {
-	// Set color for text
+	// set color for text
 	if(($r==0 && $g==0 && $b==0) || $g===null)
 		$this->TextColor = sprintf('%.3F g',$r/255);
 	else
@@ -418,9 +418,9 @@ function GetStringWidth($s)
 	return $w*$this->FontSize/1000;
 }
 
-function SetLineWidth($width)
+function setLineWidth($width)
 {
-	// Set line width
+	// set line width
 	$this->LineWidth = $width;
 	if($this->page>0)
 		$this->_out(sprintf('%.2F w',$width*$this->k));
@@ -446,7 +446,7 @@ function Rect($x, $y, $w, $h, $style='')
 
 function AddFont($family, $style='', $file='')
 {
-	// Add a TrueType, OpenType or Type1 font
+	// Add a trueType, OpenType or Type1 font
 	$family = strtolower($family);
 	if($file=='')
 		$file = str_replace(' ','',$family).strtolower($style).'.php';
@@ -461,7 +461,7 @@ function AddFont($family, $style='', $file='')
 	if(!empty($info['file']))
 	{
 		// Embedded font
-		if($info['type']=='TrueType')
+		if($info['type']=='trueType')
 			$this->FontFiles[$info['file']] = array('length1'=>$info['originalsize']);
 		else
 			$this->FontFiles[$info['file']] = array('length1'=>$info['size1'], 'length2'=>$info['size2']);
@@ -469,7 +469,7 @@ function AddFont($family, $style='', $file='')
 	$this->fonts[$fontkey] = $info;
 }
 
-function SetFont($family, $style='', $size=0)
+function setFont($family, $style='', $size=0)
 {
 	// Select a font; size given in points
 	if($family=='')
@@ -519,9 +519,9 @@ function SetFont($family, $style='', $size=0)
 		$this->_out(sprintf('BT /F%d %.2F Tf ET',$this->CurrentFont['i'],$this->FontSizePt));
 }
 
-function SetFontSize($size)
+function setFontSize($size)
 {
-	// Set font size in points
+	// set font size in points
 	if($this->FontSizePt==$size)
 		return;
 	$this->FontSizePt = $size;
@@ -538,9 +538,9 @@ function AddLink()
 	return $n;
 }
 
-function SetLink($link, $y=0, $page=-1)
+function setLink($link, $y=0, $page=-1)
 {
-	// Set destination of internal link
+	// set destination of internal link
 	if($y==-1)
 		$y = $this->y;
 	if($page==-1)
@@ -944,9 +944,9 @@ function GetX()
 	return $this->x;
 }
 
-function SetX($x)
+function setX($x)
 {
-	// Set x position
+	// set x position
 	if($x>=0)
 		$this->x = $x;
 	else
@@ -959,9 +959,9 @@ function GetY()
 	return $this->y;
 }
 
-function SetY($y, $resetX=true)
+function setY($y, $resetX=true)
 {
-	// Set y position and optionally reset x
+	// set y position and optionally reset x
 	if($y>=0)
 		$this->y = $y;
 	else
@@ -970,11 +970,11 @@ function SetY($y, $resetX=true)
 		$this->x = $this->lMargin;
 }
 
-function SetXY($x, $y)
+function setXY($x, $y)
 {
-	// Set x and y positions
-	$this->SetX($x);
-	$this->SetY($y,false);
+	// set x and y positions
+	$this->setX($x);
+	$this->setY($y,false);
 }
 
 function Output($dest='', $name='', $isUTF8=false)
@@ -1633,9 +1633,9 @@ protected function _putfonts()
 			$this->_put('>>');
 			$this->_put('endobj');
 		}
-		elseif($type=='Type1' || $type=='TrueType')
+		elseif($type=='Type1' || $type=='trueType')
 		{
-			// Additional Type1 or TrueType/OpenType font
+			// Additional Type1 or trueType/OpenType font
 			$this->_newobj();
 			$this->_put('<</Type /Font');
 			$this->_put('/BaseFont /'.$name);
@@ -1699,7 +1699,7 @@ protected function _tounicodecmap($uv)
 			$nbc++;
 		}
 	}
-	$s = "/CIDInit /ProcSet findresource begin\n";
+	$s = "/CIDInit /Procset findresource begin\n";
 	$s .= "12 dict begin\n";
 	$s .= "begincmap\n";
 	$s .= "/CIDSystemInfo\n";
@@ -1794,7 +1794,7 @@ protected function _putxobjectdict()
 
 protected function _putresourcedict()
 {
-	$this->_put('/ProcSet [/PDF /Text /ImageB /ImageC /ImageI]');
+	$this->_put('/Procset [/PDF /Text /ImageB /ImageC /ImageI]');
 	$this->_put('/Font <<');
 	foreach($this->fonts as $font)
 		$this->_put('/F'.$font['i'].' '.$font['n'].' 0 R');

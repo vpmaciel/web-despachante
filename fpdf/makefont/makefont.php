@@ -59,9 +59,9 @@ function LoadMap($enc)
 	return $map;
 }
 
-function GetInfoFromTrueType($file, $embed, $subset, $map)
+function GetInfoFromtrueType($file, $embed, $subset, $map)
 {
-	// Return information from a TrueType font
+	// Return information from a trueType font
 	try
 	{
 		$ttf = new TTFParser($file);
@@ -388,7 +388,7 @@ function MakeFont($fontfile, $enc='cp1252', $embed=true, $subset=true)
 		Error('Font file not found: '.$fontfile);
 	$ext = strtolower(substr($fontfile,-3));
 	if($ext=='ttf' || $ext=='otf')
-		$type = 'TrueType';
+		$type = 'trueType';
 	elseif($ext=='pfb')
 		$type = 'Type1';
 	else
@@ -396,8 +396,8 @@ function MakeFont($fontfile, $enc='cp1252', $embed=true, $subset=true)
 
 	$map = LoadMap($enc);
 
-	if($type=='TrueType')
-		$info = GetInfoFromTrueType($fontfile, $embed, $subset, $map);
+	if($type=='trueType')
+		$info = GetInfoFromtrueType($fontfile, $embed, $subset, $map);
 	else
 		$info = GetInfoFromType1($fontfile, $embed, $map);
 

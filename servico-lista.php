@@ -6,36 +6,36 @@ require_once 'lib/lib-biblioteca.php';
 
 setlocale(LC_ALL, 'pt_BR.utf8');
 
-echo DOCTYPE;
+echo doctype;
 
-echo HTML_OPEN;
+echo html_open;
 
-echo HEAD_OPEN;
+echo head_open;
 
 require_once 'cabecalho.php';
 echo '<script src="cliente-cadastro.ts"></script>';
 
-echo HEAD_CLOSE;
+echo head_close;
 
-echo BODY_OPEN;
+echo body_open;
 
-echo DIV_MAIN_OPEN;
+echo div_main_open;
 
 require_once 'menu.php';
 
-$CLIENTE = array();
+$registro = array();
 
 $SQL = '';
 
-$CLIENTE['CLIENTE_CPF_CNPJ'] = (isset ($_GET['CLIENTE_CPF_CNPJ'])) ? trim($_GET['CLIENTE_CPF_CNPJ']) : '';
-$CLIENTE['CLIENTE_NOME'] = (isset ($_GET['CLIENTE_NOME'])) ? trim($_GET['CLIENTE_NOME']) : '';
-$CLIENTE['CLIENTE_TELEFONE'] = (isset ($_GET['CLIENTE_CPF_CNPJ'])) ? trim($_GET['CLIENTE_TELEFONE']) : '';
+$registro['cliente_cpf_cnpj'] = (isset ($_GET['cliente_cpf_cnpj'])) ? trim($_GET['cliente_cpf_cnpj']) : '';
+$registro['cliente_nome'] = (isset ($_GET['cliente_nome'])) ? trim($_GET['cliente_nome']) : '';
+$registro['cliente_telefone'] = (isset ($_GET['cliente_cpf_cnpj'])) ? trim($_GET['cliente_telefone']) : '';
 
 // define how many results you want per page
 $RESULTS_PER_PAGE = 10000;
 
 // find out the number of results stored in database
-$NUMBER_OF_RESULTS =  paginar_total("CLIENTE", $CLIENTE); 
+$NUMBER_OF_RESULTS =  paginar_total("CLIENTE", $registro); 
 
 
 // determine number of total pages available
@@ -53,39 +53,39 @@ $THIS_PAGE_FIRST_RESULT = ($PAGE-1)*$RESULTS_PER_PAGE;
 
 // retrieve selected results from database and display them on page
 $SQL='SELECT * FROM CLIENTE LIMIT ' . $THIS_PAGE_FIRST_RESULT . "," .$RESULTS_PER_PAGE;
-$SQL = paginar('CLIENTE', $CLIENTE, $THIS_PAGE_FIRST_RESULT, $RESULTS_PER_PAGE);
-$STMT = $PDO->prepare($SQL);
-$STMT->execute();
+$SQL = paginar('CLIENTE', $registro, $THIS_PAGE_FIRST_RESULT, $RESULTS_PER_PAGE);
+$stmt = $pdo->prepare($SQL);
+$stmt->execute();
 
-echo TABLE_OPEN;
+echo table_open;
 
-echo TR_OPEN . TH_OPEN_3 . 'Cliente'  . TH_CLOSE . TR_CLOSE; 
+echo tr_open . th_open_3 . 'Cliente'  . th_close . tr_close; 
 
-while($REGISTRO = $STMT->fetch(PDO::FETCH_ASSOC))
+while($registro = $stmt->fetch(PDO::FETCH_ASSOC))
 {
     	
 	$STRING = '';
-	foreach ($REGISTRO as $CHAVE=>$VALOR){ 
-		$STRING .= "$CHAVE" . "=" . $VALOR . "&";                        
+	foreach ($registro as $chave=>$valor){ 
+		$STRING .= "$chave" . "=" . $valor . "&";                        
 	}
     
-    echo TR_OPEN . TD_OPEN . LABEL_OPEN . 'CPF | CNPJ: ' . $REGISTRO['CLIENTE_CPF_CNPJ'] . LABEL_CLOSE . TD_CLOSE; 
-    echo TD_OPEN . LABEL_OPEN . 'Nome: ' . $REGISTRO['CLIENTE_NOME'] . LABEL_CLOSE . TD_CLOSE;     
-    echo TD_OPEN . '<a href="cliente-cadastro.php?' . $STRING . '">Editar</a> | '; 
-    echo '<a href="cliente-deletar.php?' . $STRING . ' " onclick="return confirmar();">Excluir</a>' . TD_CLOSE; 
-    echo TR_OPEN . TD_OPEN . LABEL_OPEN . '&nbsp;' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
+    echo tr_open . td_open . label_open . 'CPF | CNPJ: ' . $registro['cliente_cpf_cnpj'] . lable_close . td_close; 
+    echo td_close . label_open . 'Nome: ' . $registro['cliente_nome'] . lable_close . td_close;     
+    echo td_close . '<a href="cliente-cadastro.php?' . $STRING . '">Editar</a> | '; 
+    echo '<a href="cliente-deletar.php?' . $STRING . ' " onclick="return confirmar();">Excluir</a>' . td_close; 
+    echo tr_open . td_open . label_open . '&nbsp;' . lable_close . td_close . tr_close; 
 }
-echo TABLE_CLOSE;
+echo table_close;
 
-echo TABLE_CLOSE;
+echo table_close;
 
 
 // display the links to the pages
 for ($PAGE=1;$PAGE<=$NUMBER_OF_PAGES;$PAGE++) {
   echo '<a href="cliente-lista.php?page=' . $PAGE . '">|' . $PAGE . '|</a>';
 }
-echo DIV_CLOSE;
+echo div_close;
 
-echo BODY_CLOSE;
+echo body_close;
 	
-echo HTML_CLOSE;
+echo htm_close;

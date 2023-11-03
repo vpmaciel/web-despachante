@@ -6,61 +6,61 @@ require_once 'lib/lib-biblioteca.php';
 
 setlocale(LC_ALL, 'pt_BR.utf8');
 
-echo DOCTYPE;
+echo doctype;
 
-echo HTML_OPEN;
+echo html_open;
 
-echo HEAD_OPEN;
+echo head_open;
 
 require_once 'cabecalho.php';
 
-echo '<script src="CLIENTE-cadastro.ts"></script>';
+echo '<script src="cliente-cadastro.ts"></script>';
 
-echo HEAD_CLOSE;
+echo head_close;
 
-echo BODY_OPEN;
+echo body_open;
 
-echo DIV_MAIN_OPEN;
+echo div_main_open;
 
 require_once 'menu.php';
 
-$CLIENTE = array();
+$registro = array();
 
-$FORM_OPEN = '<form action="CLIENTE-lista.php" method="get">';
+$form_open = '<form action="cliente-lista.php" method="get">';
 
-echo $FORM_OPEN;
+echo $form_open;
 
-echo TABLE_OPEN;
+echo table_open;
 
-echo TR_OPEN . TH_OPEN . 'Cliente'  . TH_CLOSE . TR_CLOSE; 
+echo tr_open . th_open . 'Cliente'  . th_close . tr_close; 
 
-echo TR_OPEN . TD_OPEN. LABEL_OPEN . 'Nome' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
-$CLIENTE['CLIENTE_NOME'] = isset($_GET['CLIENTE_NOME']) ? $_GET['CLIENTE_NOME'] : '';
-$INPUT = '<input type="text" id="CLIENTE_NOME" name="CLIENTE_NOME" maxlength="50" value="' . $CLIENTE['CLIENTE_NOME'] .'">';
-echo TD_OPEN . $INPUT . TD_CLOSE . TR_CLOSE;
+echo tr_open . td_open. label_open . 'Nome' . lable_close . td_close . tr_close; 
+$registro['cliente_nome'] = isset($_GET['cliente_nome']) ? $_GET['cliente_nome'] : '';
+$input = '<input type="text" id="cliente_nome" name="cliente_nome" maxlength="50" value="' . $registro['cliente_nome'] .'">';
+echo td_close . $input . td_close . tr_close;
 
-echo TR_OPEN . TD_OPEN. LABEL_OPEN . 'CPF ou CNPJ' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
-$CLIENTE['CLIENTE_CPF_CNPJ'] = isset($_GET['CLIENTE_CPF_CNPJ']) ? $_GET['CLIENTE_CPF_CNPJ'] : '';
-$INPUT = '<input type="text" id="CLIENTE_CPF_CNPJ" name="CLIENTE_CPF_CNPJ" minlength="14" maxlength="18" onkeypress="mascaraMutuario(this,cpfCnpj)" onblur="clearTimeout();" value="' . $CLIENTE['CLIENTE_CPF_CNPJ'] .'">';
-echo TR_OPEN . TD_OPEN. $INPUT . TD_CLOSE . TR_CLOSE;
+echo tr_open . td_open. label_open . 'CPF ou CNPJ' . lable_close . td_close . tr_close; 
+$registro['cliente_cpf_cnpj'] = isset($_GET['cliente_cpf_cnpj']) ? $_GET['cliente_cpf_cnpj'] : '';
+$input = '<input type="text" id="cliente_cpf_cnpj" name="cliente_cpf_cnpj" minlength="14" maxlength="18" onkeypress="mascaraMutuario(this,cpfCnpj)" onblur="clearTimeout();" value="' . $registro['cliente_cpf_cnpj'] .'">';
+echo tr_open . td_open. $input . td_close . tr_close;
 
 
-echo TR_OPEN . TD_OPEN. LABEL_OPEN . 'Telefone' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
-$CLIENTE['CLIENTE_TELEFONE'] = isset($_GET['CLIENTE_TELEFONE']) ? $_GET['CLIENTE_TELEFONE'] : '';
-$INPUT = '<input type="text" id="CLIENTE_TELEFONE" name="CLIENTE_TELEFONE" maxlength="15" onkeypress="mask(this, mphone);" value="' . $CLIENTE['CLIENTE_TELEFONE'] .'">';
-echo TR_OPEN . TD_OPEN. $INPUT . TD_CLOSE . TR_CLOSE;
+echo tr_open . td_open. label_open . 'Telefone' . lable_close . td_close . tr_close; 
+$registro['cliente_telefone'] = isset($_GET['cliente_telefone']) ? $_GET['cliente_telefone'] : '';
+$input = '<input type="text" id="cliente_telefone" name="cliente_telefone" maxlength="15" onkeypress="mask(this, mphone);" value="' . $registro['cliente_telefone'] .'">';
+echo tr_open . td_open. $input . td_close . tr_close;
 
-echo TR_OPEN . TD_OPEN. LABEL_OPEN . '&nbsp;' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
+echo tr_open . td_open. label_open . '&nbsp;' . lable_close . td_close . tr_close; 
 
-$SUBMIT = '<input type="submit" value="Buscar" >';
-echo TR_OPEN . TD_OPEN. $SUBMIT . TD_CLOSE . TR_CLOSE;
+$submit = '<input type="submit" value="Buscar" >';
+echo tr_open . td_open. $submit . td_close . tr_close;
 
-echo TABLE_CLOSE;
+echo table_close;
 
-echo FORM_CLOSE;
+echo form_close;
 
-echo DIV_CLOSE;
+echo div_close;
 
-echo BODY_CLOSE;
+echo body_close;
 	
-echo HTML_CLOSE;
+echo htm_close;

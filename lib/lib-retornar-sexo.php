@@ -1,9 +1,9 @@
 <?php
 function retornar_sexo() : array {
-    $VALOR = array(        
+    $valor = array(        
         'MASCULINO',
         'FEMININO'
     );
-    return $VALOR;
+    return $valor;
 }
 $array_sexo = retornar_sexo();
