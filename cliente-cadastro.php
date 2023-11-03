@@ -62,9 +62,13 @@ $LINK = '<a href="cliente-dashboard.php">Dashboard</a>';
 
 echo TD_OPEN . $LINK . TD_CLOSE . TR_CLOSE;
 
-echo TR_OPEN . TD_OPEN. LABEL_OPEN . 'Nome' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
+echo TR_OPEN . TD_OPEN. LABEL_OPEN . 'NOME' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
 
-$INPUT = '<input type="hidden" id="CLIENTE_ID" name="CLIENTE_ID" value="' . $REGISTRO['CLIENTE_ID'] .'">';
+$REGISTRO = [];
+
+$REGISTRO['CLIENTE_ID'] = isset($_GET['CLIENTE_ID']) ? $_GET['CLIENTE_ID'] : '';
+$INPUT = '<input type="hidden" id="CLIENTE_ID" name="CLIENTE_ID" maxlength="50" value="' . $REGISTRO['CLIENTE_ID'] .'">';
+
 echo $INPUT;
 
 
@@ -80,14 +84,14 @@ $INPUT = '<input type="text" id="CLIENTE_CPF_CNPJ" name="CLIENTE_CPF_CNPJ" minle
 
 echo TR_OPEN . TD_OPEN. $INPUT . TD_CLOSE . TR_CLOSE;
 
-echo TR_OPEN . TD_OPEN. LABEL_OPEN . 'Telefone' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
+echo TR_OPEN . TD_OPEN. LABEL_OPEN . 'TELEFONE' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
 
 $REGISTRO['CLIENTE_TELEFONE'] = isset($_GET['CLIENTE_TELEFONE']) ? $_GET['CLIENTE_TELEFONE'] : '';
 $INPUT = '<input type="text" id="CLIENTE_TELEFONE" name="CLIENTE_TELEFONE" maxlength="15" onkeypress="mask(this, mphone);" value="' . $REGISTRO['CLIENTE_TELEFONE'] .'">';
 
 echo TR_OPEN . TD_OPEN. $INPUT . TD_CLOSE . TR_CLOSE;
 
-echo TR_OPEN . TD_OPEN. LABEL_OPEN . 'E-mail' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
+echo TR_OPEN . TD_OPEN. LABEL_OPEN . 'E-MAIL' . LABEL_CLOSE . TD_CLOSE . TR_CLOSE; 
 
 $REGISTRO['CLIENTE_EMAIL'] = isset($_GET['CLIENTE_EMAIL']) ? $_GET['CLIENTE_EMAIL'] : '';
 $INPUT = '<input type="text" id="CLIENTE_EMAIL" name="CLIENTE_EMAIL" maxlength="70"  value="' . $REGISTRO['CLIENTE_EMAIL'] .'">';

@@ -2,62 +2,62 @@
 ini_set('display_errors', TRUE);
 error_reporting(E_ALL);
 
-function paginar( string $char_tabela, array $array_condicao, $pagina_primeiro_resultado = 1, $resultados_por_pagina = 1 ) {
+function paginar( string $CHAR_TABELA, array $ARRAY_CONDICAO, $PAGINA_PRIMEIRO_RESULTADO = 1, $RESULTADOS_POR_PAGINA = 1 ) {
     
     global $pdo;
     
-    if(!is_array($array_condicao) || !is_string($char_tabela)) {
+    if(!is_array($ARRAY_CONDICAO) || !is_string($CHAR_TABELA)) {
         throw new Exception('Tipos de parametros imcompatíveis !');
         //return NULL;
     }
 
-    $char_condicao = '';
-    $tamanho_array_condicao = 0;
-    $tamanho_array_condicao = count ($array_condicao);
+    $CHAR_CONDICAO = '';
+    $TAMANHO_ARRAY_CONDICAO = 0;
+    $TAMANHO_ARRAY_CONDICAO = count ($ARRAY_CONDICAO);
     
-    $contador = 1;   
-    $clausula_where = 0;    
+    $CONTADOR = 1;   
+    $CLAUSULA_WHERE = 0;    
 
     try {
-        if($tamanho_array_condicao > 0) {
-            foreach($array_condicao as $chave => $valor) {
-                $valor = escapeshellcmd($valor);
+        if($TAMANHO_ARRAY_CONDICAO > 0) {
+            foreach($ARRAY_CONDICAO as $CHAVE => $VALOR) {
+                $VALOR = escapeshellcmd($VALOR);
 
-                $valor = remover_caracteres($valor);
-                if (!is_numeric($valor)) {
-                    if (strstr($valor, '@') !== false || strstr($valor, '.') !== false) {
-                        $valor = "'".  mb_strtolower( $valor, 'UTF-8') . "'";
+                $VALOR = remover_caracteres($VALOR);
+                if (!is_numeric($VALOR)) {
+                    if (strstr($VALOR, '@') !== false || strstr($VALOR, '.') !== false) {
+                        $VALOR = "'".  mb_strtolower( $VALOR, 'UTF-8') . "'";
                     } else {
-                        $valor = "'" . mb_convert_case(mb_strtolower( $valor, 'UTF-8'),  MB_CASE_TITLE) . "'";
+                        $VALOR = "'" . mb_convert_case(mb_strtolower( $VALOR, 'UTF-8'),  MB_CASE_TITLE) . "'";
                     }                
                 }
-                //exit($valor);
-                if($valor != "''"){
-                    $clausula_where = 1;
-                    $char_condicao .= $chave . "=" . $valor;
+                //exit($VALOR);
+                if($VALOR != "''"){
+                    $CLAUSULA_WHERE = 1;
+                    $CHAR_CONDICAO .= $CHAVE . "=" . $VALOR;
 
-                    if($contador < $tamanho_array_condicao - 1) {
-                        $char_condicao .= ' AND ';
+                    if($CONTADOR < $TAMANHO_ARRAY_CONDICAO - 1) {
+                        $CHAR_CONDICAO .= ' AND ';
                     }
                 }
 
                 
-                $contador++;
+                $CONTADOR++;
             }
         }
 
         
-        $stmt = NULL;
+        $STMT = NULL;
         
-        if ($clausula_where != 0) {
-            //die("SELECT * FROM $char_tabela WHERE ($char_condicao);");            
-            $stmt = "SELECT * FROM $char_tabela WHERE $char_condicao LIMIT " . $pagina_primeiro_resultado . ',' . $resultados_por_pagina . ';--';     
+        if ($CLAUSULA_WHERE != 0) {
+            //die("SELECT * FROM $CHAR_TABELA WHERE ($CHAR_CONDICAO);");            
+            $STMT = "SELECT * FROM $CHAR_TABELA WHERE $CHAR_CONDICAO LIMIT " . $PAGINA_PRIMEIRO_RESULTADO . ',' . $RESULTADOS_POR_PAGINA . ';--';     
             
         } else {                        
-            $stmt = "SELECT * FROM $char_tabela LIMIT " . $pagina_primeiro_resultado . ',' . $resultados_por_pagina . ';--';
+            $STMT = "SELECT * FROM $CHAR_TABELA LIMIT " . $PAGINA_PRIMEIRO_RESULTADO . ',' . $RESULTADOS_POR_PAGINA . ';--';
         }      
-        //die($stmt);
-        return $stmt;
+        //die($STMT);
+        return $STMT;
     
     } catch(PDOException $pdoException) {           
         throw new PDOException($pdoException);    

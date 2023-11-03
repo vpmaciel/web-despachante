@@ -1,89 +1,89 @@
 <?php
-function calcularMediana($array) {
-    // Primeiro, ordenamos o array em ordem crescente
-    sort($array);
+function calcular_mediana($ARRAY) {
+    // Primeiro, ordenamos o ARRAY em ordem crescente
+    sort($ARRAY);
 
-    $tamanho = count($array);
-    $indiceCentral = floor($tamanho / 2);
+    $TAMANHO = count($ARRAY);
+    $INDICE_CENTRAL = floor($TAMANHO / 2);
 
-    // Verificamos se o tamanho do array é par ou ímpar
-    if ($tamanho % 2 == 0) {
-        // Se for par, a mediana é a média dos dois valores centrais
-        $mediana = ($array[$indiceCentral - 1] + $array[$indiceCentral]) / 2;
+    // Verificamos se o TAMANHO do ARRAY é par ou ímpar
+    if ($TAMANHO % 2 == 0) {
+        // Se for par, a MEDIANA é a média dos dois VALORES centrais
+        $MEDIANA = ($ARRAY[$INDICE_CENTRAL - 1] + $ARRAY[$INDICE_CENTRAL]) / 2;
     } else {
-        // Se for ímpar, a mediana é o valor central
-        $mediana = $array[$indiceCentral];
+        // Se for ímpar, a MEDIANA é o VALOR central
+        $MEDIANA = $ARRAY[$INDICE_CENTRAL];
     }
 
-    return $mediana;
+    return $MEDIANA;
 }
 
 // Exemplo de uso:
-$valores = [2, 5, 7, 3, 1, 9, 4, 6, 8];
-$mediana = calcularMediana($valores);
-echo "A mediana é: " . $mediana;
+$VALORES = [2, 5, 7, 3, 1, 9, 4, 6, 8];
+$MEDIANA = calcular_mediana($VALORES);
+// echo "A MEDIANA é: " . $MEDIANA;
 
-function calcularModa($array) {
-    // Conta a frequência de ocorrência de cada valor no array
-    $frequencias = array_count_values($array);
+function calcular_moda($ARRAY) {
+    // Conta a frequência de ocorrência de cada VALOR no ARRAY
+    $FREQUENCIAS = ARRAY_count_values($ARRAY);
 
-    // Encontra o valor com a maior frequência
-    $maiorFrequencia = max($frequencias);
+    // Encontra o VALOR com a maior frequência
+    $MAIOR_FREQUENCIA = max($FREQUENCIAS);
 
-    // Filtra os valores que possuem a maior frequência
-    $moda = array_keys($frequencias, $maiorFrequencia);
+    // Filtra os VALORES que possuem a maior frequência
+    $MODA = ARRAY_keys($FREQUENCIAS, $MAIOR_FREQUENCIA);
 
-    return $moda;
+    return $MODA;
 }
 
 // Exemplo de uso:
-$valores = [2, 5, 7, 3, 2, 5, 4, 7, 7];
-$moda = calcularModa($valores);
+$VALORES = [2, 5, 7, 3, 2, 5, 4, 7, 7];
+$MODA = calcular_moda($VALORES);
 
-echo "A moda é: ";
-foreach ($moda as $valor) {
-    echo $valor . " ";
+//echo "A MODA é: ";
+foreach ($MODA as $VALOR) {
+    // echo $VALOR . " ";
 }
 
 
-function calcularMedia($array) {
-    $soma = array_sum($array);
-    $quantidade = count($array);
+function calcular_media($ARRAY) {
+    $SOMA = array_sum($ARRAY);
+    $QUANTIDADE = count($ARRAY);
 
-    if ($quantidade > 0) {
-        $media = $soma / $quantidade;
-        return $media;
-    }
-
-    return 0;
-}
-
-// Exemplo de uso:
-$valores = [2, 5, 7, 3, 1, 9, 4, 6, 8];
-$media = calcularMedia($valores);
-echo "A média é: " . $media;
-
-
-function calcularDesvioPadrao($array) {
-    $media = calcularMedia($array);
-    $somaDiferencasQuadrado = 0;
-    $quantidade = count($array);
-
-    foreach ($array as $valor) {
-        $diferenca = $valor - $media;
-        $somaDiferencasQuadrado += pow($diferenca, 2);
-    }
-
-    if ($quantidade > 1) {
-        $variancia = $somaDiferencasQuadrado / ($quantidade - 1);
-        $desvioPadrao = sqrt($variancia);
-        return $desvioPadrao;
+    if ($QUANTIDADE > 0) {
+        $MEDIA = $SOMA / $QUANTIDADE;
+        return $MEDIA;
     }
 
     return 0;
 }
 
 // Exemplo de uso:
-$valores = [2, 5, 7, 3, 1, 9, 4, 6, 8];
-$desvioPadrao = calcularDesvioPadrao($valores);
-echo "O desvio padrão é: " . $desvioPadrao;
+$VALORES = [2, 5, 7, 3, 1, 9, 4, 6, 8];
+$MEDIA = calcular_media($VALORES);
+// echo "A média é: " . $MEDIA;
+
+
+function calcular_desvio_padrao($ARRAY) {
+    $MEDIA = calcular_media($ARRAY);
+    $SOMA_DIFERENCAS_QUADRADO = 0;
+    $QUANTIDADE = count($ARRAY);
+
+    foreach ($ARRAY as $VALOR) {
+        $DIFERENCA = $VALOR - $MEDIA;
+        $SOMA_DIFERENCAS_QUADRADO += pow($DIFERENCA, 2);
+    }
+
+    if ($QUANTIDADE > 1) {
+        $VARIANCIA = $SOMA_DIFERENCAS_QUADRADO / ($QUANTIDADE - 1);
+        $DESVIO_PADRAO = sqrt($VARIANCIA);
+        return $DESVIO_PADRAO;
+    }
+
+    return 0;
+}
+
+// Exemplo de uso:
+$VALORES = [2, 5, 7, 3, 1, 9, 4, 6, 8];
+$DESVIO_PADRAO = calcular_desvio_padrao($VALORES);
+// echo "O desvio padrão é: " . $DESVIO_PADRAO;

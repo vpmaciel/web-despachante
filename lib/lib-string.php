@@ -1,7 +1,7 @@
 <?php
 
-function converterParaUTF_8($string){
+function converterParaUTF_8($VALOR){
 
-    return mb_convert_encoding($string, 'UTF-8', mb_detect_encoding($string));
+    return mb_convert_encoding($VALOR, 'UTF-8', mb_detect_encoding($VALOR));
 }
 

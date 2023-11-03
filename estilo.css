@@ -3,7 +3,7 @@
     border-radius: 0px;
     text-align: center;
     font-weight: normal;
-    font-size: 18px;    
+    font-size: 18px;
 }
 
 h1,
@@ -78,7 +78,6 @@ html {
     min-height: 100%;
     width: 100%;
     min-width: 1000px;
-    ;
     background-color: #FFF;
 }
 
@@ -89,7 +88,6 @@ body {
     margin: auto 0;
     width: 100%;
     min-width: 1000px;
-    ;
     min-height: 100%;
     background-color: #FFF;
 }
@@ -133,9 +131,14 @@ span {
 
 .menu {
     width: 100%;
-    background-color: #FFF;
+    min-height: 30px;
+    min-width: 100%;
+    background-color: #3299bb;
     padding: 5px;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: none;
 
 }
@@ -144,8 +147,22 @@ a:link,
 a:visited,
 a:active {
     text-decoration: none;
-    font-weight: bold;
+    font-weight: initial;
     color: #3299bb;
+    font-size: 18px;
+}
+
+.menu .menu_a {
+    text-decoration: none;
+    font-weight: initial;
+    color: #FFF;
+    font-size: 18px;
+}
+
+.menu label {
+    text-decoration: none;
+    font-weight: initial;
+    color: #FFF;    
     font-size: 18px;
 }
 

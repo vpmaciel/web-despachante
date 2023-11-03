@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', TRUE);
+error_reporting(E_ALL);
+
 require_once 'phplot.php';
 require_once 'sql/sql.php';
 require_once 'lib-remover-acentos.php';
