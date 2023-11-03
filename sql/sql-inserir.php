@@ -35,8 +35,8 @@ function inserir( string $CHAR_TABELA, array $ARRAY_MODEL) : bool {
         }
         //exit("INSERT INTO $CHAR_TABELA ($CAMPOS) VALUES ($VALORES);");
 
-        $stmt = $PDO->prepare("INSERT INTO $CHAR_TABELA ($CAMPOS) VALUES ($VALORES);--");        
-        $stmt->execute();        
+        $STMT = $PDO->prepare("INSERT INTO $CHAR_TABELA ($CAMPOS) VALUES ($VALORES);--");        
+        $STMT->execute();        
 
         
         return TRUE;

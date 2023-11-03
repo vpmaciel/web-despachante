@@ -1,7 +1,4 @@
 <?php
-ini_set('display_errors', TRUE);
-error_reporting(E_ALL);
-
 function retornar_total_registros(string $CHAR_TABELA) : int {
     global $PDO;
     try {

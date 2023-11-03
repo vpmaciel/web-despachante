@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', TRUE);
+error_reporting(E_ALL);
+
 require_once 'sql-conexao.php';
 require_once 'sql-atualizar.php';
 require_once 'sql-excluir.php';

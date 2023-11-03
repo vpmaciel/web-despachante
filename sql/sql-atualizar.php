@@ -57,9 +57,9 @@ function atualizar( string $CHAR_TABELA, array $ARRAY_MODEL, array $ARRAY_CONDIC
         
         
         //die("UPDATE $CHAR_TABELA SET $CAMPOS WHERE ($CHAR_CONDICAO);");
-        $stmt = NULL;        
-        $stmt = $PDO->prepare("UPDATE $CHAR_TABELA SET $CAMPOS WHERE ($CHAR_CONDICAO);--");            
-        $stmt->execute(); 
+        $STMT = NULL;        
+        $STMT = $PDO->prepare("UPDATE $CHAR_TABELA SET $CAMPOS WHERE ($CHAR_CONDICAO);--");            
+        $STMT->execute(); 
         
         
         return TRUE;

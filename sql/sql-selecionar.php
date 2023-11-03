@@ -1,7 +1,4 @@
 <?php
-ini_set('display_errors', TRUE);
-error_reporting(E_ALL);
-
 function selecionar( string $CHAR_TABELA, array $ARRAY_CONDICAO) {
     
     global $PDO;

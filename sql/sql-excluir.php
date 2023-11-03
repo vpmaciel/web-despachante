@@ -41,8 +41,8 @@ function excluir(string $CHAR_TABELA, array $ARRAY_CONDICAO) : bool {
 
 
         //exit("DELETE FROM $CHAR_TABELA WHERE ($CHAR_CONDICAO);");
-        $stmt = $PDO->prepare("DELETE FROM $CHAR_TABELA WHERE ($CHAR_CONDICAO);--");
-        $retorno = ($stmt->execute()) ? TRUE : FALSE; 
+        $STMT = $PDO->prepare("DELETE FROM $CHAR_TABELA WHERE ($CHAR_CONDICAO);--");
+        $RETORNO = ($STMT->execute()) ? TRUE : FALSE; 
       
         return TRUE;
     
