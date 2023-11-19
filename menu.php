@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED);
+
 echo '<div class="menu">';
 echo  '<a href="index.php" class="menu_a">Home</a><label>&nbsp;.&nbsp;</label>'; 
 echo  '<a href="login.php" class="menu_a">Entrar</a><label>&nbsp;.&nbsp;</label>'; 

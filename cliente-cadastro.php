@@ -26,6 +26,8 @@ require_once 'menu.php';
 
 $registro = array();
 
+$numero_de_registros = retornar_total_registros('cliente');
+
 $form_open = '<form action="cliente-salvar.php" method="get">';
 
 IF (!isset($_GET['cliente_id'])) {
@@ -63,15 +65,15 @@ $LINK = '<a href="cliente-dashboard.php">Dashboard</a>';
 
 echo open_td . $LINK . close_td . close_tr;
 
-echo open_tr . open_td. open_label . 'NOME' . close_lable . close_td . close_tr; 
+echo open_tr . open_td. open_label . 'Nome' . close_lable . close_td . close_tr; 
 
 $registro = [];
+
 
 $registro['cliente_id'] = isset($_GET['cliente_id']) ? $_GET['cliente_id'] : '';
 $input = '<input type="hidden" id="cliente_id" name="cliente_id" maxlength="50" value="' . $registro['cliente_id'] .'">';
 
 echo $input;
-
 
 $registro['cliente_nome_completo'] = isset($_GET['cliente_nome_completo']) ? $_GET['cliente_nome_completo'] : '';
 $input = '<input type="text" id="cliente_nome_completo" name="cliente_nome_completo" maxlength="50" value="' . $registro['cliente_nome_completo'] .'">';
@@ -85,21 +87,21 @@ $input = '<input type="text" id="cliente_cpf_cnpj" name="cliente_cpf_cnpj" minle
 
 echo open_tr . open_td. $input . close_td . close_tr;
 
-echo open_tr . open_td. open_label . 'TELEFONE' . close_lable . close_td . close_tr; 
+echo open_tr . open_td. open_label . 'Telefone' . close_lable . close_td . close_tr; 
 
 $registro['cliente_telefone'] = isset($_GET['cliente_telefone']) ? $_GET['cliente_telefone'] : '';
 $input = '<input type="text" id="cliente_telefone" name="cliente_telefone" maxlength="15" onkeypress="mask(this, mphone);" value="' . $registro['cliente_telefone'] .'">';
 
 echo open_tr . open_td. $input . close_td . close_tr;
 
-echo open_tr . open_td. open_label . 'E-MAIL' . close_lable . close_td . close_tr; 
+echo open_tr . open_td. open_label . 'E-Mail' . close_lable . close_td . close_tr; 
 
 $registro['cliente_email'] = isset($_GET['cliente_email']) ? $_GET['cliente_email'] : '';
 $input = '<input type="text" id="cliente_email" name="cliente_email" maxlength="70"  value="' . $registro['cliente_email'] .'">';
 
 echo open_tr . open_td. $input . close_td . close_tr;
 
-echo open_tr . open_td. open_label . '&nbsp;' . close_lable . close_td . close_tr; 
+echo open_tr . open_td. open_label . $numero_de_registros . ' registros cadastrados.' . close_lable . close_td . close_tr; 
 
 $submit = '<input type="submit" value="Salvar" onclick=\'return validarFormulario();\'>';
 

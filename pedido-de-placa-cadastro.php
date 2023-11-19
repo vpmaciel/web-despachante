@@ -27,6 +27,8 @@ require_once 'menu.php';
 
 $registro = array();
 
+$numero_de_registros = retornar_total_registros('pedido_de_placa');
+
 $form_open = '<form action="pedido-de-placa-salvar.php" method="get">';
 
 echo $form_open;
@@ -94,7 +96,7 @@ $input = '<input type="text" id="pedido_de_placa_tipo_placa" name="cliente_telef
 
 echo open_tr . open_td. $input . close_td . close_tr;
 
-echo open_tr . open_td. open_label . '&nbsp;' . close_lable . close_td . close_tr; 
+echo open_tr . open_td. open_label . $numero_de_registros . ' registros cadastrados.' . close_lable . close_td . close_tr; 
 
 $submit = '<input type="submit" value="Salvar" onclick=\'return validarFormulario();\'>';
 

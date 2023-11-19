@@ -24,7 +24,5 @@ const close_table = '</table>';
 const open_label = '<label>';
 const close_lable = '</label>';
 const close_select = '</select>';
-const open_fieldset = '<fieldset>';
-const close_fieldset = '</fieldset>';
 const open_blockquote = '<blockquote>';
 const close_blockquote = '</blockquote>';

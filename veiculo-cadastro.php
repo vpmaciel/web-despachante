@@ -25,6 +25,8 @@ require_once 'menu.php';
 
 $registro = array();
 
+$numero_de_registros = retornar_total_registros('veiculo');
+
 $form_open = '<form action="veiculo-salvar.php" method="get">';
 
 IF (!isset($_GET['veiculo_id'])) {
@@ -72,7 +74,7 @@ echo open_td . $input . close_td . close_tr;
 echo open_tr . open_td. open_label . 'PLACA' . close_lable . close_td . close_tr; 
 
 $registro['veiculo_placa'] = isset($_GET['veiculo_placa']) ? $_GET['veiculo_placa'] : '';
-$input = '<input type="text" id="veiculo_placa" name="veiculo_placa" maxlength="7" value="' . $registro['veiculo_placa'] .'">';
+$input = '<input type="text" id="veiculo_placa" name="veiculo_placa" maxlength="8" value="' . $registro['veiculo_placa'] .'">';
 
 echo open_td . $input . close_td . close_tr;
 
@@ -104,8 +106,7 @@ $input = '<input type="text" id="veiculo_modelo" name="veiculo_modelo" maxlength
 
 echo open_tr . open_td. $input . close_td . close_tr;
 
-
-echo open_tr . open_td. open_label . '&nbsp;' . close_lable . close_td . close_tr; 
+echo open_tr . open_td. open_label . $numero_de_registros . ' registros cadastrados.' . close_lable . close_td . close_tr; 
 
 $submit = '<input type="submit" value="Salvar" onclick=\'return validarFormulario();\'>';
 

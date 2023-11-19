@@ -32,8 +32,8 @@ if (isset($_GET['msg'])) {
     echo '<br><br><span class="sucesso">' . $_GET['msg']. '</span>';
 }
 
-$MSG = '<script>setTimeout(function() { window.history.back(); }, 180000);</script>';
-echo $MSG;
+$msg = '<script>setTimeout(function() { window.history.back(); }, 180000);</script>';
+echo $msg;
 
 echo close_div;
 

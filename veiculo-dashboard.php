@@ -23,8 +23,8 @@ require_once 'menu.php';
 
 echo open_table;
 
-$MSG = require 'cliente-grafico.php';
-echo open_tr . open_td. $MSG  . close_td . close_tr;
+$msg = require 'veiculo-grafico.php';
+echo open_tr . open_td. $msg  . close_td . close_tr;
 
 echo close_table;
 

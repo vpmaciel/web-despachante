@@ -205,3 +205,16 @@ function validaCpfCnpj(val) {
         return false;
     }
 }
+
+function confirmarExcluir() {
+    // Exibe um diálogo de confirmação
+    var resposta = confirm("Tem certeza de que deseja excluir?");
+
+    // Se o usuário clicou em "OK", segue o link
+    if (resposta) {
+        return true;
+    } else {
+        // Se o usuário clicou em "Cancelar" ou fechou o diálogo, cancela o link
+        return false;
+    }
+}

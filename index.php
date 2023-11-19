@@ -46,26 +46,26 @@ echo open_tr . open_th . 'Web Despachante'  . close_th . close_tr;
 //echo open_tr . open_td. open_label . $n . close_lable . close_td . close_tr; 
 //echo open_tr . open_td. open_label . $e . close_lable . close_td . close_tr; 
 
-$MSG = '<p>Descubra a solução perfeita para otimizar a gestão da sua empresa! Nosso software inteligente é a ferramenta que você precisa para automatizar processos, gerenciar projetos e equipes, e ter acesso a relatórios precisos e atualizados em tempo real.';
+$msg = '<p>Descubra a solução perfeita para otimizar a gestão da sua empresa! Nosso software inteligente é a ferramenta que você precisa para automatizar processos, gerenciar projetos e equipes, e ter acesso a relatórios precisos e atualizados em tempo real.';
 
-$MSG .= ' Com nossa tecnologia de ponta, você pode ter certeza de que está escolhendo a melhor solução para o seu negócio. Nosso software é personalizável e fácil de usar, permitindo que você tenha uma gestão mais eficiente e livre de burocracias.';
+$msg .= ' Com nossa tecnologia de ponta, você pode ter certeza de que está escolhendo a melhor solução para o seu negócio. Nosso software é personalizável e fácil de usar, permitindo que você tenha uma gestão mais eficiente e livre de burocracias.';
 
-$MSG .= ' Além disso, com nosso suporte técnico especializado, você nunca estará sozinho. Estamos sempre disponíveis para ajudá-lo com qualquer dúvida ou problema que surgir, garantindo que você tenha um atendimento rápido e eficiente.';
+$msg .= ' Além disso, com nosso suporte técnico especializado, você nunca estará sozinho. Estamos sempre disponíveis para ajudá-lo com qualquer dúvida ou problema que surgir, garantindo que você tenha um atendimento rápido e eficiente.';
 
-$MSG .= ' Não perca mais tempo com processos manuais e desorganizados. Invista em nosso software e veja como sua empresa pode crescer ainda mais. Entre em contato conosco e descubra como podemos ajudá-lo!</p>';
-echo open_tr . open_td. $MSG  . close_td . close_tr;
+$msg .= ' Não perca mais tempo com processos manuais e desorganizados. Invista em nosso software e veja como sua empresa pode crescer ainda mais. Entre em contato conosco e descubra como podemos ajudá-lo!</p>';
+echo open_tr . open_td. $msg  . close_td . close_tr;
 
 echo close_table;
 
 echo '<br>';
 
-$MSG = 'Verig &reg;<br><br>';
+$msg = 'Verig &reg;<br><br>';
 
-echo $MSG; 
+echo $msg; 
 
-$MSG = 'vpmaciel@gmail.com<br>';
+$msg = 'vpmaciel@gmail.com<br>';
 
-echo $MSG; 
+echo $msg; 
 
 //$comando = escapeshellcmd('main.py');
 //$cmdResult = shell_exec($comando);

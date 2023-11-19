@@ -15,7 +15,7 @@ echo open_head;
 
 require_once 'cabecalho.php';
 
-echo '<script src="cliente-cadastro.ts"></script>';
+echo '<script src="servico-cadastro.ts"></script>';
 
 echo close_head;
 
@@ -27,7 +27,9 @@ require_once 'menu.php';
 
 $registro = array();
 
-$form_open = '<form action="cliente-salvar.php" method="get">';
+$numero_de_registros = retornar_total_registros('servico');
+
+$form_open = '<form action="servico-salvar.php" method="get">';
 
 echo $form_open;
 
@@ -35,11 +37,11 @@ echo open_table;
 
 echo open_tr . open_th . 'SERVIÇO'  . close_th . close_tr; 
 
-$LINK = '<a href="cliente-pesquisa.php">Pesquisar</a>';
+$LINK = '<a href="servico-pesquisa.php">Pesquisar</a>';
 
 echo open_td . $LINK . close_td . close_tr;
 
-$LINK = '<a href="cliente-dashboard.php">Dashboard</a>';
+$LINK = '<a href="servico-dashboard.php">Dashboard</a>';
 
 echo open_td . $LINK . close_td . close_tr;
 
@@ -62,7 +64,7 @@ $input = '<input type="text" id="servico_placa_veiculo" name="servico_placa_veic
 
 echo open_td . $input . close_td . close_tr;
 
-echo open_tr . open_td. open_label . 'valor' . close_lable . close_td . close_tr; 
+echo open_tr . open_td. open_label . 'VALOR (R$)' . close_lable . close_td . close_tr; 
 
 $registro['servico_valor'] = isset($_GET['servico_valor']) ? $_GET['servico_valor'] : '';
 $input = '<input type="text" id="servico_valor" name="servico_valor" maxlength="15" onkeypress="mask(this, mphone);" value="' . $registro['servico_valor'] .'">';
@@ -97,7 +99,7 @@ $input = '<input type="text" id="servico_telefone_cliente" name="servico_telefon
 
 echo open_tr . open_td. $input . close_td . close_tr;
 
-echo open_tr . open_td. open_label . '&nbsp;' . close_lable . close_td . close_tr; 
+echo open_tr . open_td. open_label . $numero_de_registros . ' registros cadastrados.' . close_lable . close_td . close_tr; 
 
 $submit = '<input type="submit" value="Salvar" onclick=\'return validarFormulario();\'>';
 

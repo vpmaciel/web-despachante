@@ -74,7 +74,7 @@ while($registro = $stmt->fetch(PDO::FETCH_ASSOC))
     echo open_tr . open_td . open_label . 'NOME: ' . $registro['cliente_nome_completo'] . close_lable . close_td . close_tr;     
     echo open_tr . open_td . open_label . 'E-MAIL: ' . $registro['cliente_email'] . close_lable . close_td . close_tr;         
     echo open_td . '<a href="cliente-cadastro.php?EDITAR=true&' . $STRING . '">Editar</a> | '; 
-    echo '<a href="cliente-deletar.php?' . $STRING . ' " onclick="return confirmar();">Excluir</a>' . close_td . close_tr; 
+    echo '<a href="cliente-deletar.php?' . $STRING . ' " onclick="return confirmarExcluir();">Excluir</a>' . close_td . close_tr; 
     echo open_tr . open_td . open_label . '&nbsp;' . close_lable . close_td . close_tr; 
 }
 echo close_table;

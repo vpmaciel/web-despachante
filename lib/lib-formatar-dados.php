@@ -1,5 +1,5 @@
 <?php
 
-function formatar_dados($DADOS) : string {
-    return mb_convert_case(mb_strtoupper(remover_acentos($DADOS), 'UTF-8'),  MB_CASE_UPPER);
+function formatar_dados($dados) : string {
+    return mb_convert_case(mb_strtoupper(remover_acentos($dados), 'UTF-8'),  MB_CASE_UPPER);
 }
