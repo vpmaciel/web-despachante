@@ -56,7 +56,7 @@ echo $form_open;
 
 echo open_table;
 
-echo open_tr . open_th . 'CLIENTE'  . close_th . close_tr; 
+echo open_tr . open_th . 'Cliente'  . close_th . close_tr; 
 
 $LINK = '<a href="cliente-pesquisa.php">Pesquisar</a>';
 

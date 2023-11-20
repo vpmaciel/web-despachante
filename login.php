@@ -29,18 +29,18 @@ echo open_table;
 echo open_tr . open_th . 'Login'  . close_th . close_tr; 
 
 echo open_tr . open_td. open_label . 'Usuario' . close_lable . close_td . close_tr; 
-$USUARIO['USUARIO_NOME'] = isset($_POST['USUARIO_NOME']) ? $_POST['USUARIO_NOME'] : '';
-$input = '<input type="text" id="USUARIO_NOME" name="USUARIO_NOME" value="' . $USUARIO['USUARIO_NOME'] .'">';
+$USUARIO['usuario_nome'] = isset($_POST['usuario_nome']) ? $_POST['usuario_nome'] : '';
+$input = '<input type="text" id="usuario_nome" name="usuario_nome" value="' . $USUARIO['usuario_nome'] .'">';
 echo open_td . $input . close_td . close_tr;
 
 echo open_tr . open_td. open_label . 'Senha' . close_lable . close_td . close_tr; 
-$USUARIO['USUARIO_SENHA'] = isset($_POST['USUARIO_SENHA']) ? $_POST['USUARIO_SENHA'] : '';
-$input = '<input type="password" id="USUARIO_SENHA" name="USUARIO_SENHA" value="' . $USUARIO['USUARIO_SENHA'] .'">';
+$USUARIO['usuario_senha'] = isset($_POST['usuario_senha']) ? $_POST['usuario_senha'] : '';
+$input = '<input type="password" id="usuario_senha" name="usuario_senha" value="' . $USUARIO['usuario_senha'] .'">';
 echo open_tr . open_td. $input . close_td . close_tr;
 
 echo open_tr . open_td. open_label . '&nbsp;' . close_lable . close_td . close_tr; 
 
-$submit = '<input type="submit" value="ENVIAR" onclick=\'return confirmar();\'>';
+$submit = '<input type="submit" value="Enviar" onclick=\'return confirmar();\'>';
 echo open_tr . open_td. $submit . close_td . close_tr;
 
 echo close_table;
