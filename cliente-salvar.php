@@ -4,20 +4,20 @@ session_start();
 require_once 'lib/lib-sessao.php';
 require_once 'lib/lib-biblioteca.php';
 
-$registro['cliente_id'] = trim($_GET['cliente_id']);
-$registro['cliente_cpf_cnpj'] = trim($_GET['cliente_cpf_cnpj']);
-$registro['cliente_nome_completo'] = trim($_GET['cliente_nome_completo']);
-$registro['cliente_telefone'] = trim($_GET['cliente_telefone']);
-$registro['cliente_email'] = trim($_GET['cliente_email']);
+$registro['cliente_id'] = trim($_POST['cliente_id']);
+$registro['cliente_cpf_cnpj'] = formatarCpfCnpj(trim($_POST['cliente_cpf_cnpj']));
+$registro['cliente_nome_completo'] = trim($_POST['cliente_nome_completo']);
+$registro['cliente_telefone'] = trim($_POST['cliente_telefone']);
+$registro['cliente_email'] = trim($_POST['cliente_email']);
 
-$condicao = array ('cliente_id' =>trim($_GET['cliente_id']));
+$condicao = array ('cliente_id' =>trim($_POST['cliente_id']));
 
-$TOTAL_registro = retornar_numero_registros('CLIENTE', $condicao);
-//exit($TOTAL_registro);
-if($TOTAL_registro == 0){
-	$RESULTADO_INSERIR = inserir('CLIENTE', $registro);
+$total_registro = retornar_numero_registros('cliente', $condicao);
+//exit($total_registro);
+if($total_registro == 0){
+	$resultado_inserir = inserir('cliente', $registro);
     
-    if ($RESULTADO_INSERIR == true) {
+    if ($resultado_inserir == true) {
 		header('location:sucesso.php');
 		exit;
 	} else {
@@ -26,7 +26,7 @@ if($TOTAL_registro == 0){
 	} 
 }
 else {	
-	$resultado_atualizar = atualizar('CLIENTE', $registro, $condicao);
+	$resultado_atualizar = atualizar('cliente', $registro, $condicao);
 	
 	if ($resultado_atualizar == true) {
 		

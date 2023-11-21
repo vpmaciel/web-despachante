@@ -13,7 +13,7 @@ echo open_html;
 echo open_head;
 
 require_once 'cabecalho.php';
-echo '<script src="cliente-cadastro.ts"></script>';
+echo '<script src="veiculo-cadastro.ts"></script>';
 
 echo close_head;
 
@@ -27,19 +27,43 @@ $registro = array();
 
 $SQL = '';
 
-$registro['cliente_cpf_cnpj'] = (isset ($_GET['cliente_cpf_cnpj'])) ? trim($_GET['cliente_cpf_cnpj']) : '';
-$registro['cliente_nome'] = (isset ($_GET['cliente_nome'])) ? trim($_GET['cliente_nome']) : '';
-$registro['cliente_telefone'] = (isset ($_GET['cliente_cpf_cnpj'])) ? trim($_GET['cliente_telefone']) : '';
+$registro['veiculo_placa'] = (isset ($_GET['veiculo_placa'])) ? trim($_GET['veiculo_placa']) : '';
+$registro['veiculo_cpf_cnpj_proprietario'] = (isset ($_GET['veiculo_cpf_cnpj_proprietario'])) ? trim($_GET['veiculo_cpf_cnpj_proprietario']) : '';
+$registro['veiculo_nome_proprietario'] = (isset ($_GET['veiculo_nome_proprietario'])) ? trim($_GET['veiculo_nome_proprietario']) : '';
+$registro['veiculo_marca'] = (isset ($_GET['veiculo_marca'])) ? trim($_GET['veiculo_marca']) : '';
+$registro['veiculo_modelo'] = (isset ($_GET['veiculo_modelo'])) ? trim($_GET['veiculo_modelo']) : '';
+
+
+if($registro['veiculo_placa'] == '') {
+  unset($registro['veiculo_placa']);
+}
+
+if($registro['veiculo_cpf_cnpj_proprietario'] == '') {
+  unset($registro['veiculo_cpf_cnpj_proprietario']);
+}
+
+if($registro['veiculo_nome_proprietario'] == '') {
+  unset($registro['veiculo_nome_proprietario']);
+}
+
+if($registro['veiculo_marca'] == '') {
+  unset($registro['veiculo_marca']);
+}
+
+if($registro['veiculo_modelo'] == '') {
+  unset($registro['veiculo_modelo']);
+}
+
 
 // define how many results you want per page
-$RESULTS_PER_PAGE = 10000;
+$results_per_page = 10000;
 
 // find out the number of results stored in database
-$NUMBER_OF_RESULTS =  paginar_total("CLIENTE", $registro); 
+$number_of_results =  paginar_total("veiculo", $registro); 
 
 
 // determine number of total pages available
-$NUMBER_OF_PAGES = ceil($NUMBER_OF_RESULTS/$RESULTS_PER_PAGE);
+$number_of_pages = ceil($number_of_results/$results_per_page);
 
 // determine which page number visitor is currently on
 if (!isset($_GET['page'])) {
@@ -49,30 +73,34 @@ if (!isset($_GET['page'])) {
 }
 
 // determine the sql LIMIT starting number for the results on the displaying page
-$THIS_PAGE_FIRST_RESULT = ($PAGE-1)*$RESULTS_PER_PAGE;
+$this_page_first_result = ($PAGE-1)*$results_per_page;
 
 // retrieve selected results from database and display them on page
-$SQL='SELECT * FROM CLIENTE LIMIT ' . $THIS_PAGE_FIRST_RESULT . "," .$RESULTS_PER_PAGE;
-$SQL = paginar('CLIENTE', $registro, $THIS_PAGE_FIRST_RESULT, $RESULTS_PER_PAGE);
+$SQL='SELECT * FROM veiculo LIMIT ' . $this_page_first_result . "," .$results_per_page;
+$SQL = paginar('veiculo', $registro, $this_page_first_result, $results_per_page);
 $stmt = $pdo->prepare($SQL);
 $stmt->execute();
 
 echo open_table;
 
-echo open_tr . open_th_3 . 'Cliente'  . close_th . close_tr; 
+echo open_tr . open_th . 'Veículo'  . close_th . close_tr; 
 
-while($registro = $stmt->fetch(PDO::FETCH_ASSOC))
+while($linha = $stmt->fetch(PDO::FETCH_ASSOC))
 {
     	
-	$STRING = '';
-	foreach ($registro as $chave=>$valor){ 
-		$STRING .= "$chave" . "=" . $valor . "&";                        
+	$string= '';
+	foreach ($linha as $chave=>$valor){ 
+		$string.= "$chave" . "=" . $valor . "&";                        
 	}
     
-    echo open_tr . open_td . open_label . 'CPF | CNPJ: ' . $registro['cliente_cpf_cnpj'] . close_lable . close_td; 
-    echo open_td . open_label . 'Nome: ' . $registro['cliente_nome'] . close_lable . close_td;     
-    echo open_td . '<a href="cliente-cadastro.php?' . $STRING . '">Editar</a> | '; 
-    echo '<a href="cliente-deletar.php?' . $STRING . ' " onclick="return confirmar();">Excluir</a>' . close_td; 
+    echo open_tr . open_td . open_label . 'Identificador: ' . $linha['veiculo_id'] . close_lable . close_td . close_tr; 
+    echo open_tr . open_td . open_label . 'Placa: ' . $linha['veiculo_placa'] . close_lable . close_td . close_tr; 
+    echo open_tr . open_td . open_label . 'CPF | CNPJ do proprietário: ' . $linha['veiculo_cpf_cnpj_proprietario'] . close_lable . close_td . close_tr; 
+    echo open_tr . open_td . open_label . 'Nome do proprietário: ' . $linha['veiculo_nome_proprietario'] . close_lable . close_td . close_tr; 
+    echo open_tr . open_td . open_label . 'Marca: ' . $linha['veiculo_marca'] . close_lable . close_td . close_tr; 
+    echo open_tr . open_td . open_label . 'Modelo: ' . $linha['veiculo_modelo'] . close_lable . close_td . close_tr;     
+    echo open_tr . open_td . '<a href="veiculo-cadastro.php?editar=true&' . $string. '">Editar</a> | '; 
+        echo '<a href="veiculo-deletar.php?' . $string. ' " onclick="return confirmarExcluir();">Excluir</a>' . close_td . close_tr; 
     echo open_tr . open_td . open_label . '&nbsp;' . close_lable . close_td . close_tr; 
 }
 echo close_table;
@@ -81,8 +109,8 @@ echo close_table;
 
 
 // display the links to the pages
-for ($PAGE=1;$PAGE<=$NUMBER_OF_PAGES;$PAGE++) {
-  echo '<a href="cliente-lista.php?page=' . $PAGE . '">|' . $PAGE . '|</a>';
+for ($PAGE=1;$PAGE<=$number_of_pages;$PAGE++) {
+  echo '<a href="veiculo-lista.php?page=' . $PAGE . '">|' . $PAGE . '|</a>';
 }
 echo close_div;
 

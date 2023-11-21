@@ -4,18 +4,23 @@ session_start();
 require_once 'lib/lib-sessao.php';
 require_once 'lib/lib-biblioteca.php';
 
-$registro['cliente_cpf_cnpj'] = trim($_GET['cliente_cpf_cnpj']);
-$registro['cliente_nome'] = trim($_GET['cliente_nome']);
-$registro['cliente_telefone'] = trim($_GET['cliente_telefone']);
+$registro['pedido_de_placa_id'] = trim($_POST['pedido_de_placa_id']);
+$registro['pedido_de_placa_data'] = trim($_POST['pedido_de_placa_data']);
+$registro['pedido_de_placa_placa_veiculo'] = trim($_POST['pedido_de_placa_placa_veiculo']);
+$registro['pedido_de_placa_quantidade'] = trim($_POST['pedido_de_placa_quantidade']);
+$registro['pedido_de_placa_renavam'] = trim($_POST['pedido_de_placa_renavam']);
+$registro['pedido_de_placa_cpf_cnpj_proprietario'] = formatarCpfCnpj(trim($_POST['pedido_de_placa_cpf_cnpj_proprietario']));
+$registro['pedido_de_placa_cor_placa'] = trim($_POST['pedido_de_placa_cor_placa']);
+$registro['pedido_de_placa_tipo_placa'] = trim($_POST['pedido_de_placa_tipo_placa']);
 
-$condicao = array ('cliente_cpf_cnpj' =>trim($_GET['cliente_cpf_cnpj']));
+$condicao = array ('pedido_de_placa_id' =>trim($_POST['pedido_de_placa_id']));
 
-$TOTAL_registro = retornar_numero_registros('CLIENTE', $condicao);
-//exit($TOTAL_registro);
-if($TOTAL_registro == 0){
-	$RESULTADO_INSERIR = inserir('CLIENTE', $registro);
+$total_registro = retornar_numero_registros('pedido_de_placa', $condicao);
+//exit($total_registro);
+if($total_registro == 0){
+	$resultado_inserir = inserir('pedido_de_placa', $registro);
     
-    if ($RESULTADO_INSERIR == true) {
+    if ($resultado_inserir == true) {
 		header('location:sucesso.php');
 		exit;
 	} else {
@@ -23,23 +28,8 @@ if($TOTAL_registro == 0){
 		exit;
 	} 
 }
-else {
-	//exit("atualizar");
-	$EDITAR = true;
-	$condicao = array ('cliente_cpf_cnpj' =>trim($_GET['HIDDEN_cliente_cpf_cnpj']));
-	if (strlen($condicao['cliente_cpf_cnpj']) == 0) {
-		$condicao = array ('cliente_cpf_cnpj' =>trim($_GET['cliente_cpf_cnpj']));
-		$EDITAR = false;
-	}
-
-	$RESULTADO_PESQUISAR = selecionar('CLIENTE', $condicao);
-
-	if ($RESULTADO_PESQUISAR != NULL && $EDITAR) {
-		//header('location:erro.php?msg=Já existe outro registro com esse CPF | CNPJ');
-		//exit;
-	}
-		
-	$resultado_atualizar = atualizar('CLIENTE', $registro, $condicao);
+else {	
+	$resultado_atualizar = atualizar('pedido_de_placa', $registro, $condicao);
 	
 	if ($resultado_atualizar == true) {
 		

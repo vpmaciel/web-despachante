@@ -12,11 +12,11 @@ function paginar_total( string $string_tabela, array $array_condicao) {
     }
 
     $string_condicao = '';
-    $tamanho_array_condicao = 0;
+    
     $tamanho_array_condicao = count ($array_condicao);
     
     $contador = 1;   
-    $CLAUSULA_where = 0;    
+    $clausula_where = 0;    
 
     try {
         if($tamanho_array_condicao > 0) {
@@ -33,10 +33,10 @@ function paginar_total( string $string_tabela, array $array_condicao) {
                 }
                 //exit($valor);
                 if($valor != "''"){
-                    $CLAUSULA_where = 1;
+                    $clausula_where = 1;
                     $string_condicao .= $chave . "=" . $valor;
 
-                    if($contador < $tamanho_array_condicao - 1) {
+                    if($contador < $tamanho_array_condicao) {
                         $string_condicao .= ' and ';
                     }
                 }
@@ -50,7 +50,7 @@ function paginar_total( string $string_tabela, array $array_condicao) {
         $stmt = NULL;
         
         
-        if ($CLAUSULA_where != 0) {
+        if ($clausula_where != 0) {
             //die("SELECT * FROM $string_tabela where ($string_condicao);");            
             $sql = "SELECT count(*) FROM $string_tabela where $string_condicao;--";   
             

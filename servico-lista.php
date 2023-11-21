@@ -13,7 +13,7 @@ echo open_html;
 echo open_head;
 
 require_once 'cabecalho.php';
-echo '<script src="cliente-cadastro.ts"></script>';
+echo '<script src="servico-cadastro.ts"></script>';
 
 echo close_head;
 
@@ -27,52 +27,83 @@ $registro = array();
 
 $SQL = '';
 
-$registro['cliente_cpf_cnpj'] = (isset ($_GET['cliente_cpf_cnpj'])) ? trim($_GET['cliente_cpf_cnpj']) : '';
-$registro['cliente_nome'] = (isset ($_GET['cliente_nome'])) ? trim($_GET['cliente_nome']) : '';
-$registro['cliente_telefone'] = (isset ($_GET['cliente_cpf_cnpj'])) ? trim($_GET['cliente_telefone']) : '';
+$registro['servico_placa_veiculo'] = (isset ($_POST['servico_placa_veiculo'])) ? trim($_POST['servico_placa_veiculo']) : '';
+$registro['servico_valor'] = (isset ($_POST['servico_valor'])) ? str_replace(',', '.', preg_replace('/[^0-9,]/', '', trim($_POST['servico_valor']))) : '';
+$registro['servico_descricao'] = (isset ($_POST['servico_descricao'])) ? trim($_POST['servico_descricao']) : '';
+$registro['servico_cpf_cnpj_cliente'] = (isset ($_POST['servico_cpf_cnpj_cliente'])) ? formatarCpfCnpj(trim($_POST['servico_cpf_cnpj_cliente'])) : '';
+$registro['servico_nome_cliente'] = (isset ($_POST['servico_nome_cliente'])) ? trim($_POST['servico_nome_cliente']) : '';
+$registro['servico_telefone_cliente'] = (isset ($_POST['servico_telefone_cliente'])) ? trim($_POST['servico_telefone_cliente']) : '';
+
+if($registro['servico_placa_veiculo'] == '') {
+  unset($registro['servico_placa_veiculo']);
+}
+
+if($registro['servico_valor'] == '') {
+  unset($registro['servico_valor']);
+}
+
+if($registro['servico_descricao'] == '') {
+  unset($registro['servico_descricao']);
+}
+
+if($registro['servico_cpf_cnpj_cliente'] == '') {
+  unset($registro['servico_cpf_cnpj_cliente']);
+}
+
+if($registro['servico_nome_cliente'] == '') {
+  unset($registro['servico_nome_cliente']);
+}
+
+if($registro['servico_telefone_cliente'] == '') {
+  unset($registro['servico_telefone_cliente']);
+}
 
 // define how many results you want per page
-$RESULTS_PER_PAGE = 10000;
+$results_per_page = 10000;
 
 // find out the number of results stored in database
-$NUMBER_OF_RESULTS =  paginar_total("CLIENTE", $registro); 
+$number_of_results =  paginar_total("servico", $registro); 
 
 
 // determine number of total pages available
-$NUMBER_OF_PAGES = ceil($NUMBER_OF_RESULTS/$RESULTS_PER_PAGE);
+$number_of_pages = ceil($number_of_results/$results_per_page);
 
 // determine which page number visitor is currently on
 if (!isset($_GET['page'])) {
-  $PAGE = 1;
+  $page = 1;
 } else {
-  $PAGE = $_GET['page'];
+  $page = $_GET['page'];
 }
 
 // determine the sql LIMIT starting number for the results on the displaying page
-$THIS_PAGE_FIRST_RESULT = ($PAGE-1)*$RESULTS_PER_PAGE;
+$this_page_first_result = ($page-1)*$results_per_page;
 
 // retrieve selected results from database and display them on page
-$SQL='SELECT * FROM CLIENTE LIMIT ' . $THIS_PAGE_FIRST_RESULT . "," .$RESULTS_PER_PAGE;
-$SQL = paginar('CLIENTE', $registro, $THIS_PAGE_FIRST_RESULT, $RESULTS_PER_PAGE);
+$SQL = paginar('servico', $registro, $this_page_first_result, $results_per_page);
 $stmt = $pdo->prepare($SQL);
 $stmt->execute();
 
 echo open_table;
 
-echo open_tr . open_th_3 . 'Cliente'  . close_th . close_tr; 
+echo open_tr . open_th . 'Serviço'  . close_th . close_tr; 
 
-while($registro = $stmt->fetch(PDO::FETCH_ASSOC))
+while($linha = $stmt->fetch(PDO::FETCH_ASSOC))
 {
     	
-	$STRING = '';
-	foreach ($registro as $chave=>$valor){ 
-		$STRING .= "$chave" . "=" . $valor . "&";                        
+	$string= '';
+	foreach ($linha as $chave=>$valor){ 
+		$string.= "$chave" . "=" . $valor . "&";                        
 	}
-    
-    echo open_tr . open_td . open_label . 'CPF | CNPJ: ' . $registro['cliente_cpf_cnpj'] . close_lable . close_td; 
-    echo open_td . open_label . 'Nome: ' . $registro['cliente_nome'] . close_lable . close_td;     
-    echo open_td . '<a href="cliente-cadastro.php?' . $STRING . '">Editar</a> | '; 
-    echo '<a href="cliente-deletar.php?' . $STRING . ' " onclick="return confirmar();">Excluir</a>' . close_td; 
+    echo open_tr . open_td . open_label . 'Identificador: ' . $linha['servico_id'] . close_lable . close_td . close_tr; 
+    echo open_tr . open_td . open_label . 'Data: ' . date('d-m-Y', strtotime($linha['servico_data'])) . close_lable . close_td . close_tr; 
+    echo open_tr . open_td . open_label . 'Placa do veículo: ' . $linha['servico_placa_veiculo'] . close_lable . close_td . close_tr; 
+    echo open_tr . open_td . open_label . 'Valor: ' . formatarNumero($linha['servico_valor']) . close_lable . close_td . close_tr; 
+    echo open_tr . open_td . open_label . 'Descrição: ' . $linha['servico_descricao'] . close_lable . close_td . close_tr; 
+    echo open_tr . open_td . open_label . 'CPF | CNPJ do cliente: ' . $linha['servico_cpf_cnpj_cliente'] . close_lable . close_td . close_tr;     
+    echo open_tr . open_td . open_label . 'Nome do cliente: ' . $linha['servico_nome_cliente'] . close_lable . close_td . close_tr; 
+    echo open_tr . open_td . open_label . 'Telefone do cliente: ' . $linha['servico_telefone_cliente'] . close_lable . close_td . close_tr;     
+    echo open_tr . open_td . '<a href="servico-cadastro.php?editar=true&' . $string. '">Editar</a> | '; 
+        echo '<a href="servico-deletar.php?' . $string. ' " onclick="return confirmarExcluir();">Excluir</a>' . close_td . close_tr; 
     echo open_tr . open_td . open_label . '&nbsp;' . close_lable . close_td . close_tr; 
 }
 echo close_table;
@@ -81,8 +112,8 @@ echo close_table;
 
 
 // display the links to the pages
-for ($PAGE=1;$PAGE<=$NUMBER_OF_PAGES;$PAGE++) {
-  echo '<a href="cliente-lista.php?page=' . $PAGE . '">|' . $PAGE . '|</a>';
+for ($page=1;$page<=$number_of_pages;$page++) {
+  echo '<a href="servico-lista.php?page=' . $page . '">|' . $page . '|</a>';
 }
 echo close_div;
 

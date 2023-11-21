@@ -24,33 +24,69 @@ echo open_div_main;
 
 require_once 'menu.php';
 
+$numero_de_registros = retornar_total_registros('pedido_de_placa');
+
 $registro = array();
 
-$form_open = '<form action="cliente-lista.php" method="get">';
+$registro['pedido_de_placa_id'] = '';
+$registro['pedido_de_placa_data'] = '';
+$registro['pedido_de_placa_placa_veiculo'] = '';
+$registro['pedido_de_placa_quantidade'] = '';
+$registro['pedido_de_placa_renavam'] = '';
+$registro['pedido_de_placa_cpf_cnpj_proprietario'] = '';
+$registro['pedido_de_placa_cor_placa'] = '';
+$registro['pedido_de_placa_tipo_placa'] = '';
+
+$form_open = '<form action="pedido-de-placa-lista.php" method="POST">';
 
 echo $form_open;
 
 echo open_table;
 
-echo open_tr . open_th . 'Cliente'  . close_th . close_tr; 
+echo open_tr . open_th . 'Pedido de Placa'  . close_th . close_tr; 
 
-echo open_tr . open_td. open_label . 'NOME' . close_lable . close_td . close_tr; 
-$registro['cliente_nome'] = isset($_GET['cliente_nome']) ? $_GET['cliente_nome'] : '';
-$input = '<input type="text" id="cliente_nome" name="cliente_nome" maxlength="50" value="' . $registro['cliente_nome'] .'">';
+$input = '<input type="hidden" id="pedido_de_placa_data" name="pedido_de_placa_data" minlength="14" maxlength="18" onkeypress="mascaraMutuario(this,cpfCnpj)" onblur="clearTimeout();" value="' . $registro['pedido_de_placa_data'] .'">';
+
+echo open_tr . open_td. $input . close_td . close_tr;
+
+echo open_tr . open_td. open_label . 'Placa' . close_lable . close_td . close_tr; 
+
+$input = '<input type="text" id="pedido_de_placa_placa_veiculo" name="pedido_de_placa_placa_veiculo" maxlength="50" value="' . $registro['pedido_de_placa_placa_veiculo'] .'">';
+
 echo open_td . $input . close_td . close_tr;
 
-echo open_tr . open_td. open_label . 'CPF ou CNPJ' . close_lable . close_td . close_tr; 
-$registro['cliente_cpf_cnpj'] = isset($_GET['cliente_cpf_cnpj']) ? $_GET['cliente_cpf_cnpj'] : '';
-$input = '<input type="text" id="cliente_cpf_cnpj" name="cliente_cpf_cnpj" minlength="14" maxlength="18" onkeypress="mascaraMutuario(this,cpfCnpj)" onblur="clearTimeout();" value="' . $registro['cliente_cpf_cnpj'] .'">';
+echo open_tr . open_td. open_label . 'Quantidade' . close_lable . close_td . close_tr; 
+
+$input = '<input type="text" id="pedido_de_placa_quantidade" name="pedido_de_placa_quantidade" minlength="14" maxlength="18" onkeypress="mascaraMutuario(this,cpfCnpj)" onblur="clearTimeout();" value="' . $registro['pedido_de_placa_quantidade'] .'">';
+
 echo open_tr . open_td. $input . close_td . close_tr;
 
+echo open_tr . open_td. open_label . 'RENAVAM' . close_lable . close_td . close_tr; 
 
-echo open_tr . open_td. open_label . 'TELEFONE' . close_lable . close_td . close_tr; 
-$registro['cliente_telefone'] = isset($_GET['cliente_telefone']) ? $_GET['cliente_telefone'] : '';
-$input = '<input type="text" id="cliente_telefone" name="cliente_telefone" maxlength="15" onkeypress="mask(this, mphone);" value="' . $registro['cliente_telefone'] .'">';
+$input = '<input type="text" id="pedido_de_placa_renavam" name="pedido_de_placa_renavam" maxlength="15" onkeypress="mask(this, mphone);" value="' . $registro['pedido_de_placa_renavam'] .'">';
+
 echo open_tr . open_td. $input . close_td . close_tr;
 
-echo open_tr . open_td. open_label . '&nbsp;' . close_lable . close_td . close_tr; 
+echo open_tr . open_td. open_label . 'CPF | CNPJ do proprietário' . close_lable . close_td . close_tr; 
+
+$input = '<input type="text" id="pedido_de_placa_cpf_cnpj_proprietario" name="pedido_de_placa_cpf_cnpj_proprietario" minlength="14" maxlength="18" onkeypress="mascaraMutuario(this,cpfCnpj)" onblur="clearTimeout();" value="' . $registro['pedido_de_placa_cpf_cnpj_proprietario'] .'">';
+
+echo open_tr . open_td. $input . close_td . close_tr;
+
+echo open_tr . open_td. open_label . 'Cor da placa' . close_lable . close_td . close_tr; 
+
+$input = '<input type="text" id="pedido_de_placa_cor_placa" name="pedido_de_placa_cor_placa" maxlength="15" onkeypress="mask(this, mphone);" value="' . $registro['pedido_de_placa_cor_placa'] .'">';
+
+echo open_tr . open_td. $input . close_td . close_tr;
+
+echo open_tr . open_td. open_label . 'Tipo da placa' . close_lable . close_td . close_tr; 
+
+$input = '<input type="text" id="pedido_de_placa_tipo_placa" name="pedido_de_placa_tipo_placa" maxlength="15" onkeypress="mask(this, mphone);" value="' . $registro['pedido_de_placa_tipo_placa'] .'">';
+
+echo open_tr . open_td. $input . close_td . close_tr;
+
+echo open_tr . open_td. open_label . $numero_de_registros . ' registros cadastrados' . close_lable . close_td . close_tr; 
+
 
 $submit = '<input type="submit" value="Buscar" >';
 echo open_tr . open_td. $submit . close_td . close_tr;

@@ -33,7 +33,6 @@ textarea:focus {
     width: 100%;
     resize: none;
     text-align: left;
-    text-transform: capitalize;
 }
 
 .botao,
@@ -132,6 +131,7 @@ span {
 .menu {
     width: 100%;
     min-height: 30px;
+    height: 30;
     min-width: 100%;
     background-color: #3299bb;
     padding: 5px;

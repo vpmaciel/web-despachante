@@ -4,18 +4,22 @@ session_start();
 require_once 'lib/lib-sessao.php';
 require_once 'lib/lib-biblioteca.php';
 
-$registro['cliente_cpf_cnpj'] = trim($_GET['cliente_cpf_cnpj']);
-$registro['cliente_nome'] = trim($_GET['cliente_nome']);
-$registro['cliente_telefone'] = trim($_GET['cliente_telefone']);
+$registro['servico_data'] = trim($_POST['servico_data']);
+$registro['servico_placa_veiculo'] = trim($_POST['servico_placa_veiculo']);
+$registro['servico_descricao'] = trim($_POST['servico_descricao']);
+$registro['servico_valor'] = str_replace(',', '.', preg_replace('/[^0-9,]/', '', trim($_POST['servico_valor'])));
+$registro['servico_cpf_cnpj_cliente'] = trim($_POST['servico_cpf_cnpj_cliente']);
+$registro['servico_nome_cliente'] = trim($_POST['servico_nome_cliente']);
+$registro['servico_telefone_cliente'] = trim($_POST['servico_telefone_cliente']);
 
-$condicao = array ('cliente_cpf_cnpj' =>trim($_GET['cliente_cpf_cnpj']));
+$condicao = array ('servico_id' =>trim($_POST['servico_id']));
 
-$TOTAL_registro = retornar_numero_registros('CLIENTE', $condicao);
-//exit($TOTAL_registro);
-if($TOTAL_registro == 0){
-	$RESULTADO_INSERIR = inserir('CLIENTE', $registro);
+$total_registro = retornar_numero_registros('servico', $condicao);
+//exit($total_registro);
+if($total_registro == 0){
+	$resultado_inserir = inserir('servico', $registro);
     
-    if ($RESULTADO_INSERIR == true) {
+    if ($resultado_inserir == true) {
 		header('location:sucesso.php');
 		exit;
 	} else {
@@ -23,23 +27,8 @@ if($TOTAL_registro == 0){
 		exit;
 	} 
 }
-else {
-	//exit("atualizar");
-	$EDITAR = true;
-	$condicao = array ('cliente_cpf_cnpj' =>trim($_GET['HIDDEN_cliente_cpf_cnpj']));
-	if (strlen($condicao['cliente_cpf_cnpj']) == 0) {
-		$condicao = array ('cliente_cpf_cnpj' =>trim($_GET['cliente_cpf_cnpj']));
-		$EDITAR = false;
-	}
-
-	$RESULTADO_PESQUISAR = selecionar('CLIENTE', $condicao);
-
-	if ($RESULTADO_PESQUISAR != NULL && $EDITAR) {
-		//header('location:erro.php?msg=Já existe outro registro com esse CPF | CNPJ');
-		//exit;
-	}
-		
-	$resultado_atualizar = atualizar('CLIENTE', $registro, $condicao);
+else {	
+	$resultado_atualizar = atualizar('servico', $registro, $condicao);
 	
 	if ($resultado_atualizar == true) {
 		

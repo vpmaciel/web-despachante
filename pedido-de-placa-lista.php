@@ -13,7 +13,7 @@ echo open_html;
 echo open_head;
 
 require_once 'cabecalho.php';
-echo '<script src="cliente-cadastro.ts"></script>';
+echo '<script src="pedido-de-placa-cadastro.ts"></script>';
 
 echo close_head;
 
@@ -23,56 +23,87 @@ echo open_div_main;
 
 require_once 'menu.php';
 
-$registro = array();
-
 $SQL = '';
 
-$registro['cliente_cpf_cnpj'] = (isset ($_GET['cliente_cpf_cnpj'])) ? trim($_GET['cliente_cpf_cnpj']) : '';
-$registro['cliente_nome'] = (isset ($_GET['cliente_nome'])) ? trim($_GET['cliente_nome']) : '';
-$registro['cliente_telefone'] = (isset ($_GET['cliente_cpf_cnpj'])) ? trim($_GET['cliente_telefone']) : '';
+$registro['pedido_de_placa_placa_veiculo'] = (isset ($_POST['pedido_de_placa_placa_veiculo'])) ? trim($_POST['pedido_de_placa_placa_veiculo']) : '';
+$registro['pedido_de_placa_quantidade'] = (isset ($_POST['pedido_de_placa_quantidade'])) ? trim($_POST['pedido_de_placa_quantidade']) : '';
+$registro['pedido_de_placa_renavam'] = (isset ($_POST['pedido_de_placa_renavam'])) ? trim($_POST['pedido_de_placa_renavam']) : '';
+$registro['pedido_de_placa_cpf_cnpj_proprietario'] = (isset ($_POST['pedido_de_placa_cpf_cnpj_proprietario'])) ? formatarCpfCnpj(trim($_POST['pedido_de_placa_cpf_cnpj_proprietario'])) : '';
+$registro['pedido_de_placa_cor_placa'] = (isset ($_POST['pedido_de_placa_cor_placa'])) ? trim($_POST['pedido_de_placa_cor_placa']) : '';
+$registro['pedido_de_placa_tipo_placa'] = (isset ($_POST['pedido_de_placa_tipo_placa'])) ? trim($_POST['pedido_de_placa_tipo_placa']) : '';
+
+if($registro['pedido_de_placa_placa_veiculo'] == '') {
+  unset($registro['pedido_de_placa_placa_veiculo']);
+}
+
+if($registro['pedido_de_placa_quantidade'] == '') {
+  unset($registro['pedido_de_placa_quantidade']);
+}
+
+if($registro['pedido_de_placa_renavam'] == '') {
+  unset($registro['pedido_de_placa_renavam']);
+}
+
+if($registro['pedido_de_placa_cpf_cnpj_proprietario'] == '') {
+  unset($registro['pedido_de_placa_cpf_cnpj_proprietario']);
+}
+
+if($registro['pedido_de_placa_cor_placa'] == '') {
+  unset($registro['pedido_de_placa_cor_placa']);
+}
+
+if($registro['pedido_de_placa_tipo_placa'] == '') {
+  unset($registro['pedido_de_placa_tipo_placa']);
+}
 
 // define how many results you want per page
-$RESULTS_PER_PAGE = 10000;
+$results_per_page = 10000;
 
 // find out the number of results stored in database
-$NUMBER_OF_RESULTS =  paginar_total("CLIENTE", $registro); 
+$number_of_results =  paginar_total("pedido_de_placa", $registro); 
 
 
 // determine number of total pages available
-$NUMBER_OF_PAGES = ceil($NUMBER_OF_RESULTS/$RESULTS_PER_PAGE);
+$number_of_pages = ceil($number_of_results/$results_per_page);
 
 // determine which page number visitor is currently on
 if (!isset($_GET['page'])) {
-  $PAGE = 1;
+  $page = 1;
 } else {
-  $PAGE = $_GET['page'];
+  $page = $_GET['page'];
 }
 
 // determine the sql LIMIT starting number for the results on the displaying page
-$THIS_PAGE_FIRST_RESULT = ($PAGE-1)*$RESULTS_PER_PAGE;
+$this_page_first_result = ($page-1)*$results_per_page;
 
 // retrieve selected results from database and display them on page
-$SQL='SELECT * FROM CLIENTE LIMIT ' . $THIS_PAGE_FIRST_RESULT . "," .$RESULTS_PER_PAGE;
-$SQL = paginar('CLIENTE', $registro, $THIS_PAGE_FIRST_RESULT, $RESULTS_PER_PAGE);
+$SQL='SELECT * FROM pedido_de_placa LIMIT ' . $this_page_first_result . "," .$results_per_page;
+$SQL = paginar('pedido_de_placa', $registro, $this_page_first_result, $results_per_page);
 $stmt = $pdo->prepare($SQL);
 $stmt->execute();
 
 echo open_table;
 
-echo open_tr . open_th_3 . 'Cliente'  . close_th . close_tr; 
+echo open_tr . open_th . 'Veículo'  . close_th . close_tr; 
 
-while($registro = $stmt->fetch(PDO::FETCH_ASSOC))
+while($linha = $stmt->fetch(PDO::FETCH_ASSOC))
 {
     	
-	$STRING = '';
-	foreach ($registro as $chave=>$valor){ 
-		$STRING .= "$chave" . "=" . $valor . "&";                        
+	$string= '';
+	foreach ($linha as $chave=>$valor){ 
+		$string.= "$chave" . "=" . $valor . "&";                        
 	}
     
-    echo open_tr . open_td . open_label . 'CPF | CNPJ: ' . $registro['cliente_cpf_cnpj'] . close_lable . close_td; 
-    echo open_td . open_label . 'Nome: ' . $registro['cliente_nome'] . close_lable . close_td;     
-    echo open_td . '<a href="cliente-cadastro.php?' . $STRING . '">Editar</a> | '; 
-    echo '<a href="cliente-deletar.php?' . $STRING . ' " onclick="return confirmar();">Excluir</a>' . close_td; 
+    echo open_tr . open_td . open_label . 'Identificador: ' . $linha['pedido_de_placa_id'] . close_lable . close_td . close_tr; 
+    echo open_tr . open_td . open_label . 'Data: ' . date('d-m-Y', strtotime($linha['pedido_de_placa_data'])) . close_lable . close_td . close_tr; 
+    echo open_tr . open_td . open_label . 'Placa do veículo: ' . $linha['pedido_de_placa_placa_veiculo'] . close_lable . close_td . close_tr; 
+    echo open_tr . open_td . open_label . 'Quantidade: ' . $linha['pedido_de_placa_quantidade'] . close_lable . close_td . close_tr; 
+    echo open_tr . open_td . open_label . 'RENAVAM: ' . $linha['pedido_de_placa_renavam'] . close_lable . close_td . close_tr; 
+    echo open_tr . open_td . open_label . 'CPF | CNPJ do proprietário: ' . $linha['pedido_de_placa_cpf_cnpj_proprietario'] . close_lable . close_td . close_tr;     
+    echo open_tr . open_td . open_label . 'Cor: ' . $linha['pedido_de_placa_cor_placa'] . close_lable . close_td . close_tr; 
+    echo open_tr . open_td . open_label . 'Tipo de placa: ' . $linha['pedido_de_placa_tipo_placa'] . close_lable . close_td . close_tr;     
+    echo open_tr . open_td . '<a href="pedido-de-placa-cadastro.php?editar=true&' . $string. '">Editar</a> | '; 
+        echo '<a href="pedido-de-placa-deletar.php?' . $string. ' " onclick="return confirmarExcluir();">Excluir</a>' . close_td . close_tr; 
     echo open_tr . open_td . open_label . '&nbsp;' . close_lable . close_td . close_tr; 
 }
 echo close_table;
@@ -81,8 +112,8 @@ echo close_table;
 
 
 // display the links to the pages
-for ($PAGE=1;$PAGE<=$NUMBER_OF_PAGES;$PAGE++) {
-  echo '<a href="cliente-lista.php?page=' . $PAGE . '">|' . $PAGE . '|</a>';
+for ($page=1;$page<=$number_of_pages;$page++) {
+  echo '<a href="pedido-de-placa-lista.php?page=' . $page . '">|' . $page . '|</a>';
 }
 echo close_div;
 

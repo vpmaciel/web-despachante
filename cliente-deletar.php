@@ -6,9 +6,9 @@ require_once 'lib/lib-biblioteca.php';
 
 $registro = array ('cliente_id' => trim($_GET['cliente_id']));
 
-$TOTAL_registro = retornar_numero_registros('CLIENTE', $registro);
+$total_registro = retornar_numero_registros('CLIENTE', $registro);
 
-if($TOTAL_registro > 0){
+if($total_registro > 0){
     $RESULTADO_EXCLUIR = excluir('CLIENTE', $registro);
 	
     

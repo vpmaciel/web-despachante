@@ -26,7 +26,7 @@ require_once 'menu.php';
 
 $registro = array();
 
-$form_open = '<form action="cliente-lista.php" method="get">';
+$form_open = '<form action="cliente-lista.php" method="post">';
 
 echo $form_open;
 
@@ -35,24 +35,21 @@ echo open_table;
 echo open_tr . open_th . 'Cliente'  . close_th . close_tr; 
 
 echo open_tr . open_td. open_label . 'NOME' . close_lable . close_td . close_tr; 
-$registro['cliente_nome_completo'] = isset($_GET['cliente_nome_completo']) ? $_GET['cliente_nome_completo'] : '';
-$input = '<input type="text" id="cliente_nome_completo" name="cliente_nome_completo" maxlength="50" value="' . $registro['cliente_nome_completo'] .'">';
+
+$input = '<input type="text" id="cliente_nome_completo" name="cliente_nome_completo" maxlength="50">';
 echo open_td . $input . close_td . close_tr;
 
 echo open_tr . open_td. open_label . 'CPF | CNPJ' . close_lable . close_td . close_tr; 
-$registro['cliente_cpf_cnpj'] = isset($_GET['cliente_cpf_cnpj']) ? $_GET['cliente_cpf_cnpj'] : '';
-$input = '<input type="text" id="cliente_cpf_cnpj" name="cliente_cpf_cnpj" minlength="14" maxlength="18" onkeypress="mascaraMutuario(this,cpfCnpj)" onblur="clearTimeout();" value="' . $registro['cliente_cpf_cnpj'] .'">';
+$input = '<input type="text" id="cliente_cpf_cnpj" name="cliente_cpf_cnpj" minlength="14" maxlength="18" onkeypress="mascaraMutuario(this,cpfCnpj)" onblur="clearTimeout();">';
 echo open_tr . open_td. $input . close_td . close_tr;
 
 
 echo open_tr . open_td. open_label . 'TELEFONE' . close_lable . close_td . close_tr; 
-$registro['cliente_telefone'] = isset($_GET['cliente_telefone']) ? $_GET['cliente_telefone'] : '';
-$input = '<input type="text" id="cliente_telefone" name="cliente_telefone" maxlength="15" onkeypress="mask(this, mphone);" value="' . $registro['cliente_telefone'] .'">';
+$input = '<input type="text" id="cliente_telefone" name="cliente_telefone" maxlength="15" onkeypress="mask(this, mphone);">';
 echo open_tr . open_td. $input . close_td . close_tr;
 
 echo open_tr . open_td. open_label . 'E-MAIL' . close_lable . close_td . close_tr; 
-$registro['cliente_email'] = isset($_GET['cliente_email']) ? $_GET['cliente_email'] : '';
-$input = '<input type="text" id="cliente_email" name="cliente_email" maxlength="15" value="' . $registro['cliente_email'] .'">';
+$input = '<input type="text" id="cliente_email" name="cliente_email" maxlength="100">';
 echo open_tr . open_td. $input . close_td . close_tr;
 
 echo open_tr . open_td. open_label . '&nbsp;' . close_lable . close_td . close_tr; 

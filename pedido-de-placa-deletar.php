@@ -10,9 +10,9 @@ $registro['cliente_telefone'] = trim($_GET['cliente_telefone']);
 
 $registro_cpf_cnpj = array ('cliente_cpf_cnpj' =>$registro['cliente_cpf_cnpj']);
 
-$TOTAL_registro = retornar_numero_registros('CLIENTE', $registro_cpf_cnpj);
+$total_registro = retornar_numero_registros('CLIENTE', $registro_cpf_cnpj);
 
-if($TOTAL_registro > 0){
+if($total_registro > 0){
     $RESULTADO_EXCLUIR = excluir('CLIENTE', $registro);
 	
     
