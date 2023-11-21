@@ -27,12 +27,13 @@ $registro = array();
 
 $SQL = '';
 
-$registro['veiculo_placa'] = (isset ($_GET['veiculo_placa'])) ? trim($_GET['veiculo_placa']) : '';
-$registro['veiculo_cpf_cnpj_proprietario'] = (isset ($_GET['veiculo_cpf_cnpj_proprietario'])) ? trim($_GET['veiculo_cpf_cnpj_proprietario']) : '';
-$registro['veiculo_nome_proprietario'] = (isset ($_GET['veiculo_nome_proprietario'])) ? trim($_GET['veiculo_nome_proprietario']) : '';
-$registro['veiculo_marca'] = (isset ($_GET['veiculo_marca'])) ? trim($_GET['veiculo_marca']) : '';
-$registro['veiculo_modelo'] = (isset ($_GET['veiculo_modelo'])) ? trim($_GET['veiculo_modelo']) : '';
+$registro['veiculo_placa'] = (isset ($_POST['veiculo_placa'])) ? trim($_POST['veiculo_placa']) : '';
+$registro['veiculo_cpf_cnpj_proprietario'] = (isset ($_POST['veiculo_cpf_cnpj_proprietario'])) ? trim($_POST['veiculo_cpf_cnpj_proprietario']) : '';
+$registro['veiculo_nome_proprietario'] = (isset ($_POST['veiculo_nome_proprietario'])) ? trim($_POST['veiculo_nome_proprietario']) : '';
+$registro['veiculo_marca'] = (isset ($_POST['veiculo_marca'])) ? trim($_POST['veiculo_marca']) : '';
+$registro['veiculo_modelo'] = (isset ($_POST['veiculo_modelo'])) ? trim($_POST['veiculo_modelo']) : '';
 
+//var_dump($registro);
 
 if($registro['veiculo_placa'] == '') {
   unset($registro['veiculo_placa']);

@@ -1,18 +1,15 @@
 <?php
 session_start();
 
-setlocale(LC_ALL, 'pt_BR.utf8');
-
 require_once 'lib/lib-biblioteca.php';
 
+setlocale(LC_ALL, 'pt_BR.utf8');
+
 echo doctype;
-
 echo open_html;
-
 echo open_head;
-
 require_once 'cabecalho.php';
-
+require_once 'login.js';
 echo close_head;
 
 echo open_body;
@@ -21,58 +18,41 @@ echo open_div_main;
 
 require_once 'menu.php';
 
+$USUARIO = array();
+
+$form_open = '<form action="login-controle.php" method="post">';
+
+echo $form_open;
+
 echo open_table;
 
-$details["Value"] = "1.5";
-$n = number_format($details["Value"], 2, ",", ".");
-$details["Value"] = "1,5";
-$e = number_format(str_replace(",",".",str_replace(".","",$details["Value"])), 2, '.', '');
+echo open_tr . open_th . 'Login'  . close_th . close_tr; 
 
-//$myDateTime = DateTime::createFromFormat('Y-m-d', $dateString);
-//$newDateString = $myDateTime->format('m/d/Y');
+echo open_tr . open_td. open_label . 'Usuario' . close_lable . close_td . close_tr; 
+$USUARIO['usuario_nome'] = isset($_POST['usuario_nome']) ? $_POST['usuario_nome'] : '';
+$input = '<input type="text" id="usuario_nome" name="usuario_nome" value="' . $USUARIO['usuario_nome'] .'">';
+echo open_td . $input . close_td . close_tr;
 
-//$ymd = DateTime::createFromFormat('m-d-Y', '10-16-2003')->format('Y-m-d');
+echo open_tr . open_td. open_label . 'Senha' . close_lable . close_td . close_tr; 
+$USUARIO['usuario_senha'] = isset($_POST['usuario_senha']) ? $_POST['usuario_senha'] : '';
+$input = '<input type="password" id="usuario_senha" name="usuario_senha" value="' . $USUARIO['usuario_senha'] .'">';
+echo open_tr . open_td. $input . close_td . close_tr;
 
+echo open_tr . open_td. open_label . '&nbsp;' . close_lable . close_td . close_tr; 
 
-$var = '20/04/2012';
-$date = str_replace('/', '-', $var);
-//echo date('Y-m-d', strtotime($date));
-//echo '<br>';
-$date = '2020-04-20';
-//echo date('d-m-Y', strtotime($date));
+$submit = '<input type="submit" value="Entrar" onclick=\'return confirmar();\'>';
+echo open_tr . open_td. $submit . close_td . close_tr;
 
-echo open_tr . open_th . 'Web Despachante'  . close_th . close_tr; 
+echo open_tr . open_td. open_label . '&nbsp;' . close_lable . close_td . close_tr; 
 
-//echo open_tr . open_td. open_label . $n . close_lable . close_td . close_tr; 
-//echo open_tr . open_td. open_label . $e . close_lable . close_td . close_tr; 
-
-$msg = '<p>Descubra a solução perfeita para otimizar a gestão da sua empresa! Nosso software inteligente é a ferramenta que você precisa para automatizar processos, gerenciar projetos e equipes, e ter acesso a relatórios precisos e atualizados em tempo real.';
-
-$msg .= ' Com nossa tecnologia de ponta, você pode ter certeza de que está escolhendo a melhor solução para o seu negócio. Nosso software é personalizável e fácil de usar, permitindo que você tenha uma gestão mais eficiente e livre de burocracias.';
-
-$msg .= ' Além disso, com nosso suporte técnico especializado, você nunca estará sozinho. Estamos sempre disponíveis para ajudá-lo com qualquer dúvida ou problema que surgir, garantindo que você tenha um atendimento rápido e eficiente.';
-
-$msg .= ' Não perca mais tempo com processos manuais e desorganizados. Invista em nosso software e veja como sua empresa pode crescer ainda mais. Entre em contato conosco e descubra como podemos ajudá-lo!</p>';
-echo open_tr . open_td. $msg  . close_td . close_tr;
+echo open_tr . open_td. open_label . '<a href="logoff.php"  class="menu_a">Sair</a>' . close_lable . close_td . close_tr; 
 
 echo close_table;
 
-echo '<br>';
-
-$msg = 'Verig &reg;<br><br>';
-
-echo $msg; 
-
-$msg = 'vpmaciel@gmail.com<br>';
-
-echo $msg; 
-
-//$comando = escapeshellcmd('main.py');
-//$cmdResult = shell_exec($comando);
-//echo $cmdResult;
+echo close_form;
 
 echo close_div;
 
 echo close_body;
 	
-echo close_html;    
+echo close_html;
