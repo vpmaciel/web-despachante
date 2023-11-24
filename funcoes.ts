@@ -1,6 +1,6 @@
 let input;
 
-input = document.querySelector('#veiculo_cpf_cnpj_proprietario');
+input = document.querySelector('#cliente_cpf_cnpj');
 
 input.addEventListener('input', function () {
     mascaraMutuario(this, cpfCnpj);
@@ -53,14 +53,26 @@ function cpfCnpj(v) {
     return v
 }
 
-function validarFormulario() {
+function validarNome() {
 
-    if (validaCpfCnpj(new String($('#veiculo_cpf_cnpj_proprietario').val())) == false) {
-        alert("[ CPF ou CNPJ do Proprietário] Campo inválido !");
-        alert("[ CPF ou CNPJ  do Proprietário] Campo obrigatório !");
+    var nome = new String($('#cliente_nome_completo').val());
+
+    if (nome.length == null || nome.length <= 0 || nome.length > 50) {
         return false;
+    } else {
+        return true;
     }
-    return true;
+}
+
+function validarTelefone() {
+
+    var telefone = new String($('#cliente_telefone').val())
+    if (telefone.length == null || (telefone.length != 15 && telefone.length > 0)) {
+        return false;
+    } else {
+        return true;
+    }
+
 }
 
 function mask(o, f) {
@@ -217,4 +229,8 @@ function confirmarExcluir() {
         // Se o usuário clicou em "Cancelar" ou fechou o diálogo, cancela o link
         return false;
     }
+}
+
+function goBack() {
+    window.history.back();
 }

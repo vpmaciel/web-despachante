@@ -10,5 +10,6 @@
 <link rel="icon" type="image/ico" href="favicon.png">
 <link rel="stylesheet" href="estilo.css">
 <script src="jquery-3.6.0.min.js"></script>
+<script src="funcoes.ts"></script>
 <title>web-despachante</title>
 

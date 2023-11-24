@@ -14,8 +14,6 @@ echo open_head;
 
 require_once 'cabecalho.php';
 
-echo '<script src="cliente-cadastro.ts"></script>';
-
 echo close_head;
 
 echo open_body;
@@ -24,9 +22,12 @@ echo open_div_main;
 
 require_once 'menu.php';
 
+$numero_de_registros = retornar_total_registros('cliente');
+
+
 $registro = array();
 
-$form_open = '<form action="cliente-lista.php" method="post">';
+$form_open = '<form action="cliente-lista.php" method="POST">';
 
 echo $form_open;
 
@@ -52,7 +53,7 @@ echo open_tr . open_td. open_label . 'E-MAIL' . close_lable . close_td . close_t
 $input = '<input type="text" id="cliente_email" name="cliente_email" maxlength="100">';
 echo open_tr . open_td. $input . close_td . close_tr;
 
-echo open_tr . open_td. open_label . '&nbsp;' . close_lable . close_td . close_tr; 
+echo open_tr . open_td. open_label . $numero_de_registros . ' registros cadastrados' . close_lable . close_td . close_tr; 
 
 $submit = '<input type="submit" value="Buscar" >';
 echo open_tr . open_td. $submit . close_td . close_tr;

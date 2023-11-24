@@ -30,8 +30,11 @@ if (isset($_GET['msg'])) {
     echo '<br><br><span class="erro">' . $_GET['msg']. '</span>';
 }
 
-$msg = '<script>setTimeout(function() { window.history.back(); }, 180000);</script>';
+$msg = '<script> function goBack() {window.history.back();}</script>';
 echo $msg;
+
+echo '<br><br><a href="#" onclick="goBack();">Voltar à Página Anterior</a>';
+
 
 echo close_div;
 

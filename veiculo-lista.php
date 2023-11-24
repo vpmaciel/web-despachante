@@ -106,13 +106,20 @@ while($linha = $stmt->fetch(PDO::FETCH_ASSOC))
 }
 echo close_table;
 
-echo close_table;
-
-
 // display the links to the pages
 for ($PAGE=1;$PAGE<=$number_of_pages;$PAGE++) {
   echo '<a href="veiculo-lista.php?page=' . $PAGE . '">|' . $PAGE . '|</a>';
 }
+
+if ($number_of_results == 0) {
+  $msg = '<script> function goBack() {window.history.back();}</script>';
+  echo $msg;
+
+  echo '<br>Nenhum registro encontrado !';
+  
+  echo '<br><br><a href="#" onclick="goBack();">Voltar à página anterior</a>';
+}
+
 echo close_div;
 
 echo close_body;

@@ -108,7 +108,7 @@ echo open_tr . open_td. $input . close_td . close_tr;
 
 echo open_tr . open_td. open_label . 'CPF | CNPJ do proprietário' . close_lable . close_td . close_tr; 
 
-$input = '<input type="text" id="pedido_de_placa_cpf_cnpj_proprietario" name="pedido_de_placa_cpf_cnpj_proprietario" maxlength="15" value="' . $registro['pedido_de_placa_cpf_cnpj_proprietario'] .'">';
+$input = '<input type="text" id="pedido_de_placa_cpf_cnpj_proprietario" name="pedido_de_placa_cpf_cnpj_proprietario" minlength="14" maxlength="18" onkeypress="mascaraMutuario(this,cpfCnpj)" onblur="clearTimeout();"  value="' . $registro['pedido_de_placa_cpf_cnpj_proprietario'] .'">';
 
 echo open_tr . open_td. $input . close_td . close_tr;
 

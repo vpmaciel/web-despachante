@@ -97,13 +97,22 @@ while($linha = $stmt->fetch(PDO::FETCH_ASSOC))
 }
 echo close_table;
 
-echo close_table;
-
 
 // display the links to the pages
 for ($page=1;$page<=$number_of_pages;$page++) {
   echo '<a href="cliente-lista.php?page=' . $page . '">|' . $page . '|</a>';
 }
+
+if ($number_of_results == 0) {
+  $msg = '<script> function goBack() {window.history.back();}</script>';
+  echo $msg;
+
+  echo '<br>Nenhum registro encontrado !';
+  
+  echo '<br><br><a href="#" onclick="goBack();">Voltar à página anterior</a>';
+}
+
+
 echo close_div;
 
 echo close_body;

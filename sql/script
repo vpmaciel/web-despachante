@@ -85,7 +85,7 @@ CREATE TABLE `servico` (
 
 CREATE TABLE `usuario` (
   `USUARIO_ID` int(11) NOT NULL,
-  `usuario_nome` varchar(20) NOT NULL,
+  `usuario_email` varchar(20) NOT NULL,
   `usuario_senha` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -93,7 +93,7 @@ CREATE TABLE `usuario` (
 -- Extraindo dados da tabela `usuario`
 --
 
-INSERT INTO `usuario` (`USUARIO_ID`, `usuario_nome`, `usuario_senha`) VALUES
+INSERT INTO `usuario` (`USUARIO_ID`, `usuario_email`, `usuario_senha`) VALUES
 (1, 'OPERADOR', 'OPERADOR');
 
 -- --------------------------------------------------------
@@ -139,7 +139,7 @@ ALTER TABLE `servico`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`USUARIO_ID`),
-  ADD UNIQUE KEY `INDEX_usuario_nome` (`usuario_nome`);
+  ADD UNIQUE KEY `INDEX_usuario_email` (`usuario_email`);
 
 --
 -- Índices para tabela `veiculo`

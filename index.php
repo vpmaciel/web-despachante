@@ -9,7 +9,7 @@ echo doctype;
 echo open_html;
 echo open_head;
 require_once 'cabecalho.php';
-require_once 'login.js';
+
 echo close_head;
 
 echo open_body;
@@ -28,9 +28,9 @@ echo open_table;
 
 echo open_tr . open_th . 'Login'  . close_th . close_tr; 
 
-echo open_tr . open_td. open_label . 'Usuario' . close_lable . close_td . close_tr; 
-$USUARIO['usuario_nome'] = isset($_POST['usuario_nome']) ? $_POST['usuario_nome'] : '';
-$input = '<input type="text" id="usuario_nome" name="usuario_nome" value="' . $USUARIO['usuario_nome'] .'">';
+echo open_tr . open_td. open_label . 'E-mail' . close_lable . close_td . close_tr; 
+$USUARIO['usuario_email'] = isset($_POST['usuario_email']) ? $_POST['usuario_email'] : '';
+$input = '<input type="text" id="usuario_email" name="usuario_email" value="' . $USUARIO['usuario_email'] .'">';
 echo open_td . $input . close_td . close_tr;
 
 echo open_tr . open_td. open_label . 'Senha' . close_lable . close_td . close_tr; 

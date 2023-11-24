@@ -14,8 +14,6 @@ echo open_head;
 
 require_once 'cabecalho.php';
 
-echo '<script src="cliente-cadastro.ts"></script>';
-
 echo close_head;
 
 echo open_body;
