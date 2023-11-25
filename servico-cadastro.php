@@ -106,9 +106,11 @@ echo open_tr . open_td. $input . close_td . close_tr;
 
 echo open_tr . open_td. open_label . 'CPF | CNPJ do cliente' . close_lable . close_td . close_tr; 
 
-$input = '<input type="text" id="servico_cpf_cnpj_cliente" name="servico_cpf_cnpj_cliente" minlength="14" maxlength="18" onkeypress="mascaraMutuario(this,cpfCnpj)" onblur="clearTimeout();" value="' . $registro['servico_cpf_cnpj_cliente'] .'">';
+$input = '<input type="text" id="servico_cpf_cnpj_cliente" name="servico_cpf_cnpj_cliente" minlength="14" maxlength="18" onkeypress="mascaraMutuario(this,cpfCnpj)" onblur="clearTimeout();"  value="' . $registro['servico_cpf_cnpj_cliente'] .'">';
 
 echo open_tr . open_td. $input . close_td . close_tr;
+
+echo open_tr . open_td. open_label . '<label id="resultado_servico_cpf_cnpj_cliente"></label>' . close_lable . close_td . close_tr; 
 
 echo open_tr . open_td. open_label . 'Nome do cliente' . close_lable . close_td . close_tr; 
 
@@ -137,3 +139,63 @@ echo close_div;
 echo close_body;
 	
 echo close_html;
+
+?>
+
+<script>
+    $(document).ready(function() {
+        var delayTimer;
+        
+        $('#servico_cpf_cnpj_cliente').on('input', function() {
+            // Limpa o temporizador anterior, se houver
+            clearTimeout(delayTimer);
+
+            // Define um novo temporizador com atraso de 300 milissegundos
+            delayTimer = setTimeout(function() {
+                // Obtém o valor do campo de entrada
+                var servico_cpf_cnpj_cliente = $('#servico_cpf_cnpj_cliente').val();
+
+                // Faz uma requisição Ajax para obter os dados do PHP
+                $.ajax({
+                    url: 'cliente-consulta.php',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: { servico_cpf_cnpj_cliente: servico_cpf_cnpj_cliente },
+                    success: function(data) {
+                        // Exibe o resultado na label
+                        if (data.length > 0) {
+                            $('#resultado_servico_cpf_cnpj_cliente').text('Cliente encontrado: ' + data[0].cliente_nome_completo);
+                        } else {
+                            $('#resultado_servico_cpf_cnpj_cliente').text('Nenhum cliente encontrado');
+                        }
+                    },
+                    error: function(error) {
+                        console.error('Erro na requisição Ajax:', error);
+                    }
+                });
+            }, 300); // Atraso de 300 milissegundos
+        });
+    });
+</script>
+
+<script>
+        $(document).ready(function() {
+            var delayTimer;
+
+            // Função para validar o tamanho do campo
+            function validarTamanho() {
+                var campo = $('#servico_cpf_cnpj_cliente').val();
+                var tamanhoValido = campo.length === 14 || campo.length === 18;
+
+                if (!tamanhoValido) {
+                    alert("CPF | CNPJ do cliente inválido");                    
+                    campo.focus(); // Coloca o foco de volta no campo
+                }
+            }
+
+            // Adiciona o evento blur para validar o tamanho quando o campo perde o foco
+            $('#servico_cpf_cnpj_cliente').on('blur', function() {
+                validarTamanho();
+            });
+        });
+    </script>
