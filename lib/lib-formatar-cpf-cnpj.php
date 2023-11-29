@@ -9,9 +9,12 @@ function formatarCpfCnpj($valor) {
         return formatarCpf($cleanValue);
     } elseif (strlen($cleanValue) === 14) {
         return formatarCnpj($cleanValue);
-    } else {
-        // Retorna o valor original se não for um CPF ou CNPJ válido
-        return $valor;
+    } else {        
+        if(strlen($cleanValue) <= 11) {
+            return "000.000.000-00";
+        }else {
+            return "00.000.000/0000-00";
+        }     
     }
 }
 
