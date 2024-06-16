@@ -1,0 +1,40 @@
+<?php
+
+
+require_once 'lib/lib-sessao.php';
+require_once 'lib/lib-biblioteca.php';
+
+$registro['veiculo_id'] = trim($_POST['veiculo_id']);
+$registro['veiculo_placa'] = trim($_POST['veiculo_placa']);
+$registro['veiculo_cpf_cnpj_proprietario'] = trim($_POST['veiculo_cpf_cnpj_proprietario']);
+$registro['veiculo_nome_proprietario'] = trim($_POST['veiculo_nome_proprietario']);
+$registro['veiculo_marca'] = trim($_POST['veiculo_marca']);
+$registro['veiculo_modelo'] = trim($_POST['veiculo_modelo']);
+
+$condicao = array ('veiculo_id' =>trim($_POST['veiculo_id']));
+
+$total_registro = retornar_numero_registros('veiculo', $condicao);
+//exit($total_registro);
+if($total_registro == 0){
+	$resultado_inserir = inserir('veiculo', $registro);
+    
+    if ($resultado_inserir == true) {
+		header('location:sucesso.php');
+		exit;
+	} else {
+		header('location:erro.php');
+		exit;
+	} 
+}
+else {	
+	$resultado_atualizar = atualizar('veiculo', $registro, $condicao);
+	
+	if ($resultado_atualizar == true) {
+		
+		header('location:sucesso.php');
+		exit;
+	} else {
+		header('location:erro.php');
+		exit;
+	}   
+}

@@ -1,0 +1,235 @@
+/* Reset básico para todos os elementos */
+* {
+    box-sizing: border-box;
+    border-radius: 0px;
+    text-align: center;
+    font-weight: normal;
+    font-size: 18px;
+}
+
+/* Estilização de títulos */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-align: center;
+    color: #1a1a1a;
+    /* Preto */
+    font-size: 24px;
+}
+
+/* Estilização de inputs, selects e textareas */
+input,
+select,
+textarea,
+input:focus,
+select:focus,
+textarea:focus {
+    color: #333;
+    /* Cinza escuro */
+    outline: none;
+    box-shadow: none;
+    border: 1px solid #fff;
+    /* Cinza claro */
+    font-size: 18px;
+    padding: 5px;
+    width: 100%;
+    resize: none;
+    text-align: left;
+}
+
+/* Estilização de botões */
+.botao,
+input[type="button"],
+input[type="submit"] {
+    outline: none;
+    box-shadow: none;
+    border: 1px solid #fff;
+    /* Cinza claro */
+    font-size: 18px;
+    resize: none;
+    padding: 5px;
+    width: 100px;
+    color: #fff;
+    /* Branco */
+    background-color: #45aaf2;
+    /* Azul */
+    text-align: center;
+}
+
+/* Parágrafos justificados com recuo de 2em */
+p {
+    text-align: justify;
+    text-indent: 2em;
+}
+
+/* Estilização de tabelas */
+table {
+    table-layout: fixed;
+    width: 700px;
+    border-collapse: collapse;
+    border: none;
+}
+
+th,
+td {
+    padding: 5px;
+    border: none;
+    text-align: left;
+}
+
+th {
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Estilização da estrutura HTML e corpo da página */
+html,
+body {
+    min-height: 100%;
+    width: 100%;
+    min-width: 1000px;
+    font-family: Tahoma, Verdana, Segoe, sans-serif;
+    color: #333;
+    /* Cinza escuro */
+    font-size: 18px;
+    margin: auto 0;
+    background-color: #f8f9fa;
+    /* Cinza claro */
+}
+
+/* Estilização de mensagens de sucesso e erro */
+.sucesso {
+    text-align: center;
+    color: #28a745;
+    /* Verde */
+}
+
+.erro {
+    color: #dc3545;
+    /* Vermelho */
+    text-align: center;
+    margin: 0 auto;
+}
+
+/* Estilização de inputs de arquivo */
+input[type="file"] {
+    border: none;
+}
+
+.file::-webkit-file-upload-button {
+    outline: none;
+    box-shadow: none;
+    border: 1px solid #fff;
+    font-size: 18px;
+    resize: none;
+    padding: 5px;
+    width: 150px;
+}
+
+/* Estilização de labels e spans */
+label,
+span {
+    color: #333;
+    /* Cinza escuro */
+    text-align: left;
+}
+
+span {
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Estilização do menu */
+.menu {
+    width: 100%;
+    height: 35px;
+    background: linear-gradient(90deg, #45aaf2, #3498db);
+    /* Gradiente azul */
+    padding: 10px 20px;
+    /* Espaçamento interno */
+    margin: 0;
+    /* Removido o valor 'x' desnecessário */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #000;
+    /* Remove a borda */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Sombra suave */
+    border-radius: 0px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* Fonte mais moderna */
+}
+
+
+/* Estilização dos links no menu */
+.menu .menu_a {
+    margin: 0 12.5px;
+    /* Espaço de 25px entre os itens (12.5px de cada lado) */
+    color: #fff;
+    /* Branco */
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
+    /* Transição suave para mudança de cor */
+}
+
+/* Efeito de hover nos links */
+.menu .menu_a:hover {
+    color: #f1c40f;
+    /* Cor amarela ao passar o mouse */
+}
+
+/* Estilização de links */
+a:link,
+a:visited,
+a:active {
+    text-decoration: none;
+    font-weight: initial;
+    color: #2980b9;
+    /* Azul */
+    font-size: 18px;
+}
+
+/* Efeito de hover nos links */
+a:hover {
+    color: #0056b3;
+    /* Azul mais escuro */
+    text-decoration: none;
+}
+
+#cookieConsent {
+    color: #333;
+    /* Branco */
+    text-align: center;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+#cookieConsent button {
+    margin: 0px;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#acceptCookies {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 0px; 
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+#declineCookies {
+    background-color: #f44336;
+    color: white; 
+    border: none; 
+    padding: 0px; 
+    cursor: pointer; 
+    margin: 0 5px;
+}
