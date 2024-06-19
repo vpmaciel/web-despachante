@@ -13,7 +13,7 @@ $stmt->execute();
 $pdf->SetFillColor(255, 255, 255); // Cor de fundo da célula
 $pdf->SetTextColor(0); // Cor do texto
 
-$pdf->Cell(0, 10, 'Pedido de Placa', 1, 1, 'C', true); // Cabeçalho da tabela
+$pdf->Cell(0, 10, 'Pedido de Placa', 0, 1, 'C');
 
 while ($registro = $stmt->fetch(PDO::FETCH_ASSOC)) {
     $pdf->Ln();
