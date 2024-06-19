@@ -8,6 +8,4 @@ echo  '<a href="servico-cadastro.php" class="menu_a">Serviço</a> ';
 echo  '<a href="veiculo-cadastro.php" class="menu_a">Veículo</a>'; 
 echo '</div>';
 
-require_once 'rodape.php';
-
-echo '<br>';
+require_once 'cookies.php';

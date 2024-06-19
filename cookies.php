@@ -3,6 +3,7 @@
     <button id="acceptCookies">Sim</button>
     <button id="declineCookies">Não</button>
 </div>
+
 <script>
 document.addEventListener('DOMContentLoaded', function () {
     var cookieConsent = document.getElementById('cookieConsent');
@@ -13,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var expires = "";
         if (days) {
             var date = new Date();
-            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000)); // Corrigido para dias
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
             expires = "; expires=" + date.toUTCString();
         }
         document.cookie = name + "=" + (value || "") + expires + "; path=/";
@@ -38,7 +39,6 @@ document.addEventListener('DOMContentLoaded', function () {
     acceptCookies.addEventListener('click', function () {
         setCookie('cookieConsent', 'accepted', 365); // Define o cookie por 365 dias
         cookieConsent.style.display = 'none';
-
     });
 
     declineCookies.addEventListener('click', function () {
