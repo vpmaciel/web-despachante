@@ -21,17 +21,15 @@ echo open_div_main;
 
 require_once 'menu.php';
 
-echo open_table;
+ob_start();
+include 'cliente-grafico.php';
+$msg = ob_get_clean();
 
-$msg = require 'cliente-grafico.php';
-echo open_tr . open_td. $msg  . close_td . close_tr;
-
-echo close_table;
-
-echo close_form;
+echo $msg;
 
 echo close_div;
 
 echo close_body;
 	
 echo close_html;    
+

@@ -6,7 +6,7 @@ echo  '<a href="cliente-cadastro.php" class="menu_a">Cliente</a> ';
 echo  '<a href="pedido-de-placa-cadastro.php" class="menu_a">Pedido de Placa</a> '; 
 echo  '<a href="servico-cadastro.php" class="menu_a">Serviço</a> '; 
 echo  '<a href="veiculo-cadastro.php" class="menu_a">Veículo</a>'; 
-echo '</div><br>';
+echo '</div>';
 
 require_once 'rodape.php';
 

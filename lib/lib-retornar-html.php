@@ -10,6 +10,7 @@ const open_div = '<div>';
 const close_div = '</div>';
 const open_div_main = '<div>';
 const open_td = '<td>';
+const open_td2 = '<td align="center">';
 const close_td = '</td>';
 const open_tr = '<tr>';
 const close_tr = '</tr>';

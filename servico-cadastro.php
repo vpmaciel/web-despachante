@@ -69,11 +69,7 @@ echo open_table;
 
 echo open_tr . open_th . 'Serviço'  . close_th . close_tr; 
 
-$LINK = '<a href="servico-pesquisa.php">Pesquisar</a>';
-
-echo open_td . $LINK . close_td . close_tr;
-
-$LINK = '<a href="servico-dashboard.php">Dashboard</a>';
+$LINK = '<div class="botoes"><a href="servico-pesquisa.php">Pesquisar</a></div><div class="botoes"><a href="servico-dashboard.php">Dashboard</a></div>';
 
 echo open_td . $LINK . close_td . close_tr;
 

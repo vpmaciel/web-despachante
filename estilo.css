@@ -5,6 +5,7 @@
     text-align: center;
     font-weight: normal;
     font-size: 18px;
+    font-weight: 400;
 }
 
 /* Estilização de títulos */
@@ -31,7 +32,7 @@ textarea:focus {
     /* Cinza escuro */
     outline: none;
     box-shadow: none;
-    border: 1px solid #fff;
+    border: none;
     /* Cinza claro */
     font-size: 18px;
     padding: 5px;
@@ -46,12 +47,13 @@ input[type="button"],
 input[type="submit"] {
     outline: none;
     box-shadow: none;
-    border: 1px solid #fff;
+    border: none;
     /* Cinza claro */
     font-size: 18px;
     resize: none;
     padding: 5px;
-    width: 100px;
+    max-width: 150px;
+    width: 150px;
     color: #fff;
     /* Branco */
     background-color: #45aaf2;
@@ -155,7 +157,7 @@ span {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #000;
+    border: none;
     /* Remove a borda */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     /* Sombra suave */
@@ -191,7 +193,7 @@ a:active {
     font-weight: initial;
     color: #2980b9;
     /* Azul */
-    font-size: 18px;
+    font-size: 18px;    
 }
 
 /* Efeito de hover nos links */
@@ -224,6 +226,35 @@ a:hover {
     cursor: pointer;
     margin: 0 5px;
 }
+
+.botoes {
+    background-color: #45aaf2;
+    color: white;
+    border: none;    
+    font-size: 18px;
+    resize: none;
+    padding: 0px;
+    max-width: 150px;
+    width: 150px;
+    border: none;
+    cursor: pointer;
+    margin: 0 5px;
+    text-decoration: none; /* Remover decoração de texto para links */
+    display: inline-block; /* Garantir que os elementos ocupem apenas o espaço necessário */
+    text-align: center; /* Centralizar o texto */
+}
+
+.botoes a {
+    color: white; /* Garantir que o texto dos links seja branco */
+    text-decoration: none; /* Remover decoração de texto para links */
+    display: block; /* Garantir que os links ocupem todo o espaço do botão */
+    padding: 5px 10px; /* Ajustar padding para alinhar com o conteúdo do botão */
+}
+
+.botoes a:hover {
+    color: #f1c40f;
+}
+    
 
 #declineCookies {
     background-color: #f44336;

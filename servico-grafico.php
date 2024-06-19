@@ -1,6 +1,4 @@
-
 <?php
-
 error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED);
 
 require_once 'lib/lib-biblioteca.php';
@@ -12,7 +10,10 @@ $grafico->setImageBorderType('plain');
 $grafico->setPlotType('bars');
 $grafico->setDataType('text-data');
 $grafico->setDataValues($dados);
-$grafico->setTitle(converterParaUTF_8("Serviços"));  
+
+// Certifique-se de que o título está em UTF-8
+$titulo = "Servi\u00e7os";
+$grafico->SetTitle("Servi\xe7os");
 
 # Turn off X tick labels and ticks because they don't apply here:
 $grafico->setXTickLabelPos('none');
@@ -34,9 +35,9 @@ $grafico->setYTickPos('none');
 # Note that this automatically calls setYLabelType('data').
 $grafico->setPrecisionY(0);
 
-#Exibimos o gráfico
-//Draw it
+# Exibimos o gráfico
 $grafico->setIsInline(true);
 $grafico->setOutputFile("servico.png");
-$grafico->DrawGraph(400,400);
+$grafico->DrawGraph();
 echo '<img src="servico.png" width="400px" height="400px">';
+?>

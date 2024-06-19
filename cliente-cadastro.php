@@ -61,10 +61,7 @@ echo open_table;
 
 echo open_tr . open_th . 'Cliente'  . close_th . close_tr; 
 
-$LINK = '<a href="cliente-pesquisa.php">Pesquisar</a>';
-
-echo open_td . $LINK . close_td . close_tr;
-$LINK = '<a href="cliente-dashboard.php">Dashboard</a>';
+$LINK = '<div class="botoes"><a href="cliente-pesquisa.php">Pesquisar</a></div><div class="botoes"><a href="cliente-dashboard.php">Dashboard</a></div>';
 
 echo open_td . $LINK . close_td . close_tr;
 

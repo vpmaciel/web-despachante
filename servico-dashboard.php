@@ -1,6 +1,5 @@
 <?php
-
-
+header('Content-Type: text/html; charset=utf-8');
 setlocale(LC_ALL, 'pt_BR.utf8');
 
 require_once 'lib/lib-biblioteca.php';
@@ -21,14 +20,11 @@ echo open_div_main;
 
 require_once 'menu.php';
 
-echo open_table;
+ob_start();
+include 'servico-grafico.php';
+$msg = ob_get_clean();
 
-$msg = require 'servico-grafico.php';
-echo open_tr . open_td. $msg  . close_td . close_tr;
-
-echo close_table;
-
-echo close_form;
+echo $msg;
 
 echo close_div;
 
