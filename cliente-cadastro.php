@@ -61,9 +61,9 @@ echo open_table;
 
 echo open_tr . open_th . 'Cliente'  . close_th . close_tr; 
 
-$LINK = '<div class="botoes"><a href="cliente-pesquisa.php">Pesquisar</a></div><div class="botoes"><a href="cliente-dashboard.php">Dashboard</a></div>';
+require_once 'cliente-menu.php';
 
-echo open_td . $LINK . close_td . close_tr;
+echo open_tr . open_td . $LINK . close_td . close_tr;
 
 echo open_tr . open_td. open_label . 'Nome' . close_lable . close_td . close_tr; 
 

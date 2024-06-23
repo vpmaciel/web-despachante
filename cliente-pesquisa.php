@@ -35,21 +35,24 @@ echo open_table;
 
 echo open_tr . open_th . 'Cliente'  . close_th . close_tr; 
 
-echo open_tr . open_td. open_label . 'NOME' . close_lable . close_td . close_tr; 
+require_once 'cliente-menu.php';
+
+echo open_tr .open_td . $LINK . close_td . close_tr;
+
+echo open_tr . open_td. open_label . 'Nome' . close_lable . close_td . close_tr; 
 
 $input = '<input type="text" id="cliente_nome_completo" name="cliente_nome_completo" maxlength="50">';
-echo open_td . $input . close_td . close_tr;
+echo open_tr .open_td . $input . close_td . close_tr;
 
 echo open_tr . open_td. open_label . 'CPF | CNPJ' . close_lable . close_td . close_tr; 
 $input = '<input type="text" id="cliente_cpf_cnpj" name="cliente_cpf_cnpj" minlength="14" maxlength="18" onkeypress="mascaraMutuario(this,cpfCnpj)" onblur="clearTimeout();">';
 echo open_tr . open_td. $input . close_td . close_tr;
 
-
-echo open_tr . open_td. open_label . 'TELEFONE' . close_lable . close_td . close_tr; 
+echo open_tr . open_td. open_label . 'Telefone' . close_lable . close_td . close_tr; 
 $input = '<input type="text" id="cliente_telefone" name="cliente_telefone" maxlength="15" onkeypress="mask(this, mphone);">';
 echo open_tr . open_td. $input . close_td . close_tr;
 
-echo open_tr . open_td. open_label . 'E-MAIL' . close_lable . close_td . close_tr; 
+echo open_tr . open_td. open_label . 'E-Mail' . close_lable . close_td . close_tr; 
 $input = '<input type="text" id="cliente_email" name="cliente_email" maxlength="100">';
 echo open_tr . open_td. $input . close_td . close_tr;
 

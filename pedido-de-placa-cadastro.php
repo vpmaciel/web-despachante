@@ -70,7 +70,7 @@ echo open_table;
 
 echo open_tr . open_th . 'Pedido de Placa'  . close_th . close_tr; 
 
-$LINK = '<div class="botoes"><a href="pedido-de-placa-pesquisa.php">Pesquisar</a></div><div class="botoes"><a href="pedido-de-placa-dashboard.php">Dashboard</a></div><div class="botoes"><a href="pedido-de-placa-relatorio.php" target="_blank">Relatório</a></div>';
+require_once 'pedido-de-placa-menu.php';
 
 echo open_td . $LINK . close_td . close_tr;
 

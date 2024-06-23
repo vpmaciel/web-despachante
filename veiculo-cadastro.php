@@ -65,7 +65,7 @@ echo open_table;
 
 echo open_tr . open_th . 'Veículo'  . close_th . close_tr; 
 
-$LINK = '<div class="botoes"><a href="veiculo-pesquisa.php">Pesquisar</a></div><div class="botoes"><a href="veiculo-dashboard.php">Dashboard</a></div>';
+require_once 'veiculo-menu.php';
 
 echo open_td . $LINK . close_td . close_tr;
 

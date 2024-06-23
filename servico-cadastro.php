@@ -69,9 +69,9 @@ echo open_table;
 
 echo open_tr . open_th . 'Serviço'  . close_th . close_tr; 
 
-$LINK = '<div class="botoes"><a href="servico-pesquisa.php">Pesquisar</a></div><div class="botoes"><a href="servico-dashboard.php">Dashboard</a></div>';
+require_once 'servico-menu.php';
 
-echo open_td . $LINK . close_td . close_tr;
+echo open_tr . open_td . $LINK . close_td . close_tr;
 
 $input = '<input type="hidden" id="servico_id" name="servico_id" value="' . $registro['servico_id'] .'">';
 
@@ -80,7 +80,6 @@ echo open_tr . open_td. $input . close_td . close_tr;
 $input = '<input type="hidden" id="servico_data" name="servico_data" value="' . $registro['servico_data'] .'">';
 
 echo open_tr . open_td. $input . close_td . close_tr;
-
 
 echo open_tr . open_td. open_label . 'Placa do veículo' . close_lable . close_td . close_tr; 
 
