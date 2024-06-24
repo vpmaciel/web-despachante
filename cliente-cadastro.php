@@ -63,9 +63,7 @@ require_once 'cliente-formulario.php';
 
 $submit = '<input type="submit" value="Salvar">';
 
-echo open_tr . open_td. $submit . close_td . close_tr;
-
-echo close_table;
+echo $submit;
 
 echo close_form;
 

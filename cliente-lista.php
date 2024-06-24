@@ -76,6 +76,10 @@ $SQL = paginar('cliente', $registro, $this_page_first_result, $results_per_page)
 $stmt = $pdo->prepare($SQL);
 $stmt->execute();
 
+$form_open = '<form action="#" method="POST">';
+
+echo $form_open;
+
 echo open_table;
 
 echo open_tr . open_th . 'Cliente'  . close_th . close_tr; 
@@ -97,6 +101,7 @@ while($linha = $stmt->fetch(PDO::FETCH_ASSOC))
 }
 echo close_table;
 
+echo close_form;
 
 // display the links to the pages
 for ($page=1;$page<=$number_of_pages;$page++) {

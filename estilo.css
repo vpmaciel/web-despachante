@@ -17,9 +17,8 @@ h4,
 h5,
 h6 {
     text-align: center;
-    color: #1a1a1a;
-    /* Preto */
-    font-size: 24px;    
+    color: #333;    
+    font-size: 18px;    
 }
 
 /* Estilização de inputs, selects e textareas */
@@ -33,7 +32,7 @@ textarea:focus {
     /* Cinza escuro */
     outline: none;
     box-shadow: none;
-    border: none;
+    border: 1px solid #ccc;
     /* Cinza claro */
     font-size: 18px;
     padding: 5px;
@@ -75,7 +74,7 @@ p {
 /* Estilização de tabelas */
 table {
     table-layout: fixed;
-    width: 700px;
+    width: 1000px;
     border-collapse: collapse;
     border: none;
 }
@@ -103,7 +102,7 @@ body {
     /* Cinza escuro */
     font-size: 18px;
     margin: auto 0;
-    background-color: #f8f9fa;
+    background-color: #fff;
     /* Cinza claro */
 }
 
@@ -129,7 +128,7 @@ input[type="file"] {
 .file::-webkit-file-upload-button {
     outline: none;
     box-shadow: none;
-    border: 1px solid #fff;
+    border: 1px solid #45aaf2;
     font-size: 18px;
     resize: none;
     padding: 5px;

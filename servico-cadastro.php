@@ -65,15 +65,11 @@ $form_open = '<form action="servico-salvar.php" method="POST">';
 
 echo $form_open;
 
-echo open_table;
-
 require_once 'servico-formulario.php';
 
 $submit = '<input type="submit" value="Salvar">';
 
 echo open_tr . open_td. $submit . close_td . close_tr;
-
-echo close_table;
 
 echo close_form;
 

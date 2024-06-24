@@ -95,7 +95,7 @@ echo open_tr . open_td. $input . close_td . close_tr;
 
 echo open_tr . open_td. open_label . $numero_de_registros . ' registros cadastrados' . close_lable . close_td . close_tr; 
 
-$submit = '<input type="submit" value="Salvar">';
+$submit = '<input type="submit" value="Buscar">';
 
 echo open_tr . open_td. $submit . close_td . close_tr;
 

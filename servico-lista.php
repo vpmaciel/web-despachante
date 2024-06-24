@@ -83,6 +83,10 @@ $SQL = paginar('servico', $registro, $this_page_first_result, $results_per_page)
 $stmt = $pdo->prepare($SQL);
 $stmt->execute();
 
+$form_open = '<form action="#" method="POST">';
+
+echo $form_open;
+
 echo open_table;
 
 echo open_tr . open_th . 'Serviço'  . close_th . close_tr; 
@@ -106,8 +110,10 @@ while($linha = $stmt->fetch(PDO::FETCH_ASSOC))
         echo '<a href="servico-deletar.php?' . $string. ' " onclick="return confirmarExcluir();">Excluir</a>' . close_td . close_tr; 
     echo open_tr . open_td . open_label . '&nbsp;' . close_lable . close_td . close_tr; 
 }
+
 echo close_table;
 
+echo close_form;
 
 // display the links to the pages
 for ($page=1;$page<=$number_of_pages;$page++) {
