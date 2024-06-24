@@ -20,7 +20,7 @@ require_once 'menu.php';
 echo open_table;
 
 $input = '<input type="hidden">';
-echo open_tr . open_td. $input . close_td . close_tr;
+echo open_tr . open_td . $input . close_td . close_tr;
 
 echo close_table;
 

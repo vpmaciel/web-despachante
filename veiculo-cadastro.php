@@ -67,7 +67,7 @@ require_once 'veiculo-formulario.php';
 
 $submit = '<input type="submit" value="Salvar" onclick=\'return validarFormulario();\'>';
 
-echo open_tr . open_td. $submit . close_td . close_tr;
+echo open_tr . open_td . $submit . close_td . close_tr;
 
 echo close_table;
 
