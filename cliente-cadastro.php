@@ -57,13 +57,7 @@ $form_open = '<form action="cliente-salvar.php" method="POST">';
 
 echo $form_open;
 
-echo open_table;
-
 require_once 'cliente-formulario.php';
-
-$submit = '<input type="submit" value="Salvar">';
-
-echo $submit;
 
 echo close_form;
 

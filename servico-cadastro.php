@@ -67,9 +67,7 @@ echo $form_open;
 
 require_once 'servico-formulario.php';
 
-$submit = '<input type="submit" value="Salvar">';
-
-echo open_tr . open_td . $submit . close_td . close_tr;
+echo close_div;
 
 echo close_form;
 

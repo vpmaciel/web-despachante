@@ -74,7 +74,7 @@ p {
 /* Estilização de tabelas */
 table {
     table-layout: fixed;
-    width: 1000px;
+    width: 800px;
     border-collapse: collapse;
     border: none;
 }
@@ -251,7 +251,7 @@ a:hover {
     width: 150px;
     border: none;
     cursor: pointer;
-    margin: 0 5px;
+    margin-right: 5px;    
     text-decoration: none; /* Remover decoração de texto para links */
     display: inline-block; /* Garantir que os elementos ocupem apenas o espaço necessário */
     text-align: center; /* Centralizar o texto */

@@ -66,15 +66,7 @@ $form_open = '<form action="pedido-de-placa-salvar.php" method="post">';
 
 echo $form_open;
 
-echo open_table;
-
 require_once 'pedido-de-placa-formulario.php';
-
-$submit = '<input type="submit" value="Salvar">';
-
-echo open_tr . open_td . $submit . close_td . close_tr;
-
-echo close_table;
 
 echo close_form;
 

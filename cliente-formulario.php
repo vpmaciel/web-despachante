@@ -1,5 +1,4 @@
 <?php
-
 if (!isset($registro['cliente_id'])) {
     $registro['cliente_id'] = '';
 }
@@ -30,6 +29,10 @@ echo $input;
 
 echo open_table;
 
+echo open_tr . open_td_2 . open_label . '' . close_lable . close_td; 
+
+echo open_td . $link . close_td . close_tr;
+
 echo open_tr . open_td_2 . open_label . 'Nome' . close_lable . close_td; 
 
 $input = '<input type="text" id="cliente_nome_completo" name="cliente_nome_completo" maxlength="50" value="' . $registro['cliente_nome_completo'] .'">';
@@ -54,12 +57,17 @@ $input = '<input type="text" id="cliente_email" name="cliente_email" maxlength="
 
 echo open_td . $input . close_td . close_tr;
 
+echo open_tr . open_td_2 . open_label . '' . close_lable . close_td; 
+
+echo open_td . $numero_de_registros . ' registros cadastrados'  . close_td . close_tr;
+
+echo open_tr . open_td_2 . open_label . '' . close_lable . close_td; 
+
+$submit = '<input type="submit" value="Salvar">';
+
+echo open_td . $submit . close_td . close_tr;
+
 echo close_table;
-
-echo '<br>';
-
-echo $numero_de_registros . ' registros cadastrados'; 
-
 echo '<br>';
 
 echo '<br>';

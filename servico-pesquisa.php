@@ -45,7 +45,7 @@ echo open_tr . open_th . 'Serviço'  . close_th . close_tr;
 
 require_once 'servico-menu.php';
 
-echo open_tr . open_td . $LINK . close_td . close_tr;
+echo open_tr . open_td . $link . close_td . close_tr;
 
 $input = '<input type="hidden" id="servico_id" name="servico_id" value="' . $registro['servico_id'] .'">';
 

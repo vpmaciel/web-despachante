@@ -10,6 +10,10 @@ echo $input;
 
 echo open_table;
 
+echo open_tr . open_td_2 . open_label . '' . close_lable . close_td; 
+
+echo open_td . $link . close_td . close_tr;
+
 echo open_tr . open_td_2 . open_label . 'Placa' . close_lable . close_td; 
 
 $input = '<input type="text" id="veiculo_placa" name="veiculo_placa" maxlength="8" value="' . $registro['veiculo_placa'] .'">';
@@ -40,12 +44,14 @@ $input = '<input type="text" id="veiculo_modelo" name="veiculo_modelo" maxlength
 
 echo open_td . $input . close_td . close_tr;
 
+echo open_tr . open_td_2 . open_label . '' . close_lable . close_td; 
+
+echo open_td . $numero_de_registros . ' registros cadastrados'  . close_td . close_tr;
+
+echo open_tr . open_td_2 . open_label . '' . close_lable . close_td; 
+
+$submit = '<input type="submit" value="Salvar">';
+
+echo open_td . $submit . close_td . close_tr;
+
 echo close_table;
-
-echo '<br>';
-
-echo $numero_de_registros . ' registros cadastrados'; 
-
-echo '<br>';
-
-echo '<br>';

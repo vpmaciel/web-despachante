@@ -14,6 +14,10 @@ echo $input;
 
 echo open_table;
 
+echo open_tr . open_td_2 . open_label . '' . close_lable . close_td; 
+
+echo open_td . $link . close_td . close_tr;
+
 echo open_tr . open_td_2 . open_label . 'Placa do veículo' . close_lable . close_td; 
 
 $input = '<input type="text" id="servico_placa_veiculo" name="servico_placa_veiculo" maxlength="8" value="' . $registro['servico_placa_veiculo'] .'">';
@@ -50,17 +54,14 @@ $input = '<input type="text" id="servico_telefone_cliente" name="servico_telefon
 
 echo open_td . $input . close_td . close_tr;
 
+echo open_tr . open_td_2 . open_label . '' . close_lable . close_td; 
+
+echo open_td . $numero_de_registros . ' registros cadastrados'  . close_td . close_tr;
+
+echo open_tr . open_td_2 . open_label . '' . close_lable . close_td; 
+
+$submit = '<input type="submit" value="Salvar">';
+
+echo open_td . $submit . close_td . close_tr;
+
 echo close_table;
-
-echo '<br>';
-
-echo open_label . '<label id="resultado_servico_cpf_cnpj_cliente"></label>' . close_lable; 
-
-echo '<br>';
-echo '<br>';
-
-echo $numero_de_registros . ' registros cadastrados'; 
-
-echo '<br>';
-
-echo '<br>';
