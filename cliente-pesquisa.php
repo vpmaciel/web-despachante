@@ -18,7 +18,7 @@ echo close_head;
 
 echo open_body;
 
-echo open_div_main;
+echo open_div;
 
 require_once 'menu.php';
 
@@ -31,14 +31,7 @@ $form_open = '<form action="cliente-lista.php" method="POST">';
 
 echo $form_open;
 
-echo open_table;
-
 require_once 'cliente-formulario.php';
-
-$submit = '<input type="submit" value="Buscar" >';
-echo open_tr . open_td . $submit . close_td . close_tr;
-
-echo close_table;
 
 echo close_form;
 

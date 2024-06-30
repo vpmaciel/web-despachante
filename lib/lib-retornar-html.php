@@ -8,7 +8,6 @@ const open_body = '<body>';
 const close_body = '</body>';
 const open_div = '<div>';
 const close_div = '</div>';
-const open_div_main = '<div>';
 const open_td = '<td>';
 const open_td_2 = '<td colspan="2" style="text-align: right; width: 30%">';
 const open_td_center = '<td style="text-align: center;">';

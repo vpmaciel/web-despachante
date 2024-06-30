@@ -17,7 +17,7 @@ echo close_head;
 
 echo open_body;
 
-echo open_div_main;
+echo open_div;
 
 require_once 'menu.php';
 
