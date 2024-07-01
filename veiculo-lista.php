@@ -101,7 +101,7 @@ while($linha = $stmt->fetch(PDO::FETCH_ASSOC))
     echo open_tr . open_td . open_label . 'Marca: ' . $linha['veiculo_marca'] . close_lable . close_td . close_tr; 
     echo open_tr . open_td . open_label . 'Modelo: ' . $linha['veiculo_modelo'] . close_lable . close_td . close_tr;     
     echo open_tr . open_td . '<a href="veiculo-cadastro.php?editar=true&' . 'veiculo_id=' . $linha['veiculo_id']. '">Editar</a> | '; 
-        echo '<a href="veiculo-deletar.php?' . $string. ' " onclick="return confirmarExcluir();">Excluir</a>' . close_td . close_tr; 
+        echo '<a href="veiculo-deletar.php?' . 'veiculo_id=' . $linha['veiculo_id']. '" onclick="return confirmarExcluir();">Excluir</a>' . close_td . close_tr; 
     echo open_tr . open_td . open_label . '&nbsp;' . close_lable . close_td . close_tr; 
 }
 echo close_table;

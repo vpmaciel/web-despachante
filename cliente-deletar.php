@@ -6,22 +6,12 @@ require_once 'lib/lib-biblioteca.php';
 
 $registro = array ('cliente_id' => trim($_GET['cliente_id']));
 
-$total_registro = retornar_numero_registros('CLIENTE', $registro);
+$RESULTADO_EXCLUIR = excluir('cliente', $registro);
 
-if($total_registro > 0){
-    $RESULTADO_EXCLUIR = excluir('CLIENTE', $registro);
-	
-    
-    if ($RESULTADO_EXCLUIR == true) {
-		header('location:sucesso.php');
-		exit;
-	} else {
-		header('location:erro.php');
-		exit;
-	} 
-}
-else {
-
+if ($RESULTADO_EXCLUIR == true) {
+	header('location:sucesso.php');
+	exit;
+} else {
 	header('location:erro.php');
-		exit;
-}
+	exit;
+} 

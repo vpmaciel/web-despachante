@@ -106,8 +106,8 @@ while($linha = $stmt->fetch(PDO::FETCH_ASSOC))
     echo open_tr . open_td . open_label . 'CPF | CNPJ do proprietário: ' . $linha['pedido_de_placa_cpf_cnpj_proprietario'] . close_lable . close_td . close_tr;     
     echo open_tr . open_td . open_label . 'Cor: ' . $linha['pedido_de_placa_cor_placa'] . close_lable . close_td . close_tr; 
     echo open_tr . open_td . open_label . 'Tipo de placa: ' . $linha['pedido_de_placa_tipo_placa'] . close_lable . close_td . close_tr;     
-    echo open_tr . open_td . '<a href="pedido-de-placa-cadastro.php?editar=true&' . 'pedido_de_placa_id=' . $linha['pedido_de_placa_id']. '">Editar</a> | '; 
-        echo '<a href="pedido-de-placa-deletar.php?' . $string. ' " onclick="return confirmarExcluir();">Excluir</a>' . close_td . close_tr; 
+    echo open_tr . open_td . '<a href="pedido-de-placa-cadastro.php?editar=true&' . 'pedido_de_placa_id=' . $linha['pedido_de_placa_id'] . '">Editar</a> | '; 
+        echo '<a href="pedido-de-placa-deletar.php?' . 'pedido_de_placa_id=' . $linha['pedido_de_placa_id'] . ' " onclick="return confirmarExcluir();">Excluir</a>' . close_td . close_tr; 
     echo open_tr . open_td . open_label . '&nbsp;' . close_lable . close_td . close_tr; 
 }
 echo close_table;
