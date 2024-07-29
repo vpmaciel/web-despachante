@@ -22,6 +22,10 @@ echo open_div;
 
 require_once 'menu.php';
 
+echo open_h1 . 'Cliente'  . close_h1; 
+
+require_once 'cliente-menu.php';
+
 $numero_de_registros = retornar_total_registros('cliente');
 
 

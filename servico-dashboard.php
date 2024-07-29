@@ -20,11 +20,13 @@ echo open_div;
 
 require_once 'menu.php';
 
+echo open_h1 . 'Serviço'  . close_h1;
+
+require_once 'servico-menu.php';
+
 $form_open = '<form action="" method="POST">';
 
-echo $form_open;
-
-echo open_h1 . 'Serviço'  . close_h1; 
+echo $form_open; 
 
 echo open_table;
 

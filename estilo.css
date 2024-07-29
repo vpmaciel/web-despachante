@@ -1,8 +1,9 @@
 /* Reset básico para todos os elementos */
 * {
     box-sizing: border-box;
-    border-radius: 0px;
+    border-radius: 4px;
     text-align: center;
+    color: #2C3E50; /* Cinza Escuro Melhorado */
     font-weight: normal;
     font-size: 18px;
     font-weight: 400;
@@ -17,7 +18,6 @@ h4,
 h5,
 h6 {
     text-align: center;
-    color: #333;    
     font-size: 18px;    
 }
 
@@ -28,11 +28,10 @@ textarea,
 input:focus,
 select:focus,
 textarea:focus {
-    color: #333;
     /* Cinza escuro */
     outline: none;
     box-shadow: none;
-    border: 1px solid #ccc;
+    border: 1px solid #2C3E50;
     /* Cinza claro */
     font-size: 18px;
     padding: 5px;
@@ -46,19 +45,15 @@ textarea:focus {
 input[type="button"],
 input[type="submit"] {
     outline: none;
-    box-shadow: none;
-    border: none;
-    /* Cinza claro */
+    background-color: #2C3E50; /* Cinza Escuro Melhorado */  
+    border: none;    
     font-size: 18px;
     font-weight: 500;
     resize: none;
     padding: 5px;
     max-width: 150px;
     width: 150px;
-    color: #fff;
-    /* Branco */
-    background-color: #45aaf2;
-    /* Azul */
+    color: #fff;    
     text-align: center;
 }
 
@@ -101,13 +96,16 @@ html,
 body {
     min-height: 100%;
     width: 100%;
-    min-width: 1000px;
-    font-family: Tahoma, Verdana, Segoe, sans-serif;
-    color: #333;
+    min-width: 1000px;    
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinha ao topo */
+    height: 100vh;    
+    font-family: 'Roboto', sans-serif;    
     /* Cinza escuro */
     font-size: 18px;
-    margin: auto 0;
-    background-color: #fff;
+    margin: auto 0;    
+    background-color: #ccc;
     /* Cinza claro */
 }
 
@@ -142,8 +140,7 @@ input[type="file"] {
 
 /* Estilização de labels e spans */
 label,
-span {
-    color: #333;
+span {    
     /* Cinza escuro */
     text-align: left;
 }
@@ -154,38 +151,40 @@ span {
 }
 
 /* Estilização do menu */
-.menu {
+.menu {  
     width: 100%;
     height: 35px;
-    background: linear-gradient(90deg, #45aaf2, #3498db);
-    /* Gradiente azul */
+    background-color: #2C3E50; /* Cinza-Azulado Escuro Profissional */
     padding: 0px 10px;
-    /* Espaçamento interno */
     margin: 0;
-    /* Removido o valor 'x' desnecessário */
     display: flex;
     align-items: center;
     justify-content: center;
-    border: none;
-    /* Remove a borda */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    /* Sombra suave */
-    border-radius: 0px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    /* Fonte mais moderna */
+    border: 1px solid black;        
+    color: #ecf0f1; /* Cor do texto clara */
+    font-size: 16px; /* Tamanho da fonte */
+    cursor: pointer; /* Cursor de ponteiro para indicar que é clicável */
+    box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.6), inset -2px -2px 4px rgba(255, 255, 255, 0.1); /* Sombra interna para criar efeito afundado */
+    transition: all 0.3s ease; /* Suaviza a transição ao passar o mouse ou clicar */
+}
+
+.menu:hover {
+    background-color: #34495E; /* Cor de fundo ao passar o mouse */
+}
+
+.menu:active {
+    box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.6), inset -1px -1px 2px rgba(255, 255, 255, 0.1); /* Ajuste da sombra ao clicar */
 }
 
 
 /* Estilização dos links no menu */
 .menu .menu_a {
-    margin: 0 12.5px;
-    /* Espaço de 25px entre os itens (12.5px de cada lado) */
+    margin: 0 12.5px;    
     color: #fff;
     font-weight: 500;
     text-decoration: none;
     font-size: 18px;
     transition: color 0.3s ease;
-    /* Transição suave para mudança de cor */
 }
 
 /* Efeito de hover nos links */
@@ -214,7 +213,7 @@ a:hover {
 }
 
 #cookieConsent {
-    color: #333;
+    color: #579EBB;
     /* Branco */
     text-align: center;
     padding-top: 10px;    
@@ -247,9 +246,10 @@ a:hover {
 }
 
 .botoes {
-    background-color: #45aaf2;
+    background-color: #2C3E50; /* Cinza Escuro Melhorado */
+    
     color: white;
-    border: none;    
+    border: 1px solid black;    
     font-size: 18px;
     resize: none;
     padding: 0px;
@@ -273,3 +273,76 @@ a:hover {
 .botoes a:hover {
     color: #f1c40f;
 }
+
+
+.roboto-thin {
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+  }
+  
+  .roboto-light {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  .roboto-regular {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .roboto-medium {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .roboto-bold {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .roboto-black {
+    font-family: "Roboto", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+  }
+  
+  .roboto-thin-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-style: italic;
+  }
+  
+  .roboto-light-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+  }
+  
+  .roboto-regular-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  .roboto-medium-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: italic;
+  }
+  
+  .roboto-bold-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+  }
+  
+  .roboto-black-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 900;
+    font-style: italic;
+  }

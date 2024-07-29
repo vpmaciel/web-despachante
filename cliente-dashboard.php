@@ -21,15 +21,15 @@ echo open_div;
 
 require_once 'menu.php';
 
+echo open_h1 . 'Cliente'  . close_h1; 
+
+require_once 'cliente-menu.php';
+
 $form_open = '<form action="" method="POST">';
 
 echo $form_open;
 
-echo open_h1 . 'Cliente'  . close_h1; 
-
 echo open_table;
-
-require_once 'cliente-menu.php';
 
 ob_start();
 include 'cliente-grafico.php';

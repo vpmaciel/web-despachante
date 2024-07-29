@@ -22,6 +22,10 @@ echo open_div;
 
 require_once 'menu.php';
 
+echo open_h1 . 'Pedido de Placa'  . close_h1; 
+
+require_once 'pedido-de-placa-menu.php';
+
 $numero_de_registros = retornar_total_registros('pedido_de_placa');
 
 $registro = array();

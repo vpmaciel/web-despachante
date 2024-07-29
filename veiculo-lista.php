@@ -13,7 +13,6 @@ echo open_html;
 echo open_head;
 
 require_once 'cabecalho.php';
-echo '<script src="veiculo-cadastro.ts"></script>';
 
 echo close_head;
 
@@ -22,6 +21,10 @@ echo open_body;
 echo open_div;
 
 require_once 'menu.php';
+
+echo open_h1 . 'Veículo'  . close_h1; 
+
+require_once 'veiculo-menu.php';
 
 $registro = array();
 
@@ -83,8 +86,6 @@ $stmt = $pdo->prepare($SQL);
 $stmt->execute();
 
 echo open_table;
-
-echo open_tr . open_th . 'Veículo'  . close_th . close_tr; 
 
 while($linha = $stmt->fetch(PDO::FETCH_ASSOC))
 {

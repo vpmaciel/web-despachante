@@ -23,6 +23,10 @@ echo open_div;
 
 require_once 'menu.php';
 
+echo open_h1 . 'Veículo'  . close_h1; 
+
+require_once 'veiculo-menu.php';
+
 $registro = array();
 
 $registro['veiculo_id'] = '';

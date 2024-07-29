@@ -1,9 +1,5 @@
 <?php
 
-echo open_h1 . 'Serviço'  . close_h1; 
-
-require_once 'servico-menu.php';
-
 $input = '<input type="hidden" id="servico_id" name="servico_id" value="' . $registro['servico_id'] .'">';
 
 echo $input;
@@ -13,10 +9,6 @@ $input = '<input type="hidden" id="servico_data" name="servico_data" value="' . 
 echo $input;
 
 echo open_table;
-
-echo open_tr . open_td_2 . open_label . '' . close_lable . close_td; 
-
-echo open_td . $link . close_td . close_tr;
 
 echo open_tr . open_td_2 . open_label . 'Placa do veículo:' . close_lable . close_td; 
 

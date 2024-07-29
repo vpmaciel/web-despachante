@@ -24,6 +24,10 @@ echo open_div;
 
 require_once 'menu.php';
 
+echo open_h1 . 'Cliente'  . close_h1; 
+
+require_once 'cliente-menu.php';
+
 $registro = array();
 $registro['cliente_id'] = '';
 $registro['cliente_nome_completo'] = '';

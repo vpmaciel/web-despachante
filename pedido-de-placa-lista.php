@@ -13,7 +13,6 @@ echo open_html;
 echo open_head;
 
 require_once 'cabecalho.php';
-echo '<script src="pedido-de-placa-cadastro.ts"></script>';
 
 echo close_head;
 
@@ -22,6 +21,10 @@ echo open_body;
 echo open_div;
 
 require_once 'menu.php';
+
+echo open_h1 . 'Pedido de Placa'  . close_h1; 
+
+require_once 'pedido-de-placa-menu.php';
 
 $SQL = '';
 
@@ -87,8 +90,6 @@ $form_open = '<form action="#" method="POST">';
 echo $form_open;
 
 echo open_table;
-
-echo open_tr . open_th . 'Veículo'  . close_th . close_tr; 
 
 while($linha = $stmt->fetch(PDO::FETCH_ASSOC))
 {

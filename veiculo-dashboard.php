@@ -21,15 +21,15 @@ echo open_div;
 
 require_once 'menu.php';
 
+echo open_h1 . 'Veículo'  . close_h1; 
+
+require_once 'veiculo-menu.php';
+
 $form_open = '<form action="" method="POST">';
 
 echo $form_open;
 
-echo open_h1 . 'Veículo'  . close_h1; 
-
 echo open_table;
-
-require_once 'veiculo-menu.php';
 
 ob_start();
 include 'veiculo-grafico.php';

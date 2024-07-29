@@ -23,6 +23,10 @@ echo open_div;
 
 require_once 'menu.php';
 
+echo open_h1 . 'Serviço'  . close_h1; 
+
+require_once 'servico-menu.php';
+
 $registro = array();
 
 $SQL = '';
@@ -88,8 +92,6 @@ $form_open = '<form action="#" method="POST">';
 echo $form_open;
 
 echo open_table;
-
-echo open_tr . open_th . 'Serviço'  . close_th . close_tr; 
 
 while($linha = $stmt->fetch(PDO::FETCH_ASSOC))
 {

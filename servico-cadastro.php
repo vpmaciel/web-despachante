@@ -23,6 +23,10 @@ echo open_div;
 
 require_once 'menu.php';
 
+echo open_h1 . 'Serviço'  . close_h1; 
+
+require_once 'servico-menu.php';
+
 $numero_de_registros = retornar_total_registros('servico');
 
 $registro = array();
