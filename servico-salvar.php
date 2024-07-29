@@ -9,7 +9,6 @@ $registro['servico_placa_veiculo'] = trim($_POST['servico_placa_veiculo']);
 $registro['servico_descricao'] = trim($_POST['servico_descricao']);
 $registro['servico_valor'] = str_replace(',', '.', preg_replace('/[^0-9,]/', '', trim($_POST['servico_valor'])));
 $registro['servico_cpf_cnpj_cliente'] = trim($_POST['servico_cpf_cnpj_cliente']);
-$registro['servico_nome_cliente'] = trim($_POST['servico_nome_cliente']);
 $registro['servico_telefone_cliente'] = trim($_POST['servico_telefone_cliente']);
 
 $condicao = array ('servico_id' =>trim($_POST['servico_id']));

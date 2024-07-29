@@ -71,8 +71,8 @@ p {
 table {
     table-layout: fixed;
     width: 900px;
-    border-collapse: collapse;
-    
+    border-collapse: collapse;    
+    margin-top: 10px;
 }
 
 th,
@@ -88,15 +88,14 @@ th {
 }
 tr {    
     height: 50px;
-    min-height: 50px;
+    min-height: 50px;    
 }
 
 /* Estilização da estrutura HTML e corpo da página */
 html,
 body {
     min-height: 100%;
-    width: 100%;
-    min-width: 1000px;    
+    width: 100%;   
     display: flex;
     justify-content: center;
     align-items: flex-start; /* Alinha ao topo */

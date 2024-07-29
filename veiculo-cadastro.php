@@ -65,17 +65,11 @@ if (isset($_GET['editar'])) {
 
 echo $form_open;
 
-echo open_table;
-
 require_once 'veiculo-formulario.php';
-
-echo close_table;
 
 echo close_form;
 
 echo close_div;
-
-echo '<script src="veiculo-cadastro.ts"></script>';
 
 echo close_body;
 	

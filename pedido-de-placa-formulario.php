@@ -30,7 +30,7 @@ echo open_td . $input . close_td . close_tr;
 
 echo open_tr . open_td_2 . open_label . 'CPF | CNPJ do proprietário:' . close_lable . close_td; 
 
-$input = '<input type="text" id="pedido_de_placa_cpf_cnpj_proprietario" name="pedido_de_placa_cpf_cnpj_proprietario" minlength="14" maxlength="18"  value="' . $registro['pedido_de_placa_cpf_cnpj_proprietario'] .'">';
+$input = '<input type="text" id="pedido_de_placa_cpf_cnpj_proprietario" name="pedido_de_placa_cpf_cnpj_proprietario" minlength="11" maxlength="14" oninput="this.value = this.value.replace(/[^0-9]/g, \'\');" value="' . $registro['pedido_de_placa_cpf_cnpj_proprietario'] .'">';
 
 echo open_td . $input . close_td . close_tr;
 
@@ -61,3 +61,25 @@ if (strpos($_SERVER['REQUEST_URI'], 'cadastro') !== false) {
 echo open_td . $submit . close_td . close_tr;
 
 echo close_table;
+?>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Obtém a URL atual
+        var currentUrl = window.location.href;
+
+        // Seleciona o elemento pelo ID
+        var pedido_de_placa_placa_veiculo = document.getElementById("pedido_de_placa_placa_veiculo");
+        var pedido_de_placa_cpf_cnpj_cliente = document.getElementById("pedido_de_placa_cpf_cnpj_cliente");
+        
+        // Verifica se a URL contém a palavra "cadastro"
+        if (currentUrl.includes("cadastro")) {
+            // Adiciona a propriedade required
+            pedido_de_placa_placa_veiculo.setAttribute("required", "required");
+            pedido_de_placa_cpf_cnpj_cliente.setAttribute("required", "required");
+        } else {
+            // Remove a propriedade required
+            pedido_de_placa_placa_veiculo.removeAttribute("required");
+            pedido_de_placa_cpf_cnpj_cliente.removeAttribute("required");
+        }
+    });
+</script>

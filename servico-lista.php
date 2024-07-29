@@ -106,7 +106,6 @@ while($linha = $stmt->fetch(PDO::FETCH_ASSOC))
     echo open_tr . open_td . open_label . 'Valor: ' . formatarNumero($linha['servico_valor']) . close_lable . close_td . close_tr; 
     echo open_tr . open_td . open_label . 'Descrição: ' . $linha['servico_descricao'] . close_lable . close_td . close_tr; 
     echo open_tr . open_td . open_label . 'CPF | CNPJ do cliente: ' . $linha['servico_cpf_cnpj_cliente'] . close_lable . close_td . close_tr;     
-    echo open_tr . open_td . open_label . 'Nome do cliente: ' . $linha['servico_nome_cliente'] . close_lable . close_td . close_tr; 
     echo open_tr . open_td . open_label . 'Telefone do cliente: ' . $linha['servico_telefone_cliente'] . close_lable . close_td . close_tr;     
     echo open_tr . open_td . '<a href="servico-cadastro.php?editar=true&' . 'servico_id='. $linha['servico_id']. '">Editar</a> | '; 
         echo '<a href="servico-deletar.php?' . 'servico_id='. $linha['servico_id']. ' " onclick="return confirmarExcluir();">Excluir</a>' . close_td . close_tr; 

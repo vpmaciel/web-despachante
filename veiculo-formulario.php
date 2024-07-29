@@ -15,7 +15,7 @@ echo open_td . $input . close_td . close_tr;
 
 echo open_tr . open_td_2 . open_label . 'CPF | CNPJ do proprietário:' . close_lable . close_td; 
 
-$input = '<input type="text" id="veiculo_cpf_cnpj_proprietario" name="veiculo_cpf_cnpj_proprietario" minlength="14" maxlength="18" onblur="clearTimeout();" value="' . $registro['veiculo_cpf_cnpj_proprietario'] .'">';
+$input = '<input type="text" id="veiculo_cpf_cnpj_proprietario" name="veiculo_cpf_cnpj_proprietario" minlength="11" maxlength="14" oninput="this.value = this.value.replace(/[^0-9]/g, \'\');" onblur="clearTimeout();" value="' . $registro['veiculo_cpf_cnpj_proprietario'] .'">';
 
 echo open_td . $input . close_td . close_tr;
 
@@ -53,24 +53,24 @@ echo open_td . $submit . close_td . close_tr;
 
 echo close_table;
 ?>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Obtém a URL atual
-            var currentUrl = window.location.href;
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Obtém a URL atual
+        var currentUrl = window.location.href;
 
-            // Seleciona o elemento pelo ID
-            var veiculo_cpf_cnpj_proprietario = document.getElementById("veiculo_cpf_cnpj_proprietario");
-            var veiculo_placa = document.getElementById("veiculo_placa");
-            
-            // Verifica se a URL contém a palavra "cadastro"
-            if (currentUrl.includes("cadastro")) {
-                // Adiciona a propriedade required
-                veiculo_cpf_cnpj_proprietario.setAttribute("required", "required");
-                veiculo_placa.setAttribute("required", "required");
-            } else {
-                // Remove a propriedade required
-                veiculo_cpf_cnpj_proprietario.removeAttribute("required");
-                veiculo_placa.removeAttribute("required");
-            }
-        });
-    </script>
+        // Seleciona o elemento pelo ID
+        var veiculo_cpf_cnpj_proprietario = document.getElementById("veiculo_cpf_cnpj_proprietario");
+        var veiculo_placa = document.getElementById("veiculo_placa");
+        
+        // Verifica se a URL contém a palavra "cadastro"
+        if (currentUrl.includes("cadastro")) {
+            // Adiciona a propriedade required
+            veiculo_cpf_cnpj_proprietario.setAttribute("required", "required");
+            veiculo_placa.setAttribute("required", "required");
+        } else {
+            // Remove a propriedade required
+            veiculo_cpf_cnpj_proprietario.removeAttribute("required");
+            veiculo_placa.removeAttribute("required");
+        }
+    });
+</script>
