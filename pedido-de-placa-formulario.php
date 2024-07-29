@@ -38,7 +38,7 @@ echo open_td . $input . close_td . close_tr;
 
 echo open_tr . open_td_2 . open_label . 'CPF | CNPJ do proprietário' . close_lable . close_td; 
 
-$input = '<input type="text" id="pedido_de_placa_cpf_cnpj_proprietario" name="pedido_de_placa_cpf_cnpj_proprietario" minlength="14" maxlength="18" onkeypress="mascaraMutuario(this,cpfCnpj)" onblur="clearTimeout();"  value="' . $registro['pedido_de_placa_cpf_cnpj_proprietario'] .'">';
+$input = '<input type="text" id="pedido_de_placa_cpf_cnpj_proprietario" name="pedido_de_placa_cpf_cnpj_proprietario" minlength="14" maxlength="18"  value="' . $registro['pedido_de_placa_cpf_cnpj_proprietario'] .'">';
 
 echo open_td . $input . close_td . close_tr;
 
@@ -60,7 +60,11 @@ echo open_td . $numero_de_registros . ' registros cadastrados'  . close_td . clo
 
 echo open_tr . open_td_2 . open_label . '' . close_lable . close_td; 
 
-$submit = '<input type="submit" value="Salvar">';
+if (strpos($_SERVER['REQUEST_URI'], 'cadastro') !== false) {
+    $submit = '<input type="submit" value="Salvar">';
+} else {
+    $submit = '<input type="submit" value="Buscar">';
+}
 
 echo open_td . $submit . close_td . close_tr;
 

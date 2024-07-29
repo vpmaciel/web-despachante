@@ -50,26 +50,3 @@ echo close_div;
 echo close_body;
 	
 echo close_html;
-
-?>
-<script>
-        $(document).ready(function() {
-            var delayTimer;
-
-            // Função para validar o tamanho do campo
-            function validarTamanho() {
-                var campo = $('#servico_cpf_cnpj_cliente').val();
-                var tamanhoValido = campo.length === 14 || campo.length === 18;
-
-                if (!tamanhoValido) {
-                    alert("CPF | CNPJ do cliente inválido");                    
-                    campo.focus(); // Coloca o foco de volta no campo
-                }
-            }
-
-            // Adiciona o evento blur para validar o tamanho quando o campo perde o foco
-            $('#servico_cpf_cnpj_cliente').on('blur', function() {
-                validarTamanho();
-            });
-        });
-    </script>

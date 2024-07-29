@@ -1,10 +1,11 @@
 <?php
-
+header('Access-Control-Allow-Origin: *');
+header('Content-Type: application/json');
 
 require_once 'lib/lib-sessao.php';
 require_once 'lib/lib-biblioteca.php';
 
-try {
+try {    
     $cpfCnpjCliente  = $_POST['servico_cpf_cnpj_cliente'];    
     // Criação da conexão usando PDO
         // Configuração do PDO para lançar exceções em caso de erros
@@ -21,7 +22,8 @@ try {
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     // Enviar os resultados como JSON para a requisição Ajax
-    echo json_encode($result);
+    echo json_encode($result);    
 } catch (PDOException $e) {
-    echo "Erro na conexão com o banco de dados: " . $e->getMessage();
+    echo json_encode(["error" => "Erro na conexão com o banco de dados: " . $e->getMessage()]);
 }
+

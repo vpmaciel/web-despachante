@@ -50,7 +50,11 @@ echo open_td . $numero_de_registros . ' registros cadastrados'  . close_td . clo
 
 echo open_tr . open_td_2 . open_label . '' . close_lable . close_td; 
 
-$submit = '<input type="submit" value="Salvar">';
+if (strpos($_SERVER['REQUEST_URI'], 'cadastro') !== false) {
+    $submit = '<input type="submit" value="Salvar">';
+} else {
+    $submit = '<input type="submit" value="Buscar">';
+}
 
 echo open_td . $submit . close_td . close_tr;
 

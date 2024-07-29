@@ -9,6 +9,5 @@
 <meta name="robots" content="no-cache">
 <link rel="icon" type="image/ico" href="favicon.png">
 <link rel="stylesheet" href="estilo.css">
-<script src="jquery-3.6.0.min.js"></script>
-<script src="funcoes.ts"></script>
+<script src="jquery-3.7.1.min.js"></script>
 <title>web-despachante</title>

@@ -61,8 +61,6 @@ require_once 'cliente-formulario.php';
 
 echo close_form;
 
-echo '<script src="cliente-cadastro.ts"></script>';
-
 echo close_div;
 
 echo close_body;
