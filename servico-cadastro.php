@@ -59,7 +59,6 @@ if (isset($_GET['editar'])) {
         $registro['servico_placa_veiculo'] = $linha['servico_placa_veiculo']; 
         $registro['servico_descricao'] = $linha['servico_descricao'];
         $registro['servico_cpf_cnpj_cliente'] = $linha['servico_cpf_cnpj_cliente'];
-        $registro['servico_nome_cliente'] = $linha['servico_nome_cliente']; 
         $registro['servico_telefone_cliente'] = $linha['servico_telefone_cliente'];
     }  
 

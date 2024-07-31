@@ -1,9 +1,9 @@
 /* Reset básico para todos os elementos */
 * {
     box-sizing: border-box;
-    border-radius: 4px;
+    border-radius: 0px;
     text-align: center;
-    color: #2C3E50; /* Cinza Escuro Melhorado */
+    color: #fff; /* Cinza Escuro Melhorado */
     font-weight: normal;
     font-size: 18px;
     font-weight: 400;
@@ -31,13 +31,14 @@ textarea:focus {
     /* Cinza escuro */
     outline: none;
     box-shadow: none;
-    border: 1px solid #2C3E50;
+    border: 1px solid #fff;
     /* Cinza claro */
     font-size: 18px;
     padding: 5px;
     width: 100%;
     resize: none;
     text-align: left;
+    color: #333;   
 }
 
 /* Estilização de botões */
@@ -45,7 +46,7 @@ textarea:focus {
 input[type="button"],
 input[type="submit"] {
     outline: none;
-    background-color: #2C3E50; /* Cinza Escuro Melhorado */  
+    background-color: #126d60; /* Cinza Escuro Melhorado */  
     border: none;    
     font-size: 18px;
     font-weight: 500;
@@ -55,6 +56,8 @@ input[type="submit"] {
     width: 150px;
     color: #fff;    
     text-align: center;
+    cursor: pointer;
+    border: 1px solid #fff;
 }
 
 form{
@@ -96,15 +99,14 @@ html,
 body {
     min-height: 100%;
     width: 100%;   
-    display: flex;
-    justify-content: center;
+    
     align-items: flex-start; /* Alinha ao topo */
     height: 100vh;    
     font-family: 'Roboto', sans-serif;    
     /* Cinza escuro */
     font-size: 18px;
-    margin: auto 0;    
-    background-color: #ccc;
+    margin: auto 0;
+    background-color: #126d60;
     /* Cinza claro */
 }
 
@@ -130,7 +132,7 @@ input[type="file"] {
 .file::-webkit-file-upload-button {
     outline: none;
     box-shadow: none;
-    border: 1px solid #45aaf2;
+    border: 1px solid #fff;
     font-size: 18px;
     resize: none;
     padding: 5px;
@@ -153,26 +155,16 @@ span {
 .menu {  
     width: 100%;
     height: 35px;
-    background-color: #2C3E50; /* Cinza-Azulado Escuro Profissional */
+    background-color: #126d60; /* Cinza-Azulado Escuro Profissional */
     padding: 0px 10px;
     margin: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid black;        
+    border: 1px solid #fff;        
     color: #ecf0f1; /* Cor do texto clara */
     font-size: 16px; /* Tamanho da fonte */
     cursor: pointer; /* Cursor de ponteiro para indicar que é clicável */
-    box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.6), inset -2px -2px 4px rgba(255, 255, 255, 0.1); /* Sombra interna para criar efeito afundado */
-    transition: all 0.3s ease; /* Suaviza a transição ao passar o mouse ou clicar */
-}
-
-.menu:hover {
-    background-color: #34495E; /* Cor de fundo ao passar o mouse */
-}
-
-.menu:active {
-    box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.6), inset -1px -1px 2px rgba(255, 255, 255, 0.1); /* Ajuste da sombra ao clicar */
 }
 
 
@@ -184,12 +176,6 @@ span {
     text-decoration: none;
     font-size: 18px;
     transition: color 0.3s ease;
-}
-
-/* Efeito de hover nos links */
-.menu .menu_a:hover {
-    color: #f1c40f; 
-    font-weight: 500;   
 }
 
 /* Estilização de links */
@@ -228,7 +214,7 @@ a:hover {
 
 #acceptCookies {
     background-color: #4CAF50;
-    color: white;
+    color: #126d60;
     border: none;
     padding: 0px; 
     cursor: pointer;
@@ -237,7 +223,7 @@ a:hover {
 
 #declineCookies {
     background-color: #f44336;
-    color: white; 
+    color: #126d60; 
     border: none; 
     padding: 0px; 
     cursor: pointer; 
@@ -245,10 +231,10 @@ a:hover {
 }
 
 .botoes {
-    background-color: #2C3E50; /* Cinza Escuro Melhorado */
+    background-color: #126d60; /* Cinza Escuro Melhorado */
     
-    color: white;
-    border: 1px solid black;    
+    color: #fff;
+    border: 1px solid #fff;    
     font-size: 18px;
     resize: none;
     padding: 0px;
@@ -263,16 +249,12 @@ a:hover {
 }
 
 .botoes a {
-    color: white; /* Garantir que o texto dos links seja branco */
+    color: #fff; /* Garantir que o texto dos links seja branco */
     text-decoration: none; /* Remover decoração de texto para links */
     display: block; /* Garantir que os links ocupem todo o espaço do botão */
     padding: 5px 10px; /* Ajustar padding para alinhar com o conteúdo do botão */
+    border: 1px solid #fff;
 }
-
-.botoes a:hover {
-    color: #f1c40f;
-}
-
 
 .roboto-thin {
     font-family: "Roboto", sans-serif;
