@@ -1,0 +1,3 @@
+O sistema é feito em PHP e MySQL.
+Totalmente gratuito para uso comercial e não comercial.
+O arquivo "db_despachante.sql" para criação do banco de dados encontra-se no diretório "web-despachante\sql"
