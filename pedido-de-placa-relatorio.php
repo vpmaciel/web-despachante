@@ -5,7 +5,11 @@ $pdf = new FPDF('P', 'mm', 'A4');
 $pdf->AddPage();
 $pdf->SetFont('Arial', '', 16);
 
-$SQL = 'SELECT * FROM pedido_de_placa';
+if(isset($_COOKIE['pedido_de_placa_id'])) {
+    $SQL = 'SELECT * FROM pedido_de_placa' . ' WHERE pedido_de_placa_id = ' . $_COOKIE['pedido_de_placa_id'];
+} else {
+    $SQL = 'SELECT * FROM pedido_de_placa';
+}
 
 $stmt = $pdo->prepare($SQL);
 $stmt->execute();

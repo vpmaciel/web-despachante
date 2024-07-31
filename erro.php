@@ -17,14 +17,7 @@ echo open_div;
 
 require_once 'menu.php';
 
-echo open_table;
-
-$input = '<input type="hidden">';
-echo open_tr . open_td . $input . close_td . close_tr;
-
-echo close_table;
-
-echo '<span class="erro">' . 'Operação não realizada !'. '</span>';
+echo '<br><span class="erro">' . 'Operação não realizada !'. '</span>';
 
 if (isset($_GET['msg'])) {
     echo '<br><br><span class="erro">' . $_GET['msg']. '</span>';

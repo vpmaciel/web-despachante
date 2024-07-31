@@ -1,11 +1,16 @@
 <?php
 
+// Definir o tempo de expiração do cookie (1 hora a partir de agora)
+$expiration = time() + 3600;
+
+// Criar o cookie
+setcookie('veiculo_id', $registro['veiculo_id'], $expiration, '/');
+
 $input = '<input type="hidden" id="veiculo_id" name="veiculo_id" maxlength="7" value="' . $registro['veiculo_id'] .'">';
 
 echo $input;
 
 echo open_table;
-
 
 echo open_tr . open_td_2 . open_label . 'Placa:' . close_lable . close_td; 
 

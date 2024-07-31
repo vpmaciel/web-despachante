@@ -3,7 +3,7 @@
     box-sizing: border-box;
     border-radius: 0px;
     text-align: center;
-    color: #fff; /* Cinza Escuro Melhorado */
+    color: #333; /* Cinza Escuro Melhorado */
     font-weight: normal;
     font-size: 18px;
     font-weight: 400;
@@ -19,6 +19,7 @@ h5,
 h6 {
     text-align: center;
     font-size: 18px;    
+    color: #333;
 }
 
 /* Estilização de inputs, selects e textareas */
@@ -28,11 +29,9 @@ textarea,
 input:focus,
 select:focus,
 textarea:focus {
-    /* Cinza escuro */
     outline: none;
     box-shadow: none;
-    border: 1px solid #fff;
-    /* Cinza claro */
+    border: 1px solid #ccc;
     font-size: 18px;
     padding: 5px;
     width: 100%;
@@ -46,7 +45,7 @@ textarea:focus {
 input[type="button"],
 input[type="submit"] {
     outline: none;
-    background-color: #126d60; /* Cinza Escuro Melhorado */  
+    background-color: #fffaf2; 
     border: none;    
     font-size: 18px;
     font-weight: 500;
@@ -54,10 +53,10 @@ input[type="submit"] {
     padding: 5px;
     max-width: 150px;
     width: 150px;
-    color: #fff;    
+    color: #333;    
     text-align: center;
     cursor: pointer;
-    border: 1px solid #fff;
+    border: 1px solid #ccc;
 }
 
 form{
@@ -106,7 +105,7 @@ body {
     /* Cinza escuro */
     font-size: 18px;
     margin: auto 0;
-    background-color: #126d60;
+    background-color: #fffaf2;
     /* Cinza claro */
 }
 
@@ -132,7 +131,7 @@ input[type="file"] {
 .file::-webkit-file-upload-button {
     outline: none;
     box-shadow: none;
-    border: 1px solid #fff;
+    border: 1px solid #ccc;
     font-size: 18px;
     resize: none;
     padding: 5px;
@@ -155,14 +154,14 @@ span {
 .menu {  
     width: 100%;
     height: 35px;
-    background-color: #126d60; /* Cinza-Azulado Escuro Profissional */
+    background-color: #fffaf2; /* Cinza-Azulado Escuro Profissional */
     padding: 0px 10px;
     margin: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #fff;        
-    color: #ecf0f1; /* Cor do texto clara */
+    border: 1px solid #ccc;        
+    color: #333; /* Cor do texto clara */
     font-size: 16px; /* Tamanho da fonte */
     cursor: pointer; /* Cursor de ponteiro para indicar que é clicável */
 }
@@ -171,7 +170,7 @@ span {
 /* Estilização dos links no menu */
 .menu .menu_a {
     margin: 0 12.5px;    
-    color: #fff;
+    color: #333;
     font-weight: 500;
     text-decoration: none;
     font-size: 18px;
@@ -214,7 +213,7 @@ a:hover {
 
 #acceptCookies {
     background-color: #4CAF50;
-    color: #126d60;
+    color: #fffaf2;
     border: none;
     padding: 0px; 
     cursor: pointer;
@@ -223,7 +222,7 @@ a:hover {
 
 #declineCookies {
     background-color: #f44336;
-    color: #126d60; 
+    color: #fffaf2; 
     border: none; 
     padding: 0px; 
     cursor: pointer; 
@@ -231,10 +230,10 @@ a:hover {
 }
 
 .botoes {
-    background-color: #126d60; /* Cinza Escuro Melhorado */
+    background-color: #fffaf2; /* Cinza Escuro Melhorado */
     
-    color: #fff;
-    border: 1px solid #fff;    
+    color: #333;
+    border: 1px solid #ccc;    
     font-size: 18px;
     resize: none;
     padding: 0px;
@@ -249,11 +248,11 @@ a:hover {
 }
 
 .botoes a {
-    color: #fff; /* Garantir que o texto dos links seja branco */
+    color: #333; /* Garantir que o texto dos links seja branco */
     text-decoration: none; /* Remover decoração de texto para links */
     display: block; /* Garantir que os links ocupem todo o espaço do botão */
     padding: 5px 10px; /* Ajustar padding para alinhar com o conteúdo do botão */
-    border: 1px solid #fff;
+    border: 1px solid #ccc;
 }
 
 .roboto-thin {
@@ -261,69 +260,69 @@ a:hover {
     font-weight: 100;
     font-style: normal;
   }
-  
-  .roboto-light {
-    font-family: "Roboto", sans-serif;
-    font-weight: 300;
-    font-style: normal;
-  }
-  
-  .roboto-regular {
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-  }
-  
-  .roboto-medium {
-    font-family: "Roboto", sans-serif;
-    font-weight: 500;
-    font-style: normal;
-  }
-  
-  .roboto-bold {
-    font-family: "Roboto", sans-serif;
-    font-weight: 700;
-    font-style: normal;
-  }
-  
-  .roboto-black {
-    font-family: "Roboto", sans-serif;
-    font-weight: 900;
-    font-style: normal;
-  }
-  
-  .roboto-thin-italic {
-    font-family: "Roboto", sans-serif;
-    font-weight: 100;
-    font-style: italic;
-  }
-  
-  .roboto-light-italic {
-    font-family: "Roboto", sans-serif;
-    font-weight: 300;
-    font-style: italic;
-  }
-  
-  .roboto-regular-italic {
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    font-style: italic;
-  }
-  
-  .roboto-medium-italic {
-    font-family: "Roboto", sans-serif;
-    font-weight: 500;
-    font-style: italic;
-  }
-  
-  .roboto-bold-italic {
-    font-family: "Roboto", sans-serif;
-    font-weight: 700;
-    font-style: italic;
-  }
-  
-  .roboto-black-italic {
-    font-family: "Roboto", sans-serif;
-    font-weight: 900;
-    font-style: italic;
-  }
+
+.roboto-light {
+font-family: "Roboto", sans-serif;
+font-weight: 300;
+font-style: normal;
+}
+
+.roboto-regular {
+font-family: "Roboto", sans-serif;
+font-weight: 400;
+font-style: normal;
+}
+
+.roboto-medium {
+font-family: "Roboto", sans-serif;
+font-weight: 500;
+font-style: normal;
+}
+
+.roboto-bold {
+font-family: "Roboto", sans-serif;
+font-weight: 700;
+font-style: normal;
+}
+
+.roboto-black {
+font-family: "Roboto", sans-serif;
+font-weight: 900;
+font-style: normal;
+}
+
+.roboto-thin-italic {
+font-family: "Roboto", sans-serif;
+font-weight: 100;
+font-style: italic;
+}
+
+.roboto-light-italic {
+font-family: "Roboto", sans-serif;
+font-weight: 300;
+font-style: italic;
+}
+
+.roboto-regular-italic {
+font-family: "Roboto", sans-serif;
+font-weight: 400;
+font-style: italic;
+}
+
+.roboto-medium-italic {
+font-family: "Roboto", sans-serif;
+font-weight: 500;
+font-style: italic;
+}
+
+.roboto-bold-italic {
+font-family: "Roboto", sans-serif;
+font-weight: 700;
+font-style: italic;
+}
+
+.roboto-black-italic {
+font-family: "Roboto", sans-serif;
+font-weight: 900;
+font-style: italic;
+}

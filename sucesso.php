@@ -19,14 +19,7 @@ echo open_div;
 
 require_once 'menu.php';
 
-echo open_table;
-
-$input = '<input type="hidden">';
-echo open_tr . open_td . $input . close_td . close_tr;
-
-echo close_table;
-
-echo '<span class="sucesso">' . 'Operação realizada com sucesso !'. '</span>';
+echo '<br><span class="sucesso">' . 'Operação realizada com sucesso !'. '</span>';
 
 if (isset($_GET['msg'])) {
     echo '<br><br><span class="sucesso">' . $_GET['msg']. '</span>';
