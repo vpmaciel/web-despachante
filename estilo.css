@@ -5,9 +5,10 @@
     text-align: center;
     color: #333; /* Cinza Escuro Melhorado */
     font-weight: normal;
-    font-size: 18px;
-    font-weight: 400;
     padding: 0px;
+    font-weight: normal;    
+    font-size: 18px;
+    color: #333;
 }
 
 /* Estilização de títulos */
@@ -20,6 +21,8 @@ h6 {
     text-align: center;
     font-size: 18px;    
     color: #333;
+    font-size: 18px;
+    font-weight: 500;
 }
 
 /* Estilização de inputs, selects e textareas */
@@ -31,7 +34,7 @@ select:focus,
 textarea:focus {
     outline: none;
     box-shadow: none;
-    border: 1px solid #ccc;
+    border: 1px solid #B6B6B6;
     font-size: 18px;
     padding: 5px;
     width: 100%;
@@ -45,7 +48,7 @@ textarea:focus {
 input[type="button"],
 input[type="submit"] {
     outline: none;
-    background-color: #fffaf2; 
+    background-color: #D8D8D8; 
     border: none;    
     font-size: 18px;
     font-weight: 500;
@@ -56,7 +59,7 @@ input[type="submit"] {
     color: #333;    
     text-align: center;
     cursor: pointer;
-    border: 1px solid #ccc;
+    border: 1px solid #B6B6B6;
 }
 
 form{
@@ -97,15 +100,14 @@ tr {
 html,
 body {
     min-height: 100%;
-    width: 100%;   
-    
+    width: 100%;    
     align-items: flex-start; /* Alinha ao topo */
     height: 100vh;    
     font-family: 'Roboto', sans-serif;    
     /* Cinza escuro */
     font-size: 18px;
     margin: auto 0;
-    background-color: #fffaf2;
+    background-color: #D8D8D8;
     /* Cinza claro */
 }
 
@@ -131,7 +133,7 @@ input[type="file"] {
 .file::-webkit-file-upload-button {
     outline: none;
     box-shadow: none;
-    border: 1px solid #ccc;
+    border: 1px solid #B6B6B6;
     font-size: 18px;
     resize: none;
     padding: 5px;
@@ -154,46 +156,36 @@ span {
 .menu {  
     width: 100%;
     height: 35px;
-    background-color: #fffaf2; /* Cinza-Azulado Escuro Profissional */
+    background-color: #D8D8D8; /* Cinza-Azulado Escuro Profissional */
     padding: 0px 10px;
     margin: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #ccc;        
-    color: #333; /* Cor do texto clara */
-    font-size: 16px; /* Tamanho da fonte */
+    border: none; 
     cursor: pointer; /* Cursor de ponteiro para indicar que é clicável */
+    text-decoration: underline;
 }
 
 
 /* Estilização dos links no menu */
 .menu .menu_a {
-    margin: 0 12.5px;    
-    color: #333;
-    font-weight: 500;
-    text-decoration: none;
+    margin: 0 12.5px;        
+    font-weight: 500;    
     font-size: 18px;
-    transition: color 0.3s ease;
+    color: #333;
 }
 
 /* Estilização de links */
 a:link,
 a:visited,
+a:hover,
 a:active {
     text-decoration: none;
     font-weight: 500;
-    color: #2980b9;
+    color: #333;
     /* Azul */
     font-size: 18px;    
-}
-
-/* Efeito de hover nos links */
-a:hover {
-    font-weight: 500;
-    color: #0056b3;
-    /* Azul mais escuro */
-    text-decoration: none;
 }
 
 #cookieConsent {
@@ -213,7 +205,7 @@ a:hover {
 
 #acceptCookies {
     background-color: #4CAF50;
-    color: #fffaf2;
+    color: #D8D8D8;
     border: none;
     padding: 0px; 
     cursor: pointer;
@@ -222,7 +214,7 @@ a:hover {
 
 #declineCookies {
     background-color: #f44336;
-    color: #fffaf2; 
+    color: #D8D8D8; 
     border: none; 
     padding: 0px; 
     cursor: pointer; 
@@ -230,10 +222,10 @@ a:hover {
 }
 
 .botoes {
-    background-color: #fffaf2; /* Cinza Escuro Melhorado */
+    background-color: #D8D8D8; /* Cinza Escuro Melhorado */
     
     color: #333;
-    border: 1px solid #ccc;    
+    border: 1px solid #B6B6B6;    
     font-size: 18px;
     resize: none;
     padding: 0px;
@@ -252,7 +244,7 @@ a:hover {
     text-decoration: none; /* Remover decoração de texto para links */
     display: block; /* Garantir que os links ocupem todo o espaço do botão */
     padding: 5px 10px; /* Ajustar padding para alinhar com o conteúdo do botão */
-    border: 1px solid #ccc;
+    border: 1px solid #B6B6B6;
 }
 
 .roboto-thin {

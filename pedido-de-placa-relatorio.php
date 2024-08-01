@@ -8,7 +8,7 @@ $pdf->SetFont('Arial', '', 16);
 if(isset($_COOKIE['pedido_de_placa_id'])) {
     $SQL = 'SELECT * FROM pedido_de_placa' . ' WHERE pedido_de_placa_id = ' . $_COOKIE['pedido_de_placa_id'];
 } else {
-    $SQL = 'SELECT * FROM pedido_de_placa';
+    $SQL = 'SELECT * FROM pedido_de_placa LIMIT 1';
 }
 
 $stmt = $pdo->prepare($SQL);

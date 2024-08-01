@@ -8,7 +8,7 @@ $pdf->SetFont('Arial', '', 16);
 if(isset($_COOKIE['servico_id'])) {
     $SQL = 'SELECT * FROM servico' . ' WHERE servico_id = ' . $_COOKIE['servico_id'];
 } else {
-    $SQL = 'SELECT * FROM servico';
+    $SQL = 'SELECT * FROM servico LIMIT 1';
 }
 
 $stmt = $pdo->prepare($SQL);

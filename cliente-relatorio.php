@@ -9,7 +9,7 @@ $pdf->SetFont('Arial', '', 16);
 if(isset($_COOKIE['cliente_id'])) {
     $SQL = 'SELECT * FROM cliente' . ' WHERE cliente_id = ' . $_COOKIE['cliente_id'];
 } else {
-    $SQL = 'SELECT * FROM cliente';
+    $SQL = 'SELECT * FROM cliente LIMIT 1';
 }
 
 $stmt = $pdo->prepare($SQL);
