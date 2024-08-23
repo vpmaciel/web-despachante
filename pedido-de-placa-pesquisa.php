@@ -22,8 +22,6 @@ echo open_div;
 
 require_once 'menu.php';
 
-echo open_h1 . 'Pedido de Placa'  . close_h1; 
-
 require_once 'pedido-de-placa-menu.php';
 
 $numero_de_registros = retornar_total_registros('pedido_de_placa');
@@ -48,6 +46,8 @@ require_once 'pedido-de-placa-formulario.php';
 echo close_form;
 
 echo close_div;
+
+require_once 'rodape.php';
 
 echo close_body;
 	

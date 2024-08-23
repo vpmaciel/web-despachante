@@ -23,8 +23,6 @@ echo open_div;
 
 require_once 'menu.php';
 
-echo open_h1 . 'Serviço'  . close_h1; 
-
 require_once 'servico-menu.php';
 
 $registro = array();
@@ -100,16 +98,15 @@ while($linha = $stmt->fetch(PDO::FETCH_ASSOC))
 	foreach ($linha as $chave=>$valor){ 
 		$string.= "$chave" . "=" . $valor . "&";                        
 	}
-    echo open_tr . open_td . open_label . 'Identificador: ' . $linha['servico_id'] . close_lable . close_td . close_tr; 
-    echo open_tr . open_td . open_label . 'Data: ' . date('d-m-Y', strtotime($linha['servico_data'])) . close_lable . close_td . close_tr; 
-    echo open_tr . open_td . open_label . 'Placa do veículo: ' . $linha['servico_placa_veiculo'] . close_lable . close_td . close_tr; 
-    echo open_tr . open_td . open_label . 'Valor: ' . formatarNumero($linha['servico_valor']) . close_lable . close_td . close_tr; 
-    echo open_tr . open_td . open_label . 'Descrição: ' . $linha['servico_descricao'] . close_lable . close_td . close_tr; 
-    echo open_tr . open_td . open_label . 'CPF | CNPJ do cliente: ' . $linha['servico_cpf_cnpj_cliente'] . close_lable . close_td . close_tr;     
-    echo open_tr . open_td . open_label . 'Telefone do cliente: ' . $linha['servico_telefone_cliente'] . close_lable . close_td . close_tr;     
-    echo open_tr . open_td . '<a href="servico-cadastro.php?editar=true&' . 'servico_id='. $linha['servico_id']. '">Editar</a> | '; 
-        echo '<a href="servico-deletar.php?' . 'servico_id='. $linha['servico_id']. ' " onclick="return confirmarExcluir();">Excluir</a>' . close_td . close_tr; 
-    echo open_tr . open_td . open_label . '&nbsp;' . close_lable . close_td . close_tr; 
+  echo open_tr . open_td . open_label . 'Data: ' . date('d-m-Y', strtotime($linha['servico_data'])) . close_lable . close_td . close_tr; 
+  echo open_tr . open_td . open_label . 'Placa do veículo: ' . $linha['servico_placa_veiculo'] . close_lable . close_td . close_tr; 
+  echo open_tr . open_td . open_label . 'Valor: ' . formatarNumero($linha['servico_valor']) . close_lable . close_td . close_tr; 
+  echo open_tr . open_td . open_label . 'Descrição: ' . $linha['servico_descricao'] . close_lable . close_td . close_tr; 
+  echo open_tr . open_td . open_label . 'CPF | CNPJ do cliente: ' . $linha['servico_cpf_cnpj_cliente'] . close_lable . close_td . close_tr;     
+  echo open_tr . open_td . open_label . 'Telefone do cliente: ' . $linha['servico_telefone_cliente'] . close_lable . close_td . close_tr;     
+  echo open_tr . open_td . '<a href="servico-cadastro.php?editar=true&' . 'servico_id='. $linha['servico_id']. '">Editar</a> | '; 
+  echo '<a href="servico-deletar.php?' . 'servico_id='. $linha['servico_id']. ' " onclick="return confirmarExcluir();">Excluir</a>' . close_td . close_tr; 
+  echo open_tr . open_td . open_label . '&nbsp;' . close_lable . close_td . close_tr; 
 }
 
 echo close_table;
@@ -131,6 +128,8 @@ if ($number_of_results == 0) {
 }
 
 echo close_div;
+
+require_once 'rodape.php';
 
 echo close_body;
 	

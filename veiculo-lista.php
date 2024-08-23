@@ -22,8 +22,6 @@ echo open_div;
 
 require_once 'menu.php';
 
-echo open_h1 . 'Veículo'  . close_h1; 
-
 require_once 'veiculo-menu.php';
 
 $registro = array();
@@ -95,15 +93,15 @@ while($linha = $stmt->fetch(PDO::FETCH_ASSOC))
 		$string.= "$chave" . "=" . $valor . "&";                        
 	}
     
-    echo open_tr . open_td . open_label . 'Identificador: ' . $linha['veiculo_id'] . close_lable . close_td . close_tr; 
-    echo open_tr . open_td . open_label . 'Placa: ' . $linha['veiculo_placa'] . close_lable . close_td . close_tr; 
-    echo open_tr . open_td . open_label . 'CPF | CNPJ do proprietário: ' . $linha['veiculo_cpf_cnpj_proprietario'] . close_lable . close_td . close_tr; 
-    echo open_tr . open_td . open_label . 'Nome do proprietário: ' . $linha['veiculo_nome_proprietario'] . close_lable . close_td . close_tr; 
-    echo open_tr . open_td . open_label . 'Marca: ' . $linha['veiculo_marca'] . close_lable . close_td . close_tr; 
-    echo open_tr . open_td . open_label . 'Modelo: ' . $linha['veiculo_modelo'] . close_lable . close_td . close_tr;     
-    echo open_tr . open_td . '<a href="veiculo-cadastro.php?editar=true&' . 'veiculo_id=' . $linha['veiculo_id']. '">Editar</a> | '; 
-        echo '<a href="veiculo-deletar.php?' . 'veiculo_id=' . $linha['veiculo_id']. '" onclick="return confirmarExcluir();">Excluir</a>' . close_td . close_tr; 
-    echo open_tr . open_td . open_label . '&nbsp;' . close_lable . close_td . close_tr; 
+  echo open_tr . open_td . open_label . 'Identificador: ' . $linha['veiculo_id'] . close_lable . close_td . close_tr; 
+  echo open_tr . open_td . open_label . 'Placa: ' . $linha['veiculo_placa'] . close_lable . close_td . close_tr; 
+  echo open_tr . open_td . open_label . 'CPF | CNPJ do proprietário: ' . $linha['veiculo_cpf_cnpj_proprietario'] . close_lable . close_td . close_tr; 
+  echo open_tr . open_td . open_label . 'Nome do proprietário: ' . $linha['veiculo_nome_proprietario'] . close_lable . close_td . close_tr; 
+  echo open_tr . open_td . open_label . 'Marca: ' . $linha['veiculo_marca'] . close_lable . close_td . close_tr; 
+  echo open_tr . open_td . open_label . 'Modelo: ' . $linha['veiculo_modelo'] . close_lable . close_td . close_tr;     
+  echo open_tr . open_td . '<a href="veiculo-cadastro.php?editar=true&' . 'veiculo_id=' . $linha['veiculo_id']. '">Editar</a> | '; 
+  echo '<a href="veiculo-deletar.php?' . 'veiculo_id=' . $linha['veiculo_id']. '" onclick="return confirmarExcluir();">Excluir</a>' . close_td . close_tr; 
+  echo open_tr . open_td . open_label . '&nbsp;' . close_lable . close_td . close_tr; 
 }
 echo close_table;
 
@@ -122,6 +120,8 @@ if ($number_of_results == 0) {
 }
 
 echo close_div;
+
+require_once 'rodape.php';
 
 echo close_body;
 	

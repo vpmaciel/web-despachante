@@ -1,11 +1,11 @@
-<?php
-error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED);
-echo '<div class="menu">';
-echo  '<a href="index.php" class="menu_a">Home</a> '; 
-echo  '<a href="cliente-cadastro.php" class="menu_a">Cliente</a> '; 
-echo  '<a href="pedido-de-placa-cadastro.php" class="menu_a">Pedido de Placa</a> '; 
-echo  '<a href="servico-cadastro.php" class="menu_a">Serviço</a> '; 
-echo  '<a href="veiculo-cadastro.php" class="menu_a">Veículo</a>'; 
-echo '</div>';
+    <?php
+    error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED);
+    echo '<div class="menu">';
+    echo  '<a id="home" href="home.php" class="menu_a">Home</a> '; 
+    echo  '<a id="cliente" href="cliente-cadastro.php" class="menu_a">Cliente</a> '; 
+    echo  '<a id="pedido-de-placa" href="pedido-de-placa-cadastro.php" class="menu_a">Pedido de Placa</a> '; 
+    echo  '<a id="servico" href="servico-cadastro.php" class="menu_a">Serviço</a> '; 
+    echo  '<a id="veiculo" href="veiculo-cadastro.php" class="menu_a">Veículo</a>'; 
+    echo '</div>';
 
-require_once 'cookies.php';
+    require_once 'cookies.php';

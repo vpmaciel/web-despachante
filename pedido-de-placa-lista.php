@@ -22,8 +22,6 @@ echo open_div;
 
 require_once 'menu.php';
 
-echo open_h1 . 'Pedido de Placa'  . close_h1; 
-
 require_once 'pedido-de-placa-menu.php';
 
 $SQL = '';
@@ -98,18 +96,16 @@ while($linha = $stmt->fetch(PDO::FETCH_ASSOC))
 	foreach ($linha as $chave=>$valor){ 
 		$string.= "$chave" . "=" . $valor . "&";                        
 	}
-    
-    echo open_tr . open_td . open_label . 'Identificador: ' . $linha['pedido_de_placa_id'] . close_lable . close_td . close_tr; 
-    echo open_tr . open_td . open_label . 'Data: ' . date('d-m-Y', strtotime($linha['pedido_de_placa_data'])) . close_lable . close_td . close_tr; 
-    echo open_tr . open_td . open_label . 'Placa do veículo: ' . $linha['pedido_de_placa_placa_veiculo'] . close_lable . close_td . close_tr; 
-    echo open_tr . open_td . open_label . 'Quantidade: ' . $linha['pedido_de_placa_quantidade'] . close_lable . close_td . close_tr; 
-    echo open_tr . open_td . open_label . 'RENAVAM: ' . $linha['pedido_de_placa_renavam'] . close_lable . close_td . close_tr; 
-    echo open_tr . open_td . open_label . 'CPF | CNPJ do proprietário: ' . $linha['pedido_de_placa_cpf_cnpj_proprietario'] . close_lable . close_td . close_tr;     
-    echo open_tr . open_td . open_label . 'Cor: ' . $linha['pedido_de_placa_cor_placa'] . close_lable . close_td . close_tr; 
-    echo open_tr . open_td . open_label . 'Tipo de placa: ' . $linha['pedido_de_placa_tipo_placa'] . close_lable . close_td . close_tr;     
-    echo open_tr . open_td . '<a href="pedido-de-placa-cadastro.php?editar=true&' . 'pedido_de_placa_id=' . $linha['pedido_de_placa_id'] . '">Editar</a> | '; 
-        echo '<a href="pedido-de-placa-deletar.php?' . 'pedido_de_placa_id=' . $linha['pedido_de_placa_id'] . ' " onclick="return confirmarExcluir();">Excluir</a>' . close_td . close_tr; 
-    echo open_tr . open_td . open_label . '&nbsp;' . close_lable . close_td . close_tr; 
+  echo open_tr . open_td . open_label . 'Data: ' . date('d-m-Y', strtotime($linha['pedido_de_placa_data'])) . close_lable . close_td . close_tr; 
+  echo open_tr . open_td . open_label . 'Placa do veículo: ' . $linha['pedido_de_placa_placa_veiculo'] . close_lable . close_td . close_tr; 
+  echo open_tr . open_td . open_label . 'Quantidade: ' . $linha['pedido_de_placa_quantidade'] . close_lable . close_td . close_tr; 
+  echo open_tr . open_td . open_label . 'RENAVAM: ' . $linha['pedido_de_placa_renavam'] . close_lable . close_td . close_tr; 
+  echo open_tr . open_td . open_label . 'CPF | CNPJ do proprietário: ' . $linha['pedido_de_placa_cpf_cnpj_proprietario'] . close_lable . close_td . close_tr;     
+  echo open_tr . open_td . open_label . 'Cor: ' . $linha['pedido_de_placa_cor_placa'] . close_lable . close_td . close_tr; 
+  echo open_tr . open_td . open_label . 'Tipo de placa: ' . $linha['pedido_de_placa_tipo_placa'] . close_lable . close_td . close_tr;     
+  echo open_tr . open_td . '<a href="pedido-de-placa-cadastro.php?editar=true&' . 'pedido_de_placa_id=' . $linha['pedido_de_placa_id'] . '">Editar</a> | '; 
+  echo '<a href="pedido-de-placa-deletar.php?' . 'pedido_de_placa_id=' . $linha['pedido_de_placa_id'] . ' " onclick="return confirmarExcluir();">Excluir</a>' . close_td . close_tr; 
+  echo open_tr . open_td . open_label . '&nbsp;' . close_lable . close_td . close_tr; 
 }
 echo close_table;
 
@@ -130,6 +126,8 @@ if ($number_of_results == 0) {
 }
 
 echo close_div;
+
+require_once 'rodape.php';
 
 echo close_body;
 	

@@ -22,8 +22,6 @@ echo open_div;
 
 require_once 'menu.php';
 
-echo open_h1 . 'Serviço'  . close_h1; 
-
 require_once 'servico-menu.php';
 
 $numero_de_registros = retornar_total_registros('servico');
@@ -48,6 +46,8 @@ require_once 'servico-formulario.php';
 echo close_form;
 
 echo close_div;
+
+require_once 'rodape.php';
 
 echo close_body;
 	

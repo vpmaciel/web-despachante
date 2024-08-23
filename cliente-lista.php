@@ -23,6 +23,8 @@ echo open_div;
 
 require_once 'menu.php';
 
+require_once 'cliente-menu.php';
+
 $registro = array();
 
 $SQL = '';
@@ -82,22 +84,19 @@ echo $form_open;
 
 echo open_table;
 
-echo open_tr . open_th . 'Cliente'  . close_th . close_tr; 
-
 while($linha = $stmt->fetch(PDO::FETCH_ASSOC))
 {
     	
-	$string= '';
+  $string= '';
 	foreach ($linha as $chave=>$valor){ 
 		$string.= "$chave" . "=" . $valor . "&";                        
 	}
-    echo open_tr . open_td . open_label . 'Identificador: ' . $linha['cliente_id'] . close_lable . close_td . close_tr; 
-    echo open_tr . open_td . open_label . 'CPF | CNPJ: ' . $linha['cliente_cpf_cnpj'] . close_lable . close_td . close_tr; 
-    echo open_tr . open_td . open_label . 'Nome: ' . $linha['cliente_nome_completo'] . close_lable . close_td . close_tr;     
-    echo open_tr . open_td . open_label . 'E-Mail: ' . $linha['cliente_email'] . close_lable . close_td . close_tr;         
-    echo open_tr . open_td . '<a href="cliente-cadastro.php?editar=true&' . 'cliente_id='. $linha['cliente_id'] . '">Editar</a> | '; 
-    echo '<a href="cliente-deletar.php?' . 'cliente_id='. $linha['cliente_id'] . ' " onclick="return confirmarExcluir();">Excluir</a>' . close_td . close_tr; 
-    echo open_tr . open_td . open_label . '&nbsp;' . close_lable . close_td . close_tr; 
+  echo open_tr . open_td . open_label . 'CPF | CNPJ: ' . $linha['cliente_cpf_cnpj'] . close_lable . close_td . close_tr; 
+  echo open_tr . open_td . open_label . 'Nome: ' . $linha['cliente_nome_completo'] . close_lable . close_td . close_tr;     
+  echo open_tr . open_td . open_label . 'E-Mail: ' . $linha['cliente_email'] . close_lable . close_td . close_tr;         
+  echo open_tr . open_td . '<a href="cliente-cadastro.php?editar=true&' . 'cliente_id='. $linha['cliente_id'] . '">Editar</a> | '; 
+  echo '<a href="cliente-deletar.php?' . 'cliente_id='. $linha['cliente_id'] . ' " onclick="return confirmarExcluir();">Excluir</a>' . close_td . close_tr; 
+  echo open_tr . open_td . open_label . '&nbsp;' . close_lable . close_td . close_tr; 
 }
 echo close_table;
 
@@ -119,6 +118,8 @@ if ($number_of_results == 0) {
 
 
 echo close_div;
+
+require_once 'rodape.php';
 
 echo close_body;
 	

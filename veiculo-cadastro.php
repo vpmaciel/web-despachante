@@ -23,8 +23,6 @@ echo open_div;
 
 require_once 'menu.php';
 
-echo open_h1 . 'Veículo'  . close_h1; 
-
 require_once 'veiculo-menu.php';
 
 $registro = array();
@@ -70,6 +68,8 @@ require_once 'veiculo-formulario.php';
 echo close_form;
 
 echo close_div;
+
+require_once 'rodape.php';
 
 echo close_body;
 	

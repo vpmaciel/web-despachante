@@ -21,8 +21,6 @@ echo open_div;
 
 require_once 'menu.php';
 
-echo open_h1 . 'Cliente'  . close_h1; 
-
 require_once 'cliente-menu.php';
 
 $form_open = '<form action="" method="POST">';
@@ -44,6 +42,9 @@ echo close_table;
 echo close_form;
 
 echo close_div;
+
+require_once 'rodape.php';
+
 
 echo close_body;
 	

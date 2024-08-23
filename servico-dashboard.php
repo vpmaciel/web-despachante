@@ -1,5 +1,6 @@
 <?php
-header('Content-Type: text/html; charset=utf-8');
+
+
 setlocale(LC_ALL, 'pt_BR.utf8');
 
 require_once 'lib/lib-biblioteca.php';
@@ -20,17 +21,13 @@ echo open_div;
 
 require_once 'menu.php';
 
-echo open_h1 . 'Serviço'  . close_h1;
-
 require_once 'servico-menu.php';
 
 $form_open = '<form action="" method="POST">';
 
-echo $form_open; 
+echo $form_open;
 
 echo open_table;
-
-require_once 'servico-menu.php';
 
 ob_start();
 include 'servico-grafico.php';
@@ -46,6 +43,8 @@ echo close_form;
 
 echo close_div;
 
+require_once 'rodape.php';
+
 echo close_body;
 	
-echo close_html;    
+echo close_html;

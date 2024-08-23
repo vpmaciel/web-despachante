@@ -3,12 +3,10 @@
     box-sizing: border-box;
     border-radius: 0px;
     text-align: center;
-    color: #333; /* Cinza Escuro Melhorado */
     font-weight: normal;
-    padding: 0px;
-    font-weight: normal;    
+    padding: 0px;    
     font-size: 18px;
-    color: #333;
+    color: #333333;
 }
 
 /* Estilização de títulos */
@@ -19,11 +17,9 @@ h4,
 h5,
 h6 {
     text-align: center;
-    font-size: 18px;    
-    color: #333;
-    font-size: 18px;
-    font-weight: 500;
+    padding: 5px;
 }
+
 
 /* Estilização de inputs, selects e textareas */
 input,
@@ -35,44 +31,37 @@ textarea:focus {
     outline: none;
     box-shadow: none;
     border: 1px solid #B6B6B6;
-    font-size: 18px;
     padding: 5px;
     width: 100%;
     resize: none;
     text-align: left;
-    color: #333;   
 }
 
-/* Estilização de botões */
-.botao,
+
 input[type="button"],
 input[type="submit"] {
     outline: none;
     background-color: #D8D8D8; 
+    text-decoration: underline;
     border: none;    
-    font-size: 18px;
-    font-weight: 500;
     resize: none;
     padding: 5px;
     max-width: 150px;
     width: 150px;
-    color: #333;    
     text-align: center;
     cursor: pointer;
-    border: 1px solid #B6B6B6;
+      
 }
 
 form{
-    padding: 10px;
+    padding: 5px;
 }
 
-/* Parágrafos justificados com recuo de 2em */
 p {
     text-align: justify;
     text-indent: 2em;
 }
 
-/* Estilização de tabelas */
 table {
     table-layout: fixed;
     width: 900px;
@@ -88,7 +77,6 @@ td {
 }
 
 th {
-    font-weight: bold;
     text-align: center;
 }
 tr {    
@@ -96,36 +84,30 @@ tr {
     min-height: 50px;    
 }
 
-/* Estilização da estrutura HTML e corpo da página */
 html,
 body {
     min-height: 100%;
     width: 100%;    
     align-items: flex-start; /* Alinha ao topo */
     height: 100vh;    
-    font-family: 'Roboto', sans-serif;    
+    font-family: Arial, sans-serif;
     /* Cinza escuro */
-    font-size: 18px;
     margin: auto 0;
     background-color: #D8D8D8;
     /* Cinza claro */
 }
 
-/* Estilização de mensagens de sucesso e erro */
 .sucesso {
     text-align: center;
     color: #28a745;
-    /* Verde */
 }
 
 .erro {
     color: #dc3545;
-    /* Vermelho */
     text-align: center;
     margin: 0 auto;
 }
 
-/* Estilização de inputs de arquivo */
 input[type="file"] {
     border: none;
 }
@@ -134,16 +116,13 @@ input[type="file"] {
     outline: none;
     box-shadow: none;
     border: 1px solid #B6B6B6;
-    font-size: 18px;
     resize: none;
     padding: 5px;
     width: 150px;
 }
 
-/* Estilização de labels e spans */
 label,
 span {    
-    /* Cinza escuro */
     text-align: left;
 }
 
@@ -152,45 +131,32 @@ span {
     text-align: center;
 }
 
-/* Estilização do menu */
 .menu {  
     width: 100%;
     height: 35px;
-    background-color: #D8D8D8; /* Cinza-Azulado Escuro Profissional */
+    background-color: #D8D8D8; 
     padding: 0px 10px;
     margin: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: none; 
-    cursor: pointer; /* Cursor de ponteiro para indicar que é clicável */
+    cursor: pointer; 
     text-decoration: underline;
 }
 
-
-/* Estilização dos links no menu */
 .menu .menu_a {
-    margin: 0 12.5px;        
-    font-weight: 500;    
-    font-size: 18px;
-    color: #333;
+    margin: 0 12.5px;
 }
 
-/* Estilização de links */
 a:link,
 a:visited,
 a:hover,
 a:active {
-    text-decoration: none;
-    font-weight: 500;
-    color: #333;
-    /* Azul */
-    font-size: 18px;    
+    text-decoration: none;       
 }
 
 #cookieConsent {
-    color: #579EBB;
-    /* Branco */
+    color: #579EBB;    
     text-align: center;
     padding-top: 10px;    
     font-family: Arial, sans-serif;
@@ -199,7 +165,7 @@ a:active {
 #cookieConsent button {
     margin: 0px;
     padding: 5px 10px;
-    font-size: 16px;
+    font-size: 18px;
     cursor: pointer;
 }
 
@@ -222,99 +188,22 @@ a:active {
 }
 
 .botoes {
-    background-color: #D8D8D8; /* Cinza Escuro Melhorado */
-    
-    color: #333;
-    border: 1px solid #B6B6B6;    
-    font-size: 18px;
+    background-color: #D8D8D8;
     resize: none;
-    padding: 0px;
+    padding-top: 5px;
+    padding-bottom: 0px;
     max-width: 150px;
     width: 150px;
     border: none;
     cursor: pointer;
     margin-right: 5px;    
-    text-decoration: none; /* Remover decoração de texto para links */
+    text-decoration: underline; 
     display: inline-block; /* Garantir que os elementos ocupem apenas o espaço necessário */
-    text-align: center; /* Centralizar o texto */
+    text-align: center;
 }
 
 .botoes a {
-    color: #333; /* Garantir que o texto dos links seja branco */
     text-decoration: none; /* Remover decoração de texto para links */
     display: block; /* Garantir que os links ocupem todo o espaço do botão */
-    padding: 5px 10px; /* Ajustar padding para alinhar com o conteúdo do botão */
-    border: 1px solid #B6B6B6;
-}
-
-.roboto-thin {
-    font-family: "Roboto", sans-serif;
-    font-weight: 100;
-    font-style: normal;
-  }
-
-.roboto-light {
-font-family: "Roboto", sans-serif;
-font-weight: 300;
-font-style: normal;
-}
-
-.roboto-regular {
-font-family: "Roboto", sans-serif;
-font-weight: 400;
-font-style: normal;
-}
-
-.roboto-medium {
-font-family: "Roboto", sans-serif;
-font-weight: 500;
-font-style: normal;
-}
-
-.roboto-bold {
-font-family: "Roboto", sans-serif;
-font-weight: 700;
-font-style: normal;
-}
-
-.roboto-black {
-font-family: "Roboto", sans-serif;
-font-weight: 900;
-font-style: normal;
-}
-
-.roboto-thin-italic {
-font-family: "Roboto", sans-serif;
-font-weight: 100;
-font-style: italic;
-}
-
-.roboto-light-italic {
-font-family: "Roboto", sans-serif;
-font-weight: 300;
-font-style: italic;
-}
-
-.roboto-regular-italic {
-font-family: "Roboto", sans-serif;
-font-weight: 400;
-font-style: italic;
-}
-
-.roboto-medium-italic {
-font-family: "Roboto", sans-serif;
-font-weight: 500;
-font-style: italic;
-}
-
-.roboto-bold-italic {
-font-family: "Roboto", sans-serif;
-font-weight: 700;
-font-style: italic;
-}
-
-.roboto-black-italic {
-font-family: "Roboto", sans-serif;
-font-weight: 900;
-font-style: italic;
+    padding: 5px 10px; /* Ajustar padding para alinhar com o conteúdo do botão */    
 }
