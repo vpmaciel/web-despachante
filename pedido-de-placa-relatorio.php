@@ -17,7 +17,6 @@ $pdf->Cell(0, 10, 'Pedido de Placa', 0, 1, 'C'); // Cabeçalho da tabela
 
 while ($registro = $stmt->fetch(PDO::FETCH_ASSOC)) {
     $pdf->Ln();
-    $pdf->Cell(0, 10, utf8_decode('Identificador: ' . $registro['pedido_de_placa_id']), 0, 1);
     $pdf->Cell(0, 10, utf8_decode('Data: ' . date('d-m-Y', strtotime($registro['pedido_de_placa_data']))), 0, 1);
     $pdf->Cell(0, 10, utf8_decode('Placa do veículo: ' . $registro['pedido_de_placa_placa_veiculo']), 0, 1);
     $pdf->Cell(0, 10, utf8_decode('Quantidade: ' . $registro['pedido_de_placa_quantidade']), 0, 1);

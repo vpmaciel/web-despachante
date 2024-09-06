@@ -22,7 +22,6 @@ $pdf->Cell(0, 10, 'Cliente', 0, 1, 'C'); // Cabeçalho da tabela
 
 while ($registro = $stmt->fetch(PDO::FETCH_ASSOC)) {
     $pdf->Ln();
-    $pdf->Cell(0, 10, utf8_decode('Identificador: ' . $registro['cliente_id']), 0, 1);
     $pdf->Cell(0, 10, utf8_decode('Nome: ' . $registro['cliente_nome_completo']), 0, 1);    
     $pdf->Cell(0, 10, utf8_decode('CPF | CNPJ: ' . $registro['cliente_cpf_cnpj']), 0, 1);
     $pdf->Cell(0, 10, utf8_decode('Telefone: ' . $registro['cliente_telefone']), 0, 1);

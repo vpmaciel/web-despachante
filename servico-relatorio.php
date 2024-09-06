@@ -21,7 +21,6 @@ $pdf->Cell(0, 10, utf8_decode('Serviço'), 0, 1, 'C'); // Cabeçalho da tabela
 
 while ($registro = $stmt->fetch(PDO::FETCH_ASSOC)) {
     $pdf->Ln();
-    $pdf->Cell(0, 10, utf8_decode('Identificador: ' . $registro['servico_id']), 0, 1);
     $pdf->Cell(0, 10, utf8_decode('Data: ' . date('d-m-Y', strtotime($registro['servico_data']))), 0, 1);
     $pdf->Cell(0, 10, utf8_decode('Placa do veículo: ' . $registro['servico_placa_veiculo']), 0, 1);
     $pdf->Cell(0, 10, utf8_decode('Valor: ' . $registro['servico_valor']), 0, 1);

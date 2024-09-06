@@ -21,7 +21,6 @@ $pdf->Cell(0, 10, utf8_decode('Veículo'), 0, 1, 'C'); // Cabeçalho da tabela
 
 while ($registro = $stmt->fetch(PDO::FETCH_ASSOC)) {
     $pdf->Ln();
-    $pdf->Cell(0, 10, utf8_decode('Identificador: ' . $registro['veiculo_id ']), 0, 1);
     $pdf->Cell(0, 10, utf8_decode('Placa do veículo: ' . $registro['veiculo_placa']), 0, 1);
     $pdf->Cell(0, 10, utf8_decode('CPF | CNPJ do proprietário: ' . $registro['veiculo_cpf_cnpj_proprietario']), 0, 1);
     $pdf->Cell(0, 10, utf8_decode('Nome do proprietário: ' . $registro['veiculo_nome_proprietario']), 0, 1);

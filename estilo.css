@@ -148,6 +148,22 @@ span {
     margin: 0 12.5px;
 }
 
+.botoes {
+    background-color: #D8D8D8;
+    padding-top: 5px;
+    padding-bottom: 0px;    
+    cursor: pointer;
+    text-decoration: underline; 
+    display: inline-block; /* Garantir que os elementos ocupem apenas o espaço necessário */
+    text-align: center;
+}
+
+.botoes a {
+    text-decoration: none; /* Remover decoração de texto para links */
+    display: block; /* Garantir que os links ocupem todo o espaço do botão */
+    padding: 5px 10px; /* Ajustar padding para alinhar com o conteúdo do botão */    
+}
+
 a:link,
 a:visited,
 a:hover,
@@ -185,25 +201,4 @@ a:active {
     padding: 0px; 
     cursor: pointer; 
     margin: 0 5px;
-}
-
-.botoes {
-    background-color: #D8D8D8;
-    resize: none;
-    padding-top: 5px;
-    padding-bottom: 0px;
-    max-width: 150px;
-    width: 150px;
-    border: none;
-    cursor: pointer;
-    margin-right: 5px;    
-    text-decoration: underline; 
-    display: inline-block; /* Garantir que os elementos ocupem apenas o espaço necessário */
-    text-align: center;
-}
-
-.botoes a {
-    text-decoration: none; /* Remover decoração de texto para links */
-    display: block; /* Garantir que os links ocupem todo o espaço do botão */
-    padding: 5px 10px; /* Ajustar padding para alinhar com o conteúdo do botão */    
 }

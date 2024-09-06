@@ -63,5 +63,12 @@ else if (window.location.href.includes('relatorio')) {
         elemento.style.textDecorationColor = 'blue';
     }
 }
+else if (window.location.href.includes('lista')) {
+    var elemento = document.getElementById('pesquisa');
+    if (elemento) {
+        elemento.style.textDecoration = 'underline';
+        elemento.style.textDecorationColor = 'blue';
+    }
+}
 
 </script>
