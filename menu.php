@@ -1,5 +1,9 @@
     <?php
     error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED);
+    
+    echo '<div class="site">';
+    echo  open_h1 . 'ATHOS DESPACHANTE &copy; 2024' . close_h1; 
+    echo '</div>';
     echo '<div class="menu">';
     echo  '<a id="home" href="home.php" class="menu_a">Home</a> '; 
     echo  '<a id="cliente" href="cliente-cadastro.php" class="menu_a">Cliente</a> '; 
