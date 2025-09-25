@@ -51,6 +51,8 @@ echo open_td . $input . close_td . close_tr;
 
 echo open_tr . open_td_2 . open_label . '' . close_lable . close_td; 
 
+echo open_td . $numero_de_registros . ' registros cadastrados'  . close_td . close_tr;
+
 echo open_tr . open_td_2 . open_label . '' . close_lable . close_td; 
 
 if (strpos($_SERVER['REQUEST_URI'], 'cadastro') !== false) {

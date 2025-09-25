@@ -1,16 +1,29 @@
 <script>
+
+    const paginas = ['home', 'cliente', 'pedido-de-placa', 'servico', 'veiculo', 'cadastro', 'pesquisa', 'dashboard', 'relatorio', 'lista'];
+
+    paginas.forEach(pagina => {
+        if (window.location.href.includes(pagina)) {
+            let elemento = document.getElementById(pagina);
+            if (elemento) {
+                //elemento.style.textDecoration = 'underline';
+                elemento.style.textDecorationColor = '#579EBB';         
+                elemento.style.color = '#579EBB';
+            }
+        }
+    });
+
     const mapeamentoPaginas = {
-        'home': 'ATHOS DESPACHANTE ©',
-        'cliente': 'CLIENTE',
-        'pedido-de-placa': 'PEDIDO DE PLACA',
-        'servico': 'SERVIÇO',
-        'veiculo': 'VEÍCULO',
+        'home': 'ATHOS DESPACHANTE © 2025',
+        'cliente': 'Menu: Cliente',
+        'pedido-de-placa': 'Menu: Pedido de Placa',
+        'servico': 'Menu: Serviço',
+        'veiculo': 'Menu: Veículo',
     };
 
     // Encontra a página atual
     function definirPaginaAtual() {
         const url = window.location.href;
-        const anoAtual = new Date().getFullYear();
         
         for (const [pagina, titulo] of Object.entries(mapeamentoPaginas)) {
             if (url.includes(pagina)) {

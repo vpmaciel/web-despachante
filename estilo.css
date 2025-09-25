@@ -10,7 +10,12 @@
 }
 
 /* Estilização de títulos */
-h1,
+h1 {
+    text-align: right !important;
+    margin: 0;
+    padding: 0;
+    color: #fff; 
+}
 h2,
 h3,
 h4,
@@ -18,16 +23,30 @@ h5,
 h6 {
     text-align: center;
     padding: 5px;
-<<<<<<< HEAD
-    font-weight: normal;
-    color: #333;    
-=======
     font-weight: lighter;
-    color: #333;
->>>>>>> a0830d9074f978a3c5e85ced283ce0d7043f1c55
+    color: #333;    
 }
 
+.site {  
+    width: 100%;
+    height: 20px;        
+    padding: 0px 15px;     
+    display: flex;    
+    background-color: #444444;
+    border: 1px solid #B6B6B6;
+    text-align: right !important;
+    justify-content: flex-end !important; /* Para o flexbox alinhar à direita */ 
+}
 
+/* Em vez de apenas h1, use: */
+.site h1 {
+    text-align: right;
+}
+
+/* Ou ainda mais específico: */
+div .site h1 {
+    text-align: right;
+}
 /* Estilização de inputs, selects e textareas */
 input,
 select,
@@ -42,6 +61,7 @@ textarea:focus {
     width: 100%;
     resize: none;
     text-align: left;
+    background-color: #fffbf3;
 }
 
 
@@ -103,7 +123,7 @@ tr {
 
 
 .lista tr:nth-child(even) {
-    background-color: #fff;
+    background-color: #fffbf3;
 }
 
 .lista td, .lista th {
@@ -177,7 +197,7 @@ span {
 .menu {  
     width: 100%;
     height: 35px;
-    background-color: #D8D8D8; 
+    background-color: #444444; 
     padding: 0px 10px;
     margin: 0;
     display: flex;
@@ -187,33 +207,12 @@ span {
     text-decoration: underline;  
 }
 
-.site {  
-    width: 100%;
-    height: 25px;        
-    padding: 0px 15px; 
-    margin-top: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;  /* Centraliza horizontalmente */
-}
-
-.site {  
-    width: 100%;
-    height: 25px;
-    background-color: #D8D8D8; 
-    padding: 0px 10px;
-    border-bottom: 1px solid #B6B6B6;
-    display: flex;
-    align-items: center;
-    justify-content: center;  /* Centraliza horizontalmente */
-}
-
 .menu .menu_a {
     margin: 0 12.5px;
+    color:#fff;
 }
 
-.botoes {
-    background-color: #D8D8D8;
+.botoes {         
     padding-top: 5px;
     padding-bottom: 0px;    
     cursor: pointer;

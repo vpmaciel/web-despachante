@@ -24,6 +24,8 @@ require_once 'menu.php';
 
 require_once 'cliente-menu.php';
 
+$numero_de_registros = retornar_total_registros('cliente');
+
 $registro = array();
 $registro['cliente_id'] = '';
 $registro['cliente_nome_completo'] = '';
