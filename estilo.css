@@ -18,8 +18,8 @@ h5,
 h6 {
     text-align: center;
     padding: 5px;
-    font-weight: lighter;
-    color: #333;
+    font-weight: normal;
+    color: #333;    
 }
 
 
@@ -67,8 +67,8 @@ p {
 table {
     table-layout: fixed;
     width: 900px;
-    border-collapse: collapse;    
-    margin-top: 10px;
+    border-collapse: collapse;   
+    margin-top: 5px; 
 }
 
 th,
@@ -84,6 +84,43 @@ th {
 tr {    
     height: 50px;
     min-height: 50px;    
+}
+
+.lista table {
+    table-layout: fixed;
+    width: 900px;   
+    margin-top: 5px;
+}
+
+.lista tr {    
+    height: 8px;    
+}
+
+
+.lista tr:nth-child(even) {
+    background-color: #fff;
+}
+
+.lista td, .lista th {
+    padding: 5px;
+    
+}
+
+/* Todas as colunas exceto a última */
+.lista td:not(:last-child),
+.lista th:not(:last-child) {
+    width: 40%;    
+}
+
+/* Última coluna */
+.lista td:last-child,
+.lista th:last-child {
+    width: 20%;
+    text-align: center;
+}
+
+.lista a {
+    text-align: center;        
 }
 
 html,
@@ -141,16 +178,15 @@ span {
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer; 
-    text-decoration: underline;
+    cursor: pointer;
+    text-decoration: underline;  
 }
 
 .site {  
     width: 100%;
-    height: 25px;
-    background-color: #D8D8D8; 
-    padding: 0px 10px;
-    border-bottom: 1px solid #B6B6B6;
+    height: 25px;        
+    padding: 0px 15px; 
+    margin-top: 5px;
     display: flex;
     align-items: center;
     justify-content: center;  /* Centraliza horizontalmente */
@@ -180,7 +216,7 @@ a:link,
 a:visited,
 a:hover,
 a:active {
-    text-decoration: none;       
+    text-decoration: none;        
 }
 
 #cookieConsent {

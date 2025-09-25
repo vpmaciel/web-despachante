@@ -85,11 +85,9 @@ $SQL = paginar('servico', $registro, $this_page_first_result, $results_per_page)
 $stmt = $pdo->prepare($SQL);
 $stmt->execute();
 
-$form_open = '<form action="#" method="POST">';
+echo open_table_2;
 
-echo $form_open;
-
-echo open_table;
+echo open_tr . open_th_2 . 'DATA' . close_th . open_th_2 . 'PLACA' . close_th . open_th_2 . '' . close_th  . close_tr; 
 
 while($linha = $stmt->fetch(PDO::FETCH_ASSOC))
 {
@@ -98,20 +96,14 @@ while($linha = $stmt->fetch(PDO::FETCH_ASSOC))
 	foreach ($linha as $chave=>$valor){ 
 		$string.= "$chave" . "=" . $valor . "&";                        
 	}
-  echo open_tr . open_td . open_label . 'Data: ' . date('d-m-Y', strtotime($linha['servico_data'])) . close_lable . close_td . close_tr; 
-  echo open_tr . open_td . open_label . 'Placa do veículo: ' . $linha['servico_placa_veiculo'] . close_lable . close_td . close_tr; 
-  echo open_tr . open_td . open_label . 'Valor: ' . formatarNumero($linha['servico_valor']) . close_lable . close_td . close_tr; 
-  echo open_tr . open_td . open_label . 'Descrição: ' . $linha['servico_descricao'] . close_lable . close_td . close_tr; 
-  echo open_tr . open_td . open_label . 'CPF | CNPJ do cliente: ' . $linha['servico_cpf_cnpj_cliente'] . close_lable . close_td . close_tr;     
-  echo open_tr . open_td . open_label . 'Telefone do cliente: ' . $linha['servico_telefone_cliente'] . close_lable . close_td . close_tr;     
-  echo open_tr . open_td . '<a href="servico-cadastro.php?editar=true&' . 'servico_id='. $linha['servico_id']. '">Editar</a> | '; 
+  echo open_tr . open_td_2 . date('d-m-Y', strtotime($linha['servico_data'])) . close_td; 
+  echo open_td_2 . $linha['servico_placa_veiculo'] . close_td; 
+  echo open_td_3 . '<a href="servico-cadastro.php?editar=true&' . 'servico_id='. $linha['servico_id']. '">Editar</a> | '; 
   echo '<a href="servico-deletar.php?' . 'servico_id='. $linha['servico_id']. ' " onclick="return confirmarExcluir();">Excluir</a>' . close_td . close_tr; 
   echo open_tr . open_td . open_label . '&nbsp;' . close_lable . close_td . close_tr; 
 }
 
 echo close_table;
-
-echo close_form;
 
 // display the links to the pages
 for ($page=1;$page<=$number_of_pages;$page++) {

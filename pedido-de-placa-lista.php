@@ -83,11 +83,9 @@ $SQL = paginar('pedido_de_placa', $registro, $this_page_first_result, $results_p
 $stmt = $pdo->prepare($SQL);
 $stmt->execute();
 
-$form_open = '<form action="#" method="POST">';
+echo open_table_2;
 
-echo $form_open;
-
-echo open_table;
+echo open_tr . open_th_2 . 'PLACA ' . close_th . open_th_2 . 'QUANTIDADE' . close_th . open_th_2 . '' . close_th  . close_tr; 
 
 while($linha = $stmt->fetch(PDO::FETCH_ASSOC))
 {
@@ -96,20 +94,13 @@ while($linha = $stmt->fetch(PDO::FETCH_ASSOC))
 	foreach ($linha as $chave=>$valor){ 
 		$string.= "$chave" . "=" . $valor . "&";                        
 	}
-  echo open_tr . open_td . open_label . 'Data: ' . date('d-m-Y', strtotime($linha['pedido_de_placa_data'])) . close_lable . close_td . close_tr; 
-  echo open_tr . open_td . open_label . 'Placa do veículo: ' . $linha['pedido_de_placa_placa_veiculo'] . close_lable . close_td . close_tr; 
-  echo open_tr . open_td . open_label . 'Quantidade: ' . $linha['pedido_de_placa_quantidade'] . close_lable . close_td . close_tr; 
-  echo open_tr . open_td . open_label . 'RENAVAM: ' . $linha['pedido_de_placa_renavam'] . close_lable . close_td . close_tr; 
-  echo open_tr . open_td . open_label . 'CPF | CNPJ do proprietário: ' . $linha['pedido_de_placa_cpf_cnpj_proprietario'] . close_lable . close_td . close_tr;     
-  echo open_tr . open_td . open_label . 'Cor: ' . $linha['pedido_de_placa_cor_placa'] . close_lable . close_td . close_tr; 
-  echo open_tr . open_td . open_label . 'Tipo de placa: ' . $linha['pedido_de_placa_tipo_placa'] . close_lable . close_td . close_tr;     
-  echo open_tr . open_td . '<a href="pedido-de-placa-cadastro.php?editar=true&' . 'pedido_de_placa_id=' . $linha['pedido_de_placa_id'] . '">Editar</a> | '; 
-  echo '<a href="pedido-de-placa-deletar.php?' . 'pedido_de_placa_id=' . $linha['pedido_de_placa_id'] . ' " onclick="return confirmarExcluir();">Excluir</a>' . close_td . close_tr; 
-  echo open_tr . open_td . open_label . '&nbsp;' . close_lable . close_td . close_tr; 
+  echo open_tr . open_td_2 . $linha['pedido_de_placa_placa_veiculo'] . close_td; 
+  echo open_td_2 . $linha['pedido_de_placa_quantidade'] . close_td; 
+  echo open_td_3 . '<a href="pedido-de-placa-cadastro.php?editar=true&' . 'pedido_de_placa_id=' . $linha['pedido_de_placa_id'] . '">Editar</a> | '; 
+  echo '<a href="pedido-de-placa-deletar.php?' . 'pedido_de_placa_id=' . $linha['pedido_de_placa_id'] . ' " onclick="return confirmarExcluir();">Excluir</a>' . close_td; 
+  echo open_tr . open_td_2 .'&nbsp;' . close_td. open_td_2 . '&nbsp;' . close_td. open_td_2 . '&nbsp;' . close_td . close_tr; 
 }
 echo close_table;
-
-echo close_form;
 
 // display the links to the pages
 for ($page=1;$page<=$number_of_pages;$page++) {

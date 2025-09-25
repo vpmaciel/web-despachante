@@ -42,7 +42,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     declineCookies.addEventListener('click', function () {
-        window.history.back();
+        window.location.href = '/web-despachante/index.php'; // Redireciona para a pasta desejada
     });
+
 });
 </script>

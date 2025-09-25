@@ -1,74 +1,35 @@
 <script>
-if (window.location.href.includes('home')) {
-    var elemento = document.getElementById('home');
-    if (elemento) {
-        elemento.style.textDecoration = 'underline';
-        elemento.style.textDecorationColor = 'blue';
-    }
-}
-else if (window.location.href.includes('cliente')) {
-    var elemento = document.getElementById('cliente');
-    if (elemento) {
-        elemento.style.textDecoration = 'underline';
-        elemento.style.textDecorationColor = 'blue';
-    }
-}
-else if (window.location.href.includes('pedido-de-placa')) {
-    var elemento = document.getElementById('pedido-de-placa');
-    if (elemento) {
-        elemento.style.textDecoration = 'underline';
-        elemento.style.textDecorationColor = 'blue';
-    }
-}
-else if (window.location.href.includes('servico')) {
-    var elemento = document.getElementById('servico');
-    if (elemento) {
-        elemento.style.textDecoration = 'underline';
-        elemento.style.textDecorationColor = 'blue';
-    }
-}
-else if (window.location.href.includes('veiculo')) {
-    var elemento = document.getElementById('veiculo');
-    if (elemento) {
-        elemento.style.textDecoration = 'underline';
-        elemento.style.textDecorationColor = 'blue';
-    }
-}
+    const mapeamentoPaginas = {
+        'home': 'ATHOS DESPACHANTE ©',
+        'cliente': 'CLIENTE',
+        'pedido-de-placa': 'PEDIDO DE PLACA',
+        'servico': 'SERVIÇO',
+        'veiculo': 'VEÍCULO',
+    };
 
-if (window.location.href.includes('cadastro')) {
-    var elemento = document.getElementById('cadastro');
-    if (elemento) {
-        elemento.style.textDecoration = 'underline';
-        elemento.style.textDecorationColor = 'blue';
+    // Encontra a página atual
+    function definirPaginaAtual() {
+        const url = window.location.href;
+        const anoAtual = new Date().getFullYear();
+        
+        for (const [pagina, titulo] of Object.entries(mapeamentoPaginas)) {
+            if (url.includes(pagina)) {
+                // Define a cor do menu ativo
+                let elementoMenu = document.getElementById(pagina);
+                if (elementoMenu) {
+                    elementoMenu.style.color = '#579EBB';
+                }
+                
+                // Define o título da página com o formato solicitado
+                let tituloElemento = document.getElementById('titulo');
+                if (tituloElemento) {
+                    tituloElemento.textContent = titulo;
+                }
+                break; // Para no primeiro match encontrado
+            }
+        }
     }
-}
-else if (window.location.href.includes('pesquisa')) {
-    var elemento = document.getElementById('pesquisa');
-    if (elemento) {
-        elemento.style.textDecoration = 'underline';
-        elemento.style.textDecorationColor = 'blue';
-    }
-}
-else if (window.location.href.includes('dashboard')) {
-    var elemento = document.getElementById('dashboard');
-    if (elemento) {
-        elemento.style.textDecoration = 'underline';
-        elemento.style.textDecorationColor = 'blue';
-    }
-}
-else if (window.location.href.includes('relatorio')) {
-    var elemento = document.getElementById('relatorio');
-    if (elemento) {
-        elemento.style.textDecoration = 'underline';
-        elemento.style.textDecorationColor = 'blue';
-    }
-}
-else if (window.location.href.includes('lista')) {
-    var elemento = document.getElementById('pesquisa');
-    if (elemento) {
-        elemento.style.textDecoration = 'underline';
-        elemento.style.textDecorationColor = 'blue';
-    }
-}
 
+    // Executa quando o DOM estiver carregado
+    document.addEventListener('DOMContentLoaded', definirPaginaAtual);
 </script>

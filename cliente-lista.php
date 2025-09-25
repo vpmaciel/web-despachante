@@ -74,15 +74,17 @@ if (!isset($_GET['page'])) {
 $this_page_first_result = ($page-1)*$results_per_page;
 
 // retrieve selected results from database and display them on page
-$SQL = paginar('cliente', $registro, $this_page_first_result, $results_per_page);
-$stmt = $pdo->prepare($SQL);
-$stmt->execute();
+try {
+  $SQL = 'SELECT * FROM cliente LIMIT 1, 10';
+  $stmt = $pdo->prepare($SQL);
+  $stmt->execute();
+} catch (PDOException $e) {
+  exit("Erro: " . $e->getMessage());
+}
 
-$form_open = '<form action="#" method="POST">';
+echo open_table_2;
 
-echo $form_open;
-
-echo open_table;
+echo open_tr . open_th_2 . 'CPF | CNPJ ' . close_th . open_th_2 . 'NOME' . close_th . open_th_2 . '' . close_th  . close_tr; 
 
 while($linha = $stmt->fetch(PDO::FETCH_ASSOC))
 {
@@ -91,16 +93,13 @@ while($linha = $stmt->fetch(PDO::FETCH_ASSOC))
 	foreach ($linha as $chave=>$valor){ 
 		$string.= "$chave" . "=" . $valor . "&";                        
 	}
-  echo open_tr . open_td . open_label . 'CPF | CNPJ: ' . $linha['cliente_cpf_cnpj'] . close_lable . close_td . close_tr; 
-  echo open_tr . open_td . open_label . 'Nome: ' . $linha['cliente_nome_completo'] . close_lable . close_td . close_tr;     
-  echo open_tr . open_td . open_label . 'E-Mail: ' . $linha['cliente_email'] . close_lable . close_td . close_tr;         
-  echo open_tr . open_td . '<a href="cliente-cadastro.php?editar=true&' . 'cliente_id='. $linha['cliente_id'] . '">Editar</a> | '; 
-  echo '<a href="cliente-deletar.php?' . 'cliente_id='. $linha['cliente_id'] . ' " onclick="return confirmarExcluir();">Excluir</a>' . close_td . close_tr; 
-  echo open_tr . open_td . open_label . '&nbsp;' . close_lable . close_td . close_tr; 
+  echo open_tr . open_td_2 . $linha['cliente_cpf_cnpj'] . close_td;
+  echo open_td_2 . $linha['cliente_nome_completo'] . close_td;
+  echo open_td_3 . '<a href="cliente-cadastro.php?editar=true&' . 'cliente_id='. $linha['cliente_id'] . '">Editar</a> | '; 
+  echo '<a href="cliente-confirmar-deletar.php?' . 'cliente_id='. $linha['cliente_id'] . ' " onclick="return confirmarExcluir();">Excluir</a>' . close_td . close_tr; 
+  echo open_tr . open_td_2 .'&nbsp;' . close_td. open_td_2 . '&nbsp;' . close_td. open_td_2 . '&nbsp;' . close_td . close_tr; 
 }
 echo close_table;
-
-echo close_form;
 
 // display the links to the pages
 for ($page=1;$page<=$number_of_pages;$page++) {
@@ -108,12 +107,7 @@ for ($page=1;$page<=$number_of_pages;$page++) {
 }
 
 if ($number_of_results == 0) {
-  $msg = '<script> function goBack() {window.history.back();}</script>';
-  echo $msg;
-
   echo '<br>Nenhum registro encontrado !';
-  
-  echo '<br><br><a href="#" onclick="goBack();">Voltar à página anterior</a>';
 }
 
 

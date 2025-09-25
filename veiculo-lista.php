@@ -83,7 +83,9 @@ $SQL = paginar('veiculo', $registro, $this_page_first_result, $results_per_page)
 $stmt = $pdo->prepare($SQL);
 $stmt->execute();
 
-echo open_table;
+echo open_table_2;
+
+echo open_tr . open_th_2 . 'PLACA' . close_th . open_th_2 . 'NOME DO PROPRIETÁRIO' . close_th . open_th_2 . '' . close_th  . close_tr; 
 
 while($linha = $stmt->fetch(PDO::FETCH_ASSOC))
 {
@@ -93,13 +95,9 @@ while($linha = $stmt->fetch(PDO::FETCH_ASSOC))
 		$string.= "$chave" . "=" . $valor . "&";                        
 	}
     
-  echo open_tr . open_td . open_label . 'Identificador: ' . $linha['veiculo_id'] . close_lable . close_td . close_tr; 
-  echo open_tr . open_td . open_label . 'Placa: ' . $linha['veiculo_placa'] . close_lable . close_td . close_tr; 
-  echo open_tr . open_td . open_label . 'CPF | CNPJ do proprietário: ' . $linha['veiculo_cpf_cnpj_proprietario'] . close_lable . close_td . close_tr; 
-  echo open_tr . open_td . open_label . 'Nome do proprietário: ' . $linha['veiculo_nome_proprietario'] . close_lable . close_td . close_tr; 
-  echo open_tr . open_td . open_label . 'Marca: ' . $linha['veiculo_marca'] . close_lable . close_td . close_tr; 
-  echo open_tr . open_td . open_label . 'Modelo: ' . $linha['veiculo_modelo'] . close_lable . close_td . close_tr;     
-  echo open_tr . open_td . '<a href="veiculo-cadastro.php?editar=true&' . 'veiculo_id=' . $linha['veiculo_id']. '">Editar</a> | '; 
+  echo open_tr . open_td_2 . $linha['veiculo_placa'] . close_td; 
+  echo open_td_2 . $linha['veiculo_nome_proprietario'] . close_td; 
+  echo open_td_3 . '<a href="veiculo-cadastro.php?editar=true&' . 'veiculo_id=' . $linha['veiculo_id']. '">Editar</a> | '; 
   echo '<a href="veiculo-deletar.php?' . 'veiculo_id=' . $linha['veiculo_id']. '" onclick="return confirmarExcluir();">Excluir</a>' . close_td . close_tr; 
   echo open_tr . open_td . open_label . '&nbsp;' . close_lable . close_td . close_tr; 
 }

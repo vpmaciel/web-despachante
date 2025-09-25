@@ -1,78 +1,64 @@
 <?php
-
-
-// Carregue a biblioteca PHPMailer
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-require 'PHPMailer/src/Exception.php';
-require 'PHPMailer/src/PHPMailer.php';
-require 'PHPMailer/src/SMTP.php';
-
-// Configurações do servidor SMTP do Gmail
-$smtpHost = 'smtp.gmail.com';
-$smtpPort = 587;
-$smtpUsuario = 'vpmaciel@gmail.com';
-$smtpSenha = 'zbxwblqlcfqzfjaa';
-
-// Informações do destinatário e assunto
-$para = "vpmaciel@live.com";
-$assunto = "Assunto do E-mail";
-
-// Mensagem do E-mail
-$mensagem = "Olá,\n\nIsso é uma mensagem de exemplo.";
-
-// Crie uma instância do PHPMailer
-$mail = new PHPMailer(true);
-
-try {
-    // Configurações do servidor SMTP
-    $mail->isSMTP();
-    $mail->Host = $smtpHost;
-    $mail->SMTPAuth = true;
-    $mail->Username = $smtpUsuario;
-    $mail->Password = $smtpSenha;
-    $mail->SMTPSecure = 'tls';
-    $mail->Port = $smtpPort;
-
-    // Configurações adicionais
-    $mail->setFrom($smtpUsuario, 'Seu Nome');
-    $mail->addAddress($para);
-    $mail->Subject = $assunto;
-    $mail->Body = $mensagem;
-
-    // Enviar E-mail
-    $mail->send();
-    echo "E-mail enviado com sucesso!";
-} catch (Exception $e) {
-    echo "Erro ao enviar o e-mail: {$mail->ErrorInfo}";
-}
-
+session_start();
 require_once 'lib/lib-biblioteca.php';
 
-$USUARIO = array();
-$USUARIO['usuario_email'] = trim($_POST['usuario_email']);
-$USUARIO['usuario_senha'] = trim($_POST['usuario_senha']);
+$usuario_nome = strtoupper(trim($_POST['usuario_nome']));
+$usuario_senha = strtoupper(trim($_POST['usuario_senha']));
 
-$usuario_email = array ('usuario_email' =>$USUARIO['usuario_email']);
+// Exibe para depuração o nome do usuário que foi passado
+//echo "Nome do usuário: " . $usuario_nome;
 
-$registroS = retornar_numero_registros('USUARIO', $usuario_email);
+// Verifica se não há usuários na tabela, caso não exista, cria o usuário ADMIN.
+$usuarioDAO = new UsuarioDAO();
+$total_registro = $usuarioDAO->getRegistros();
 
-if ($registroS == 0) {
-	header('location: erro.php?msg=E-mail ou Senha incorretos !');
-	exit;
-} else {	
 
-	if (!isset($_COOKIE['usuario_email'])) {
-		$USUARIO_JSON = json_decode(selecionar('USUARIO', $usuario_email));	
-		
-		foreach($USUARIO_JSON as $registro) {			
-            setcookie('usuario_email', $registro->usuario_email, time() + 365 * 24 * 60 * 60, '/');
-		}		
-		header('location: sucesso.php?msg=Sessão criada com sucesso !');
-		exit;
-	} else {		
-		header('location: erro.php?msg=Usuário já está logado !');
-		exit;
-	}
+if ($total_registro == 0) {
+      
+    try {
+        // Definição do usuário padrão
+        $usuario_padrao = [
+            'usuario_nome' => 'ADMIN',
+            'usuario_senha' => password_hash('ADMIN', PASSWORD_DEFAULT)
+        ];
+    
+        // Preparar a query SQL
+        $sql = "INSERT INTO usuario (usuario_nome, usuario_senha) VALUES (:usuario_nome, :usuario_senha)";
+        $stmt = $pdo->prepare($sql);
+    
+        // Bind dos parâmetros
+        $stmt->bindParam(':usuario_nome', $usuario_padrao['usuario_nome'], PDO::PARAM_STR);
+        $stmt->bindParam(':usuario_senha', $usuario_padrao['usuario_senha'], PDO::PARAM_STR);
+    
+        // Executar a query
+        $stmt->execute();   
+    
+    } catch (PDOException $e) {
+        exit("Erro ao inserir usuário: " . $e->getMessage());
+    }
 }
+
+// Verifica o login do usuário
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    try {
+        $sql = "SELECT usuario_id, usuario_senha FROM usuario WHERE usuario_nome = :usuario_nome";        
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':usuario_nome', $usuario_nome, PDO::PARAM_STR);
+        $stmt->execute();        
+        $dados = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+    } catch (PDOException $e) {
+        exit("Erro ao inserir usuário: " . $e->getMessage());
+    }  
+
+    if ($dados && password_verify($usuario_senha, $dados["usuario_senha"])) {
+        $_SESSION["usuario"] = $usuario_nome;
+        setcookie('usuario_nome', $usuario_nome, time() + 3600, '/');
+        header('location: sucesso.php?msg=Login realizado com sucesso!');
+        exit;
+    } else {        
+        header('location: erro.php?msg=E-mail ou Senha incorretos!');
+        exit;
+    }
+}
+?>

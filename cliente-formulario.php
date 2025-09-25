@@ -19,12 +19,6 @@ if (!isset($registro['cliente_email'])) {
     $registro['cliente_email'] = '';
 }
 
-// Definir o tempo de expiração do cookie (1 hora a partir de agora)
-$expiration = time() + 3600;
-
-// Criar o cookie
-setcookie('cliente_id', $registro['cliente_id'], $expiration, '/');
-
 $input = '<input type="hidden" id="cliente_id" name="cliente_id" maxlength="50" value="' . $registro['cliente_id'] .'">';
 
 echo $input;
@@ -56,8 +50,6 @@ $input = '<input type="text" id="cliente_email" name="cliente_email" maxlength="
 echo open_td . $input . close_td . close_tr;
 
 echo open_tr . open_td_2 . open_label . '' . close_lable . close_td; 
-
-echo open_td . $numero_de_registros . ' registros cadastrados'  . close_td . close_tr;
 
 echo open_tr . open_td_2 . open_label . '' . close_lable . close_td; 
 

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 31-Jul-2024 às 15:21
+-- Tempo de geração: 24/09/2025 às 14:03
 -- Versão do servidor: 10.4.32-MariaDB
--- versão do PHP: 8.0.30
+-- Versão do PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `cliente`
+-- Estrutura para tabela `cliente`
 --
 
 CREATE TABLE `cliente` (
@@ -36,7 +36,7 @@ CREATE TABLE `cliente` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `cliente`
+-- Despejando dados para a tabela `cliente`
 --
 
 INSERT INTO `cliente` (`cliente_id`, `cliente_cpf_cnpj`, `cliente_telefone`, `cliente_nome_completo`, `cliente_email`) VALUES
@@ -48,7 +48,7 @@ INSERT INTO `cliente` (`cliente_id`, `cliente_cpf_cnpj`, `cliente_telefone`, `cl
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `pedido_de_placa`
+-- Estrutura para tabela `pedido_de_placa`
 --
 
 CREATE TABLE `pedido_de_placa` (
@@ -63,7 +63,7 @@ CREATE TABLE `pedido_de_placa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `pedido_de_placa`
+-- Despejando dados para a tabela `pedido_de_placa`
 --
 
 INSERT INTO `pedido_de_placa` (`pedido_de_placa_id`, `pedido_de_placa_data`, `pedido_de_placa_placa_veiculo`, `pedido_de_placa_quantidade`, `pedido_de_placa_renavam`, `pedido_de_placa_cpf_cnpj_proprietario`, `pedido_de_placa_cor_placa`, `pedido_de_placa_tipo_placa`) VALUES
@@ -73,7 +73,7 @@ INSERT INTO `pedido_de_placa` (`pedido_de_placa_id`, `pedido_de_placa_data`, `pe
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `servico`
+-- Estrutura para tabela `servico`
 --
 
 CREATE TABLE `servico` (
@@ -87,7 +87,7 @@ CREATE TABLE `servico` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `servico`
+-- Despejando dados para a tabela `servico`
 --
 
 INSERT INTO `servico` (`servico_id`, `servico_data`, `servico_placa_veiculo`, `servico_valor`, `servico_descricao`, `servico_cpf_cnpj_cliente`, `servico_telefone_cliente`) VALUES
@@ -97,26 +97,26 @@ INSERT INTO `servico` (`servico_id`, `servico_data`, `servico_placa_veiculo`, `s
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `usuario`
+-- Estrutura para tabela `usuario`
 --
 
 CREATE TABLE `usuario` (
   `USUARIO_ID` int(11) NOT NULL,
-  `usuario_email` varchar(200) NOT NULL,
-  `usuario_senha` varchar(10) NOT NULL
+  `usuario_nome` varchar(200) NOT NULL,
+  `usuario_senha` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `usuario`
+-- Despejando dados para a tabela `usuario`
 --
 
-INSERT INTO `usuario` (`USUARIO_ID`, `usuario_email`, `usuario_senha`) VALUES
-(1, 'operador@operador.com', 'asdfg');
+INSERT INTO `usuario` (`USUARIO_ID`, `usuario_nome`, `usuario_senha`) VALUES
+(1, 'ADMIN', '$2y$10$BtAzT5/pcfLOtaHBdhFb/.W/zFsQ4aS9qDNZvzTkyo1oIOJGenFKK');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `veiculo`
+-- Estrutura para tabela `veiculo`
 --
 
 CREATE TABLE `veiculo` (
@@ -129,7 +129,7 @@ CREATE TABLE `veiculo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `veiculo`
+-- Despejando dados para a tabela `veiculo`
 --
 
 INSERT INTO `veiculo` (`veiculo_id`, `veiculo_placa`, `veiculo_cpf_cnpj_proprietario`, `veiculo_nome_proprietario`, `veiculo_marca`, `veiculo_modelo`) VALUES
@@ -145,39 +145,39 @@ INSERT INTO `veiculo` (`veiculo_id`, `veiculo_placa`, `veiculo_cpf_cnpj_propriet
 --
 
 --
--- Índices para tabela `cliente`
+-- Índices de tabela `cliente`
 --
 ALTER TABLE `cliente`
   ADD PRIMARY KEY (`cliente_id`),
   ADD UNIQUE KEY `INDEX_cliente_cpf_cnpj` (`cliente_cpf_cnpj`);
 
 --
--- Índices para tabela `pedido_de_placa`
+-- Índices de tabela `pedido_de_placa`
 --
 ALTER TABLE `pedido_de_placa`
   ADD PRIMARY KEY (`pedido_de_placa_id`);
 
 --
--- Índices para tabela `servico`
+-- Índices de tabela `servico`
 --
 ALTER TABLE `servico`
   ADD PRIMARY KEY (`servico_id`);
 
 --
--- Índices para tabela `usuario`
+-- Índices de tabela `usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`USUARIO_ID`),
-  ADD UNIQUE KEY `INDEX_usuario_email` (`usuario_email`);
+  ADD UNIQUE KEY `INDEX_usuario_nome` (`usuario_nome`);
 
 --
--- Índices para tabela `veiculo`
+-- Índices de tabela `veiculo`
 --
 ALTER TABLE `veiculo`
   ADD PRIMARY KEY (`veiculo_id`);
 
 --
--- AUTO_INCREMENT de tabelas despejadas
+-- AUTO_INCREMENT para tabelas despejadas
 --
 
 --
@@ -202,7 +202,7 @@ ALTER TABLE `servico`
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `USUARIO_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `USUARIO_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `veiculo`

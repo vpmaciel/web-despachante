@@ -1,4 +1,7 @@
 <?php
+
+// ARQUIVO PARA CONSULTA AJAX
+
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 
@@ -6,17 +9,13 @@ require_once 'lib/lib-sessao.php';
 require_once 'lib/lib-biblioteca.php';
 
 try {    
-    $cpfCnpjCliente  = $_POST['servico_cpf_cnpj_cliente'];    
-    // Criação da conexão usando PDO
-        // Configuração do PDO para lançar exceções em caso de erros
+    $cpfCnpjCliente  = $_POST['servico_cpf_cnpj_cliente'];        
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Execução da consulta SQL
-       // Execução da consulta SQL
-       $sql = "SELECT cliente_nome_completo FROM cliente WHERE cliente_cpf_cnpj = :servico_cpf_cnpj_cliente";
-       $stmt = $pdo->prepare($sql);
-       $stmt->bindParam(':servico_cpf_cnpj_cliente', $cpfCnpjCliente);
-       $stmt->execute();
+    $sql = "SELECT cliente_nome_completo FROM cliente WHERE cliente_cpf_cnpj = :servico_cpf_cnpj_cliente";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':servico_cpf_cnpj_cliente', $cpfCnpjCliente);
+    $stmt->execute();
 
     // Obtenção dos resultados como array associativo
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -26,4 +25,3 @@ try {
 } catch (PDOException $e) {
     echo json_encode(["error" => "Erro na conexão com o banco de dados: " . $e->getMessage()]);
 }
-

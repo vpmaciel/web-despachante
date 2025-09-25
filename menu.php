@@ -1,8 +1,7 @@
     <?php
-    error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED);
-    
+    error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED);    
     echo '<div class="site">';
-    echo  open_h1 . 'ATHOS DESPACHANTE &copy; 2024' . close_h1; 
+    echo  open_h1 . 'ATHOS DESPACHANTE' .  "&copy; " . date("Y") . close_h1; 
     echo '</div>';
     echo '<div class="menu">';
     echo  '<a id="home" href="home.php" class="menu_a">Home</a> '; 

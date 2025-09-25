@@ -11,6 +11,11 @@ $registro['veiculo_nome_proprietario'] = trim($_POST['veiculo_nome_proprietario'
 $registro['veiculo_marca'] = trim($_POST['veiculo_marca']);
 $registro['veiculo_modelo'] = trim($_POST['veiculo_modelo']);
 
+if (empty($registro['veiculo_nome_proprietario'])) {
+		
+    header('Location: ' . $_SERVER['HTTP_REFERER'] . '&erro="Preencha campo Nome do Proprietário"');
+	exit;
+}
 $condicao = array ('veiculo_id' =>trim($_POST['veiculo_id']));
 
 $total_registro = retornar_numero_registros('veiculo', $condicao);

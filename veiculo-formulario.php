@@ -79,3 +79,25 @@ echo close_table;
         }
     });
 </script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const erro = urlParams.get("erro");
+        let submitClicked = false; // Variável de controle
+
+        // Captura o clique no botão de submit
+        document.querySelectorAll("input[type='submit']").forEach(button => {
+            button.addEventListener("click", function () {
+                submitClicked = true;
+            });
+        });
+
+        // Exibe o alert após 2 segundos, se o botão submit NÃO foi clicado
+        setTimeout(function () {
+            if (erro && !submitClicked) {
+                alert(decodeURIComponent(erro));
+            }
+        }, 2000);
+    });
+</script>
