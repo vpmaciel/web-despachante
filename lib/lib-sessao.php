@@ -1,6 +1,6 @@
 <?php
 if (!isset($_COOKIE['usuario_nome'])) {
-	header('location:erro.php?msg=Usuário não está logado !');
+	header('location: ../erp-msg/erro.php?msg=Usuário não está logado !');
 	exit;
 }
 

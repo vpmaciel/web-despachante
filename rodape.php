@@ -6,7 +6,6 @@
         if (window.location.href.includes(pagina)) {
             let elemento = document.getElementById(pagina);
             if (elemento) {
-                //elemento.style.textDecoration = 'underline';
                 elemento.style.textDecorationColor = '#579EBB';         
                 elemento.style.color = '#579EBB';
             }
@@ -15,10 +14,10 @@
 
     const mapeamentoPaginas = {
         'home': 'ATHOS DESPACHANTE © 2025',
-        'cliente': 'Menu: Cliente',
-        'pedido-de-placa': 'Menu: Pedido de Placa',
-        'servico': 'Menu: Serviço',
-        'veiculo': 'Menu: Veículo',
+        'cliente': 'Cliente',
+        'pedido-de-placa': 'Pedido de Placa',
+        'servico': 'Serviço',
+        'veiculo': 'Veículo',
     };
 
     // Encontra a página atual
@@ -33,11 +32,12 @@
                     elementoMenu.style.color = '#579EBB';
                 }
                 
-                // Define o título da página com o formato solicitado
-                let tituloElemento = document.getElementById('titulo');
-                if (tituloElemento) {
-                    tituloElemento.textContent = titulo;
-                }
+                // Define o título da página com o formato solicitado                
+                    let tituloElemento = document.getElementById('titulo');
+
+                    if (tituloElemento) {
+                        tituloElemento.textContent = titulo;
+                    }
                 break; // Para no primeiro match encontrado
             }
         }

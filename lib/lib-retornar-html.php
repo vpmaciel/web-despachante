@@ -25,6 +25,7 @@ const close_h2 = '</h2>';
 const close_form = '</form>';
 const open_table = '<table align="center">';
 const open_table_2 = '<table align="center" class="lista">';
+const open_table_3 = '<table align="center" class="lista_3">';
 const close_table = '</table>';
 const open_label = '<label>';
 const close_lable = '</label>';

@@ -6,47 +6,22 @@
     font-weight: normal;
     padding: 0px;    
     font-size: 18px;
-    color: #333333;
+    color: #444;
 }
 
 /* Estilização de títulos */
-h1 {
-    text-align: right !important;
-    margin: 0;
-    padding: 0;
-    color: #fff; 
-}
+h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
     text-align: center;
-    padding: 5px;
-    font-weight: lighter;
-    color: #333;    
+    padding: 0px;
+    font-weight: bold;
+    color: #444    
 }
 
-.site {  
-    width: 100%;
-    height: 20px;        
-    padding: 0px 15px;     
-    display: flex;    
-    background-color: #444444;
-    border: 1px solid #B6B6B6;
-    text-align: right !important;
-    justify-content: flex-end !important; /* Para o flexbox alinhar à direita */ 
-}
-
-/* Em vez de apenas h1, use: */
-.site h1 {
-    text-align: right;
-}
-
-/* Ou ainda mais específico: */
-div .site h1 {
-    text-align: right;
-}
 /* Estilização de inputs, selects e textareas */
 input,
 select,
@@ -68,7 +43,7 @@ textarea:focus {
 input[type="button"],
 input[type="submit"] {
     outline: none;
-    background-color: #D8D8D8; 
+    background-color: #ffffff; 
     text-decoration: underline;
     border: none;    
     resize: none;
@@ -81,7 +56,7 @@ input[type="submit"] {
 }
 
 form{
-    padding: 5px;
+    padding: 0px;
 }
 
 p {
@@ -99,7 +74,7 @@ table {
 th,
 td {    
     padding: 5px;
-    border: none;
+    border: 1px solid #fff;
     text-align: left;
 }
 
@@ -111,22 +86,22 @@ tr {
     min-height: 50px;    
 }
 
-.lista table {
+.lista table .lista_3 table {
     table-layout: fixed;
     width: 900px;   
     margin-top: 5px;
 }
 
-.lista tr {    
+.lista tr.lista_3 tr {    
     height: 8px;    
 }
 
 
 .lista tr:nth-child(even) {
-    background-color: #fffbf3;
+    background-color: #D8D8D8;
 }
 
-.lista td, .lista th {
+.lista td, .lista th, .lista_3 td, .lista_3 th {
     padding: 5px;
     
 }
@@ -153,11 +128,10 @@ body {
     min-height: 100%;
     width: 100%;    
     align-items: flex-start; /* Alinha ao topo */
-    height: 100vh;    
-    font-family: Arial, sans-serif;
-    /* Cinza escuro */
+    height: 100vh;        
+    font-family: 'Satoshi', sans-serif;
     margin: auto 0;
-    background-color: #D8D8D8;
+    background-color: #ffffff;
 }
 
 .sucesso {
@@ -198,18 +172,20 @@ span {
     width: 100%;
     height: 35px;
     background-color: #444444; 
+    border: 1px solid #fff;
     padding: 0px 10px;
     margin: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    text-decoration: underline;  
+    text-decoration: none; 
 }
 
 .menu .menu_a {
     margin: 0 12.5px;
-    color:#fff;
+    color: #fff;
+    text-decoration: none; 
 }
 
 .botoes {         
@@ -222,16 +198,9 @@ span {
 }
 
 .botoes a {
-    text-decoration: none; /* Remover decoração de texto para links */
     display: block; /* Garantir que os links ocupem todo o espaço do botão */
-    padding: 5px 10px; /* Ajustar padding para alinhar com o conteúdo do botão */    
-}
-
-a:link,
-a:visited,
-a:hover,
-a:active {
-    text-decoration: none;        
+    padding: 5px 10px; /* Ajustar padding para alinhar com o conteúdo do botão */        
+    text-decoration: none; 
 }
 
 #cookieConsent {
