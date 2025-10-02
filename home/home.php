@@ -21,7 +21,7 @@ require_once '../menu.php';
 
 $usuario = array();
    
-$form_open = '<form action="login-controle.php" method="post">';
+$form_open = '<form action="../erp-login/login-controle.php" method="post">';
 
 echo $form_open;
 
@@ -46,7 +46,7 @@ if (!isset($_COOKIE['usuario_nome'])) {
 }
 
 if (isset($_COOKIE['usuario_nome'])) {
-    echo open_td . '<div class="botoes"><a href="logoff.php">Sair</a></div>' . close_td . close_tr; 
+    echo open_td . '<div class="botoes"><a href="../erp-login/logoff.php">Sair</a></div>' . close_td . close_tr; 
 }
 
 

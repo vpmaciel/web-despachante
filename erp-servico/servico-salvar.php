@@ -1,8 +1,8 @@
 <?php
 
 
-require_once 'lib/lib-sessao.php';
-require_once 'lib/lib-biblioteca.php';
+require_once '../lib/lib-sessao.php';
+require_once '../lib/lib-biblioteca.php';
 
 $registro['servico_data'] = trim($_POST['servico_data']);
 $registro['servico_placa_veiculo'] = trim($_POST['servico_placa_veiculo']);

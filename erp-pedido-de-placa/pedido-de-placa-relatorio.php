@@ -1,5 +1,5 @@
 <?php
-require('lib/lib-biblioteca.php');
+require('../lib/lib-biblioteca.php');
 
 $pdf = new FPDF('P', 'mm', 'A4');
 $pdf->AddPage();

@@ -1,13 +1,11 @@
 <?php
-require_once 'lib/lib-retornar-html.php';
-
-setlocale(LC_ALL, 'pt_BR.utf8');
+require_once '../lib/lib-biblioteca.php';
 
 echo doctype;
 echo open_html;
 echo open_head;
 
-require_once 'cabecalho.php';
+require_once '../cabecalho.php';
 
 echo close_head;
 
@@ -15,7 +13,7 @@ echo open_body;
 
 echo open_div;
 
-require_once 'menu.php';
+require_once '../menu.php';
 
 echo '<br><span class="erro">' . 'Operação não realizada !'. '</span>';
 

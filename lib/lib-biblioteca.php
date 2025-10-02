@@ -2,6 +2,8 @@
 ini_set('display_errors', true);
 error_reporting(E_ALL);
 
+setlocale(LC_ALL, 'pt_BR.utf8');
+
 require_once 'phplot.php';
 require_once '../sql/sql.php';
 require_once 'lib-remover-acentos.php';
@@ -12,3 +14,4 @@ require_once 'lib-string.php';
 require_once 'lib-formatar-cpf-cnpj.php';
 require_once 'lib-formatar-numero.php';
 require_once '../fpdf/fpdf.php';
+require_once '../erp-login/usuario-dao.php';

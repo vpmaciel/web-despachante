@@ -1,8 +1,8 @@
 <?php
 
 
-require_once 'lib/lib-sessao.php';
-require_once 'lib/lib-biblioteca.php';
+require_once '../lib/lib-sessao.php';
+require_once '../lib/lib-biblioteca.php';
 
 $registro['servico_id'] = trim($_GET['servico_id']);
 

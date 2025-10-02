@@ -1,7 +1,7 @@
 <?php
 
-require_once 'lib/lib-sessao.php';
-require_once 'lib/lib-biblioteca.php';
+require_once '../lib/lib-sessao.php';
+require_once '../lib/lib-biblioteca.php';
 
 if($_SERVER["REQUEST_METHOD"] != "GET") {	
 	header('location:index.php');

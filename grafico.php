@@ -5,7 +5,7 @@ error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED);
 
 # $Id$
 # PHPlot Example: Pie/text-data-single
-require_once 'lib/lib-biblioteca.php';
+require_once '../lib/lib-biblioteca.php';
 //Define o objeto
 //create a PHPlot object with 800x600 pixel image
 $plot = new PHPlot(400,300);

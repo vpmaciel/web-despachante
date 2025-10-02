@@ -3,7 +3,7 @@
 
 error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED);
 
-require_once 'lib/lib-biblioteca.php';
+require_once '../lib/lib-biblioteca.php';
 
 $dados = array(array('Qtde', retornar_total_registros('pedido_de_placa')));
 

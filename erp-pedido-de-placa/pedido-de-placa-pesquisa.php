@@ -1,8 +1,8 @@
 <?php
 
 
-require_once 'lib/lib-sessao.php';
-require_once 'lib/lib-biblioteca.php';
+require_once '../lib/lib-sessao.php';
+require_once '../lib/lib-biblioteca.php';
 
 setlocale(LC_ALL, 'pt_BR.utf8');
 
@@ -12,7 +12,7 @@ echo open_html;
 
 echo open_head;
 
-require_once 'cabecalho.php';
+require_once '../cabecalho.php';
 
 echo close_head;
 
@@ -20,7 +20,7 @@ echo open_body;
 
 echo open_div;
 
-require_once 'menu.php';
+require_once '../menu.php';
 
 require_once 'pedido-de-placa-menu.php';
 
@@ -47,7 +47,7 @@ echo close_form;
 
 echo close_div;
 
-require_once 'rodape.php';
+require_once '../rodape.php';
 
 echo close_body;
 	

@@ -7,7 +7,7 @@
 <meta name="description" content="Sistema Web Despachante">
 <meta name="keywords" content="despachante,veículos">
 <meta name="robots" content="no-cache">
-<link rel="icon" type="image/ico" href="favicon.png">
+<link rel="icon" type="image/ico" href="../favicon.png">
 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,301,400,401,500,501,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../estilo.css">
 <script src="../jquery-3.7.1.min.js"></script>

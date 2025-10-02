@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'lib/lib-biblioteca.php';
+require_once '../lib/lib-biblioteca.php';
 
 $usuario_nome = strtoupper(trim($_POST['usuario_nome']));
 $usuario_senha = strtoupper(trim($_POST['usuario_senha']));
@@ -54,10 +54,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($dados && password_verify($usuario_senha, $dados["usuario_senha"])) {
         $_SESSION["usuario"] = $usuario_nome;
         setcookie('usuario_nome', $usuario_nome, time() + 3600, '/');
-        header('location: sucesso.php?msg=Login realizado com sucesso!');
+        header('location: ../erp-msg/sucesso.php?msg=Login realizado com sucesso!');
         exit;
     } else {        
-        header('location: erro.php?msg=E-mail ou Senha incorretos!');
+        header('location: ../erp-msg/erro.php?msg=E-mail ou Senha incorretos!');
         exit;
     }
 }

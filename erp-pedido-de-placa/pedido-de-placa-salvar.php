@@ -1,8 +1,8 @@
 <?php
 
 
-require_once 'lib/lib-sessao.php';
-require_once 'lib/lib-biblioteca.php';
+require_once '../lib/lib-sessao.php';
+require_once '../lib/lib-biblioteca.php';
 
 $registro['pedido_de_placa_id'] = trim($_POST['pedido_de_placa_id']);
 $registro['pedido_de_placa_data'] = trim($_POST['pedido_de_placa_data']);
