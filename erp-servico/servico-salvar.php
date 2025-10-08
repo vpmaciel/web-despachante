@@ -19,10 +19,10 @@ if($total_registro == 0){
 	$resultado_inserir = inserir('servico', $registro);
     
     if ($resultado_inserir == true) {
-		header('location:sucesso.php');
+		header('location:../erp-msg/sucesso.php');
 		exit;
 	} else {
-		header('location:erro.php');
+		header('location:../erp-msg/erro.php');
 		exit;
 	} 
 }
@@ -31,10 +31,10 @@ else {
 	
 	if ($resultado_atualizar == true) {
 		
-		header('location:sucesso.php');
+		header('location:../erp-msg/sucesso.php');
 		exit;
 	} else {
-		header('location:erro.php');
+		header('location:../erp-msg/erro.php');
 		exit;
 	}   
 }

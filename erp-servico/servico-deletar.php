@@ -9,9 +9,9 @@ $registro['servico_id'] = trim($_GET['servico_id']);
 $RESULTADO_EXCLUIR = excluir('servico', $registro);
 
 if ($RESULTADO_EXCLUIR == true) {
-	header('location:sucesso.php');
+	header('location:../erp-msg/sucesso.php');
 	exit;
 } else {
-	header('location:erro.php');
+	header('location:../erp-msg/erro.php');
 	exit;
 } 

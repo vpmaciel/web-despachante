@@ -8,7 +8,9 @@
 <meta name="keywords" content="despachante,veículos">
 <meta name="robots" content="no-cache">
 <link rel="icon" type="image/ico" href="../favicon.png">
-<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,301,400,401,500,501,700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://  fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../estilo.css">
 <script src="../jquery-3.7.1.min.js"></script>
 <title>web-despachante</title>

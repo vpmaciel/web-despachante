@@ -30,9 +30,9 @@ try {
 
 
 if ($resultado_excluir == true) {
-	header('location:sucesso.php');
+	header('location:../erp-msg/sucesso.php');
 	exit;
 } else {
-	header('location:erro.php');
+	header('location:../erp-msg/erro.php');
 	exit;
 } 

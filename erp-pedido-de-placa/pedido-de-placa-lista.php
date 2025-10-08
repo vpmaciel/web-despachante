@@ -85,7 +85,10 @@ $stmt->execute();
 
 echo open_table_2;
 
-echo open_tr . open_th_2 . 'PLACA ' . close_th . open_th_2 . 'QUANTIDADE' . close_th . open_th_2 . '' . close_th  . close_tr; 
+if ($number_of_results > 0) {
+  echo open_tr . open_th_2 . 'PLACA ' . close_th . open_th_2 . 'QUANTIDADE' . close_th . open_th_2 . '' . close_th  . close_tr; 
+}
+
 
 while($linha = $stmt->fetch(PDO::FETCH_ASSOC))
 {
@@ -108,12 +111,7 @@ for ($page=1;$page<=$number_of_pages;$page++) {
 }
 
 if ($number_of_results == 0) {
-  $msg = '<script> function goBack() {window.history.back();}</script>';
-  echo $msg;
-
   echo '<br>Nenhum registro encontrado !';
-  
-  echo '<br><br><a href="#" onclick="goBack();">Voltar à página anterior</a>';
 }
 
 echo close_div;

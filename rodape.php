@@ -13,13 +13,12 @@
     });
 
     const mapeamentoPaginas = {
-        'home': 'ATHOS DESPACHANTE © 2025',
+        'home': 'ATHOS DESPACHANTE © ' + new Date().getFullYear(),
         'cliente': 'Cliente',
         'pedido-de-placa': 'Pedido de Placa',
         'servico': 'Serviço',
         'veiculo': 'Veículo',
     };
-
     // Encontra a página atual
     function definirPaginaAtual() {
         const url = window.location.href;

@@ -27,21 +27,29 @@ while ($registro = $stmt->fetch(PDO::FETCH_ASSOC)) {
     $pdf->Ln();
 }
 
-    $caminhoArquivo = 'pedido-de-placa.pdf';
-    $pdf->Output('F', $caminhoArquivo);
+// Limpeza de buffers de saída
+while (ob_get_level()) {
+    ob_end_clean();
+}
 
-$file = 'pedido-de-placa.pdf';
+$file = $_SERVER['DOCUMENT_ROOT'] . '/web-despachante/erp-pedido-de-placa/pedido-de-placa.pdf';
 
 if (file_exists($file)) {
+    // Headers para PDF
     header('Content-Description: File Transfer');
     header('Content-Type: application/pdf');
-    header('Content-Disposition: attachment; filename="' . basename($file) . '"');
+    header('Content-Disposition: inline; filename="' . basename($file) . '"'); // Use "inline" para abrir no navegador
     header('Expires: 0');
-    header('Cache-Control: must-revalidate');
+    header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
     header('Pragma: public');
     header('Content-Length: ' . filesize($file));
+    
+    // Limpar qualquer output anterior
+    flush();
+    
     readfile($file);
     exit;
 } else {
-    echo "O arquivo não foi encontrado.";
+    http_response_code(404);
+    echo "O arquivo não foi encontrado. Caminho: " . $file;
 }

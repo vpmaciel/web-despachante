@@ -43,10 +43,10 @@ if(!isset($registro['cliente_id']) || $registro['cliente_id'] == ''){
 	}
     
     if ($resultado_inserir == true) {
-		header('location:sucesso.php');
+		header('location:../erp-msg/sucesso.php');
 		exit;
 	} else {
-		header('location:erro.php');
+		header('location:../erp-msg/erro.php');
 		exit;
 	} 
 }
@@ -79,10 +79,10 @@ else {
 	}
 
 	if ($resultado_atualizar == true) {		
-		header('location:sucesso.php');
+		header('location:../erp-msg/sucesso.php');
 		exit;
 	} else {
-		header('location:erro.php');
+		header('location:../erp-msg/erro.php');
 		exit;
 	}   
 }

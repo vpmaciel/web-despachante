@@ -10,9 +10,9 @@ $RESULTADO_EXCLUIR = excluir('veiculo', $registro);
 	
     
 if ($RESULTADO_EXCLUIR == true) {
-	header('location:sucesso.php');
+	header('location:../erp-msg/sucesso.php');
 	exit;
 } else {
-	header('location:erro.php');
+	header('location:../erp-msg/erro.php');
 	exit;
 }

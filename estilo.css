@@ -36,7 +36,7 @@ textarea:focus {
     width: 100%;
     resize: none;
     text-align: left;
-    background-color: #fffbf3;
+    background-color: #fffaf2;
 }
 
 
@@ -129,7 +129,7 @@ body {
     width: 100%;    
     align-items: flex-start; /* Alinha ao topo */
     height: 100vh;        
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Poppins';       
     margin: auto 0;
     background-color: #ffffff;
 }

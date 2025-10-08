@@ -55,7 +55,7 @@ if($registro['cliente_email'] == '') {
 $results_per_page = 10000;
 
 // find out the number of results stored in database
-$number_of_results =  paginar_total("veiculo", $registro); 
+$number_of_results =  paginar_total("cliente", $registro); 
 
 
 // determine number of total pages available
@@ -78,7 +78,9 @@ $stmt = $pdo->prepare($SQL);
 $stmt->execute();
 echo open_table_2;
 
-echo open_tr . open_th_2 . 'CPF | CNPJ ' . close_th . open_th_2 . 'NOME' . close_th . open_th_2 . '' . close_th  . close_tr; 
+if ($number_of_results > 0) {
+  echo open_tr . open_th_2 . 'CPF | CNPJ ' . close_th . open_th_2 . 'NOME' . close_th . open_th_2 . '' . close_th  . close_tr; 
+}
 
 while($linha = $stmt->fetch(PDO::FETCH_ASSOC))
 {
