@@ -49,7 +49,6 @@ if (isset($_COOKIE['usuario_nome'])) {
     echo open_td . '<div class="botoes"><a href="../erp-login/logoff.php">Sair</a></div>' . close_td . close_tr; 
 }
 
-
 echo close_table;
 
 echo close_form;

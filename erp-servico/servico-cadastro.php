@@ -97,7 +97,7 @@ echo close_html;
 
                 // Faz uma requisição Ajax para obter os dados do PHP
                 $.ajax({
-                    url: 'cliente-consulta.php',
+                    url: '../erp-cliente/cliente-consulta.php',
                     type: 'POST',
                     dataType: 'json',
                     data: { servico_cpf_cnpj_cliente: servico_cpf_cnpj_cliente },

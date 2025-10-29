@@ -36,7 +36,7 @@ echo open_td . $input . close_td . close_tr;
 
 echo open_tr . open_td_2 . open_label . 'CPF | CNPJ do cliente:' . close_lable . close_td; 
 
-$input = '<input type="text" id="servico_cpf_cnpj_cliente" name="servico_cpf_cnpj_cliente" minlength="11" maxlength="14" oninput="this.value = this.value.replace(/[^0-9]/g, \'\');" onblur="clearTimeout();"  value="' . $registro['servico_cpf_cnpj_cliente'] .'">';
+$input = '<input type="text" id="servico_cpf_cnpj_cliente" name="servico_cpf_cnpj_cliente" minlength="11" maxlength="20" oninput="this.value = this.value.toUpperCase().replace(/[^A-Z0-9.\\-\\/]/g, \'\').slice(0, 20);" onblur="clearTimeout();"  value="' . $registro['servico_cpf_cnpj_cliente'] .'">';
 
 echo open_td . $input . close_td . close_tr;
 

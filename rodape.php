@@ -1,19 +1,28 @@
 <script>
 
-    const paginas = ['home', 'cliente', 'pedido-de-placa', 'servico', 'veiculo', 'cadastro', 'pesquisa', 'dashboard', 'relatorio', 'lista'];
+    const paginas = ['home', 'cliente', 'pedido-de-placa', 'servico', 'veiculo', 'cadastro', 'pesquisa', 'dashboard', 'relatorio', 'lista', 'imprimir'];
 
+    // Marca o link ativo de acordo com a URL
     paginas.forEach(pagina => {
         if (window.location.href.includes(pagina)) {
             let elemento = document.getElementById(pagina);
             if (elemento) {
-                elemento.style.textDecorationColor = '#579EBB';         
                 elemento.style.color = '#579EBB';
             }
         }
     });
 
+    // Adiciona evento para detectar clique em links que contenham "imprimir" no href
+    document.querySelectorAll('a').forEach(a => {
+    if (a.textContent.trim().toLowerCase().includes('imprimir')) {
+        a.addEventListener('pointerdown', () => {
+        a.style.color = '#579EBB';
+        });
+    }
+    });
+
     const mapeamentoPaginas = {
-        'home': 'ATHOS DESPACHANTE © ' + new Date().getFullYear(),
+        'home': 'Athos Despachante © ' + new Date().getFullYear(),
         'cliente': 'Cliente',
         'pedido-de-placa': 'Pedido de Placa',
         'servico': 'Serviço',

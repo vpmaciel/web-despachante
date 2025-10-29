@@ -7,5 +7,5 @@
     echo '<a id="servico" href="../erp-servico/servico-cadastro.php" class="menu_a">Serviço</a> '; 
     echo '<a id="veiculo" href="../erp-veiculo/veiculo-cadastro.php" class="menu_a">Veículo</a>'; 
     echo '</div>';
-    echo  open_h1 . 'ATHOS DESPACHANTE' .  "&copy; " . date("Y") . close_h1;     
+    echo  open_h1 . 'Athos Despachante' .  " &copy; " . date("Y") . close_h1;     
     require_once 'cookies.php';

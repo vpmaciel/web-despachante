@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     acceptCookies.addEventListener('click', function () {
-        setCookie('cookieConsent', 'accepted', 365); // Define o cookie por 365 dias
+        setCookie('cookieConsent', 'accepted', 1); // Define o cookie por 1 dias
         cookieConsent.style.display = 'none';
     });
 

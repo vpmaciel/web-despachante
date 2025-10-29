@@ -20,7 +20,7 @@ echo open_td . $input . close_td . close_tr;
 
 echo open_tr . open_td_2 . open_label . 'CPF | CNPJ do proprietário:' . close_lable . close_td; 
 
-$input = '<input type="text" id="veiculo_cpf_cnpj_proprietario" name="veiculo_cpf_cnpj_proprietario" minlength="11" maxlength="14" oninput="this.value = this.value.replace(/[^0-9]/g, \'\');" onblur="clearTimeout();" value="' . $registro['veiculo_cpf_cnpj_proprietario'] .'">';
+$input = '<input type="text" id="veiculo_cpf_cnpj_proprietario" name="veiculo_cpf_cnpj_proprietario" minlength="11" maxlength="20" oninput="this.value = this.value.toUpperCase().replace(/[^A-Z0-9.\\-\\/]/g, \'\').slice(0, 20);" onblur="clearTimeout();" value="' . $registro['veiculo_cpf_cnpj_proprietario'] . '">';
 
 echo open_td . $input . close_td . close_tr;
 
