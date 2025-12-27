@@ -1,18 +1,17 @@
 <?php
 
-require('../lib/lib-biblioteca.php');
+require_once '../lib/lib-biblioteca.php';
+
+require_once 'cliente-dao.php';
+
+$clienteDAO = new ClienteDAO();
 
 $pdf = new FPDF('P', 'mm', 'A4');
 $pdf->AddPage();
 $pdf->SetFont('Arial', '', 16);
 
-if(isset($_COOKIE['cliente_id'])) {
-    $SQL = 'SELECT * FROM cliente' . ' WHERE cliente_id = ' . $_COOKIE['cliente_id'];
-} else {
-    $SQL = 'SELECT * FROM cliente LIMIT 1';
-}
+$stmt = $clienteDAO->relatorio();
 
-$stmt = $pdo->prepare($SQL);
 $stmt->execute();
 
 $pdf->SetFillColor(255, 255, 255); // Cor de fundo da célula
@@ -22,11 +21,11 @@ $pdf->Cell(0, 10, 'Cliente', 0, 1, 'C'); // Cabeçalho da tabela
 
 while ($registro = $stmt->fetch(PDO::FETCH_ASSOC)) {
     $pdf->Ln();
-    
+
     $pdf->Cell(0, 10, mb_convert_encoding('Nome: ' . $registro['cliente_nome_completo'], 'ISO-8859-1', 'UTF-8'), 0, 1);
     $pdf->Cell(0, 10, mb_convert_encoding('CPF | CNPJ: ' . $registro['cliente_cpf_cnpj'], 'ISO-8859-1', 'UTF-8'), 0, 1);
     $pdf->Cell(0, 10, mb_convert_encoding('Telefone: ' . $registro['cliente_telefone'], 'ISO-8859-1', 'UTF-8'), 0, 1);
-    $pdf->Cell(0, 10, mb_convert_encoding('E-mail: ' . $registro['cliente_email'], 'ISO-8859-1', 'UTF-8'), 0, 1);    
+    $pdf->Cell(0, 10, mb_convert_encoding('E-mail: ' . $registro['cliente_email'], 'ISO-8859-1', 'UTF-8'), 0, 1);
     $pdf->Ln();
 }
 
@@ -46,10 +45,10 @@ if (file_exists($file)) {
     header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
     header('Pragma: public');
     header('Content-Length: ' . filesize($file));
-    
+
     // Limpar qualquer output anterior
     flush();
-    
+
     readfile($file);
     exit;
 } else {

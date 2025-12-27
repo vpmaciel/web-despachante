@@ -6,7 +6,10 @@ header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 
 require_once '../lib/lib-sessao.php';
+
 require_once '../lib/lib-biblioteca.php';
+
+require_once 'cliente-dao.php';
 
 try {    
     $cpfCnpjCliente  = $_POST['servico_cpf_cnpj_cliente'];        
