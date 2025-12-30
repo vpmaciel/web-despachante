@@ -5,7 +5,11 @@ error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED);
 
 require_once '../lib/lib-biblioteca.php';
 
-$dados = array(array('Qtde', retornar_total_registros('CLIENTE')));
+$conexao = new Conexao();
+
+$totalRegistros = $conexao->getTotalRegistros('CLIENTE');
+
+$dados = array(array('Qtde', $totalRegistros));
 
 $grafico = new PHPlot(400, 400);
 $grafico->setImageBorderType('plain');

@@ -4,8 +4,8 @@ interface DAO
 {
     public function getRegistroLista();
 
-    public function getRegistros();
-    
+    public function getTotalRegistros();
+
     public function getRegistro($registro);
 
     public function deletarRegistro($registro);

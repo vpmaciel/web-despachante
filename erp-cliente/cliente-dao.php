@@ -8,7 +8,6 @@ class ClienteDAO implements DAO
     {
         $conexao = new Conexao();
         $this->pdo = $conexao->getPdo();
-        $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
     public function getRegistroLista()
@@ -25,7 +24,7 @@ class ClienteDAO implements DAO
         }
     }
 
-    public function getRegistros()
+    public function getTotalRegistros()
     {
         try {
             // Preparar a query SQL para contar os registros

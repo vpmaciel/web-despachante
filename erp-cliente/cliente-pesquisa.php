@@ -24,7 +24,9 @@ require_once '../menu.php';
 
 require_once 'cliente-menu.php';
 
-$numero_de_registros = retornar_total_registros('cliente');
+$conexao = new Conexao();
+
+$numero_de_registros = $conexao->getTotalRegistros('cliente');
 
 
 $registro = array();

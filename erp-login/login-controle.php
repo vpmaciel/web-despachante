@@ -11,7 +11,8 @@ $usuario_senha = strtoupper(trim($_POST['usuario_senha']));
 // Verifica se não há usuários na tabela, caso não exista, cria o usuário ADMIN.
 $usuarioDAO = new UsuarioDAO();
 $total_registro = $usuarioDAO->getRegistros();
-
+$conexao = new Conexao();
+$pdo = $conexao->getPdo();
 
 if ($total_registro == 0) {
       

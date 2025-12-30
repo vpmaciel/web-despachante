@@ -26,7 +26,9 @@ require_once 'cliente-menu.php';
 
 $clienteDAO = new ClienteDAO();
 
-$numero_de_registros = retornar_total_registros('cliente');
+$conexao = new Conexao();
+
+$numero_de_registros = $conexao->getTotalRegistros('cliente');
 
 $registro = array();
 $registro['cliente_id'] = '';
