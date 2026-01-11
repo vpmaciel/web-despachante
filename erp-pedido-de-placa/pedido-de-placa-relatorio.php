@@ -5,9 +5,9 @@ $pdf = new FPDF('P', 'mm', 'A4');
 $pdf->AddPage();
 $pdf->SetFont('Arial', '', 16);
 
-$SQL = 'SELECT * FROM pedido_de_placa';
+$pedidoDePlacaDAO = new PedidoDePlacaDAO();
 
-$stmt = $pdo->prepare($SQL);
+$stmt = $pedidoDePlacaDAO->relatorio();
 $stmt->execute();
 
 $pdf->SetFillColor(255, 255, 255); // Cor de fundo da célula
@@ -17,13 +17,13 @@ $pdf->Cell(0, 10, 'Pedido de Placa', 0, 1, 'C'); // Cabeçalho da tabela
 
 while ($registro = $stmt->fetch(PDO::FETCH_ASSOC)) {
     $pdf->Ln();
-    $pdf->Cell(0, 10, utf8_decode('Data: ' . date('d-m-Y', strtotime($registro['pedido_de_placa_data']))), 0, 1);
-    $pdf->Cell(0, 10, utf8_decode('Placa do veículo: ' . $registro['pedido_de_placa_placa_veiculo']), 0, 1);
-    $pdf->Cell(0, 10, utf8_decode('Quantidade: ' . $registro['pedido_de_placa_quantidade']), 0, 1);
-    $pdf->Cell(0, 10, utf8_decode('RENAVAM: ' . $registro['pedido_de_placa_renavam']), 0, 1);
-    $pdf->Cell(0, 10, utf8_decode('CPF | CNPJ do proprietário: ' . $registro['pedido_de_placa_cpf_cnpj_proprietario']), 0, 1);
-    $pdf->Cell(0, 10, utf8_decode('Cor: ' . $registro['pedido_de_placa_cor_placa']), 0, 1);
-    $pdf->Cell(0, 10, utf8_decode('Tipo de placa: ' . $registro['pedido_de_placa_tipo_placa']), 0, 1);
+    $pdf->Cell(0, 10, mb_convert_encoding('Data: ' . date('d-m-Y', strtotime($registro['pedido_de_placa_data'])), 'ISO-8859-1', 'UTF-8'), 0, 1);
+    $pdf->Cell(0, 10, mb_convert_encoding('Placa do veículo: ' . $registro['pedido_de_placa_placa_veiculo'], 'ISO-8859-1', 'UTF-8'), 0, 1);
+    $pdf->Cell(0, 10, mb_convert_encoding('Quantidade: ' . $registro['pedido_de_placa_quantidade'], 'ISO-8859-1', 'UTF-8'), 0, 1);
+    $pdf->Cell(0, 10, mb_convert_encoding('RENAVAM: ' . $registro['pedido_de_placa_renavam'], 'ISO-8859-1', 'UTF-8'), 0, 1);
+    $pdf->Cell(0, 10, mb_convert_encoding('CPF | CNPJ do proprietário: ' . $registro['pedido_de_placa_cpf_cnpj_proprietario'], 'ISO-8859-1', 'UTF-8'), 0, 1);
+    $pdf->Cell(0, 10, mb_convert_encoding('Cor: ' . $registro['pedido_de_placa_cor_placa'], 'ISO-8859-1', 'UTF-8'), 0, 1);
+    $pdf->Cell(0, 10, mb_convert_encoding('Tipo de placa: ' . $registro['pedido_de_placa_tipo_placa'], 'ISO-8859-1', 'UTF-8'), 0, 1);
     $pdf->Ln();
 }
 
@@ -43,10 +43,10 @@ if (file_exists($file)) {
     header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
     header('Pragma: public');
     header('Content-Length: ' . filesize($file));
-    
+
     // Limpar qualquer output anterior
     flush();
-    
+
     readfile($file);
     exit;
 } else {

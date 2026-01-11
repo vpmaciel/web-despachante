@@ -14,7 +14,7 @@ class ClienteDAO implements DAO
     {
         try {
             // Preparar a query SQL para contar os registros            
-            $sql = "SELECT * FROM usuario";
+            $sql = "SELECT * FROM cliente";
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
             return $stmt->fetch(PDO::FETCH_ASSOC);
@@ -28,7 +28,7 @@ class ClienteDAO implements DAO
     {
         try {
             // Preparar a query SQL para contar os registros
-            $sql = "SELECT COUNT(*) as total FROM usuario";
+            $sql = "SELECT COUNT(*) as total FROM cliente";
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
 
@@ -59,28 +59,6 @@ class ClienteDAO implements DAO
             exit("Erro: " . $e->getMessage());
         }
         return $registro;
-    }
-
-    public function getClienteNomeCompleto()
-    {
-        // falta acertar essa função não funcionando
-        try {
-            $cpfCnpjCliente  = $_POST['servico_cpf_cnpj_cliente'];
-            $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-            $sql = "SELECT cliente_nome_completo FROM cliente WHERE cliente_cpf_cnpj = :servico_cpf_cnpj_cliente";
-            $stmt = $this->pdo->prepare($sql);
-            $stmt->bindParam(':servico_cpf_cnpj_cliente', $cpfCnpjCliente);
-            $stmt->execute();
-
-            // Obtenção dos resultados como array associativo
-            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-            // Enviar os resultados como JSON para a requisição Ajax
-            return $result;
-        } catch (PDOException $e) {
-            return ["error" => "Erro na conexão com o banco de dados: " . $e->getMessage()];
-        }
     }
 
     public function deletarRegistro($registro)

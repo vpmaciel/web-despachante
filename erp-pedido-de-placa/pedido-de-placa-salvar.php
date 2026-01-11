@@ -9,7 +9,7 @@ $registro['pedido_de_placa_data'] = trim($_POST['pedido_de_placa_data']);
 $registro['pedido_de_placa_placa_veiculo'] = trim($_POST['pedido_de_placa_placa_veiculo']);
 $registro['pedido_de_placa_quantidade'] = trim($_POST['pedido_de_placa_quantidade']);
 $registro['pedido_de_placa_renavam'] = trim($_POST['pedido_de_placa_renavam']);
-$registro['pedido_de_placa_cpf_cnpj_proprietario'] = formatarCpfCnpj(trim($_POST['pedido_de_placa_cpf_cnpj_proprietario']));
+$registro['pedido_de_placa_cpf_cnpj_proprietario'] = trim($_POST['pedido_de_placa_cpf_cnpj_proprietario']);
 $registro['pedido_de_placa_cor_placa'] = trim($_POST['pedido_de_placa_cor_placa']);
 $registro['pedido_de_placa_tipo_placa'] = trim($_POST['pedido_de_placa_tipo_placa']);
 

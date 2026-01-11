@@ -7,7 +7,7 @@ require_once '../lib/lib-biblioteca.php';
 
 $conexao = new Conexao();
 
-$totalRegistros = $conexao->getTotalRegistros('CLIENTE');
+$totalRegistros = $conexao->getTotalRegistros('cliente');
 
 $dados = array(array('Qtde', $totalRegistros));
 

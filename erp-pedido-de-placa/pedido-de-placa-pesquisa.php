@@ -24,7 +24,9 @@ require_once '../menu.php';
 
 require_once 'pedido-de-placa-menu.php';
 
-$numero_de_registros = retornar_total_registros('pedido_de_placa');
+$conexao = new Conexao();
+
+$numero_de_registros = $conexao->getTotalRegistros('pedido_de_placa');
 
 $registro = array();
 

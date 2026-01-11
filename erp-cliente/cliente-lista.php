@@ -13,7 +13,6 @@ echo open_html;
 echo open_head;
 
 require_once '../cabecalho.php';
-echo '<script src="cliente-cadastro.ts"></script>';
 
 echo close_head;
 
@@ -36,23 +35,6 @@ $registro['cliente_nome_completo'] = (isset($_POST['cliente_nome_completo'])) ? 
 $registro['cliente_telefone'] = (isset($_POST['cliente_cpf_cnpj'])) ? trim($_POST['cliente_telefone']) : '';
 $registro['cliente_email'] = (isset($_POST['cliente_email'])) ? trim($_POST['cliente_email']) : '';
 
-
-if ($registro['cliente_cpf_cnpj'] == '') {
-  unset($registro['cliente_cpf_cnpj']);
-}
-
-if ($registro['cliente_nome_completo'] == '') {
-  unset($registro['cliente_nome_completo']);
-}
-
-if ($registro['cliente_telefone'] == '') {
-  unset($registro['cliente_telefone']);
-}
-
-if ($registro['cliente_email'] == '') {
-  unset($registro['cliente_email']);
-}
-
 // define how many results you want per page
 $results_per_page = 10000;
 
@@ -74,9 +56,9 @@ if (!isset($_GET['page'])) {
 $this_page_first_result = ($PAGE - 1) * $results_per_page;
 
 // retrieve selected results from database and display them on page
-$SQL = $conexao->paginar('cliente', $registro, $this_page_first_result, $results_per_page);
+$sql = $conexao->paginar('cliente', $registro, $this_page_first_result, $results_per_page);
 $pdo = $conexao->getPdo();
-$stmt = $pdo->prepare($SQL);
+$stmt = $pdo->prepare($sql);
 $stmt->execute();
 echo open_table_2;
 

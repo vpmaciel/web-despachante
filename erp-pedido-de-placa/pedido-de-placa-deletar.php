@@ -6,13 +6,14 @@ require_once '../lib/lib-biblioteca.php';
 
 $registro['pedido_de_placa_id'] = trim($_GET['pedido_de_placa_id']);
 
-$RESULTADO_EXCLUIR = excluir('pedido_de_placa', $registro);
+$pedidoDePlacaDAO = new PedidoDePlacaDAO();
 
+$resultado_excluir = $pedidoDePlacaDAO->deletarRegistro($registro);
 
-if ($RESULTADO_EXCLUIR == true) {
+if ($resultado_excluir == true) {
 	header('location:../erp-msg/sucesso.php');
 	exit;
 } else {
 	header('location:../erp-msg/erro.php');
 	exit;
-} 
+}
