@@ -16,8 +16,6 @@ $registro['cliente_nome_completo'] = trim($_POST['cliente_nome_completo']);
 $registro['cliente_telefone'] = trim($_POST['cliente_telefone']);
 $registro['cliente_email'] = trim($_POST['cliente_email']);
 
-$condicao = array('cliente_id' => trim($_POST['cliente_id']));
-
 if (!isset($registro['cliente_id']) || $registro['cliente_id'] == '') {
 
 	$resultado_inserir = $clienteDAO->inserirRegistro($registro);
