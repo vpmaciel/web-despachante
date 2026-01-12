@@ -19,38 +19,44 @@ $pdf->SetTextColor(0); // Cor do texto
 
 $pdf->Cell(0, 10, 'Cliente', 0, 1, 'C'); // Cabeçalho da tabela
 
-while ($registro = $stmt->fetch(PDO::FETCH_ASSOC)) {
-    $pdf->Ln();
+if ($stmt->rowCount() === 0) {
 
-    $pdf->Cell(0, 10, mb_convert_encoding('Nome: ' . $registro['cliente_nome_completo'], 'ISO-8859-1', 'UTF-8'), 0, 1);
-    $pdf->Cell(0, 10, mb_convert_encoding('CPF | CNPJ: ' . $registro['cliente_cpf_cnpj'], 'ISO-8859-1', 'UTF-8'), 0, 1);
-    $pdf->Cell(0, 10, mb_convert_encoding('Telefone: ' . $registro['cliente_telefone'], 'ISO-8859-1', 'UTF-8'), 0, 1);
-    $pdf->Cell(0, 10, mb_convert_encoding('E-mail: ' . $registro['cliente_email'], 'ISO-8859-1', 'UTF-8'), 0, 1);
-    $pdf->Ln();
+    $pdf->SetFont('Arial', 'B', 12);
+    $pdf->Cell(0, 10, mb_convert_encoding('Nenhum registro encontrado.', 'ISO-8859-1', 'UTF-8'), 0, 1, 'C' );
+
+} else {
+    while ($registro = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $pdf->Ln();
+
+        $pdf->Cell(0, 10, mb_convert_encoding('Nome: ' . $registro['cliente_nome_completo'], 'ISO-8859-1', 'UTF-8'), 0, 1);
+        $pdf->Cell(0, 10, mb_convert_encoding('CPF | CNPJ: ' . $registro['cliente_cpf_cnpj'], 'ISO-8859-1', 'UTF-8'), 0, 1);
+        $pdf->Cell(0, 10, mb_convert_encoding('Telefone: ' . $registro['cliente_telefone'], 'ISO-8859-1', 'UTF-8'), 0, 1);
+        $pdf->Cell(0, 10, mb_convert_encoding('E-mail: ' . $registro['cliente_email'], 'ISO-8859-1', 'UTF-8'), 0, 1);
+        $pdf->Ln();
+    }
 }
 
-// Limpeza de buffers de saída
+// 🔹 Caminho do arquivo
+$file = $_SERVER['DOCUMENT_ROOT'] . '/web-despachante/erp-cliente/cliente.pdf';
+
+// 🔹 Gera o PDF em disco
+$pdf->Output('F', $file);
+
+// 🔹 Limpeza de buffers
 while (ob_get_level()) {
     ob_end_clean();
 }
 
-$file = $_SERVER['DOCUMENT_ROOT'] . '/web-despachante/erp-cliente/cliente.pdf';
-
+// 🔹 Envia o PDF para o navegador
 if (file_exists($file)) {
-    // Headers para PDF
-    header('Content-Description: File Transfer');
-    header('Content-Type: application/pdf');
-    header('Content-Disposition: inline; filename="' . basename($file) . '"'); // Use "inline" para abrir no navegador
-    header('Expires: 0');
-    header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
-    header('Pragma: public');
-    header('Content-Length: ' . filesize($file));
 
-    // Limpar qualquer output anterior
-    flush();
+    header('Content-Type: application/pdf');
+    header('Content-Disposition: inline; filename="' . basename($file) . '"');
+    header('Content-Length: ' . filesize($file));
 
     readfile($file);
     exit;
+
 } else {
     http_response_code(404);
     echo "O arquivo não foi encontrado. Caminho: " . $file;
