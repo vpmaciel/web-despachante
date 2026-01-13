@@ -24,9 +24,9 @@ require_once '../menu.php';
 
 require_once 'veiculo-menu.php';
 
-$registro = array();
+$conexao = new Conexao();
 
-$SQL = '';
+$registro = array();
 
 $registro['veiculo_placa'] = (isset($_POST['veiculo_placa'])) ? trim($_POST['veiculo_placa']) : '';
 $registro['veiculo_cpf_cnpj_proprietario'] = (isset($_POST['veiculo_cpf_cnpj_proprietario'])) ? trim($_POST['veiculo_cpf_cnpj_proprietario']) : '';
@@ -34,34 +34,12 @@ $registro['veiculo_nome_proprietario'] = (isset($_POST['veiculo_nome_proprietari
 $registro['veiculo_marca'] = (isset($_POST['veiculo_marca'])) ? trim($_POST['veiculo_marca']) : '';
 $registro['veiculo_modelo'] = (isset($_POST['veiculo_modelo'])) ? trim($_POST['veiculo_modelo']) : '';
 
-//var_dump($registro);
-
-if ($registro['veiculo_placa'] == '') {
-  unset($registro['veiculo_placa']);
-}
-
-if ($registro['veiculo_cpf_cnpj_proprietario'] == '') {
-  unset($registro['veiculo_cpf_cnpj_proprietario']);
-}
-
-if ($registro['veiculo_nome_proprietario'] == '') {
-  unset($registro['veiculo_nome_proprietario']);
-}
-
-if ($registro['veiculo_marca'] == '') {
-  unset($registro['veiculo_marca']);
-}
-
-if ($registro['veiculo_modelo'] == '') {
-  unset($registro['veiculo_modelo']);
-}
-
 
 // define how many results you want per page
 $results_per_page = 10000;
 
 // find out the number of results stored in database
-$number_of_results =  paginar_total("veiculo", $registro);
+$number_of_results =  $conexao->paginarTotal("veiculo", $registro);
 
 
 // determine number of total pages available
@@ -78,9 +56,9 @@ if (!isset($_GET['page'])) {
 $this_page_first_result = ($PAGE - 1) * $results_per_page;
 
 // retrieve selected results from database and display them on page
-$SQL = 'SELECT * FROM veiculo LIMIT ' . $this_page_first_result . "," . $results_per_page;
-$SQL = paginar('veiculo', $registro, $this_page_first_result, $results_per_page);
-$stmt = $pdo->prepare($SQL);
+$sql = $conexao->paginar('veiculo', $registro, $this_page_first_result, $results_per_page);
+$pdo = $conexao->getPdo();
+$stmt = $pdo->prepare($sql);
 $stmt->execute();
 
 echo open_table_2;

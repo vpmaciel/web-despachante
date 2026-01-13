@@ -6,7 +6,6 @@ echo open_tr . open_td . $input . close_td . close_tr;
 
 $input = '<input type="hidden" id="pedido_de_placa_data" name="pedido_de_placa_data" value="' . ($registro['pedido_de_placa_data'] ?? '') . '">';
 
-
 echo open_tr . open_td . $input . close_td . close_tr;
 
 echo open_table;
@@ -63,24 +62,5 @@ echo open_td . $submit . close_td . close_tr;
 
 echo close_table;
 ?>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Obtém a URL atual
-        var currentUrl = window.location.href;
 
-        // Seleciona o elemento pelo ID
-        var pedido_de_placa_placa_veiculo = document.getElementById("pedido_de_placa_placa_veiculo");
-        var pedido_de_placa_cpf_cnpj_cliente = document.getElementById("pedido_de_placa_cpf_cnpj_cliente");
-
-        // Verifica se a URL contém a palavra "cadastro"
-        if (currentUrl.includes("cadastro")) {
-            // Adiciona a propriedade required
-            pedido_de_placa_placa_veiculo.setAttribute("required", "required");
-            pedido_de_placa_cpf_cnpj_cliente.setAttribute("required", "required");
-        } else {
-            // Remove a propriedade required
-            pedido_de_placa_placa_veiculo.removeAttribute("required");
-            pedido_de_placa_cpf_cnpj_cliente.removeAttribute("required");
-        }
-    });
-</script>
+<script src="pedido-de-placa.js"></script>

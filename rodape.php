@@ -24,7 +24,8 @@
     const mapeamentoPaginas = {
         'home': 'Athos Despachante © ' + new Date().getFullYear(),
         'cliente': 'Cliente',
-        'sucesso': 'Cliente',
+        'sucesso': 'Mensagem',
+        'erro': 'Mensagem',
         'pedido-de-placa': 'Pedido de Placa',
         'servico': 'Serviço',
         'veiculo': 'Veículo',

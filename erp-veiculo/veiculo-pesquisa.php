@@ -1,10 +1,8 @@
 <?php
 
-
 require_once '../lib/lib-sessao.php';
+
 require_once '../lib/lib-biblioteca.php';
-
-
 
 echo doctype;
 
@@ -22,11 +20,13 @@ echo open_div;
 
 require_once '../menu.php';
 
-require_once 'veiculo-menu.php';
+$conexao = new Conexao();
+
+$numero_de_registros = $conexao->getTotalRegistros('veiculo');
 
 $registro = array();
 
-$numero_de_registros = retornar_total_registros('veiculo');
+require_once 'veiculo-menu.php';
 
 $form_open = '<form action="veiculo-lista.php" method="post">';
 

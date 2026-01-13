@@ -63,24 +63,5 @@ echo open_td . $submit . close_td . close_tr;
 
 echo close_table;
 ?>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Obtém a URL atual
-        var currentUrl = window.location.href;
 
-        // Seleciona o elemento pelo ID
-        var servico_descricao = document.getElementById("servico_descricao");
-        var servico_cpf_cnpj_cliente = document.getElementById("servico_cpf_cnpj_cliente");
-        
-        // Verifica se a URL contém a palavra "cadastro"
-        if (currentUrl.includes("cadastro")) {
-            // Adiciona a propriedade required
-            servico_descricao.setAttribute("required", "required");
-            servico_cpf_cnpj_cliente.setAttribute("required", "required");
-        } else {
-            // Remove a propriedade required
-            servico_descricao.removeAttribute("required");
-            servico_cpf_cnpj_cliente.removeAttribute("required");
-        }
-    });
-</script>
+<script src="servico.js"></script>

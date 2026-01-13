@@ -1,10 +1,8 @@
 <?php
 
-
 require_once '../lib/lib-sessao.php';
+
 require_once '../lib/lib-biblioteca.php';
-
-
 
 echo doctype;
 
@@ -13,7 +11,6 @@ echo open_html;
 echo open_head;
 
 require_once '../cabecalho.php';
-echo '<script src="servico-cadastro.ts"></script>';
 
 echo close_head;
 
@@ -25,9 +22,9 @@ require_once '../menu.php';
 
 require_once 'servico-menu.php';
 
-$registro = array();
+$conexao = new Conexao();
 
-$SQL = '';
+$registro = array();
 
 $registro['servico_placa_veiculo'] = (isset($_POST['servico_placa_veiculo'])) ? trim($_POST['servico_placa_veiculo']) : '';
 $registro['servico_valor'] = (isset($_POST['servico_valor'])) ? str_replace(',', '.', preg_replace('/[^0-9,]/', '', trim($_POST['servico_valor']))) : '';
@@ -36,36 +33,12 @@ $registro['servico_cpf_cnpj_cliente'] = $_POST['servico_cpf_cnpj_cliente'];
 $registro['servico_nome_cliente'] = (isset($_POST['servico_nome_cliente'])) ? trim($_POST['servico_nome_cliente']) : '';
 $registro['servico_telefone_cliente'] = (isset($_POST['servico_telefone_cliente'])) ? trim($_POST['servico_telefone_cliente']) : '';
 
-if ($registro['servico_placa_veiculo'] == '') {
-  unset($registro['servico_placa_veiculo']);
-}
-
-if ($registro['servico_valor'] == '') {
-  unset($registro['servico_valor']);
-}
-
-if ($registro['servico_descricao'] == '') {
-  unset($registro['servico_descricao']);
-}
-
-if ($registro['servico_cpf_cnpj_cliente'] == '') {
-  unset($registro['servico_cpf_cnpj_cliente']);
-}
-
-if ($registro['servico_nome_cliente'] == '') {
-  unset($registro['servico_nome_cliente']);
-}
-
-if ($registro['servico_telefone_cliente'] == '') {
-  unset($registro['servico_telefone_cliente']);
-}
 
 // define how many results you want per page
 $results_per_page = 10000;
 
 // find out the number of results stored in database
-$number_of_results =  paginar_total("servico", $registro);
-
+$number_of_results =  $conexao->paginarTotal("servico", $registro);
 
 // determine number of total pages available
 $number_of_pages = ceil($number_of_results / $results_per_page);
@@ -81,8 +54,9 @@ if (!isset($_GET['page'])) {
 $this_page_first_result = ($page - 1) * $results_per_page;
 
 // retrieve selected results from database and display them on page
-$SQL = paginar('servico', $registro, $this_page_first_result, $results_per_page);
-$stmt = $pdo->prepare($SQL);
+$sql = $conexao->paginar('servico', $registro, $this_page_first_result, $results_per_page);
+$pdo = $conexao->getPdo();
+$stmt = $pdo->prepare($sql);
 $stmt->execute();
 
 echo open_table_2;

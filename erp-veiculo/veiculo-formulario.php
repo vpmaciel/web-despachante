@@ -52,46 +52,5 @@ echo open_td . $submit . close_td . close_tr;
 
 echo close_table;
 ?>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Obtém a URL atual
-        var currentUrl = window.location.href;
 
-        // Seleciona o elemento pelo ID
-        var veiculo_cpf_cnpj_proprietario = document.getElementById("veiculo_cpf_cnpj_proprietario");
-        var veiculo_placa = document.getElementById("veiculo_placa");
-
-        // Verifica se a URL contém a palavra "cadastro"
-        if (currentUrl.includes("cadastro")) {
-            // Adiciona a propriedade required
-            veiculo_cpf_cnpj_proprietario.setAttribute("required", "required");
-            veiculo_placa.setAttribute("required", "required");
-        } else {
-            // Remove a propriedade required
-            veiculo_cpf_cnpj_proprietario.removeAttribute("required");
-            veiculo_placa.removeAttribute("required");
-        }
-    });
-</script>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const erro = urlParams.get("erro");
-        let submitClicked = false; // Variável de controle
-
-        // Captura o clique no botão de submit
-        document.querySelectorAll("input[type='submit']").forEach(button => {
-            button.addEventListener("click", function() {
-                submitClicked = true;
-            });
-        });
-
-        // Exibe o alert após 2 segundos, se o botão submit NÃO foi clicado
-        setTimeout(function() {
-            if (erro && !submitClicked) {
-                alert(decodeURIComponent(erro));
-            }
-        }, 2000);
-    });
-</script>
+<script src="veiculo.js"></script>

@@ -1,10 +1,8 @@
 <?php
 
-
 require_once '../lib/lib-sessao.php';
+
 require_once '../lib/lib-biblioteca.php';
-
-
 
 echo doctype;
 
@@ -22,11 +20,9 @@ echo open_div;
 
 require_once '../menu.php';
 
-$conexao = new Conexao();
-
 require_once 'pedido-de-placa-menu.php';
 
-$sql = '';
+$conexao = new Conexao();
 
 $registro['pedido_de_placa_placa_veiculo'] = (isset($_POST['pedido_de_placa_placa_veiculo'])) ? trim($_POST['pedido_de_placa_placa_veiculo']) : '';
 $registro['pedido_de_placa_quantidade'] = (isset($_POST['pedido_de_placa_quantidade'])) ? trim($_POST['pedido_de_placa_quantidade']) : '';

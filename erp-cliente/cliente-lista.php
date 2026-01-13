@@ -1,10 +1,8 @@
 <?php
 
-
 require_once '../lib/lib-sessao.php';
+
 require_once '../lib/lib-biblioteca.php';
-
-
 
 echo doctype;
 
@@ -27,8 +25,6 @@ require_once 'cliente-menu.php';
 $conexao = new Conexao();
 
 $registro = array();
-
-$SQL = '';
 
 $registro['cliente_cpf_cnpj'] = (isset($_POST['cliente_cpf_cnpj'])) ? trim($_POST['cliente_cpf_cnpj']) : '';
 $registro['cliente_nome_completo'] = (isset($_POST['cliente_nome_completo'])) ? trim($_POST['cliente_nome_completo']) : '';

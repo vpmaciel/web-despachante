@@ -1,11 +1,13 @@
 
 <?php
 
-error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED);
-
 require_once '../lib/lib-biblioteca.php';
 
-$dados = array(array('Qtde', retornar_total_registros('veiculo')));
+$conexao = new Conexao();
+
+$totalRegistros = $conexao->getTotalRegistros('veiculo');
+
+$dados = array(array('Qtde', $totalRegistros));
 
 $grafico = new PHPlot(400, 400);
 $grafico->setImageBorderType('plain');

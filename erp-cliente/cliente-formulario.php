@@ -47,24 +47,4 @@ echo open_td . $submit . close_td . close_tr;
 echo close_table;
 ?>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Obtém a URL atual
-        var currentUrl = window.location.href;
-
-        // Seleciona o elemento pelo ID
-        var cliente_nome_completo = document.getElementById("cliente_nome_completo");
-        var cliente_cpf_cnpj = document.getElementById("cliente_cpf_cnpj");
-
-        // Verifica se a URL contém a palavra "cadastro"
-        if (currentUrl.includes("cadastro")) {
-            // Adiciona a propriedade required
-            cliente_nome_completo.setAttribute("required", "required");
-            cliente_cpf_cnpj.setAttribute("required", "required");
-        } else {
-            // Remove a propriedade required
-            cliente_nome_completo.removeAttribute("required");
-            cliente_cpf_cnpj.removeAttribute("required");
-        }
-    });
-</script>
+<script src="cliente.js"></script>

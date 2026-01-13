@@ -1,8 +1,10 @@
 <?php
 
-
 require_once '../lib/lib-sessao.php';
+
 require_once '../lib/lib-biblioteca.php';
+
+$servicoDAO = new ServicoDAO();
 
 $registro['servico_data'] = trim($_POST['servico_data']);
 $registro['servico_placa_veiculo'] = trim($_POST['servico_placa_veiculo']);
@@ -11,30 +13,26 @@ $registro['servico_valor'] = str_replace(',', '.', preg_replace('/[^0-9,]/', '',
 $registro['servico_cpf_cnpj_cliente'] = trim($_POST['servico_cpf_cnpj_cliente']);
 $registro['servico_telefone_cliente'] = trim($_POST['servico_telefone_cliente']);
 
-$condicao = array ('servico_id' =>trim($_POST['servico_id']));
+if (!isset($registro['servico_id']) || $registro['servico_id'] === '') {
 
-$total_registro = retornar_numero_registros('servico', $condicao);
-//exit($total_registro);
-if($total_registro == 0){
-	$resultado_inserir = inserir('servico', $registro);
-    
-    if ($resultado_inserir == true) {
+	$resultado_inserir = $servicoDAO->inserirRegistro($registro);
+
+	if ($resultado_inserir == true) {
 		header('location:../erp-msg/sucesso.php');
 		exit;
 	} else {
 		header('location:../erp-msg/erro.php');
 		exit;
-	} 
-}
-else {	
-	$resultado_atualizar = atualizar('servico', $registro, $condicao);
-	
+	}
+} else {
+
+	$resultado_atualizar = $servicoDAO->atualizarRegistro($registro);
+
 	if ($resultado_atualizar == true) {
-		
 		header('location:../erp-msg/sucesso.php');
 		exit;
 	} else {
 		header('location:../erp-msg/erro.php');
 		exit;
-	}   
+	}
 }

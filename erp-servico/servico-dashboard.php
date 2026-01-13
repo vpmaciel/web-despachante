@@ -1,8 +1,5 @@
 <?php
 
-
-
-
 require_once '../lib/lib-biblioteca.php';
 
 echo doctype;

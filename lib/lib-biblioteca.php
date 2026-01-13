@@ -1,9 +1,7 @@
 <?php
 ini_set('display_errors', true);
 error_reporting(E_ALL);
-
-
-
+require_once '../cookies.php';
 require_once 'phplot.php';
 require_once '../sql/sql.php';
 require_once 'lib-remover-acentos.php';
@@ -19,3 +17,4 @@ require_once '../erp-cliente/cliente-dao.php';
 require_once '../erp-pedido-de-placa/pedido-de-placa-dao.php';
 require_once '../erp-veiculo/veiculo-dao.php';
 require_once '../erp-servico/servico-dao.php';
+require_once '../sql/sql-conexao.php';
