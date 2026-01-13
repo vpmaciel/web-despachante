@@ -5,7 +5,7 @@ require_once '../lib/lib-sessao.php';
 
 require_once '../lib/lib-biblioteca.php';
 
-setlocale(LC_ALL, 'pt_BR.utf8');
+
 
 echo doctype;
 
@@ -29,37 +29,25 @@ $numero_de_registros = retornar_total_registros('servico');
 
 $registro = array();
 
-$registro['servico_id'] = '';
-$registro['servico_valor'] = '';
-$registro['servico_data'] = date('Y-m-d');
-$registro['servico_placa_veiculo'] = '';
-$registro['servico_descricao'] = '';
-$registro['servico_cpf_cnpj_cliente'] = '';
-$registro['servico_nome_cliente'] = '';
-$registro['servico_telefone_cliente'] = '';
-
-
 if (!isset($_GET['servico_id'])) {
     $registro['servico_id'] = '';
 }
 
 if (isset($_GET['editar'])) {
 
-    $SQL="SELECT * FROM servico where servico_id = '" . $_GET['servico_id'] . "';" ;
+    $SQL = "SELECT * FROM servico where servico_id = '" . $_GET['servico_id'] . "';";
     $stmt = $pdo->prepare($SQL);
     $stmt->execute();
-    
-    while($linha = $stmt->fetch(PDO::FETCH_ASSOC))
-    {
+
+    while ($linha = $stmt->fetch(PDO::FETCH_ASSOC)) {
         $registro['servico_id'] = $linha['servico_id'];
         $registro['servico_data'] = $linha['servico_data'];
         $registro['servico_valor'] = formatarNumero($linha['servico_valor']);
-        $registro['servico_placa_veiculo'] = $linha['servico_placa_veiculo']; 
+        $registro['servico_placa_veiculo'] = $linha['servico_placa_veiculo'];
         $registro['servico_descricao'] = $linha['servico_descricao'];
         $registro['servico_cpf_cnpj_cliente'] = $linha['servico_cpf_cnpj_cliente'];
         $registro['servico_telefone_cliente'] = $linha['servico_telefone_cliente'];
-    }  
-
+    }
 }
 
 $form_open = '<form action="servico-salvar.php" method="POST">';
@@ -77,7 +65,7 @@ echo close_div;
 require_once '../rodape.php';
 
 echo close_body;
-	
+
 echo close_html;
 
 ?>
@@ -85,7 +73,7 @@ echo close_html;
 <script>
     $(document).ready(function() {
         var delayTimer;
-        
+
         $('#servico_cpf_cnpj_cliente').on('input', function() {
             // Limpa o temporizador anterior, se houver
             clearTimeout(delayTimer);
@@ -100,7 +88,9 @@ echo close_html;
                     url: '../erp-cliente/cliente-consulta.php',
                     type: 'POST',
                     dataType: 'json',
-                    data: { servico_cpf_cnpj_cliente: servico_cpf_cnpj_cliente },
+                    data: {
+                        servico_cpf_cnpj_cliente: servico_cpf_cnpj_cliente
+                    },
                     success: function(data) {
                         // Exibe o resultado na label
                         if (data.length > 0) {
@@ -117,4 +107,3 @@ echo close_html;
         });
     });
 </script>
-

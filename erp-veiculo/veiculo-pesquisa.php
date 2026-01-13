@@ -4,7 +4,7 @@
 require_once '../lib/lib-sessao.php';
 require_once '../lib/lib-biblioteca.php';
 
-setlocale(LC_ALL, 'pt_BR.utf8');
+
 
 echo doctype;
 
@@ -28,13 +28,6 @@ $registro = array();
 
 $numero_de_registros = retornar_total_registros('veiculo');
 
-$registro['veiculo_id'] = '';
-$registro['veiculo_placa'] = '';
-$registro['veiculo_cpf_cnpj_proprietario'] = ''; 
-$registro['veiculo_nome_proprietario'] = '';     
-$registro['veiculo_marca'] = '';     
-$registro['veiculo_modelo'] = ''; 
-
 $form_open = '<form action="veiculo-lista.php" method="post">';
 
 echo $form_open;
@@ -48,5 +41,5 @@ echo close_div;
 require_once '../rodape.php';
 
 echo close_body;
-	
+
 echo close_html;

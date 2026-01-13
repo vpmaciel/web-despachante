@@ -1,8 +1,11 @@
 <?php
 
+
 require_once '../lib/lib-sessao.php';
 
 require_once '../lib/lib-biblioteca.php';
+
+
 
 echo doctype;
 
@@ -41,7 +44,6 @@ echo open_tr . open_td_2 . 'TELEFONE: ' . close_td . open_td . $registro['client
 echo open_tr . open_td_2 . 'NOME COMPLETO: ' . close_td . open_td . $registro['cliente_nome_completo'] . close_td . close_tr;
 echo open_tr . open_td_2 . 'E-MAIL: ' . close_td . open_td . $registro['cliente_email'] . close_td . close_tr;
 echo open_tr . open_td_2 . '&nbsp;' . close_td . open_td_2 . '&nbsp;' . close_td . close_tr;
-
 $cliente_id = $registro['cliente_id'];
 
 echo close_table;

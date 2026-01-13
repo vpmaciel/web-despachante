@@ -1,7 +1,7 @@
 <?php
 require_once '../lib/lib-biblioteca.php';
 
-setlocale(LC_ALL, 'pt_BR.utf8');
+
 
 echo doctype;
 echo open_html;
@@ -17,14 +17,14 @@ echo open_div;
 
 require_once '../menu.php';
 
-echo '<br><span class="erro">' . 'Operação não realizada !'. '</span>';
+echo '<br><span class="erro">' . 'Operação não realizada !' . '</span>';
 
 if (isset($_GET['msg'])) {
-    echo '<br><br><span class="erro">' . $_GET['msg']. '</span>';
+    echo '<br><br><span class="erro">' . $_GET['msg'] . '</span>';
 }
 
 echo close_div;
 
 echo close_body;
-	
+
 echo close_html;

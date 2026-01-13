@@ -4,7 +4,7 @@
 require_once '../lib/lib-sessao.php';
 require_once '../lib/lib-biblioteca.php';
 
-setlocale(LC_ALL, 'pt_BR.utf8');
+
 
 echo doctype;
 

@@ -1,8 +1,5 @@
 <?php
 
-
-setlocale(LC_ALL, 'pt_BR.utf8');
-
 require_once '../lib/lib-biblioteca.php';
 
 echo doctype;
@@ -30,7 +27,9 @@ echo $form_open;
 echo open_table;
 
 ob_start();
+
 include 'cliente-grafico.php';
+
 $msg = ob_get_clean();
 
 echo open_tr . open_td . open_label . '&nbsp;' . close_lable . close_td . close_tr; 

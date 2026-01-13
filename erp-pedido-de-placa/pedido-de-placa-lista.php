@@ -4,7 +4,7 @@
 require_once '../lib/lib-sessao.php';
 require_once '../lib/lib-biblioteca.php';
 
-setlocale(LC_ALL, 'pt_BR.utf8');
+
 
 echo doctype;
 
@@ -78,7 +78,7 @@ while ($linha = $stmt->fetch(PDO::FETCH_ASSOC)) {
   echo open_tr . open_td_2 . $linha['pedido_de_placa_placa_veiculo'] . close_td;
   echo open_td_2 . $linha['pedido_de_placa_quantidade'] . close_td;
   echo open_td_3 . '<a href="pedido-de-placa-cadastro.php?editar=true&' . 'pedido_de_placa_id=' . $linha['pedido_de_placa_id'] . '">Editar</a> | ';
-  echo '<a href="pedido-de-placa-deletar.php?' . 'pedido_de_placa_id=' . $linha['pedido_de_placa_id'] . ' " onclick="return confirmarExcluir();">Excluir</a>' . close_td;
+  echo '<a href="pedido-de-placa-confirmar-deletar.php?' . 'pedido_de_placa_id=' . $linha['pedido_de_placa_id'] . ' " onclick="return confirmarExcluir();">Excluir</a>' . close_td;
   echo open_tr . open_td_2 . '&nbsp;' . close_td . open_td_2 . '&nbsp;' . close_td . open_td_2 . '&nbsp;' . close_td . close_tr;
 }
 echo close_table;

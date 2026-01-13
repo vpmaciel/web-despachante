@@ -1,7 +1,7 @@
 <?php
 
 
-setlocale(LC_ALL, 'pt_BR.utf8');
+
 
 require_once '../lib/lib-biblioteca.php';
 
@@ -33,9 +33,9 @@ ob_start();
 include 'pedido-de-placa-grafico.php';
 $msg = ob_get_clean();
 
-echo open_tr . open_td . open_label . '&nbsp;' . close_lable . close_td . close_tr; 
+echo open_tr . open_td . open_label . '&nbsp;' . close_lable . close_td . close_tr;
 
-echo open_tr . open_td_center . open_label . $msg . close_lable . close_td . close_tr; 
+echo open_tr . open_td_center . open_label . $msg . close_lable . close_td . close_tr;
 
 echo close_table;
 
@@ -46,5 +46,5 @@ echo close_div;
 require_once '../rodape.php';
 
 echo close_body;
-	
-echo close_html;    
+
+echo close_html;

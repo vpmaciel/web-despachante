@@ -4,7 +4,7 @@ require_once '../lib/lib-sessao.php';
 
 require_once '../lib/lib-biblioteca.php';
 
-setlocale(LC_ALL, 'pt_BR.utf8');
+
 
 echo doctype;
 
@@ -31,16 +31,11 @@ $conexao = new Conexao();
 $numero_de_registros = $conexao->getTotalRegistros('cliente');
 
 $registro = array();
-$registro['cliente_id'] = '';
-$registro['cliente_nome_completo'] = '';
-$registro['cliente_cpf_cnpj'] = '';
-$registro['cliente_telefone'] = '';
-$registro['cliente_email'] = '';
 
 if (isset($_GET['editar'])) {
     $registro = $clienteDAO->getRegistro($registro);
 }
-   
+
 $form_open = '<form action="cliente-salvar.php" method="POST">';
 
 echo $form_open;
@@ -54,5 +49,5 @@ echo close_div;
 require_once '../rodape.php';
 
 echo close_body;
-	
+
 echo close_html;

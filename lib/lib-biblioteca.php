@@ -2,7 +2,7 @@
 ini_set('display_errors', true);
 error_reporting(E_ALL);
 
-setlocale(LC_ALL, 'pt_BR.utf8');
+
 
 require_once 'phplot.php';
 require_once '../sql/sql.php';

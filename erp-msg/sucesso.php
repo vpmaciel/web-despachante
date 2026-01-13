@@ -1,7 +1,7 @@
 <?php
 
 
-setlocale(LC_ALL, 'pt_BR.utf8');
+
 
 require_once '../lib/lib-biblioteca.php';
 
@@ -19,14 +19,14 @@ echo open_div;
 
 require_once '../menu.php';
 
-echo '<br><span class="sucesso">' . 'Operação realizada com sucesso !'. '</span>';
+echo '<br><span class="sucesso">' . 'Operação realizada com sucesso !' . '</span>';
 
 if (isset($_GET['msg'])) {
-    echo '<br><br><span class="sucesso">' . $_GET['msg']. '</span>';
+    echo '<br><br><span class="sucesso">' . $_GET['msg'] . '</span>';
 }
 
 echo close_div;
 
 echo close_body;
-	
+
 echo close_html;

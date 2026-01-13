@@ -1,10 +1,8 @@
 <?php
 
-
 require_once '../lib/lib-sessao.php';
-require_once '../lib/lib-biblioteca.php';
 
-setlocale(LC_ALL, 'pt_BR.utf8');
+require_once '../lib/lib-biblioteca.php';
 
 echo doctype;
 
@@ -28,7 +26,6 @@ $conexao = new Conexao();
 
 $numero_de_registros = $conexao->getTotalRegistros('cliente');
 
-
 $registro = array();
 
 $form_open = '<form action="cliente-lista.php" method="POST">';
@@ -44,5 +41,5 @@ echo close_div;
 require_once '../rodape.php';
 
 echo close_body;
-	
+
 echo close_html;
