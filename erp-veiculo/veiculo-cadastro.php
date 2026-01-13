@@ -24,32 +24,17 @@ require_once '../menu.php';
 
 require_once 'veiculo-menu.php';
 
+$veiculoDAO = new VeiculoDAO();
+
+$conexao = new Conexao();
+
+$numero_de_registros = $conexao->getTotalRegistros('veiculo');
+
 $registro = array();
 
-$numero_de_registros = retornar_total_registros('veiculo');
-
-$form_open = '<form action="veiculo-salvar.php" method="POST">';
-
-if (!isset($_GET['veiculo_id'])) {
-    $registro['veiculo_id'] = '';
-}
-
 if (isset($_GET['editar'])) {
-
-    $SQL = "SELECT * FROM veiculo where veiculo_id = '" . $_GET['veiculo_id'] . "';";
-    $stmt = $pdo->prepare($SQL);
-    $stmt->execute();
-
-    while ($linha = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        $registro['veiculo_id'] = $linha['veiculo_id'];
-        $registro['veiculo_placa'] = $linha['veiculo_placa'];
-        $registro['veiculo_cpf_cnpj_proprietario'] = $linha['veiculo_cpf_cnpj_proprietario'];
-        $registro['veiculo_nome_proprietario'] = $linha['veiculo_nome_proprietario'];
-        $registro['veiculo_marca'] = $linha['veiculo_marca'];
-        $registro['veiculo_modelo'] = $linha['veiculo_modelo'];
-    }
+    $registro = $veiculoDAO->getRegistro($registro);
 }
-
 
 echo $form_open;
 

@@ -33,20 +33,8 @@ $numero_de_registros = $conexao->getTotalRegistros('servico');
 $registro = array();
 
 if (isset($_GET['editar'])) {
-    $registro = $pedidoDePlacaDAO->getRegistro($registro);
+    $registro = $servicoDAO->getRegistro($registro);
 }
-
-if (isset($_GET['editar'])) {
-
-    $SQL = "SELECT * FROM servico where servico_id = '" . $_GET['servico_id'] . "';";
-    $stmt = $pdo->prepare($SQL);
-    $stmt->execute();
-
-    while ($linha = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        
-    }
-}
-
 $form_open = '<form action="servico-salvar.php" method="POST">';
 
 echo $form_open;
