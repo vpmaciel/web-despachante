@@ -44,7 +44,7 @@ echo open_tr . open_td_2 . open_label . 'Nome do cliente:' . close_lable . close
 
 $input = '<label id="resultado_servico_cpf_cnpj_cliente" name="resultado_servico_cpf_cnpj_cliente"></label>';
 
-echo open_td . $input . close_td . close_tr;
+echo open_td . $input . close_td     . close_tr;
 
 echo open_tr . open_td_2 . open_label . 'Telefone do cliente:' . close_lable . close_td; 
 

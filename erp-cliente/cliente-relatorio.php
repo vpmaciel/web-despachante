@@ -10,7 +10,9 @@ $pdf = new FPDF('P', 'mm', 'A4');
 $pdf->AddPage();
 $pdf->SetFont('Arial', '', 16);
 
-$stmt = $clienteDAO->relatorio();
+$registro['cliente_id'] = $_COOKIE['cliente_id'];
+
+$stmt = $clienteDAO->relatorio($registro);
 
 $stmt->execute();
 
@@ -22,8 +24,7 @@ $pdf->Cell(0, 10, 'Cliente', 0, 1, 'C'); // Cabeçalho da tabela
 if ($stmt->rowCount() === 0) {
 
     $pdf->SetFont('Arial', 'B', 12);
-    $pdf->Cell(0, 10, mb_convert_encoding('Nenhum registro encontrado.', 'ISO-8859-1', 'UTF-8'), 0, 1, 'C' );
-
+    $pdf->Cell(0, 10, mb_convert_encoding('Nenhum registro encontrado.', 'ISO-8859-1', 'UTF-8'), 0, 1, 'C');
 } else {
     while ($registro = $stmt->fetch(PDO::FETCH_ASSOC)) {
         $pdf->Ln();
@@ -56,7 +57,6 @@ if (file_exists($file)) {
 
     readfile($file);
     exit;
-
 } else {
     http_response_code(404);
     echo "O arquivo não foi encontrado. Caminho: " . $file;

@@ -139,10 +139,12 @@ body {
 
 .sucesso {
     text-align: center;    
+    color: forestgreen;
 }
 
 .erro {    
     text-align: center;
+    color: red;
     margin: 0 auto;
 }
 

@@ -1,11 +1,10 @@
 <?php
 
-
 require_once '../lib/lib-sessao.php';
 
 require_once '../lib/lib-biblioteca.php';
 
-
+setcookie('servico_id', $_GET['servico_id'] ?? '', time() + 3600, '/');
 
 echo doctype;
 
@@ -25,12 +24,16 @@ require_once '../menu.php';
 
 require_once 'servico-menu.php';
 
-$numero_de_registros = retornar_total_registros('servico');
+$servicoDAO = new ServicoDAO();
+
+$conexao = new Conexao();
+
+$numero_de_registros = $conexao->getTotalRegistros('servico');
 
 $registro = array();
 
-if (!isset($_GET['servico_id'])) {
-    $registro['servico_id'] = '';
+if (isset($_GET['editar'])) {
+    $registro = $pedidoDePlacaDAO->getRegistro($registro);
 }
 
 if (isset($_GET['editar'])) {
@@ -40,13 +43,7 @@ if (isset($_GET['editar'])) {
     $stmt->execute();
 
     while ($linha = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        $registro['servico_id'] = $linha['servico_id'];
-        $registro['servico_data'] = $linha['servico_data'];
-        $registro['servico_valor'] = formatarNumero($linha['servico_valor']);
-        $registro['servico_placa_veiculo'] = $linha['servico_placa_veiculo'];
-        $registro['servico_descricao'] = $linha['servico_descricao'];
-        $registro['servico_cpf_cnpj_cliente'] = $linha['servico_cpf_cnpj_cliente'];
-        $registro['servico_telefone_cliente'] = $linha['servico_telefone_cliente'];
+        
     }
 }
 

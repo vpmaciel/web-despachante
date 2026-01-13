@@ -1,15 +1,20 @@
 <?php
 
-
 require_once '../lib/lib-sessao.php';
+
 require_once '../lib/lib-biblioteca.php';
 
-$registro['veiculo_id'] = trim($_GET['veiculo_id']);
+if ($_SERVER["REQUEST_METHOD"] != "GET") {
+	header('location:index.php');
+}
 
-$RESULTADO_EXCLUIR = excluir('veiculo', $registro);
-	
-    
-if ($RESULTADO_EXCLUIR == true) {
+$registro = array('veiculo_id' => trim($_GET['veiculo_id']));
+
+$veiculoDAO = new VeiculoDAO();
+
+$resultado_excluir = $veiculoDAO->deletarRegistro($registro);
+
+if ($resultado_excluir == true) {
 	header('location:../erp-msg/sucesso.php');
 	exit;
 } else {

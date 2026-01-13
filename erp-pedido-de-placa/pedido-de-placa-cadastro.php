@@ -1,7 +1,10 @@
 <?php
+
 require_once '../lib/lib-sessao.php';
 
 require_once '../lib/lib-biblioteca.php';
+
+setcookie('pedido_de_placa_id', $_GET['pedido_de_placa_id'] ?? '', time() + 3600, '/');
 
 echo doctype;
 
@@ -28,10 +31,6 @@ $conexao = new Conexao();
 $numero_de_registros = $conexao->getTotalRegistros('pedido_de_placa');
 
 $registro = array();
-
-if (!isset($_GET['pedido_de_placa_id'])) {
-    $registro['pedido_de_placa_id'] = '';
-}
 
 if (isset($_GET['editar'])) {
     $registro = $pedidoDePlacaDAO->getRegistro($registro);

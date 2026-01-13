@@ -4,7 +4,7 @@
 $expiration = time() + 3600;
 
 // Criar o cookie
-setcookie('pedido_de_placa_id', $registro['pedido_de_placa_id'], $expiration, '/');
+setcookie('pedido_de_placa_id', ($registro['pedido_de_placa_id'] ?? ''), $expiration, '/');
 
 $input = '<input type="hidden" id="pedido_de_placa_id" name="pedido_de_placa_id" value="' . ($registro['pedido_de_placa_id'] ?? '') . '">';
 

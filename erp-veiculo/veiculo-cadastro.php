@@ -1,11 +1,10 @@
 <?php
 
-
 require_once '../lib/lib-sessao.php';
 
 require_once '../lib/lib-biblioteca.php';
 
-
+setcookie('veiculo_id', $_GET['veiculo_id'] ?? '', time() + 3600, '/');
 
 echo doctype;
 

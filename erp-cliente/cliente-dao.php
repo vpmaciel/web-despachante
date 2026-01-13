@@ -80,15 +80,14 @@ class ClienteDAO implements DAO
         }
     }
 
-    public function relatorio()
+    public function relatorio($registro)
     {
-        if (isset($_COOKIE['cliente_id'])) {
-            $SQL = 'SELECT * FROM cliente' . ' WHERE cliente_id = ' . $_COOKIE['cliente_id'];
+        if (isset($registro['cliente_id'])) {
+            $sql = 'SELECT * FROM cliente' . ' WHERE cliente_id = ' . $registro['cliente_id'];
         } else {
-            $SQL = 'SELECT * FROM cliente LIMIT 1';
+            $sql = 'SELECT * FROM cliente LIMIT 1';
         }
-
-        $stmt = $this->pdo->prepare($SQL);
+        $stmt = $this->pdo->prepare($sql);
         return $stmt;
     }
 
@@ -96,12 +95,13 @@ class ClienteDAO implements DAO
     {
         try {
             // Preparar a query SQL para atualização
-            $sql = "UPDATE cliente 
-				SET cliente_cpf_cnpj = :cliente_cpf_cnpj, 
+            $sql = "UPDATE cliente SET
+                    cliente_cpf_cnpj = :cliente_cpf_cnpj, 
 					cliente_telefone = :cliente_telefone, 
 					cliente_nome_completo = :cliente_nome_completo, 
 					cliente_email = :cliente_email 
-				WHERE cliente_id = :cliente_id";
+				    WHERE 
+                    cliente_id = :cliente_id";
 
             $stmt = $this->pdo->prepare($sql);
 
@@ -124,9 +124,19 @@ class ClienteDAO implements DAO
         try {
             // Preparar a query SQL
             $sql = "INSERT INTO cliente 
-				(cliente_cpf_cnpj, cliente_telefone, cliente_nome_completo, cliente_email) 
-				VALUES 
-				(:cliente_cpf_cnpj, :cliente_telefone, :cliente_nome_completo, :cliente_email)";
+                    (
+                    cliente_cpf_cnpj, 
+                    cliente_telefone, 
+                    cliente_nome_completo, 
+                    cliente_email
+                    ) 
+                    VALUES 
+                    (
+                    :cliente_cpf_cnpj, 
+                    :cliente_telefone, 
+                    :cliente_nome_completo, 
+                    :cliente_email
+                    )";
 
             $stmt = $this->pdo->prepare($sql);
 

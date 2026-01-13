@@ -10,7 +10,7 @@ interface DAO
 
     public function deletarRegistro($registro);
 
-    public function relatorio();
+    public function relatorio($registro);
 
     public function atualizarRegistro($registro);
 

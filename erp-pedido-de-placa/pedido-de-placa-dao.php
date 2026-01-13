@@ -83,10 +83,10 @@ class PedidoDePlacaDAO implements DAO
         }
     }
 
-    public function relatorio()
+    public function relatorio($registro)
     {
-        if (isset($_COOKIE['pedido_de_placa_id'])) {
-            $SQL = 'SELECT * FROM pedido_de_placa' . ' WHERE pedido_de_placa_id = ' . $_COOKIE['pedido_de_placa_id'];
+        if (isset($registro['pedido_de_placa_id'])) {
+            $SQL = 'SELECT * FROM pedido_de_placa' . ' WHERE pedido_de_placa_id = ' . $registro['pedido_de_placa_id'];
         } else {
             $SQL = 'SELECT * FROM pedido_de_placa LIMIT 1';
         }
@@ -99,9 +99,8 @@ class PedidoDePlacaDAO implements DAO
     {
         try {
             // Preparar a query SQL para atualização
-            $sql = "
-                UPDATE pedido_de_placa
-                SET
+            $sql = "UPDATE pedido_de_placa 
+                    SET
                     pedido_de_placa_data = :pedido_de_placa_data,
                     pedido_de_placa_placa_veiculo = :pedido_de_placa_placa_veiculo,
                     pedido_de_placa_quantidade = :pedido_de_placa_quantidade,
@@ -109,10 +108,8 @@ class PedidoDePlacaDAO implements DAO
                     pedido_de_placa_cpf_cnpj_proprietario = :pedido_de_placa_cpf_cnpj_proprietario,
                     pedido_de_placa_cor_placa = :pedido_de_placa_cor_placa,
                     pedido_de_placa_tipo_placa = :pedido_de_placa_tipo_placa
-                WHERE
-                    pedido_de_placa_id = :pedido_de_placa_id
-            ";
-
+                    WHERE
+                    pedido_de_placa_id = :pedido_de_placa_id";
 
             $stmt = $this->pdo->prepare($sql);
 
@@ -137,9 +134,8 @@ class PedidoDePlacaDAO implements DAO
     {
         try {
             // Preparar a query SQL
-            $sql = "
-                INSERT INTO pedido_de_placa (
-                    pedido_de_placa_id,
+            $sql = "INSERT INTO pedido_de_placa 
+                    (                    
                     pedido_de_placa_data,
                     pedido_de_placa_placa_veiculo,
                     pedido_de_placa_quantidade,
@@ -147,8 +143,9 @@ class PedidoDePlacaDAO implements DAO
                     pedido_de_placa_cpf_cnpj_proprietario,
                     pedido_de_placa_cor_placa,
                     pedido_de_placa_tipo_placa
-                ) VALUES (
-                    :pedido_de_placa_id,
+                    ) 
+                    VALUES 
+                    (
                     :pedido_de_placa_data,
                     :pedido_de_placa_placa_veiculo,
                     :pedido_de_placa_quantidade,
@@ -156,13 +153,11 @@ class PedidoDePlacaDAO implements DAO
                     :pedido_de_placa_cpf_cnpj_proprietario,
                     :pedido_de_placa_cor_placa,
                     :pedido_de_placa_tipo_placa
-                )
-            ";
+                    )";
 
             $stmt = $this->pdo->prepare($sql);
 
             // Bind dos parâmetros
-            $stmt->bindParam('pedido_de_placa_id', $registro['pedido_de_placa_id'], PDO::PARAM_STR);
             $stmt->bindParam('pedido_de_placa_data', $registro['pedido_de_placa_data'], PDO::PARAM_STR);
             $stmt->bindParam('pedido_de_placa_placa_veiculo', $registro['pedido_de_placa_placa_veiculo'], PDO::PARAM_STR);
             $stmt->bindParam('pedido_de_placa_quantidade', $registro['pedido_de_placa_quantidade'], PDO::PARAM_INT);

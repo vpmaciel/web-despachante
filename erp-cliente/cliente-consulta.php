@@ -3,6 +3,7 @@
 // ARQUIVO PARA CONSULTA AJAX
 
 header('Access-Control-Allow-Origin: *');
+
 header('Content-Type: application/json');
 
 require_once '../lib/lib-sessao.php';
