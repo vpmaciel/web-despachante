@@ -30,8 +30,8 @@ $registro['pedido_de_placa_id'] = $_GET['pedido_de_placa_id'];
 
 $registro = $pedidoDePlacaDAO->getRegistro($registro);
 
-echo open_table_3;         
-                
+echo open_table_3;
+
 echo open_tr . open_td_2 . 'Placa: ' . close_td . open_td . $registro['pedido_de_placa_placa_veiculo'] . close_td . close_tr;
 echo open_tr . open_td_2 . 'Quantidade: ' . close_td . open_td . $registro['pedido_de_placa_quantidade'] . close_td . close_tr;
 echo open_tr . open_td_2 . 'RENAVAM: ' . close_td . open_td . $registro['pedido_de_placa_renavam'] . close_td . close_tr;
@@ -46,7 +46,11 @@ echo '<a href="pedido-de-placa-deletar.php?pedido_de_placa_id=' . $registro['ped
 
 echo close_div;
 
-require_once '../rodape.php';
+?>
+
+<script src="../rodape.js"></script>
+
+<?php
 
 echo close_body;
 

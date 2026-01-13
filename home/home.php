@@ -1,4 +1,8 @@
 <?php
+
+ini_set('session.name', 'SESSAO_WEB_DESPACHANTE');
+session_start();
+
 require_once '../lib/lib-biblioteca.php';
 
 echo doctype;
@@ -53,7 +57,11 @@ echo close_form;
 
 echo close_div;
 
-require_once '../rodape.php';
+?>
+
+<script src="../rodape.js"></script>
+
+<?php
 
 echo close_body;
 

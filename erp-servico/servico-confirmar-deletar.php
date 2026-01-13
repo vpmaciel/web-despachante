@@ -46,7 +46,11 @@ echo '<a href="servico-deletar.php?servico_id=' . $registro['servico_id'] . '">E
 
 echo close_div;
 
-require_once '../rodape.php';
+?>
+
+<script src="../rodape.js"></script>
+
+<?php
 
 echo close_body;
 

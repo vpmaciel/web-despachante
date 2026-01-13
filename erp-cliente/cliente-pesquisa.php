@@ -38,7 +38,11 @@ echo close_form;
 
 echo close_div;
 
-require_once '../rodape.php';
+?>
+
+<script src="../rodape.js"></script>
+
+<?php
 
 echo close_body;
 

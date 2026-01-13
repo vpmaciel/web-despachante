@@ -2,21 +2,16 @@
 
 require_once '../lib/lib-biblioteca.php';
 
-require_once 'cliente-dao.php';
-
-$clienteDAO = new ClienteDAO();
+$servicoDAO = new ServicoDAO();
 
 $pdf = new FPDF('P', 'mm', 'A4');
 $pdf->AddPage();
 $pdf->SetFont('Arial', '', 16);
 
-if (isset($_COOKIE['servico_id'])) {
-    $SQL = 'SELECT * FROM servico' . ' WHERE servico_id = ' . $_COOKIE['servico_id'];
-} else {
-    $SQL = 'SELECT * FROM servico LIMIT 1';
-}
+$registro['servico_id'] = $_COOKIE['servico_id'];
 
-$stmt = $pdo->prepare($SQL);
+$stmt = $servicoDAO->relatorio($registro);
+
 $stmt->execute();
 
 $pdf->SetFillColor(255, 255, 255); // Cor de fundo da célula

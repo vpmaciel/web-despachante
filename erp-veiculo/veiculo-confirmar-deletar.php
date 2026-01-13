@@ -44,7 +44,11 @@ echo '<a href="cliente-deletar.php?veiculo_id=' . $registro['veiculo_id'] . '">E
 
 echo close_div;
 
-require_once '../rodape.php';
+?>
+
+<script src="../rodape.js"></script>
+
+<?php
 
 echo close_body;
 

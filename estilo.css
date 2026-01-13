@@ -75,7 +75,7 @@ td {
     padding: 5px;
     border: none;
     text-align: left;
-    border: 1px solid #fff;
+    border: 1px solid whitesmoke;
 }
 
 th {
@@ -207,9 +207,10 @@ span {
 }
 
 #cookieConsent {
-    color: #579EBB;    
+    color: #444444;    
     text-align: center;
-    padding-top: 10px;    
+    padding: 1px;  
+    background-color: whitesmoke;  
     font-family: Arial, sans-serif;
 }
 

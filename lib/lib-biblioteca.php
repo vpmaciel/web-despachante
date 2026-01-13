@@ -5,8 +5,6 @@ error_reporting(E_ERROR | E_PARSE);
 
 // Desenvolvimento
 //error_reporting(E_ALL & ~E_DEPRECATED);
-require_once '../cookies.php';
-require_once 'phplot.php';
 require_once '../sql/sql.php';
 require_once 'lib-remover-acentos.php';
 require_once 'lib-retornar-html.php';

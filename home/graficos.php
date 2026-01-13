@@ -1,5 +1,4 @@
 <?php
-
 require_once '../lib/lib-biblioteca.php';
 
 echo doctype;
@@ -18,28 +17,21 @@ echo open_div;
 
 require_once '../menu.php';
 
-require_once 'pedido-de-placa-menu.php';
+$usuario = array();
 
-$input = '<canvas id="graficoServicos" width="400" height="200"></canvas>';
-
-$conexao = new Conexao();
-
-$totalRegistros = $conexao->getTotalRegistros('pedido_de_placa');
-
-$labels = ['Qtde'];
-
-$valores = [$totalRegistros];
-
-$form_open = '<form action="" method="POST">';
+$form_open = '<form action="../erp-login/login-controle.php" method="post">';
 
 echo $form_open;
 
 echo open_table;
 
-echo open_tr . open_td . open_label . '&nbsp;' . close_lable . close_td . close_tr;
+echo open_tr . open_td_2 . open_label . 'Usuário' . close_lable . close_td . close_tr;
 
-echo open_tr . open_td_center . open_label . $input . close_lable . close_td . close_tr;
+$input = '<canvas id="graficoServicos" width="400" height="200"></canvas>';
 
+echo open_tr . open_td_2 . open_label . $input . close_lable . close_td . close_tr;
+$labels = ['Jan', 'Fev', 'Mar'];
+$valores = [12, 5, 9];
 echo close_table;
 
 echo close_form;
@@ -55,8 +47,8 @@ echo close_div;
 echo close_body;
 
 echo close_html;
-?>
 
+?>
 
 <script>
     const labels = <?= json_encode($labels) ?>;
@@ -67,7 +59,7 @@ echo close_html;
         data: {
             labels: labels,
             datasets: [{
-                label: 'Pedidos de Placa',
+                label: 'Serviços',
                 data: valores,
                 backgroundColor: 'rgba(75, 192, 192, 0.7)'
             }]

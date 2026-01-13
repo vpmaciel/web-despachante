@@ -26,6 +26,12 @@ if (isset($_GET['msg'])) {
 
 echo close_div;
 
+?>
+
+<script src="../rodape.js"></script>
+
+<?php
+
 echo close_body;
 
 echo close_html;

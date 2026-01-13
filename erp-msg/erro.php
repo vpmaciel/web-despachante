@@ -18,13 +18,19 @@ echo open_div;
 require_once '../menu.php';
 
 if (isset($_GET['msg'])) {
-    echo '<br><br><span class="erro">' . $_GET['msg']. '</span>';
+    echo '<br><br><span class="erro">' . $_GET['msg'] . '</span>';
 } else {
-    echo '<br><span class="erro">' . 'Operação não realizada !'. '</span>';
+    echo '<br><span class="erro">' . 'Operação não realizada !' . '</span>';
 }
 
 echo close_div;
 
+?>
+
+<script src="../rodape.js"></script>
+
+<?php
+
 echo close_body;
-	
+
 echo close_html;
