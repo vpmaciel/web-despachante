@@ -1,7 +1,6 @@
 <?php
 
-$input = '<input type="hidden" id="cliente_id" name="cliente_id" maxlength="50" value="'
-    . ($registro['cliente_id'] ?? '') . '">';
+$input = '<input type="hidden" id="cliente_id" name="cliente_id" maxlength="50" value="' . ($registro['cliente_id'] ?? '') . '">';
 
 echo $input;
 

@@ -1,11 +1,8 @@
 <?php
 
-
 require_once '../lib/lib-sessao.php';
 
 require_once '../lib/lib-biblioteca.php';
-
-
 
 echo doctype;
 
@@ -23,32 +20,29 @@ echo open_div;
 
 require_once '../menu.php';
 
-require_once 'cliente-menu.php';
+require_once 'servico-menu.php';
 
 $registro = array();
 
-$SQL = '';
+$servicoDAO = new ServicoDAO();
 
-$clienteDAO = new ClienteDAO();
+$registro['servico_id'] = $_GET['servico_id'];
 
-$registro['cliente_id'] = $_GET['cliente_id'];
-
-$registro = $clienteDAO->getRegistro($registro);
+$registro = $servicoDAO->getRegistro($registro);
 
 echo open_table_3;
 
-$cliente_id = 0;
-
-echo open_tr . open_td_2 . 'CPF | CNPJ: ' . close_td . open_td . $registro['cliente_cpf_cnpj'] . close_td . close_tr;
-echo open_tr . open_td_2 . 'TELEFONE: ' . close_td . open_td . $registro['cliente_telefone'] . close_td . close_tr;
-echo open_tr . open_td_2 . 'NOME COMPLETO: ' . close_td . open_td . $registro['cliente_nome_completo'] . close_td . close_tr;
-echo open_tr . open_td_2 . 'E-MAIL: ' . close_td . open_td . $registro['cliente_email'] . close_td . close_tr;
+echo open_tr . open_td_2 . 'Placa do veículo: ' . close_td . open_td . $registro['servico_placa_veiculo'] . close_td . close_tr;
+echo open_tr . open_td_2 . 'Valor (R$): ' . close_td . open_td . $registro['servico_valor'] . close_td . close_tr;
+echo open_tr . open_td_2 . 'Descrição: ' . close_td . open_td . $registro['servico_descricao'] . close_td . close_tr;
+echo open_tr . open_td_2 . 'CPF | CNPJ do cliente: ' . close_td . open_td . $registro['servico_cpf_cnpj_cliente'] . close_td . close_tr;
+echo open_tr . open_td_2 . 'Telefone do cliente:: ' . close_td . open_td . $registro['servico_telefone_cliente'] . close_td . close_tr;
+echo open_tr . open_td_2 . 'Data: ' . close_td . open_td . $registro['servico_data'] . close_td . close_tr;
 echo open_tr . open_td_2 . '&nbsp;' . close_td . open_td_2 . '&nbsp;' . close_td . close_tr;
-$cliente_id = $registro['cliente_id'];
 
 echo close_table;
 
-echo '<a href="cliente-deletar.php?cliente_id=' . $cliente_id . '">Excluir</a>';
+echo '<a href="servico-deletar.php?servico_id=' . $registro['servico_id'] . '">Excluir</a>';
 
 echo close_div;
 

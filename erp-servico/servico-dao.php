@@ -98,7 +98,8 @@ class ServicoDAO implements DAO
     {
         try {
             // Preparar a query SQL para atualização
-            $sql = "UPDATE servico SET 
+            $sql = "UPDATE servico 
+                    SET 
                     servico_data = :servico_data,
                     servico_valor = :servico_valor,
                     servico_placa_veiculo = :servico_placa_veiculo,
@@ -130,7 +131,8 @@ class ServicoDAO implements DAO
     {
         try {
             // Preparar a query SQL
-            $sql = "INSERT INTO servico (
+            $sql = "INSERT INTO servico 
+                    (
                     servico_data, 
                     servico_valor, 
                     servico_placa_veiculo, 

@@ -1,11 +1,8 @@
 <?php
 
-
 require_once '../lib/lib-sessao.php';
 
 require_once '../lib/lib-biblioteca.php';
-
-
 
 echo doctype;
 
@@ -23,32 +20,27 @@ echo open_div;
 
 require_once '../menu.php';
 
-require_once 'cliente-menu.php';
+require_once 'veiculo-menu.php';
 
 $registro = array();
 
-$SQL = '';
+$veiculoDAO = new VeiculoDAO();
 
-$clienteDAO = new ClienteDAO();
+$registro['veiculo_id'] = $_GET['veiculo_id'];
 
-$registro['cliente_id'] = $_GET['cliente_id'];
-
-$registro = $clienteDAO->getRegistro($registro);
+$registro = $veiculoDAO->getRegistro($registro);
 
 echo open_table_3;
-
-$cliente_id = 0;
-
-echo open_tr . open_td_2 . 'CPF | CNPJ: ' . close_td . open_td . $registro['cliente_cpf_cnpj'] . close_td . close_tr;
-echo open_tr . open_td_2 . 'TELEFONE: ' . close_td . open_td . $registro['cliente_telefone'] . close_td . close_tr;
-echo open_tr . open_td_2 . 'NOME COMPLETO: ' . close_td . open_td . $registro['cliente_nome_completo'] . close_td . close_tr;
-echo open_tr . open_td_2 . 'E-MAIL: ' . close_td . open_td . $registro['cliente_email'] . close_td . close_tr;
+echo open_tr . open_td_2 . 'Placa: ' . close_td . open_td . $registro['veiculo_placa'] . close_td . close_tr;
+echo open_tr . open_td_2 . 'CPF | CNPJ do proprietário: ' . close_td . open_td . $registro['veiculo_cpf_cnpj_proprietario'] . close_td . close_tr;
+echo open_tr . open_td_2 . 'Nome do proprietário: ' . close_td . open_td . $registro['veiculo_nome_proprietario'] . close_td . close_tr;
+echo open_tr . open_td_2 . 'Marca do veículo: ' . close_td . open_td . $registro['veiculo_marca'] . close_td . close_tr;
+echo open_tr . open_td_2 . 'Modelo do veículo: ' . close_td . open_td . $registro['veiculo_modelo'] . close_td . close_tr;
 echo open_tr . open_td_2 . '&nbsp;' . close_td . open_td_2 . '&nbsp;' . close_td . close_tr;
-$cliente_id = $registro['cliente_id'];
 
 echo close_table;
 
-echo '<a href="cliente-deletar.php?cliente_id=' . $cliente_id . '">Excluir</a>';
+echo '<a href="cliente-deletar.php?veiculo_id=' . $registro['veiculo_id'] . '">Excluir</a>';
 
 echo close_div;
 

@@ -36,6 +36,8 @@ if (isset($_GET['editar'])) {
     $registro = $veiculoDAO->getRegistro($registro);
 }
 
+$form_open = '<form action="veiculo-salvar.php" method="POST">';
+
 echo $form_open;
 
 require_once 'veiculo-formulario.php';
