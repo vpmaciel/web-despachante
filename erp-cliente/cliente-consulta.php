@@ -1,31 +1,36 @@
 <?php
+// ENDPOINT AJAX – NÃO PODE GERAR HTML
 
-// ARQUIVO PARA CONSULTA AJAX
+header('Content-Type: application/json; charset=utf-8');
 
-header('Access-Control-Allow-Origin: *');
+require_once '../sql/sql-conexao.php';
 
-header('Content-Type: application/json');
+$conexao = new Conexao();
+$pdo = $conexao->getPdo();
 
-require_once '../lib/lib-sessao.php';
+try {
+    // Recebe o CPF/CNPJ    
+    $cpfCnpj = $_POST['servico_cpf_cnpj_cliente'] ?? '';
 
-require_once '../lib/lib-biblioteca.php';
 
-require_once 'cliente-dao.php';
+    if ($cpfCnpj === '') {
+        echo json_encode([]);
+        exit;
+    }
 
-try {    
-    $cpfCnpjCliente  = $_POST['servico_cpf_cnpj_cliente'];        
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $sql = "SELECT cliente_nome_completo
+            FROM cliente
+            WHERE cliente_cpf_cnpj = :cpf
+            LIMIT 1";
 
-    $sql = "SELECT cliente_nome_completo FROM cliente WHERE cliente_cpf_cnpj = :servico_cpf_cnpj_cliente";
     $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':servico_cpf_cnpj_cliente', $cpfCnpjCliente);
+    $stmt->bindParam(':cpf', $cpfCnpj, PDO::PARAM_STR);
     $stmt->execute();
 
-    // Obtenção dos resultados como array associativo
-    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    // Enviar os resultados como JSON para a requisição Ajax
-    echo json_encode($result);    
-} catch (PDOException $e) {
-    echo json_encode(["error" => "Erro na conexão com o banco de dados: " . $e->getMessage()]);
+    echo json_encode($resultado ?: []);
+} catch (Throwable $e) {
+    http_response_code(500);
+    echo json_encode(['error' => 'Erro interno']);
 }

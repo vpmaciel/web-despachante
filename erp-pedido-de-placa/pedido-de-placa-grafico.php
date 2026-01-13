@@ -1,6 +1,8 @@
 
 <?php
 
+error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED);
+
 require_once '../lib/lib-biblioteca.php';
 
 $conexao = new Conexao();

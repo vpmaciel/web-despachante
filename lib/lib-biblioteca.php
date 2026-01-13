@@ -1,6 +1,10 @@
 <?php
-ini_set('display_errors', true);
-error_reporting(E_ALL);
+// Produção
+error_reporting(E_ERROR | E_PARSE);
+	error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED);
+
+// Desenvolvimento
+//error_reporting(E_ALL & ~E_DEPRECATED);
 require_once '../cookies.php';
 require_once 'phplot.php';
 require_once '../sql/sql.php';
