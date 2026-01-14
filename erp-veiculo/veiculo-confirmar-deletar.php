@@ -40,7 +40,7 @@ echo open_tr . open_td_2 . '&nbsp;' . close_td . open_td_2 . '&nbsp;' . close_td
 
 echo close_table;
 
-echo '<a href="cliente-deletar.php?veiculo_id=' . $registro['veiculo_id'] . '">Excluir</a>';
+echo '<a href="veiculo-deletar.php?veiculo_id=' . $registro['veiculo_id'] . '">Excluir</a>';
 
 echo close_div;
 

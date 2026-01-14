@@ -1,10 +1,7 @@
 <?php
-
 require_once '../lib/lib-sessao.php';
 
 require_once '../lib/lib-biblioteca.php';
-
-setcookie('pedido_de_placa_id', $_GET['pedido_de_placa_id'] ?? '', time() + 3600, '/');
 
 echo doctype;
 
@@ -32,6 +29,10 @@ $numero_de_registros = $conexao->getTotalRegistros('pedido_de_placa');
 
 $registro = array();
 
+if (!isset($_GET['pedido_de_placa_id'])) {
+    $registro['pedido_de_placa_id'] = '';
+}
+
 if (isset($_GET['editar'])) {
     $registro = $pedidoDePlacaDAO->getRegistro($registro);
 }
@@ -45,7 +46,6 @@ require_once 'pedido-de-placa-formulario.php';
 echo close_form;
 
 echo close_div;
-
 ?>
 
 <script src="../rodape.js"></script>

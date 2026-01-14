@@ -20,9 +20,13 @@ echo open_div;
 
 require_once '../menu.php';
 
+$conexao = new Conexao();
+
 require_once 'pedido-de-placa-menu.php';
 
 $conexao = new Conexao();
+
+$registro = array();
 
 $registro['pedido_de_placa_placa_veiculo'] = (isset($_POST['pedido_de_placa_placa_veiculo'])) ? trim($_POST['pedido_de_placa_placa_veiculo']) : '';
 $registro['pedido_de_placa_quantidade'] = (isset($_POST['pedido_de_placa_quantidade'])) ? trim($_POST['pedido_de_placa_quantidade']) : '';
@@ -30,7 +34,6 @@ $registro['pedido_de_placa_renavam'] = (isset($_POST['pedido_de_placa_renavam'])
 $registro['pedido_de_placa_cpf_cnpj_proprietario'] = $_POST['pedido_de_placa_cpf_cnpj_proprietario'];
 $registro['pedido_de_placa_cor_placa'] = (isset($_POST['pedido_de_placa_cor_placa'])) ? trim($_POST['pedido_de_placa_cor_placa']) : '';
 $registro['pedido_de_placa_tipo_placa'] = (isset($_POST['pedido_de_placa_tipo_placa'])) ? trim($_POST['pedido_de_placa_tipo_placa']) : '';
-
 
 // define how many results you want per page
 $results_per_page = 10000;
@@ -44,13 +47,13 @@ $number_of_pages = ceil($number_of_results / $results_per_page);
 
 // determine which page number visitor is currently on
 if (!isset($_GET['page'])) {
-  $page = 1;
+  $PAGE = 1;
 } else {
-  $page = $_GET['page'];
+  $PAGE = $_GET['page'];
 }
 
 // determine the sql LIMIT starting number for the results on the displaying page
-$this_page_first_result = ($page - 1) * $results_per_page;
+$this_page_first_result = ($PAGE - 1) * $results_per_page;
 
 // retrieve selected results from database and display them on page
 $sql = $conexao->paginar('pedido_de_placa', $registro, $this_page_first_result, $results_per_page);
@@ -64,7 +67,6 @@ if ($number_of_results > 0) {
   echo open_tr . open_th_2 . 'PLACA ' . close_th . open_th_2 . 'QUANTIDADE' . close_th . open_th_2 . '' . close_th  . close_tr;
 }
 
-
 while ($linha = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
   $string = '';
@@ -74,7 +76,7 @@ while ($linha = $stmt->fetch(PDO::FETCH_ASSOC)) {
   echo open_tr . open_td_2 . $linha['pedido_de_placa_placa_veiculo'] . close_td;
   echo open_td_2 . $linha['pedido_de_placa_quantidade'] . close_td;
   echo open_td_3 . '<a href="pedido-de-placa-cadastro.php?editar=true&' . 'pedido_de_placa_id=' . $linha['pedido_de_placa_id'] . '">Editar</a> | ';
-  echo '<a href="pedido-de-placa-confirmar-deletar.php?' . 'pedido_de_placa_id=' . $linha['pedido_de_placa_id'] . ' " onclick="return confirmarExcluir();">Excluir</a>' . close_td;
+  echo '<a href="pedido-de-placa-confirmar-deletar.php?' . 'pedido_de_placa_id=' . $linha['pedido_de_placa_id'] . '">Excluir</a>' . close_td . close_tr;
   echo open_tr . open_td_2 . '&nbsp;' . close_td . open_td_2 . '&nbsp;' . close_td . open_td_2 . '&nbsp;' . close_td . close_tr;
 }
 echo close_table;
@@ -87,6 +89,7 @@ for ($page = 1; $page <= $number_of_pages; $page++) {
 if ($number_of_results == 0) {
   echo '<br>Nenhum registro encontrado !';
 }
+
 
 echo close_div;
 

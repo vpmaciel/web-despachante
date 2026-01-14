@@ -5,13 +5,14 @@ require_once '../lib/lib-sessao.php';
 require_once '../lib/lib-biblioteca.php';
 
 $servicoDAO = new ServicoDAO();
-
+$registro['servico_id'] = trim($_POST['servico_id']);
 $registro['servico_data'] = trim($_POST['servico_data']);
 $registro['servico_placa_veiculo'] = trim($_POST['servico_placa_veiculo']);
 $registro['servico_descricao'] = trim($_POST['servico_descricao']);
 $registro['servico_valor'] = str_replace(',', '.', preg_replace('/[^0-9,]/', '', trim($_POST['servico_valor'])));
 $registro['servico_cpf_cnpj_cliente'] = trim($_POST['servico_cpf_cnpj_cliente']);
 $registro['servico_telefone_cliente'] = trim($_POST['servico_telefone_cliente']);
+
 
 if (!isset($registro['servico_id']) || $registro['servico_id'] === '') {
 

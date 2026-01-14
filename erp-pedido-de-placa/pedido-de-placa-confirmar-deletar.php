@@ -52,6 +52,7 @@ echo close_div;
 
 <?php
 
+
 echo close_body;
 
 echo close_html;

@@ -68,11 +68,10 @@ class ServicoDAO implements DAO
         try {
             // Preparar a query SQL para deletar
             $sql = "DELETE FROM servico WHERE servico_id = :servico_id";
-
-            $stmt = $this->pdo->prepare($sql);
-
+            //exit($sql);
+            $stmt = $this->pdo->prepare($sql);            
             // Bind do parâmetro
-            $stmt->bindParam(':servico_id', $registro['servico'], PDO::PARAM_INT);
+            $stmt->bindParam(':servico_id', $registro['servico_id'], PDO::PARAM_INT);
 
             // Executar a query
             return $stmt->execute();

@@ -69,9 +69,9 @@ class VeiculoDAO implements DAO
             $sql = "DELETE FROM veiculo WHERE veiculo_id = :veiculo_id";
 
             $stmt = $this->pdo->prepare($sql);
-
+            
             // Bind do parâmetro
-            $stmt->bindParam(':veiculo_id', $registro['veiculo'], PDO::PARAM_INT);
+            $stmt->bindParam(':veiculo_id', $registro['veiculo_id'], PDO::PARAM_INT);
 
             // Executar a query
             return $stmt->execute();

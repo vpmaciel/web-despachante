@@ -185,7 +185,7 @@ class Conexao
         }
 
         $sql .= " LIMIT $inicio,$limite";
-
+        
         return $sql;
     }
 

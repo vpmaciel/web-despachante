@@ -67,7 +67,7 @@ while ($linha = $stmt->fetch(PDO::FETCH_ASSOC)) {
   echo open_tr . open_td_2 . $linha['cliente_cpf_cnpj'] . close_td;
   echo open_td_2 . $linha['cliente_nome_completo'] . close_td;
   echo open_td_3 . '<a href="cliente-cadastro.php?editar=true&' . 'cliente_id=' . $linha['cliente_id'] . '">Editar</a> | ';
-  echo '<a href="cliente-confirmar-deletar.php?' . 'cliente_id=' . $linha['cliente_id'] . ' " onclick="return confirmarExcluir();">Excluir</a>' . close_td . close_tr;
+  echo '<a href="cliente-confirmar-deletar.php?' . 'cliente_id=' . $linha['cliente_id'] . '">Excluir</a>' . close_td . close_tr;
   echo open_tr . open_td_2 . '&nbsp;' . close_td . open_td_2 . '&nbsp;' . close_td . open_td_2 . '&nbsp;' . close_td . close_tr;
 }
 echo close_table;
