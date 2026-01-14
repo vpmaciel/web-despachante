@@ -1,7 +1,7 @@
 <?php
+
 class ClienteDAO implements DAO
 {
-
     private $pdo;
 
     public function __construct()
@@ -106,10 +106,17 @@ class ClienteDAO implements DAO
             $stmt = $this->pdo->prepare($sql);
 
             // Bind dos parâmetros
-            $stmt->bindParam(':cliente_cpf_cnpj', $registro['cliente_cpf_cnpj'], PDO::PARAM_STR);
-            $stmt->bindParam(':cliente_telefone', $registro['cliente_telefone'], PDO::PARAM_STR);
-            $stmt->bindParam(':cliente_nome_completo', $registro['cliente_nome_completo'], PDO::PARAM_STR);
-            $stmt->bindParam(':cliente_email', $registro['cliente_email'], PDO::PARAM_STR);
+            $valor = Documentos::normalizarCpfCnpj($registro['cliente_cpf_cnpj']);
+            $stmt->bindParam(':cliente_cpf_cnpj', $valor, PDO::PARAM_STR);
+            
+            $valor = Documentos::normalizarTelefone($registro['cliente_telefone']);
+            $stmt->bindParam(':cliente_telefone', $valor, PDO::PARAM_STR);
+            
+            $valor = strtoupper($registro['cliente_nome_completo']);
+            $stmt->bindParam(':cliente_nome_completo', $valor, PDO::PARAM_STR);
+            
+            $valor = Documentos::normalizarEmail($registro['cliente_email']);
+            $stmt->bindParam(':cliente_email', $valor, PDO::PARAM_STR);
             $stmt->bindParam(':cliente_id', $registro['cliente_id'], PDO::PARAM_INT);
             return $stmt->execute();
         } catch (PDOException $e) {
@@ -137,14 +144,20 @@ class ClienteDAO implements DAO
                     :cliente_nome_completo, 
                     :cliente_email
                     )";
-
+            
             $stmt = $this->pdo->prepare($sql);
 
-            // Bind dos parâmetros
-            $stmt->bindParam(':cliente_cpf_cnpj', $registro['cliente_cpf_cnpj'], PDO::PARAM_STR);
-            $stmt->bindParam(':cliente_telefone', $registro['cliente_telefone'], PDO::PARAM_STR);
-            $stmt->bindParam(':cliente_nome_completo', $registro['cliente_nome_completo'], PDO::PARAM_STR);
-            $stmt->bindParam(':cliente_email', $registro['cliente_email'], PDO::PARAM_STR);
+            // Bind dos parâmetros            
+            $valor = Documentos::normalizarCpfCnpj($registro['cliente_cpf_cnpj']);
+            //exit($valor);
+            $stmt->bindParam(':cliente_cpf_cnpj', $valor, PDO::PARAM_STR);
+            $valor = Documentos::normalizarTelefone($registro['cliente_telefone']);
+            $stmt->bindParam(':cliente_telefone', $valor, PDO::PARAM_STR);
+            $valor = strtoupper($registro['cliente_nome_completo']);
+            $stmt->bindParam(':cliente_nome_completo', $valor, PDO::PARAM_STR);
+            $valor = Documentos::normalizarEmail($registro['cliente_email']);
+            $stmt->bindParam(':cliente_email', $valor, PDO::PARAM_STR);
+            
 
             // Executar a query
             return $stmt->execute();

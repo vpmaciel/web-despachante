@@ -62,5 +62,3 @@ echo open_td . $submit . close_td . close_tr;
 
 echo close_table;
 ?>
-
-<script src="pedido-de-placa.js"></script>

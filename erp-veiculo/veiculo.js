@@ -1,3 +1,4 @@
+alert("JS carregado");
 document.addEventListener("DOMContentLoaded", function() {
     // Obtém a URL atual
     var currentUrl = window.location.href;

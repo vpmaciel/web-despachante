@@ -1,3 +1,5 @@
+alert("cliente.js carregado");
+
 document.addEventListener("DOMContentLoaded", function () {
     // Controle de required conforme URL
     var currentUrl = window.location.href;
@@ -19,7 +21,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-
     const cpfInput = document.getElementById("servico_cpf_cnpj_cliente");
     const resultadoLabel = document.getElementById("resultado_servico_cpf_cnpj_cliente");
 

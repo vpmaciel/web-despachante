@@ -2,21 +2,16 @@
 
 require_once '../lib/lib-biblioteca.php';
 
-require_once 'cliente-dao.php';
-
-$clienteDAO = new ClienteDAO();
+$veiculoDAO = new VeiculoDAO();
 
 $pdf = new FPDF('P', 'mm', 'A4');
 $pdf->AddPage();
 $pdf->SetFont('Arial', '', 16);
 
-if(isset($_COOKIE['veiculo_id'])) {
-    $SQL = 'SELECT * FROM veiculo' . ' WHERE veiculo_id = ' . $_COOKIE['veiculo_id'];
-} else {
-    $SQL = 'SELECT * FROM veiculo LIMIT 1';
-}
+$registro['veiculo_id'] = $_COOKIE['veiculo_id'];
 
-$stmt = $pdo->prepare($SQL);
+$stmt = $veiculoDAO->relatorio($registro);
+
 $stmt->execute();
 
 $pdf->SetFillColor(255, 255, 255); // Cor de fundo da célula
@@ -41,26 +36,6 @@ if ($stmt->rowCount() === 0) {
 }
 
 // 🔹 Caminho do arquivo
-$file = $_SERVER['DOCUMENT_ROOT'] . '/web-despachante/erp-servico/servico.pdf';
+$file = $_SERVER['DOCUMENT_ROOT'] . '/web-despachante/erp-veiculo/veiculo.pdf';
 
-// 🔹 Gera o PDF em disco
-$pdf->Output('F', $file);
-
-// 🔹 Limpeza de buffers
-while (ob_get_level()) {
-    ob_end_clean();
-}
-
-// 🔹 Envia o PDF para o navegador
-if (file_exists($file)) {
-
-    header('Content-Type: application/pdf');
-    header('Content-Disposition: inline; filename="' . basename($file) . '"');
-    header('Content-Length: ' . filesize($file));
-
-    readfile($file);
-    exit;
-} else {
-    http_response_code(404);
-    echo "O arquivo não foi encontrado. Caminho: " . $file;
-}
+$relatorio = new Relatorio($pdf, $file);
