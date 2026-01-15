@@ -44,10 +44,11 @@ class ClienteDAO implements DAO
     public function getRegistro($registro)
     {
         try {
-            $SQL = "SELECT * FROM cliente where cliente_id = '" . $_GET['cliente_id'] . "';";
+            $SQL = "SELECT * FROM cliente where cliente_id = " . $_GET['cliente_id'] . ";";
             $stmt = $this->pdo->prepare($SQL);
             $stmt->execute();
-
+            //exit($SQL);
+            $registro = array();
             while ($linha = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 $registro['cliente_id'] = $linha['cliente_id'];
                 $registro['cliente_cpf_cnpj'] = $linha['cliente_cpf_cnpj'];
@@ -55,6 +56,7 @@ class ClienteDAO implements DAO
                 $registro['cliente_nome_completo'] = $linha['cliente_nome_completo'];
                 $registro['cliente_email'] = $linha['cliente_email'];
             }
+            //var_dump($registro);
         } catch (PDOException $e) {
             exit("Erro: " . $e->getMessage());
         }
@@ -103,24 +105,27 @@ class ClienteDAO implements DAO
 				    WHERE 
                     cliente_id = :cliente_id";
 
+            //exit($sql);
+
             $stmt = $this->pdo->prepare($sql);
+            $registro['cliente_nome_completo'] = strtoupper($registro['cliente_nome_completo']);
+            $registro['cliente_email'] = strtolower($registro['cliente_email']);
 
             // Bind dos parâmetros
-            $valor = Documentos::normalizarCpfCnpj($registro['cliente_cpf_cnpj']);
-            $stmt->bindParam(':cliente_cpf_cnpj', $valor, PDO::PARAM_STR);
-            
-            $valor = Documentos::normalizarTelefone($registro['cliente_telefone']);
-            $stmt->bindParam(':cliente_telefone', $valor, PDO::PARAM_STR);
-            
-            $valor = strtoupper($registro['cliente_nome_completo']);
-            $stmt->bindParam(':cliente_nome_completo', $valor, PDO::PARAM_STR);
-            
-            $valor = Documentos::normalizarEmail($registro['cliente_email']);
-            $stmt->bindParam(':cliente_email', $valor, PDO::PARAM_STR);
+
+            $stmt->bindParam(':cliente_cpf_cnpj', $registro['cliente_cpf_cnpj'], PDO::PARAM_STR);
+            $stmt->bindParam(':cliente_telefone', $registro['cliente_telefone'], PDO::PARAM_STR);
+            $stmt->bindParam(':cliente_nome_completo', $registro['cliente_nome_completo'], PDO::PARAM_STR);
+            $stmt->bindParam(':cliente_email', $registro['cliente_email'], PDO::PARAM_STR);
             $stmt->bindParam(':cliente_id', $registro['cliente_id'], PDO::PARAM_INT);
             return $stmt->execute();
         } catch (PDOException $e) {
-            exit("Erro: " . $e->getMessage());
+            if ($e->errorInfo[1] == 1062) {
+
+                header("Location: ../erp-msg/erro.php?msg=CPF/CNPJ já cadastrado&voltar=true");
+                exit;
+            }
+            exit("Erro: " . $e->getMessage());            
         }
 
         return false;
@@ -144,24 +149,25 @@ class ClienteDAO implements DAO
                     :cliente_nome_completo, 
                     :cliente_email
                     )";
-            
-            $stmt = $this->pdo->prepare($sql);
 
-            // Bind dos parâmetros            
-            $valor = Documentos::normalizarCpfCnpj($registro['cliente_cpf_cnpj']);
-            //exit($valor);
-            $stmt->bindParam(':cliente_cpf_cnpj', $valor, PDO::PARAM_STR);
-            $valor = Documentos::normalizarTelefone($registro['cliente_telefone']);
-            $stmt->bindParam(':cliente_telefone', $valor, PDO::PARAM_STR);
-            $valor = strtoupper($registro['cliente_nome_completo']);
-            $stmt->bindParam(':cliente_nome_completo', $valor, PDO::PARAM_STR);
-            $valor = Documentos::normalizarEmail($registro['cliente_email']);
-            $stmt->bindParam(':cliente_email', $valor, PDO::PARAM_STR);
-            
+            $stmt = $this->pdo->prepare($sql);
+            $registro['cliente_nome_completo'] = strtoupper($registro['cliente_nome_completo']);
+            $registro['cliente_email'] = strtolower($registro['cliente_email']);
+
+            // Bind dos parâmetros
+            $stmt->bindParam(':cliente_cpf_cnpj', $registro['cliente_cpf_cnpj'], PDO::PARAM_STR);
+            $stmt->bindParam(':cliente_telefone', $registro['cliente_telefone'], PDO::PARAM_STR);
+            $stmt->bindParam(':cliente_nome_completo', $registro['cliente_nome_completo'], PDO::PARAM_STR);
+            $stmt->bindParam(':cliente_email', $registro['cliente_email'], PDO::PARAM_STR);
 
             // Executar a query
             return $stmt->execute();
         } catch (PDOException $e) {
+            if ($e->errorInfo[1] == 1062) {
+
+                header("Location: ../erp-msg/erro.php?msg=CPF/CNPJ já cadastrado");
+                exit;
+            }
             exit("Erro: " . $e->getMessage());
         }
 

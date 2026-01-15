@@ -8,19 +8,19 @@ echo open_table;
 
 echo open_tr . open_td_2 . open_label . 'Nome:' . close_lable . close_td;
 
-$input = '<input type="text" id="cliente_nome_completo" name="cliente_nome_completo" maxlength="50" value="' . ($registro['cliente_nome_completo'] ?? '') . '">';
+$input = '<input type="text" id="cliente_nome_completo" name="cliente_nome_completo" maxlength="100" oninput="this.value = this.value.toUpperCase().replace(/[^A-Z0-9]/g, \' \').slice(0, 100);" value="' . ($registro['cliente_nome_completo'] ?? '') . '">';
 
 echo open_td . $input . close_td . close_tr;
 
 echo open_tr . open_td_2 . open_label . 'CPF | CNPJ:' . close_lable . close_td;
 
-$input = '<input type="text" id="cliente_cpf_cnpj" name="cliente_cpf_cnpj" minlength="11" maxlength="14" oninput="this.value = this.value.toUpperCase().replace(/[^A-Z0-9]/g, \'\').slice(0, 14);" onblur="clearTimeout();" value="'  . ($registro['cliente_cpf_cnpj'] ?? '') . '">';
+$input = '<input type="text" id="cliente_cpf_cnpj" name="cliente_cpf_cnpj" minlength="11" maxlength="14" oninput="this.value = this.value.toUpperCase().replace(/[^A-Z0-9]/g, \'\').slice(0, 14);" value="' . ($registro['cliente_cpf_cnpj'] ?? '') . '">';
 
 echo open_td . $input . close_td . close_tr;
 
 echo open_tr . open_td_2 . open_label . 'Telefone:' . close_lable . close_td;
 
-$input = '<input type="text" id="cliente_telefone" name="cliente_telefone" maxlength="15" oninput="this.value = this.value.replace(/\\D/g, \'\').slice(0, 15);"value="' . ($registro['cliente_telefone'] ?? '') . '">';
+$input = '<input type="text" id="cliente_telefone" name="cliente_telefone" maxlength="15" oninput="this.value = this.value.replace(/\\D/g, \'\').slice(0, 15);" value="' . ($registro['cliente_telefone'] ?? '') . '">';
 
 echo open_td . $input . close_td . close_tr;
 

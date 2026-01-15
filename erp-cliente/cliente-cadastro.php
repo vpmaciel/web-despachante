@@ -49,8 +49,11 @@ echo close_div;
 
 <script src="../rodape.js"></script>
 
+<script src="cliente-cadastro.js"></script>
+
 <?php
 
 echo close_body;
 
 echo close_html;
+?>

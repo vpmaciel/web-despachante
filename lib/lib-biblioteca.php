@@ -21,4 +21,3 @@ require_once '../erp-cliente/cliente-dao.php';
 require_once '../erp-pedido-de-placa/pedido-de-placa-dao.php';
 require_once '../erp-veiculo/veiculo-dao.php';
 require_once '../erp-servico/servico-dao.php';
-require_once '../erp-util/documentos.php';

@@ -1,24 +1,3 @@
-const paginas = ['home', 'sucesso','erro','cliente', 'pedido-de-placa', 'servico', 'veiculo', 'cadastro', 'pesquisa', 'dashboard', 'relatorio', 'lista', 'imprimir'];
-
-// Marca o link ativo de acordo com a URL
-paginas.forEach(pagina => {
-    if (window.location.href.includes(pagina)) {
-        let elemento = document.getElementById(pagina);
-        if (elemento) {
-            elemento.style.color = '#579EBB';
-        }
-    }
-});
-
-// Adiciona evento para detectar clique em links que contenham "imprimir" no href
-document.querySelectorAll('a').forEach(a => {
-if (a.textContent.trim().toLowerCase().includes('imprimir')) {
-    a.addEventListener('pointerdown', () => {
-    a.style.color = '#579EBB';
-    });
-}
-});
-
 const mapeamentoPaginas = {
     'home': 'Login ',
     'cliente': 'Cliente',
@@ -53,3 +32,24 @@ function definirPaginaAtual() {
 
 // Executa quando o DOM estiver carregado
 document.addEventListener('DOMContentLoaded', definirPaginaAtual);
+
+// voltar automaticamente após 3 segundos em páginas de mensagem
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const params = new URLSearchParams(window.location.search);
+
+    if (params.get("voltar") === "true") {
+
+        setTimeout(function () {
+
+            if (document.referrer) {
+                window.location.href = document.referrer;
+            } else {
+                window.location.href = "/web-despachante/home/home.php";
+            }
+
+        }, 5000); // 5 segundos
+    }
+
+});

@@ -44,7 +44,7 @@ class ServicoDAO implements DAO
     public function getRegistro($registro)
     {
         try {
-            $SQL = "SELECT * FROM servico where servico_id = '" . $_GET['servico_id'] . "';";
+            $SQL = "SELECT * FROM servico where servico_id = " . $_GET['servico_id'] . ";";
             $stmt = $this->pdo->prepare($SQL);
             $stmt->execute();
 

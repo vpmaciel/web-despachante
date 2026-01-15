@@ -44,7 +44,7 @@ class VeiculoDAO implements DAO
     public function getRegistro($registro)
     {
         try {
-            $SQL = "SELECT * FROM veiculo where veiculo_id = '" . $_GET['veiculo_id'] . "';";
+            $SQL = "SELECT * FROM veiculo where veiculo_id = " . $_GET['veiculo_id'] . ";";
             $stmt = $this->pdo->prepare($SQL);
             $stmt->execute();
 

@@ -44,7 +44,7 @@ class PedidoDePlacaDAO implements DAO
     public function getRegistro($registro)
     {
         try {
-            $SQL = "SELECT * FROM pedido_de_placa where pedido_de_placa_id = '" . $_GET['pedido_de_placa_id'] . "';";
+            $SQL = "SELECT * FROM pedido_de_placa where pedido_de_placa_id = " . $_GET['pedido_de_placa_id'] . ";";
             $stmt = $this->pdo->prepare($SQL);
             $stmt->execute();
 
