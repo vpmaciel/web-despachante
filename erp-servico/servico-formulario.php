@@ -10,25 +10,25 @@ echo $input;
 
 echo open_table;
 
-echo open_tr . open_td . open_label . 'Placa do veículo:' . close_lable . close_td . close_tr;
+echo open_tr . open_td . open_label . 'PLACA DO VEÍCULO' . close_lable . close_td . close_tr;
 
 $input = '<input type="text" id="servico_placa_veiculo" name="servico_placa_veiculo" maxlength="10" value="' . ($registro['servico_placa_veiculo'] ?? '') . '">';
 
 echo open_tr . open_td . $input . close_td . close_tr;
 
-echo open_tr . open_td . open_label . 'Valor (R$):' . close_lable . close_td . close_tr;
+echo open_tr . open_td . open_label . 'VALOR (R$):' . close_lable . close_td . close_tr;
 
-$input = '<input type="text" id="servico_valor" name="servico_valor" value="' . ($registro['servico_valor'] ?? '') . '">';
+$input = '<input type="text" id="servico_valor" name="servico_valor" maxlength="10" value="' . ($registro['servico_valor'] ?? '') . '">';
 
 echo open_tr . open_td . $input . close_td . close_tr;
 
-echo open_tr . open_td . open_label . 'Descrição:' . close_lable . close_td . close_tr;
+echo open_tr . open_td . open_label . 'DESCRIÇÃO' . close_lable . close_td . close_tr;
 
 $input = '<input type="text" id="servico_descricao" name="servico_descricao" maxlength="100" value="' . ($registro['servico_descricao'] ?? '') . '">';
 
 echo open_tr . open_td . $input . close_td . close_tr;
 
-echo open_tr . open_td . open_label . 'CPF | CNPJ do cliente:' . close_lable . close_td . close_tr;
+echo open_tr . open_td . open_label . 'CPF | CNPJ DO CLIENTE' . close_lable . close_td . close_tr;
 
 $input = '<input type="text" id="servico_cpf_cnpj_cliente" name="servico_cpf_cnpj_cliente" maxlength="14" value="' . ($registro['servico_cpf_cnpj_cliente'] ?? '') . '">';
 
@@ -38,7 +38,7 @@ $input = '<label id="resultado_servico_cpf_cnpj_cliente" name="resultado_servico
 
 echo open_tr . open_td . $input . close_td     . close_tr;
 
-echo open_tr . open_td . open_label . 'Telefone do cliente:' . close_lable . close_td . close_tr;
+echo open_tr . open_td . open_label . 'TELEFONE DO CLIENTE:' . close_lable . close_td . close_tr;
 
 $input = '<input type="text" id="servico_telefone_cliente" name="servico_telefone_cliente" maxlength="15" value="' . ($registro['servico_telefone_cliente'] ?? '') . '">';
 

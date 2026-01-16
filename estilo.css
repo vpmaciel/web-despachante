@@ -42,17 +42,17 @@ textarea:focus {
 input[type="button"],
 input[type="submit"] {
     outline: none;
-    background-color: #fff; 
-    text-decoration: underline;
-    border: none;    
+    background-color: #ccc; 
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid #444;    
     resize: none;
     padding: 5px;
     max-width: 150px;
     width: 150px;
-    text-align: center;
     cursor: pointer;
-      
 }
+
 
 form{
     padding: 0px;
@@ -197,7 +197,20 @@ span {
     cursor: pointer;
     text-decoration: underline; 
     display: inline-block; /* Garantir que os elementos ocupem apenas o espaço necessário */
+    text-align: center;    
+}
+
+.botoes2{
+ outline: none;
+    background-color: #ccc; 
     text-align: center;
+    text-decoration: none;
+    border: 1px solid #444;    
+    resize: none;
+    padding: 5px;
+    max-width: 150px;
+    width: 150px;
+    cursor: pointer;
 }
 
 .botoes a {

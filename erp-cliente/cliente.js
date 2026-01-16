@@ -16,10 +16,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const validator = new Validator(form);
 
-    validator.add(() => Validator.validarNome(nome, true, 'Nome:'));
-    validator.add(() => Validator.validarCpfCnpj(cpfCnpj, false, 'CPF | CNPJ:'));
-    validator.add(() => Validator.validarTelefone(telefone, false, 'Telefone:'));
-    validator.add(() => Validator.validarEmail(email, false, 'E-mail:'));
+    validator.add(() => Validator.validarNome(nome, true, 'NOME: '));
+    validator.add(() => Validator.validarCpfCnpj(cpfCnpj, false, 'CPF | CNPJ DO CLIENTE: '));
+    validator.add(() => Validator.validarTelefone(telefone, false, 'TELEFONE: '));
+    validator.add(() => Validator.validarEmail(email, false, 'E-MAIL: '));
 
     form.addEventListener("submit", function (e) {
         if (!validator.run()) {

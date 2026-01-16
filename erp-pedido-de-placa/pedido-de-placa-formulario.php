@@ -10,37 +10,37 @@ echo open_tr . open_td . $input . close_td . close_tr;
 
 echo open_table;
 
-echo open_tr . open_td . open_label . 'Placa:' . close_lable . close_td; 
+echo open_tr . open_td . open_label . 'PLACA' . close_lable . close_td; 
 
 $input = '<input type="text" id="pedido_de_placa_placa_veiculo" name="pedido_de_placa_placa_veiculo" maxlength="10" value="' . ($registro['pedido_de_placa_placa_veiculo'] ?? '') . '">';
 
 echo open_tr . open_td . $input . close_td . close_tr;
 
-echo open_tr . open_td . open_label . 'Quantidade:' . close_lable . close_td; 
+echo open_tr . open_td . open_label . 'QUANTIDADE' . close_lable . close_td; 
 
 $input = '<input type="text" id="pedido_de_placa_quantidade" name="pedido_de_placa_quantidade" maxlength="1" value="' . ($registro['pedido_de_placa_quantidade'] ?? '') . '">';
 
 echo open_tr . open_td . $input . close_td . close_tr;
 
-echo open_tr . open_td . open_label . 'RENAVAM:' . close_lable . close_td; 
+echo open_tr . open_td . open_label . 'RENAVAM' . close_lable . close_td; 
 
 $input = '<input type="text" id="pedido_de_placa_renavam" name="pedido_de_placa_renavam" maxlength="15" value="' . ($registro['pedido_de_placa_renavam'] ?? '') . '">';
 
 echo open_tr . open_td . $input . close_td . close_tr;
 
-echo open_tr . open_td . open_label . 'CPF | CNPJ do proprietário:' . close_lable . close_td; 
+echo open_tr . open_td . open_label . 'CPF | CNPJ DO PROPRIETÁRIO' . close_lable . close_td; 
 
 $input = '<input type="text" id="pedido_de_placa_cpf_cnpj_proprietario" name="pedido_de_placa_cpf_cnpj_proprietario" maxlength="14" value="' . ($registro['pedido_de_placa_cpf_cnpj_proprietario'] ?? '') . '">';
 
 echo open_tr . open_td . $input . close_td . close_tr;
 
-echo open_tr . open_td . open_label . 'Cor da placa:' . close_lable . close_td; 
+echo open_tr . open_td . open_label . 'COR DA PLACA' . close_lable . close_td; 
 
 $input = '<input type="text" id="pedido_de_placa_cor_placa" name="pedido_de_placa_cor_placa" maxlength="50" value="' . ($registro['pedido_de_placa_cor_placa'] ?? '') . '">';
 
 echo open_tr . open_td . $input . close_td . close_tr;
 
-echo open_tr . open_td . open_label . 'Tipo da placa:' . close_lable . close_td; 
+echo open_tr . open_td . open_label . 'TIPO DA PLACA' . close_lable . close_td; 
 
 $input = '<input type="text" id="pedido_de_placa_tipo_placa" name="pedido_de_placa_tipo_placa" maxlength="50" value="' . ($registro['pedido_de_placa_tipo_placa'] ?? '') . '">';
 

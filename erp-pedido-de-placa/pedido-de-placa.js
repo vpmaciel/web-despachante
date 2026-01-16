@@ -17,12 +17,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const validator = new Validator(form);
 
-    validator.add(() => Validator.validarPlaca(placaVeiculo, true, 'Placa do Veículo:'));
-    validator.add(() => Validator.validarNumero(placaQuantidade, true, 'Quantidade de Placas:'));
+    validator.add(() => Validator.validarPlaca(placaVeiculo, true, 'PLACA DO VEÍCULO: '));
+    validator.add(() => Validator.validarNumero(placaQuantidade, true, 'QUANTIDADE DE PLACAS: '));
     validator.add(() => Validator.validarNumero(renavam, true, 'RENAVAM:'));
-    validator.add(() => Validator.validarCpfCnpj(cpfCnpjProprietario, true, 'CPF | CNPJ do Proprietário:'));
-    validator.add(() => Validator.validarNome(corPlaca, true, 'Cor da Placa:'));
-    validator.add(() => Validator.validarNome(tipoPlaca, true, 'Tipo de Placa:'));
+    validator.add(() => Validator.validarCpfCnpj(cpfCnpjProprietario, true, 'CPF | CNPJ DO PROPRIETÁRIO: '));
+    validator.add(() => Validator.validarNome(corPlaca, true, 'COR DA PLACA: '));
+    validator.add(() => Validator.validarNome(tipoPlaca, true, 'TIPO DE PLACA: '));
 
     form.addEventListener("submit", function (e) {
         if (!validator.run()) {

@@ -8,22 +8,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!ehCadastro) return;
 
-    const placaVeiculo = document.getElementById("pedido_de_placa_placa_veiculo");
-    const placaQuantidade = document.getElementById("pedido_de_placa_quantidade");
-    const renavam = document.getElementById("pedido_de_placa_renavam");
-    const cpfCnpjProprietario = document.getElementById("pedido_de_placa_cpf_cnpj_proprietario");
-    const corPlaca = document.getElementById("pedido_de_placa_cor_placa");
-    const tipoPlaca = document.getElementById("pedido_de_placa_tipo_placa");    
+    const placaVeiculo = document.getElementById("veiculo_placa");
+    const cpfCnpjProprietario = document.getElementById("veiculo_cpf_cnpj_proprietario");
+    const nomeProprietario = document.getElementById("veiculo_nome_proprietario");
+    const marcaVeiculo = document.getElementById("veiculo_marca");
+    const modeloVeiculo = document.getElementById("veiculo_modelo");
 
     const validator = new Validator(form);
 
-    validator.add(() => Validator.validarPlaca(placaVeiculo, true, 'Placa do Veículo:'));
-    validator.add(() => Validator.validarNumero(placaQuantidade, true, 'Quantidade de Placas:'));
-    validator.add(() => Validator.validarNumero(renavam, true, 'RENAVAM:'));
-    validator.add(() => Validator.validarCpfCnpj(cpfCnpjProprietario, true, 'CPF | CNPJ do Proprietário:'));
-    validator.add(() => Validator.validarNome(corPlaca, true, 'Cor da Placa:'));
-    validator.add(() => Validator.validarNome(tipoPlaca, true, 'Tipo de Placa:'));
-
+    validator.add(() => Validator.validarPlaca(placaVeiculo, true, 'PLACA DO VEÍCUL: '));
+    validator.add(() => Validator.validarNumero(cpfCnpjProprietario, false, 'CPF | CNPJ DO PROPRIETÁRIO: '));
+    validator.add(() => Validator.validarNumero(nomeProprietario, true, 'NOME DO PROPRIETÁRIO: '));
+    validator.add(() => Validator.validarCpfCnpj(marcaVeiculo, true, 'MARCA DO VEÍCULO: '));
+    validator.add(() => Validator.validarNome(modeloVeiculo, true, 'MODELO DO VEÍCULO: '));
+    
     form.addEventListener("submit", function (e) {
         if (!validator.run()) {
             e.preventDefault();

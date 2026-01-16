@@ -6,25 +6,25 @@ echo $input;
 
 echo open_table;
 
-echo open_tr . open_td . open_label . 'Nome:' . close_lable . close_td . close_tr;
+echo open_tr . open_td . open_label . 'NOME' . close_lable . close_td . close_tr;
 
 $input = '<input type="text" id="cliente_nome" name="cliente_nome" maxlength="100" value="' . ($registro['cliente_nome'] ?? '') . '">';
 
 echo open_tr . open_td . $input . close_td . close_tr;
 
-echo open_tr . open_td . open_label . 'CPF | CNPJ:' . close_lable . close_td . close_tr;
+echo open_tr . open_td . open_label . 'CPF | CNPJ' . close_lable . close_td . close_tr;
 
 $input = '<input type="text" id="cliente_cpf_cnpj" name="cliente_cpf_cnpj" maxlength="14" value="' . ($registro['cliente_cpf_cnpj'] ?? '') . '">';
 
 echo open_tr . open_td . $input . close_td . close_tr;
 
-echo open_tr . open_td . open_label . 'Telefone:' . close_lable . close_td . close_tr;
+echo open_tr . open_td . open_label . 'TELEFONE' . close_lable . close_td . close_tr;
 
 $input = '<input type="text" id="cliente_telefone" name="cliente_telefone" maxlength="15" value="' . ($registro['cliente_telefone'] ?? '') . '">';
 
 echo open_tr . open_td . $input . close_td . close_tr;
 
-echo open_tr . open_td . open_label . 'E-Mail:' . close_lable . close_td . close_tr;
+echo open_tr . open_td . open_label . 'E-MAIL' . close_lable . close_td . close_tr;
 
 $input = '<input type="text" id="cliente_email" name="cliente_email" maxlength="100" value="' . ($registro['cliente_email'] ?? '') . '">';
 

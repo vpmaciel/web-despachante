@@ -16,7 +16,9 @@ try {
         ?? '';
 
     if ($cpfCnpj === '') {
-        echo json_encode(['a'=>'1']);
+        echo json_encode([
+            'erro' => 'CPF | CNPJ não informado.'
+        ]);
         exit;
     }
 
