@@ -19,7 +19,7 @@ $registro['pedido_de_placa_cpf_cnpj_proprietario'] = trim($_POST['pedido_de_plac
 $registro['pedido_de_placa_cor_placa'] = trim($_POST['pedido_de_placa_cor_placa']);
 $registro['pedido_de_placa_tipo_placa'] = trim($_POST['pedido_de_placa_tipo_placa']);
 
-if (!isset($registro['cliente_id']) || $registro['cliente_id'] == '') {
+if (!isset($registro['pedido_de_placa_id']) || $registro['pedido_de_placa_id'] == '') {
 
 	$resultado_inserir = $pedidoDePlacaDAO->inserirRegistro($registro);
 

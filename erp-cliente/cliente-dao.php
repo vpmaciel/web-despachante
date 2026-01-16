@@ -53,7 +53,7 @@ class ClienteDAO implements DAO
                 $registro['cliente_id'] = $linha['cliente_id'];
                 $registro['cliente_cpf_cnpj'] = $linha['cliente_cpf_cnpj'];
                 $registro['cliente_telefone'] = $linha['cliente_telefone'];
-                $registro['cliente_nome_completo'] = $linha['cliente_nome_completo'];
+                $registro['cliente_nome'] = $linha['cliente_nome'];
                 $registro['cliente_email'] = $linha['cliente_email'];
             }
             //var_dump($registro);
@@ -100,7 +100,7 @@ class ClienteDAO implements DAO
             $sql = "UPDATE cliente SET
                     cliente_cpf_cnpj = :cliente_cpf_cnpj, 
 					cliente_telefone = :cliente_telefone, 
-					cliente_nome_completo = :cliente_nome_completo, 
+					cliente_nome = :cliente_nome, 
 					cliente_email = :cliente_email 
 				    WHERE 
                     cliente_id = :cliente_id";
@@ -108,14 +108,14 @@ class ClienteDAO implements DAO
             //exit($sql);
 
             $stmt = $this->pdo->prepare($sql);
-            $registro['cliente_nome_completo'] = strtoupper($registro['cliente_nome_completo']);
+            $registro['cliente_nome'] = strtoupper($registro['cliente_nome']);
             $registro['cliente_email'] = strtolower($registro['cliente_email']);
 
             // Bind dos parâmetros
 
             $stmt->bindParam(':cliente_cpf_cnpj', $registro['cliente_cpf_cnpj'], PDO::PARAM_STR);
             $stmt->bindParam(':cliente_telefone', $registro['cliente_telefone'], PDO::PARAM_STR);
-            $stmt->bindParam(':cliente_nome_completo', $registro['cliente_nome_completo'], PDO::PARAM_STR);
+            $stmt->bindParam(':cliente_nome', $registro['cliente_nome'], PDO::PARAM_STR);
             $stmt->bindParam(':cliente_email', $registro['cliente_email'], PDO::PARAM_STR);
             $stmt->bindParam(':cliente_id', $registro['cliente_id'], PDO::PARAM_INT);
             return $stmt->execute();
@@ -125,7 +125,7 @@ class ClienteDAO implements DAO
                 header("Location: ../erp-msg/erro.php?msg=CPF/CNPJ já cadastrado&voltar=true");
                 exit;
             }
-            exit("Erro: " . $e->getMessage());            
+            exit("Erro: " . $e->getMessage());
         }
 
         return false;
@@ -139,25 +139,25 @@ class ClienteDAO implements DAO
                     (
                     cliente_cpf_cnpj, 
                     cliente_telefone, 
-                    cliente_nome_completo, 
+                    cliente_nome, 
                     cliente_email
                     ) 
                     VALUES 
                     (
                     :cliente_cpf_cnpj, 
                     :cliente_telefone, 
-                    :cliente_nome_completo, 
+                    :cliente_nome, 
                     :cliente_email
                     )";
 
             $stmt = $this->pdo->prepare($sql);
-            $registro['cliente_nome_completo'] = strtoupper($registro['cliente_nome_completo']);
+            $registro['cliente_nome'] = strtoupper($registro['cliente_nome']);
             $registro['cliente_email'] = strtolower($registro['cliente_email']);
 
             // Bind dos parâmetros
             $stmt->bindParam(':cliente_cpf_cnpj', $registro['cliente_cpf_cnpj'], PDO::PARAM_STR);
             $stmt->bindParam(':cliente_telefone', $registro['cliente_telefone'], PDO::PARAM_STR);
-            $stmt->bindParam(':cliente_nome_completo', $registro['cliente_nome_completo'], PDO::PARAM_STR);
+            $stmt->bindParam(':cliente_nome', $registro['cliente_nome'], PDO::PARAM_STR);
             $stmt->bindParam(':cliente_email', $registro['cliente_email'], PDO::PARAM_STR);
 
             // Executar a query

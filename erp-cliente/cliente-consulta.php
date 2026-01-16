@@ -9,21 +9,18 @@ $conexao = new Conexao();
 $pdo = $conexao->getPdo();
 
 try {
-    // Recebe o CPF/CNPJ    
-    if (isset($_POST['servico_cpf_cnpj_cliente'])) {
-        $cpfCnpj = $_POST['servico_cpf_cnpj_cliente'] ?? '';
-    }
-
-    if (isset($_POST['cliente_cpf_cnpj'])) {
-        $cpfCnpj = $_POST['cliente_cpf_cnpj'] ?? '';
-    }
+    // Recebe o CPF/CNPJ de qualquer origem
+    $cpfCnpj =
+        $_POST['servico_cpf_cnpj_cliente']
+        ?? $_POST['cliente_cpf_cnpj']
+        ?? '';
 
     if ($cpfCnpj === '') {
-        echo json_encode([]);
+        echo json_encode(['a'=>'1']);
         exit;
     }
 
-    $sql = "SELECT cliente_nome_completo
+    $sql = "SELECT cliente_nome
             FROM cliente
             WHERE cliente_cpf_cnpj = :cpf
             LIMIT 1";
@@ -36,6 +33,9 @@ try {
 
     echo json_encode($resultado ?: []);
 } catch (Throwable $e) {
-    http_response_code(500);
-    echo json_encode(['error' => 'Erro interno']);
+    echo json_encode([
+        'erro'   => $e->getMessage(),
+        'arquivo' => $e->getFile(),
+        'linha'  => $e->getLine()
+    ]);
 }

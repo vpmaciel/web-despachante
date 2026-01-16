@@ -31,7 +31,7 @@ CREATE TABLE `cliente` (
   `cliente_id` int(11) NOT NULL,
   `cliente_cpf_cnpj` varchar(20) NOT NULL,
   `cliente_telefone` varchar(15) NOT NULL,
-  `cliente_nome_completo` varchar(50) NOT NULL,
+  `cliente_nome` varchar(50) NOT NULL,
   `cliente_email` varchar(70) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -39,7 +39,7 @@ CREATE TABLE `cliente` (
 -- Despejando dados para a tabela `cliente`
 --
 
-INSERT INTO `cliente` (`cliente_id`, `cliente_cpf_cnpj`, `cliente_telefone`, `cliente_nome_completo`, `cliente_email`) VALUES
+INSERT INTO `cliente` (`cliente_id`, `cliente_cpf_cnpj`, `cliente_telefone`, `cliente_nome`, `cliente_email`) VALUES
 (6, '05428448695', '(31) 98285-7372', 'VICENTE PAULO MACIEL', 'VPMACIEL@GMAIL.COM'),
 (8, '00000000000', '31982857372', 'VICENTE PAULO MACIEL', 'VPMACIEL@GMAIL.COM'),
 (10, '11111111111111', '31982857372', 'VICENTE PAULO MACIEL', 'VPMACIEL@GMAIL.COM'),

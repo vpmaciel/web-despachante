@@ -12,7 +12,7 @@ $clienteDAO = new ClienteDAO();
 
 $registro['cliente_id'] = trim($_POST['cliente_id']);
 $registro['cliente_cpf_cnpj'] = (trim($_POST['cliente_cpf_cnpj']));
-$registro['cliente_nome_completo'] = trim($_POST['cliente_nome_completo']);
+$registro['cliente_nome'] = trim($_POST['cliente_nome']);
 $registro['cliente_telefone'] = trim($_POST['cliente_telefone']);
 $registro['cliente_email'] = trim($_POST['cliente_email']);
 

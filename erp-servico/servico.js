@@ -1,58 +1,76 @@
-alert("cliente.js carregado");
-
 document.addEventListener("DOMContentLoaded", function () {
-    // Controle de required conforme URL
-    var currentUrl = window.location.href;
 
-    var servico_descricao = document.getElementById("servico_descricao");
-    var servico_cpf_cnpj_cliente = document.getElementById("servico_cpf_cnpj_cliente");
+    const form = document.querySelector("form");
+    if (!form) return;
 
-    if (!servico_descricao || !servico_cpf_cnpj_cliente) {
-        return;
-    }
+    const currentUrl = window.location.href;
+    const ehCadastro = currentUrl.includes("cadastro");
 
-    if (currentUrl.includes("cadastro")) {
-        servico_descricao.setAttribute("required", "required");
-        servico_cpf_cnpj_cliente.setAttribute("required", "required");
-    } else {
-        servico_descricao.removeAttribute("required");
-        servico_cpf_cnpj_cliente.removeAttribute("required");
-    }
-});
+    if (!ehCadastro) return;
 
-document.addEventListener("DOMContentLoaded", function () {
-    const cpfInput = document.getElementById("servico_cpf_cnpj_cliente");
-    const resultadoLabel = document.getElementById("resultado_servico_cpf_cnpj_cliente");
+    const placaVeiculo = document.getElementById("servico_placa_veiculo");
+    const placaQuantidade = document.getElementById("servico_valor");
+    const renavam = document.getElementById("servico_descricao");
+    const cpfCnpjProprietario = document.getElementById("servico_cpf_cnpj_cliente");
+    const corPlaca = document.getElementById("servico_telefone_cliente");       
 
-    if (!cpfInput || !resultadoLabel) {
-        return;
-    }
+    const validator = new Validator(form);
 
-   cpfInput.addEventListener("blur", function () {
-    const cpfCnpj = cpfInput.value.trim();
+    validator.add(() => Validator.validarPlaca(placaVeiculo, true, 'Placa do Veículo:'));
+    validator.add(() => Validator.validarNumero(placaQuantidade, true, 'Quantidade de Placas:'));
+    validator.add(() => Validator.validarNumero(renavam, true, 'RENAVAM:'));
+    validator.add(() => Validator.validarCpfCnpj(cpfCnpjProprietario, true, 'CPF | CNPJ do Proprietário:'));
+    validator.add(() => Validator.validarNome(corPlaca, true, 'Cor da Placa:'));
+    validator.add(() => Validator.validarNome(tipoPlaca, true, 'Tipo de Placa:'));
 
-    if (cpfCnpj === "") {
-        resultadoLabel.textContent = "";
-        return;
-    }
-
-    fetch("/web-despachante/erp-cliente/cliente-consulta.php", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: "servico_cpf_cnpj_cliente=" + encodeURIComponent(cpfCnpj)
-    })
-    .then(response => response.text())
-    .then(text => {
-        const data = JSON.parse(text);
-        resultadoLabel.textContent =
-            data?.cliente_nome_completo ?? "Cliente não encontrado";
-    })
-    .catch(err => {
-        console.error(err);
-        resultadoLabel.textContent = "Erro na consulta";
+    form.addEventListener("submit", function (e) {
+        if (!validator.run()) {
+            e.preventDefault();
+        }
     });
-});
 
 });
+
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    let delayTimer;
+    const input = document.getElementById('servico_cpf_cnpj_cliente');
+
+    if (!input) return;
+
+    input.addEventListener('input', function () {
+
+        clearTimeout(delayTimer);
+
+        delayTimer = setTimeout(function () {
+
+            const valor = input.value;
+
+            $.ajax({
+                url: '../erp-cliente/cliente-consulta.php',
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    servico_cpf_cnpj_cliente: valor
+                },
+                success: function (data) {
+
+                    if (Array.isArray(data) && data.length > 0) {
+                        $('#resultado_servico_cpf_cnpj_cliente')
+                            .text('Nome do cliente: ' + data[0].cliente_nome);
+                    } else {
+                        $('#resultado_servico_cpf_cnpj_cliente')
+                            .text('Nenhum cliente encontrado ddado o CPF/CNPJ informado.');
+                    }
+                },
+                error: function (err) {
+                    console.error('Erro na requisição Ajax:', err);
+                }
+            });
+
+        }, 300);
+    });
+
+});
+

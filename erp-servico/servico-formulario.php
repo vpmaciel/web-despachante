@@ -10,47 +10,45 @@ echo $input;
 
 echo open_table;
 
-echo open_tr . open_td_2 . open_label . 'Placa do veículo:' . close_lable . close_td; 
+echo open_tr . open_td . open_label . 'Placa do veículo:' . close_lable . close_td . close_tr;
 
-$input = '<input type="text" id="servico_placa_veiculo" name="servico_placa_veiculo" maxlength="8" value="' . ($registro['servico_placa_veiculo'] ?? '') . '">';
+$input = '<input type="text" id="servico_placa_veiculo" name="servico_placa_veiculo" maxlength="10" value="' . ($registro['servico_placa_veiculo'] ?? '') . '">';
 
-echo open_td . $input . close_td . close_tr;
+echo open_tr . open_td . $input . close_td . close_tr;
 
-echo open_tr . open_td_2 . open_label . 'Valor (R$):' . close_lable . close_td; 
+echo open_tr . open_td . open_label . 'Valor (R$):' . close_lable . close_td . close_tr;
 
 $input = '<input type="text" id="servico_valor" name="servico_valor" value="' . ($registro['servico_valor'] ?? '') . '">';
 
-echo open_td . $input . close_td . close_tr;
+echo open_tr . open_td . $input . close_td . close_tr;
 
-echo open_tr . open_td_2 . open_label . 'Descrição:' . close_lable . close_td; 
+echo open_tr . open_td . open_label . 'Descrição:' . close_lable . close_td . close_tr;
 
-$input = '<input type="text" id="servico_descricao" name="servico_descricao" maxlength="50" value="' . ($registro['servico_descricao'] ?? '') . '">';
+$input = '<input type="text" id="servico_descricao" name="servico_descricao" maxlength="100" value="' . ($registro['servico_descricao'] ?? '') . '">';
 
-echo open_td . $input . close_td . close_tr;
+echo open_tr . open_td . $input . close_td . close_tr;
 
-echo open_tr . open_td_2 . open_label . 'CPF | CNPJ do cliente:' . close_lable . close_td; 
+echo open_tr . open_td . open_label . 'CPF | CNPJ do cliente:' . close_lable . close_td . close_tr;
 
-$input = '<input type="text" id="servico_cpf_cnpj_cliente" name="servico_cpf_cnpj_cliente" minlength="11" maxlength="20" oninput="this.value = this.value.toUpperCase().replace(/[^A-Z0-9.\\-\\/]/g, \'\').slice(0, 20);" onblur="clearTimeout();" value="' . ($registro['servico_cpf_cnpj_cliente'] ?? '') . '">';
+$input = '<input type="text" id="servico_cpf_cnpj_cliente" name="servico_cpf_cnpj_cliente" maxlength="14" value="' . ($registro['servico_cpf_cnpj_cliente'] ?? '') . '">';
 
-echo open_td . $input . close_td . close_tr;
-
-echo open_tr . open_td_2 . open_label . 'Nome do cliente:' . close_lable . close_td; 
+echo open_tr . open_td . $input . close_td . close_tr;
 
 $input = '<label id="resultado_servico_cpf_cnpj_cliente" name="resultado_servico_cpf_cnpj_cliente"></label>';
 
-echo open_td . $input . close_td     . close_tr;
+echo open_tr . open_td . $input . close_td     . close_tr;
 
-echo open_tr . open_td_2 . open_label . 'Telefone do cliente:' . close_lable . close_td; 
+echo open_tr . open_td . open_label . 'Telefone do cliente:' . close_lable . close_td . close_tr;
 
-$input = '<input type="text" id="servico_telefone_cliente" name="servico_telefone_cliente" maxlength="15" onkeypress="mask(this, mphone);" value="' . ($registro['servico_telefone_cliente'] ?? '') . '">';
+$input = '<input type="text" id="servico_telefone_cliente" name="servico_telefone_cliente" maxlength="15" value="' . ($registro['servico_telefone_cliente'] ?? '') . '">';
 
-echo open_td . $input . close_td . close_tr;
+echo open_tr . open_td . $input . close_td . close_tr;
 
-echo open_tr . open_td_2 . open_label . '' . close_lable . close_td; 
+echo open_tr . open_td . open_label . '' . close_lable . close_td . close_tr;
 
-echo open_td . $numero_de_registros . ' registros cadastrados' . close_td . close_tr;
+echo open_tr . open_td . $numero_de_registros . ' registros cadastrados' . close_td . close_tr;
 
-echo open_tr . open_td_2 . open_label . '' . close_lable . close_td;
+echo open_tr . open_td . open_label . '' . close_lable . close_td . close_tr;
 
 
 if (strpos($_SERVER['REQUEST_URI'], 'cadastro') !== false) {
@@ -59,7 +57,7 @@ if (strpos($_SERVER['REQUEST_URI'], 'cadastro') !== false) {
     $submit = '<input type="submit" value="Buscar">';
 }
 
-echo open_td . $submit . close_td . close_tr;
+echo open_tr . open_td . $submit . close_td . close_tr;
 
 echo close_table;
 ?>

@@ -30,34 +30,60 @@ class Validator {
 
     // ===== VALIDADORES PRONTOS =====
 
-    static validarNome(input) {
+static validarNome(input, obrigatorio = true, campo) {
+    const valor = input.value.trim();
+
+    // Campo obrigatório
+    if (valor === '' && obrigatorio) {
+        Validator.alerta(campo + ' campo obrigatório.');
+        input.focus();
+        return false;
+    }
+
+    // Não obrigatório e vazio → válido
+    if (valor === '') {
+        return true;
+    }
+
+    // Permitidos: letras, números, espaço, hífen e &
+    const regexPermitido = /^[A-Za-zÀ-ú0-9\- &]+$/;
+
+    if (!regexPermitido.test(valor)) {
+        Validator.alerta(campo + ' com valor inválido.');        
+        input.focus();
+        return false;
+    }
+
+    // Normalização
+    const limpo = valor
+        .toUpperCase()
+        .replace(/[^A-ZÀ-Ú0-9\- &]/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+
+    input.value = limpo;
+    return true;
+}
+
+
+    static validarCpfCnpj(input, obrigatorio = true, campo) {
         const valor = input.value.trim();
 
-        if (valor === '') {
-            Validator.alerta('Nome. Campo obrigatório.');
+        // Campo obrigatório
+        if (valor === '' && obrigatorio) {
+            Validator.alerta(campo + ' campo obrigatório.');
             input.focus();
             return false;
         }
 
-        const limpo = valor.toUpperCase().replace(/[^A-Z0-9]/g, ' ');
-
-        input.value = limpo;
-        return true;
-    }
-
-    static validarCpfCnpj(input) {
-        const valor = input.value.trim();
-
+        // Não obrigatório e vazio → válido
         if (valor === '') {
-            Validator.alerta('CPF | CNPJ. Campo obrigatório.');
-            return false;
+            return true;
         }
-
         const limpo = valor.toUpperCase().replace(/[^A-Z0-9]/g, '');
 
         if (limpo.length !== 11 && limpo.length !== 14) {
-            Validator.alerta('CPF | CNPJ inválido. Deve conter 11 ou 14 caracteres.');
-            input.value = '';
+            Validator.alerta(campo + ' com valor inválido.');            
             input.focus();
             return false;
         }
@@ -66,14 +92,23 @@ class Validator {
         return true;
     }
 
-    static validarTelefone(input) {
+    static validarNumero(input, obrigatorio = true, campo) {
         const valor = input.value.trim();
 
-        if (valor === '') return true;
+        // Campo obrigatório
+        if (valor === '' && obrigatorio) {
+            Validator.alerta(campo + ' campo obrigatório.');
+            input.focus();
+            return false;
+        }
+
+        // Não obrigatório e vazio → válido
+        if (valor === '') {
+            return true;
+        }
 
         if (!/^\d+$/.test(valor)) {
-            Validator.alerta('Telefone deve conter apenas números');
-            input.value = '';
+            Validator.alerta(campo + ' com valor inválido.');            
             input.focus();
             return false;
         }
@@ -81,22 +116,87 @@ class Validator {
         return true;
     }
 
-    static validarEmail(input) {
+    static validarRenavam(input, obrigatorio = true, campo) {
         const valor = input.value.trim();
 
-        if (valor === '') return true;
+        // Campo obrigatório
+        if (valor === '' && obrigatorio) {
+            Validator.alerta(campo + ' campo obrigatório.');
+            input.focus();
+            return false;
+        }
+
+        // Não obrigatório e vazio → válido
+        if (valor === '') {
+            return true;
+        }
+
+        if (!/^\d+$/.test(valor)) {
+            Validator.alerta(campo + ' com valor inválido.');            
+            input.focus();
+            return false;
+        }
+
+        return true;
+    }
+
+    static validarEmail(input, obrigatorio = true, campo) {
+        const valor = input.value.trim();
+
+        // Campo obrigatório
+        if (valor === '' && obrigatorio) {
+            Validator.alerta(campo + ' campo obrigatório.');
+            input.focus();
+            return false;
+        }
+
+        // Não obrigatório e vazio → válido
+        if (valor === '') {
+            return true;
+        }
 
         const email = valor.toLowerCase();
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         if (!regex.test(email)) {
-            Validator.alerta('E-mail inválido');
-            input.value = '';
+            Validator.alerta(campo + ' com valor inválido.');            
             input.focus();
             return false;
         }
 
         input.value = email;
+        return true;
+    }
+
+    static validarPlaca(input, obrigatorio = true, campo = 'Placa') {
+        const valor = input.value.trim();
+
+        // Campo obrigatório
+        if (valor === '' && obrigatorio) {
+            Validator.alerta(campo + ' campo obrigatório.');
+            input.focus();
+            return false;
+        }
+
+        // Não obrigatório e vazio → válido
+        if (valor === '') {
+            return true;
+        }
+
+        // Converte para maiúsculo
+        const normalizado = valor.toUpperCase();
+
+        // Regex: somente letras, números e hífen
+        const regexPlaca = /^[A-Z0-9-]+$/;
+
+        if (!regexPlaca.test(normalizado)) {
+            Validator.alerta(campo + ' com valor inválido.');            
+            input.focus();
+            return false;
+        }
+
+        // Atualiza o valor normalizado no input
+        input.value = normalizado;
         return true;
     }
 

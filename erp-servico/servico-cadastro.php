@@ -51,6 +51,8 @@ echo close_div;
 
 <script src="../rodape.js"></script>
 
+<script src="servico.js"></script>
+
 <?php
 
 echo close_body;
@@ -58,41 +60,3 @@ echo close_body;
 echo close_html;
 
 ?>
-
-<script>
-    $(document).ready(function() {
-        var delayTimer;
-
-        $('#servico_cpf_cnpj_cliente').on('input', function() {
-            // Limpa o temporizador anterior, se houver
-            clearTimeout(delayTimer);
-
-            // Define um novo temporizador com atraso de 300 milissegundos
-            delayTimer = setTimeout(function() {
-                // Obtém o valor do campo de entrada
-                var servico_cpf_cnpj_cliente = $('#servico_cpf_cnpj_cliente').val();
-
-                // Faz uma requisição Ajax para obter os dados do PHP
-                $.ajax({
-                    url: '../erp-cliente/cliente-consulta.php',
-                    type: 'POST',
-                    dataType: 'json',
-                    data: {
-                        servico_cpf_cnpj_cliente: servico_cpf_cnpj_cliente
-                    },
-                    success: function(data) {
-                        // Exibe o resultado na label
-                        if (data.length > 0) {
-                            $('#resultado_servico_cpf_cnpj_cliente').text(data[0].cliente_nome_completo);
-                        } else {
-                            $('#resultado_servico_cpf_cnpj_cliente').text('Nenhum cliente encontrado');
-                        }
-                    },
-                    error: function(error) {
-                        console.error('Erro na requisição Ajax:', error);
-                    }
-                });
-            }, 300); // Atraso de 300 milissegundos
-        });
-    });
-</script>
