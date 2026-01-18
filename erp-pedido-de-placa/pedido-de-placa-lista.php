@@ -73,8 +73,8 @@ while ($linha = $stmt->fetch(PDO::FETCH_ASSOC)) {
   foreach ($linha as $chave => $valor) {
     $string .= "$chave" . "=" . $valor . "&";
   }
-  echo open_tr . open_td_2 . $linha['pedido_de_placa_placa_veiculo'] . close_td;
-  echo open_td_2 . $linha['pedido_de_placa_quantidade'] . close_td;
+  echo open_tr . open_td_2 . mb_substr($linha['pedido_de_placa_placa_veiculo'], 0, 30, 'UTF-8') . close_td;
+  echo open_td_2 . mb_substr($linha['pedido_de_placa_quantidade'], 0, 30, 'UTF-8') . close_td;
   echo open_td_3 . '<a href="pedido-de-placa-cadastro.php?editar=true&' . 'pedido_de_placa_id=' . $linha['pedido_de_placa_id'] . '">Editar</a> | ';
   echo '<a href="pedido-de-placa-confirmar-deletar.php?' . 'pedido_de_placa_id=' . $linha['pedido_de_placa_id'] . '">Excluir</a>' . close_td . close_tr;
   echo open_tr . open_td_2 . '&nbsp;' . close_td . open_td_2 . '&nbsp;' . close_td . open_td_2 . '&nbsp;' . close_td . close_tr;

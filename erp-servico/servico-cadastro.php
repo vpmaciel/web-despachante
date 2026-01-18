@@ -45,15 +45,11 @@ echo close_div;
 
 echo close_form;
 
+echo '<script src="servico.js"></script>';
+
+echo '<script src="../rodape.js"></script>';
+
 echo close_div;
-
-?>
-
-<script src="../rodape.js"></script>
-
-<script src="servico.js"></script>
-
-<?php
 
 echo close_body;
 

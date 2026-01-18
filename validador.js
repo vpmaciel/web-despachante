@@ -30,7 +30,7 @@ class Validator {
 
     // ===== VALIDADORES PRONTOS =====
 
-static validarNome(input, obrigatorio = true, campo) {
+static validarNome(input, obrigatorio = true, campo) {    
     const valor = input.value.trim();
 
     // Campo obrigatório
@@ -67,6 +67,7 @@ static validarNome(input, obrigatorio = true, campo) {
 
 
     static validarCpfCnpj(input, obrigatorio = true, campo) {
+        
         const valor = input.value.trim();
 
         // Campo obrigatório
@@ -93,6 +94,31 @@ static validarNome(input, obrigatorio = true, campo) {
     }
 
     static validarNumero(input, obrigatorio = true, campo) {
+        const valor = input.value.trim();
+
+        // Campo obrigatório
+        if (valor === '' && obrigatorio) {
+            Validator.alerta(campo + ' campo obrigatório.');
+            input.focus();
+            return false;
+        }
+
+        // Não obrigatório e vazio → válido
+        if (valor === '') {
+            return true;
+        }
+
+        if (!/^\d+$/.test(valor)) {
+            Validator.alerta(campo + ' com valor inválido.');            
+            input.focus();
+            return false;
+        }
+
+        return true;
+    }
+
+    
+    static validarTelefone(input, obrigatorio = true, campo) {
         const valor = input.value.trim();
 
         // Campo obrigatório

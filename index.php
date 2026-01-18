@@ -13,6 +13,5 @@ if (isset($_COOKIE['usuario_nome'])) {
 }
 
 // Redireciona SEMPRE
-header('Location: home/home.php');
+header('Location: erp-home/home.php');
 exit;
-

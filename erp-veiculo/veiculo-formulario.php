@@ -18,7 +18,7 @@ $input = '<input type="text" id="veiculo_cpf_cnpj_proprietario" name="veiculo_cp
 
 echo open_tr . open_td . $input . close_td . close_tr;
 
-echo open_tr . open_td . open_label . 'NOME DO PROPRIETÁRIO:' . close_lable . close_td . close_tr;
+echo open_tr . open_td . open_label . 'NOME DO PROPRIETÁRIO' . close_lable . close_td . close_tr;
 
 $input = '<input type="text" id="veiculo_nome_proprietario" name="veiculo_nome_proprietario" maxlength="100" value="' . ($registro['veiculo_nome_proprietario'] ?? '') . '">';
 
@@ -51,6 +51,3 @@ if (strpos($_SERVER['REQUEST_URI'], 'cadastro') !== false) {
 echo open_tr . open_td . $submit . close_td . close_tr;
 
 echo close_table;
-?>
-
-<script src="veiculo.js"></script>

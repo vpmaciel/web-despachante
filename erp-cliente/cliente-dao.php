@@ -108,8 +108,6 @@ class ClienteDAO implements DAO
             //exit($sql);
 
             $stmt = $this->pdo->prepare($sql);
-            $registro['cliente_nome'] = strtoupper($registro['cliente_nome']);
-            $registro['cliente_email'] = strtolower($registro['cliente_email']);
 
             // Bind dos parâmetros
 
@@ -122,7 +120,7 @@ class ClienteDAO implements DAO
         } catch (PDOException $e) {
             if ($e->errorInfo[1] == 1062) {
 
-                header("Location: ../erp-msg/erro.php?msg=CPF/CNPJ já cadastrado&voltar=true");
+                header("Location: ../erp-msg/erro.php?msg=CPF | CNPJ já cadastrado&voltar=true");
                 exit;
             }
             exit("Erro: " . $e->getMessage());
@@ -150,9 +148,7 @@ class ClienteDAO implements DAO
                     :cliente_email
                     )";
 
-            $stmt = $this->pdo->prepare($sql);
-            $registro['cliente_nome'] = strtoupper($registro['cliente_nome']);
-            $registro['cliente_email'] = strtolower($registro['cliente_email']);
+            $stmt = $this->pdo->prepare($sql);            
 
             // Bind dos parâmetros
             $stmt->bindParam(':cliente_cpf_cnpj', $registro['cliente_cpf_cnpj'], PDO::PARAM_STR);
@@ -165,7 +161,7 @@ class ClienteDAO implements DAO
         } catch (PDOException $e) {
             if ($e->errorInfo[1] == 1062) {
 
-                header("Location: ../erp-msg/erro.php?msg=CPF/CNPJ já cadastrado");
+                header("Location: ../erp-msg/erro.php?msg=CPF | CNPJ já cadastrado&voltar=true");
                 exit;
             }
             exit("Erro: " . $e->getMessage());

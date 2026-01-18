@@ -45,14 +45,11 @@ require_once 'pedido-de-placa-formulario.php';
 
 echo close_form;
 
+echo '<script src="pedido-de-placa.js"></script>';
+
+echo '<script src="../rodape.js"></script>';
+
 echo close_div;
-?>
-
-<script src="../rodape.js"></script>
-
-<script src="pedido-de-placa.js"></script>
-
-<?php
 
 echo close_body;
 

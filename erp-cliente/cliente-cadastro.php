@@ -44,16 +44,12 @@ require_once 'cliente-formulario.php';
 
 echo close_form;
 
+echo '<script src="cliente.js"></script>';
+
+echo '<script src="../rodape.js"></script>';
+
 echo close_div;
-?>
-
-<script src="../rodape.js"></script>
-
-<script src="cliente.js"></script>
-
-<?php
 
 echo close_body;
 
 echo close_html;
-?>

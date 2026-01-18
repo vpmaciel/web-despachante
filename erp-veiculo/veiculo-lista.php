@@ -75,8 +75,8 @@ while ($linha = $stmt->fetch(PDO::FETCH_ASSOC)) {
     $string .= "$chave" . "=" . $valor . "&";
   }
 
-  echo open_tr . open_td_2 . $linha['veiculo_placa'] . close_td;
-  echo open_td_2 . $linha['veiculo_nome_proprietario'] . close_td;
+  echo open_tr . open_td_2 . mb_substr($linha['veiculo_placa'], 0, 30, 'UTF-8') . close_td;
+  echo open_td_2 . mb_substr($linha['veiculo_nome_proprietario'], 0, 30, 'UTF-8') . close_td;
   echo open_td_3 . '<a href="veiculo-cadastro.php?editar=true&' . 'veiculo_id=' . $linha['veiculo_id'] . '">Editar</a> | ';
   echo '<a href="veiculo-confirmar-deletar.php?' . 'veiculo_id=' . $linha['veiculo_id'] . '">Excluir</a>' . close_td . close_tr;
   echo open_tr . open_td . open_label . '&nbsp;' . close_lable . close_td . close_tr;

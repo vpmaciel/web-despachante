@@ -1,95 +1,131 @@
 <?php
-class UsuarioDAO {
-
+class UsuarioDAO implements DAO
+{
     private $pdo;
 
-    public function __construct() {
+    public function __construct()
+    {
         $conexao = new Conexao();
-        $this->pdo = $conexao->getPdo();        
+        $this->pdo = $conexao->getPdo();
         $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
-    public function getRegistroLista() {
+    public function getRegistroLista()
+    {
         try {
-            // Preparar a query SQL para contar os registros            
             $sql = "SELECT * FROM usuario";
             $stmt = $this->pdo->prepare($sql);
-            $stmt->execute();           
+            $stmt->execute();
             return $stmt->fetch(PDO::FETCH_ASSOC);
-            
         } catch (PDOException $e) {
             die($e->getMessage());
-            return false;
         }
     }
 
-    public function getRegistros() {
+    public function getRegistros()
+    {
         try {
-            // Preparar a query SQL para contar os registros
-            $sql = "SELECT COUNT(*) as total FROM usuario";
+            $sql = "SELECT COUNT(*) AS total FROM usuario";
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
-            
-            // Retorna o total de registros
             $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
             return $resultado['total'] ?? 0;
-    
-        } catch (PDOException $e) {
-            die($e->getMessage());
-            return 0;
-        }
-    }
-    
-
-    
-    public function getRegistro($registro) {
-        
-    }
-
-    public function deletarRegistro($registro) {
-        
-    }
-
-    public function pesquisarRegistro($registro) {
-        //
-    }
-
-    public function atualizarRegistro($registro) {
-        try {           
-    
-            // Preparar a query SQL para atualização
-            $sql = "UPDATE usuario SET usuario_senha = :usuario_senha WHERE usuario_nome = :usuario_nome";
-            $stmt = $this->pdo->prepare($sql);
-    
-            // Executar a query com os valores
-            $stmt->execute([
-                ':usuario_nome' => $registro['usuario_nome'],
-                ':usuario_senha' => $registro['usuario_senha']
-            ]);
-    
-            echo "Usuário atualizado com sucesso!";
         } catch (PDOException $e) {
             die($e->getMessage());
         }
-    }    
+    }
 
-    public function inserirRegistro($registro) {
+    public function atualizarRegistro($registro)
+    {
         try {
-            
-        
-            // Preparar a query SQL
-            $sql = "INSERT INTO usuario (usuario_nome, usuario_senha) VALUES (:usuario_nome, :usuario_senha)";
+            $sql = "
+                UPDATE usuario 
+                SET usuario_senha = :usuario_senha 
+                WHERE usuario_nome = :usuario_nome
+            ";
+
             $stmt = $this->pdo->prepare($sql);
-        
-            // Executar a query com os valores
-            $stmt->execute([
-                ':usuario_nome' => $registro['usuario_nome'],
-                ':usuario_senha' => $registro['usuario_senha']
-            ]);
-        
-            echo "Usuário inserido com sucesso!";
+
+            // bindParam → correto para variáveis reutilizáveis
+            $stmt->bindParam(':usuario_nome', $registro['usuario_nome'], PDO::PARAM_STR);
+            $stmt->bindParam(':usuario_senha', $registro['usuario_senha'], PDO::PARAM_STR);
+
+            $stmt->execute();
+
+            return true;
         } catch (PDOException $e) {
             die($e->getMessage());
-        }          
+        }
+    }
+
+    public function inserirRegistro($registro)
+    {
+        try {
+            $sql = "
+                INSERT INTO usuario (usuario_nome, usuario_senha)
+                VALUES (:usuario_nome, :usuario_senha)
+            ";
+
+            $stmt = $this->pdo->prepare($sql);
+
+            $stmt->bindParam(':usuario_nome', $registro['usuario_nome'], PDO::PARAM_STR);
+            $stmt->bindParam(':usuario_senha', $registro['usuario_senha'], PDO::PARAM_STR);
+
+            $stmt->execute();
+
+            return true;
+        } catch (PDOException $e) {
+            die($e->getMessage());
+        }
+    }
+
+    // Métodos não implementados (mantidos)
+    public function getRegistro($registro)
+    {
+        throw new Exception('Not implemented');
+    }
+
+    public function deletarRegistro($registro)
+    {
+        throw new Exception('Not implemented');
+    }
+
+    public function pesquisarRegistro($registro)
+    {
+        throw new Exception('Not implemented');
+    }
+
+    public function getTotalRegistros()
+    {
+        throw new Exception('Not implemented');
+    }
+
+    public function relatorio($registro)
+    {
+        throw new Exception('Not implemented');
+    }
+
+    public function validarRegistro(array $registro): void
+    {
+        // Normalização
+        $registro['cliente_nome'] = strtoupper(trim($registro['cliente_nome'] ?? ''));
+        $registro['cliente_email'] = strtoupper(trim($registro['cliente_email'] ?? ''));
+        $registro['cliente_cpf_cnpj'] = trim($registro['cliente_cpf_cnpj'] ?? '');
+
+        // Validações obrigatórias
+        if ($registro['cliente_nome'] === '') {
+            header("Location: ../erp-msg/erro.php?msg=Placa do veículo é obrigatória&voltar=true");
+            exit;
+        }
+
+        if ($registro['cliente_email'] === '') {
+            header("Location: ../erp-msg/erro.php?msg=Nome do proprietário é obrigatório&voltar=true");
+            exit;
+        }
+
+        if ($registro['cliente_cpf_cnpj'] === '') {
+            header("Location: ../erp-msg/erro.php?msg=CPF/CNPJ do proprietário é obrigatório&voltar=true");
+            exit;
+        }
     }
 }

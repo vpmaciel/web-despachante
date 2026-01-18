@@ -1,4 +1,23 @@
+<script>
+    document.cookie = "cookieConsent=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/";
+    document.cookie = "usuario_nome=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/";
+</script>
 <?php
+if (isset($_COOKIE['usuario_nome'])) {
+    // Destruir o cookie 'cookieConsent'
+    setcookie('cookieConsent', '', time() - 3600, '/');
+    setcookie('usuario_nome', '', time() - 3600, '/');
+    unset($_COOKIE['usuario_nome']);
+
+    // Verificar se o cookie foi destruído
+    if (!isset($_COOKIE['usuario_nome'])) {
+        header('location: ../erp-msg/sucesso.php?msg=Sessão encerrada com sucesso!');
+    } else {
+        header('location:../index.php');
+        exit;
+    }
+    exit;
+}
 session_start();
 require_once '../lib/lib-biblioteca.php';
 
@@ -47,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->execute();
         $dados = $stmt->fetch(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
-        exit("Erro ao inserir usuário: " . $e->getMessage());
+        exit("Erro: " . $e->getMessage());
     }
 
     if ($dados && password_verify($usuario_senha, $dados["usuario_senha"])) {

@@ -173,5 +173,5 @@ class PedidoDePlacaDAO implements DAO
         }
 
         return false;
-    }
+    }    
 }

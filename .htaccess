@@ -1,3 +1,43 @@
-RewriteEngine on                       
-RewriteCond %{REQUEST_URI} /(.*).html  
-RewriteRule (.*) /index.php?include=%1
+RewriteEngine On
+
+# ==================================================
+# 1. Protege arquivos ocultos (.htaccess, .env etc)
+# ==================================================
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+# ==================================================
+# 2. PERMITE acesso ao index.php e arquivos do raiz
+# ==================================================
+RewriteRule ^(index\.php|login\.php|logout\.php)$ - [L]
+
+# ==================================================
+# 3. PERMITE acesso total a pastas erp*
+# ==================================================
+RewriteRule ^erp[^/]*/ - [L]
+
+# ==================================================
+# 4. BLOQUEIA acesso direto a PHP fora de erp*
+# ==================================================
+RewriteCond %{REQUEST_URI} \.php$ [NC]
+RewriteCond %{REQUEST_URI} !^/web-despachante/erp[^/]*/ [NC]
+RewriteRule .* - [F,L]
+
+# ==================================================
+# 5. BLOQUEIA arquivos DAO diretamente
+# ==================================================
+RewriteRule .*dao\.php$ - [F,L]
+
+# ==================================================
+# 6. BLOQUEIA pastas sensíveis
+# ==================================================
+RewriteRule ^(lib|sql|fpdf|PHPMailer|componentes)/ - [F,L]
+
+# ==================================================
+# 7. Páginas de erro
+# ==================================================
+ErrorDocument 403 /web-despachante/erp-msg/403.php
+ErrorDocument 404 /web-despachante/erp-msg/404.php
+
+

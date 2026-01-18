@@ -72,7 +72,7 @@ while ($linha = $stmt->fetch(PDO::FETCH_ASSOC)) {
     $string .= "$chave" . "=" . $valor . "&";
   }
   echo open_tr . open_td_2 . date('d-m-Y', strtotime($linha['servico_data'])) . close_td;
-  echo open_td_2 . $linha['servico_placa_veiculo'] . close_td;
+  echo open_td_2 . mb_substr($linha['servico_placa_veiculo'], 0, 30, 'UTF-8') . close_td;
   echo open_td_3 . '<a href="servico-cadastro.php?editar=true&' . 'servico_id=' . $linha['servico_id'] . '">Editar</a> | ';
   echo '<a href="servico-confirmar-deletar.php?' . 'servico_id=' . $linha['servico_id'] . '">Excluir</a>' . close_td . close_tr;
   echo open_tr . open_td . open_label . '&nbsp;' . close_lable . close_td . close_tr;

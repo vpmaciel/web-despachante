@@ -1,5 +1,5 @@
 const mapeamentoPaginas = {
-    'home': 'Login ',
+    'home': 'Login | Logoff',
     'cliente': 'Cliente',
     'sucesso': 'Mensagem',
     'erro': 'Mensagem',
@@ -32,24 +32,3 @@ function definirPaginaAtual() {
 
 // Executa quando o DOM estiver carregado
 document.addEventListener('DOMContentLoaded', definirPaginaAtual);
-
-// voltar automaticamente após 3 segundos em páginas de mensagem
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    const params = new URLSearchParams(window.location.search);
-
-    if (params.get("voltar") === "true") {
-
-        setTimeout(function () {
-
-            if (document.referrer) {
-                window.location.href = document.referrer;
-            } else {
-                window.location.href = "/web-despachante/home/home.php";
-            }
-
-        }, 5000); // 5 segundos
-    }
-
-});

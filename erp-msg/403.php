@@ -1,4 +1,5 @@
 <?php
+
 require_once '../lib/lib-biblioteca.php';
 
 echo doctype;
@@ -17,19 +18,25 @@ echo open_div;
 
 require_once '../menu.php';
 
-if (isset($_GET['msg'])) {
-    echo '<br><br><span class="erro">' . $_GET['msg'] . '</span>';
-} else {
-    echo '<br><span class="erro">' . 'Operação não realizada !' . '</span>';
-}
+$usuario = array();
+
+$form_open = '<form action="#">';
+
+echo $form_open;
+
+echo open_table;
+
+echo open_tr . open_th . 'Você não tem permissão para acessar este recurso !' . close_th . close_tr;
+
+echo close_table;
+
+echo close_form;
 
 echo close_div;
 
 ?>
 
 <script src="../rodape.js"></script>
-
-<script src="erro.js"></script>
 
 <?php
 

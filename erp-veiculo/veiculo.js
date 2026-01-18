@@ -18,8 +18,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     validator.add(() => Validator.validarPlaca(placaVeiculo, true, 'PLACA DO VEÍCUL: '));
     validator.add(() => Validator.validarNumero(cpfCnpjProprietario, false, 'CPF | CNPJ DO PROPRIETÁRIO: '));
-    validator.add(() => Validator.validarNumero(nomeProprietario, true, 'NOME DO PROPRIETÁRIO: '));
-    validator.add(() => Validator.validarCpfCnpj(marcaVeiculo, true, 'MARCA DO VEÍCULO: '));
+    validator.add(() => Validator.validarNome(nomeProprietario, true, 'NOME DO PROPRIETÁRIO: '));
+    validator.add(() => Validator.validarNome(marcaVeiculo, true, 'MARCA DO VEÍCULO: '));
     validator.add(() => Validator.validarNome(modeloVeiculo, true, 'MODELO DO VEÍCULO: '));
     
     form.addEventListener("submit", function (e) {

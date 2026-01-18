@@ -46,11 +46,10 @@ echo close_form;
 
 echo close_div;
 
-?>
+echo '<script src="veiculo.js"></script>';
 
-<script src="../rodape.js"></script>
+echo '<script src="../rodape.js"></script>';
 
-<?php
 
 echo close_body;
 

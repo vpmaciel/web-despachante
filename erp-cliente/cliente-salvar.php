@@ -10,11 +10,13 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 
 $clienteDAO = new ClienteDAO();
 
+//	Obtém os dados do formulário, trata-os e os coloca em um array
+
 $registro['cliente_id'] = trim($_POST['cliente_id']);
-$registro['cliente_cpf_cnpj'] = (trim($_POST['cliente_cpf_cnpj']));
-$registro['cliente_nome'] = trim($_POST['cliente_nome']);
+$registro['cliente_cpf_cnpj'] = strtoupper(trim($_POST['cliente_cpf_cnpj']));
+$registro['cliente_nome'] = strtoupper(trim($_POST['cliente_nome']));
 $registro['cliente_telefone'] = trim($_POST['cliente_telefone']);
-$registro['cliente_email'] = trim($_POST['cliente_email']);
+$registro['cliente_email'] = strtolower(trim($_POST['cliente_email']));
 
 if (!isset($registro['cliente_id']) || $registro['cliente_id'] === '') {
 

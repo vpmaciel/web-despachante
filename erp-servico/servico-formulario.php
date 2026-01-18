@@ -60,6 +60,3 @@ if (strpos($_SERVER['REQUEST_URI'], 'cadastro') !== false) {
 echo open_tr . open_td . $submit . close_td . close_tr;
 
 echo close_table;
-?>
-
-<script src="servico.js"></script>
