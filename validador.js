@@ -108,7 +108,8 @@ static validarNome(input, obrigatorio = true, campo) {
             return true;
         }
 
-        if (!/^\d+$/.test(valor)) {
+        // Esta regex permite números com pontos de milhar e vírgula decimal
+        if (!/^(?:\d+|\d{1,3}(?:\.\d{3})+)(?:,\d{1,2})?$/.test(valor)) {
             Validator.alerta(campo + ' com valor inválido.');            
             input.focus();
             return false;

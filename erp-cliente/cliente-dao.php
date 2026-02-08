@@ -84,11 +84,12 @@ class ClienteDAO implements DAO
 
     public function relatorio($registro)
     {
-        if (isset($registro['cliente_id'])) {
+        if (isset($registro['cliente_id']) && !empty($registro['cliente_id'])) {
             $sql = 'SELECT * FROM cliente' . ' WHERE cliente_id = ' . $registro['cliente_id'];
         } else {
-            $sql = 'SELECT * FROM cliente LIMIT 1';
+            $sql = 'SELECT * FROM cliente WHERE cliente_id < 0';
         }
+        
         $stmt = $this->pdo->prepare($sql);
         return $stmt;
     }

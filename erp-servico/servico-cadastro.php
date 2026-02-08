@@ -4,7 +4,9 @@ require_once '../lib/lib-sessao.php';
 
 require_once '../lib/lib-biblioteca.php';
 
-setcookie('servico_id', $_GET['servico_id'] ?? '', time() + 3600, '/');
+$cookieCriptografado = Cookie::encryptCookie($_GET['servico_id'] ?? '');
+
+setcookie('servico_id', $cookieCriptografado, time() + 3600, '/');
 
 echo doctype;
 

@@ -1,7 +1,6 @@
 <?php
 
-ini_set('session.name', 'SESSAO_WEB_DESPACHANTE');
-session_start();
+
 
 require_once '../lib/lib-biblioteca.php';
 
@@ -23,7 +22,11 @@ require_once '../menu.php';
 
 $usuario = array();
 
-$form_open = '<form action="../erp-login/login-controle.php" method="post">';
+if (!isset($_COOKIE['usuario_nome'])) {
+    $form_open = '<form action="../erp-login/login-controle.php" method="post">';
+} else {
+    $form_open = '<form action="../erp-login/logout.php" method="post">';
+}
 
 echo $form_open;
 

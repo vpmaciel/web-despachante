@@ -4,12 +4,11 @@ require_once '../lib/lib-biblioteca.php';
 
 $servicoDAO = new ServicoDAO();
 
-$pdf = new FPDF('P', 'mm', 'A4');
+$pdf = new PDF('P', 'mm', 'A4');
 $pdf->AddPage();
-$pdf->SetFont('Arial', '', 16);
+$pdf->SetFont('Arial', '', 12);
 
-$registro['servico_id'] = $_COOKIE['servico_id'];
-
+$registro['servico_id'] =  Cookie::decryptCookie($_COOKIE['servico_id']);
 $stmt = $servicoDAO->relatorio($registro);
 
 $stmt->execute();
@@ -17,11 +16,9 @@ $stmt->execute();
 $pdf->SetFillColor(255, 255, 255); // Cor de fundo da célula
 $pdf->SetTextColor(0); // Cor do texto
 
-$pdf->Cell(0, 10, 'Serviço', 0, 1, 'C'); // Cabeçalho da tabela
+$pdf->Cell(0, 10, mb_convert_encoding('Serviço', 'ISO-8859-1', 'UTF-8'), 0, 1, 'C'); // Cabeçalho da tabela
 
-if ($stmt->rowCount() === 0) {
-
-    $pdf->SetFont('Arial', 'B', 12);
+if ($stmt->rowCount() === 0) {    
     $pdf->Cell(0, 10, mb_convert_encoding('Nenhum registro encontrado.', 'ISO-8859-1', 'UTF-8'), 0, 1, 'C');
 } else {
     while ($registro = $stmt->fetch(PDO::FETCH_ASSOC)) {

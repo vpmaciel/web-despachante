@@ -69,7 +69,7 @@ class ServicoDAO implements DAO
             // Preparar a query SQL para deletar
             $sql = "DELETE FROM servico WHERE servico_id = :servico_id";
             //exit($sql);
-            $stmt = $this->pdo->prepare($sql);            
+            $stmt = $this->pdo->prepare($sql);
             // Bind do parâmetro
             $stmt->bindParam(':servico_id', $registro['servico_id'], PDO::PARAM_INT);
 
@@ -83,12 +83,11 @@ class ServicoDAO implements DAO
 
     public function relatorio($registro)
     {
-        if (isset($registro['veiculo_id'])) {
+        if (isset($registro['servico_id']) && !empty($registro['servico_id'])) {
             $SQL = 'SELECT * FROM servico' . ' WHERE servico_id = ' . $registro['servico_id'];
         } else {
-            $SQL = 'SELECT * FROM servico LIMIT 1';
+            $SQL = 'SELECT * FROM servico WHERE servico_id < 0 LIMIT 1';
         }
-
         $stmt = $this->pdo->prepare($SQL);
         return $stmt;
     }
@@ -120,6 +119,12 @@ class ServicoDAO implements DAO
             $stmt->bindParam(':servico_id', $registro['servico_id'], PDO::PARAM_INT);
             return $stmt->execute();
         } catch (PDOException $e) {
+
+            if ($e->errorInfo[1] == 1062) {
+
+                header("Location: ../erp-msg/erro.php?msg=PLACA já cadastrada&voltar=true");
+                exit;
+            }
             exit("Erro: " . $e->getMessage());
         }
 
@@ -161,6 +166,12 @@ class ServicoDAO implements DAO
             // Executar a query
             return $stmt->execute();
         } catch (PDOException $e) {
+
+            if ($e->errorInfo[1] == 1062) {
+
+                header("Location: ../erp-msg/erro.php?msg=PLACA já cadastrada&voltar=true");
+                exit;
+            }
             exit("Erro: " . $e->getMessage());
         }
 
