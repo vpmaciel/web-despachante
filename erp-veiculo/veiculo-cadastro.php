@@ -1,12 +1,15 @@
 <?php
 
-require_once '../lib/lib-sessao.php';
+require_once '../config/auth.php';
+
+require_once '../config/session.php';
 
 require_once '../lib/lib-biblioteca.php';
 
-$cookieCriptografado = Cookie::encryptCookie($_GET['veiculo_id'] ?? '');
-
-setcookie('veiculo_id', $cookieCriptografado, time() + 3600, '/');
+if (isset($_GET['veiculo_id'])) {
+    $cookieCriptografado = Cookie::encryptCookie($_GET['veiculo_id'] ?? '');    
+    setcookie('veiculo_id', $cookieCriptografado, time() + 3600, '/');
+}
 
 echo doctype;
 

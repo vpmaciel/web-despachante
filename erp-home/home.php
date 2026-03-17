@@ -1,5 +1,5 @@
 <?php
-session_start(); // Sempre antes de qualquer saída
+require_once '../config/auth.php';
 
 require_once '../lib/lib-biblioteca.php';
 

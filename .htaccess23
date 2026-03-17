@@ -1,0 +1,23 @@
+# base do projeto
+RewriteBase /web-despachante/
+
+# ===============================
+# Página inicial
+# ===============================
+RewriteRule ^$ index.php [L]
+
+# ===============================
+# NÃO bloquear nada (DEV)
+# ===============================
+# deixa todos os .php acessíveis
+
+# ===============================
+# Evita erro de arquivo inexistente
+# ===============================
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# ===============================
+# Página 404 amigável
+# ===============================
+RewriteRule . /web-despachante/erp-msg/404.php [L]
