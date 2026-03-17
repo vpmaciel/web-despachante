@@ -1,4 +1,5 @@
 <?php
+session_start(); // Sempre antes de qualquer saída
 
 require_once '../lib/lib-biblioteca.php';
 
@@ -35,3 +36,5 @@ echo close_div;
 echo close_body;
 
 echo close_html;
+
+// header("refresh:10;url=../index.php");

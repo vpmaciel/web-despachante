@@ -32,7 +32,7 @@ RewriteRule .*dao\.php$ - [F,L]
 # ==================================================
 # 6. BLOQUEIA pastas sensíveis
 # ==================================================
-RewriteRule ^(lib|sql|fpdf|PHPMailer|componentes)/ - [F,L]
+RewriteRule ^(lib|sql|fpdf|componentes)/ - [F,L]
 
 # ==================================================
 # 7. Páginas de erro

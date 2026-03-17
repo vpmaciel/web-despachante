@@ -1,6 +1,5 @@
 <?php
-
-
+session_start(); // Sempre antes de qualquer saída
 
 require_once '../lib/lib-biblioteca.php';
 
@@ -22,7 +21,7 @@ require_once '../menu.php';
 
 $usuario = array();
 
-if (!isset($_COOKIE['usuario_nome'])) {
+if (!isset($_SESSION['usuario_nome'])) {
     $form_open = '<form action="../erp-login/login-controle.php" method="post">';
 } else {
     $form_open = '<form action="../erp-login/logout.php" method="post">';
@@ -30,9 +29,10 @@ if (!isset($_COOKIE['usuario_nome'])) {
 
 echo $form_open;
 
-echo open_table;
+echo '<br>';
 
-if (!isset($_COOKIE['usuario_nome'])) {
+if (!isset($_SESSION['usuario_nome'])) {
+    echo open_table;
 
     echo open_tr . open_td . open_label . 'Usuário' . close_lable . close_td . close_tr;
     $usuario['usuario_nome'] = isset($_POST['usuario_nome']) ? $_POST['usuario_nome'] : '';
@@ -47,13 +47,15 @@ if (!isset($_COOKIE['usuario_nome'])) {
     echo open_tr . open_td . open_label . '' . close_lable . close_td . close_tr;
 
     $submit = '<input type="submit" value="Entrar">';
+
+    echo open_tr . open_td . $submit . close_td . close_tr;
+
+    echo close_table;
 } else {
-    $submit = '<input type="submit" value="Logoff">';
+    $submit = '<input type="submit" value="Logoff" style="display: block; margin: 0 auto;">';
+
+    echo open_tr . open_td . $submit . close_td . close_tr;
 }
-
-echo open_tr . open_td . $submit . close_td . close_tr;
-
-echo close_table;
 
 echo close_form;
 

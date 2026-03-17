@@ -7,4 +7,8 @@
     echo '<a id="veiculo" href="../erp-veiculo/veiculo-cadastro.php" class="menu_a">Veículo</a>';
     echo '</div>';
     echo  open_h1 . 'Login' . close_h1;
+    echo '<div id="statusUsuario"></div>';
+    echo '<script>';
+    echo 'const usuarioNome = ' . (isset($_SESSION['usuario_nome']) ? json_encode($_SESSION['usuario_nome']) : 'null') . ';';
+    echo '</script>';
     require_once '../cookies.php';
