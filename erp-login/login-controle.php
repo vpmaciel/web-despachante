@@ -40,10 +40,8 @@ if ($dados && password_verify($usuario_senha, $dados['usuario_senha'])) {
 
     //setcookie('usuario_nome', $usuario_nome, time() + 1800, '/', '', false, true);
 
-    $_SESSION['usuario_nome'] = $usuario_nome;
-
-    // Opcional: definir tempo de expiração manual (30 minutos)
-    $_SESSION['expire'] = time() + 1800;
+    $_SESSION['usuario_nome'] = $usuario_nome;    
+    $_SESSION['ultimo_acesso'] = time(); // guarda timestamp atual
 
     header('Location: ../erp-msg/sucesso.php?msg=Login realizado com sucesso!');
     exit;

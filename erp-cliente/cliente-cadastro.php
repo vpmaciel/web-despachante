@@ -4,6 +4,8 @@ require_once '../config/auth.php';
 
 require_once '../config/session.php';
 
+require_once '../sessao.php';
+
 require_once '../lib/lib-biblioteca.php';
 
 if (isset($_GET['cliente_id'])) {

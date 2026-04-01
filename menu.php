@@ -12,3 +12,5 @@
     echo 'const usuarioNome = ' . (isset($_SESSION['usuario_nome']) ? json_encode($_SESSION['usuario_nome']) : 'null') . ';';
     echo '</script>';
     require_once '../cookies.php';
+    $_SESSION['ultimo_acesso'] = time();
+    

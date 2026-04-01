@@ -18,7 +18,7 @@ h5,
 h6 {
     text-align: center;
     padding: 0px;
-    font-weight: bold;    
+    font-weight: bold;
 }
 
 /* Estilização de inputs, selects e textareas */
@@ -223,8 +223,9 @@ span {
     color: #444444;    
     text-align: center;
     padding: 1px;  
-    background-color: whitesmoke;  
+    background-color: #fff;  
     font-family: Arial, sans-serif;
+    padding-top: 5px;
 }
 
 #cookieConsent button {
