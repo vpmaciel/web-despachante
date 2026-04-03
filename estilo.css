@@ -36,7 +36,7 @@ textarea:focus {
     width: 100%;
     resize: none;
     text-align: left;
-    background-color: #D8D8D8;
+    background-color: #E5E5E5;
     color: #579EBB;
 }
 
@@ -44,7 +44,7 @@ textarea:focus {
 input[type="button"],
 input[type="submit"] {
     outline: none;
-    background-color: #ccc; 
+    background-color: #E5E5E5; 
     text-align: center;
     text-decoration: none;
     border: 1px solid #444;    
