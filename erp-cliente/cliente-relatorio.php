@@ -6,11 +6,11 @@ require_once 'cliente-dao.php';
 
 $clienteDAO = new ClienteDAO();
 
-$pdf = new FPDF('P', 'mm', 'A4');
+$pdf = new PDF('P', 'mm', 'A4');
 $pdf->AddPage();
-$pdf->SetFont('Arial', '', 16);
+$pdf->SetFont('Arial', '', 12);
 
-$registro['cliente_id'] = $_COOKIE['cliente_id'];
+$registro['cliente_id'] =  Cookie::decryptCookie($_COOKIE['cliente_id']);
 
 $stmt = $clienteDAO->relatorio($registro);
 
@@ -19,11 +19,9 @@ $stmt->execute();
 $pdf->SetFillColor(255, 255, 255); // Cor de fundo da célula
 $pdf->SetTextColor(0); // Cor do texto
 
-$pdf->Cell(0, 10, 'Cliente', 0, 1, 'C'); // Cabeçalho da tabela
+$pdf->Cell(0, 10, mb_convert_encoding('Cliente', 'ISO-8859-1', 'UTF-8'), 0, 1, 'C'); // Cabeçalho da tabela
 
-if ($stmt->rowCount() === 0) {
-
-    $pdf->SetFont('Arial', 'B', 12);
+if ($stmt->rowCount() === 0) {    
     $pdf->Cell(0, 10, mb_convert_encoding('Nenhum registro encontrado.', 'ISO-8859-1', 'UTF-8'), 0, 1, 'C');
 } else {
     while ($registro = $stmt->fetch(PDO::FETCH_ASSOC)) {

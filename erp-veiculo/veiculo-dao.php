@@ -83,10 +83,10 @@ class VeiculoDAO implements DAO
 
     public function relatorio($registro)
     {
-        if (isset($registro['veiculo_id'])) {
+        if (isset($registro['veiculo_id']) && !empty($registro['veiculo_id'])) {
             $SQL = 'SELECT * FROM veiculo' . ' WHERE veiculo_id = ' . $registro['veiculo_id'];
         } else {
-            $SQL = 'SELECT * FROM veiculo LIMIT 1';
+            $SQL = 'SELECT * FROM veiculo WHERE veiculo_id < 0 LIMIT 1';
         }
 
         $stmt = $this->pdo->prepare($SQL);
@@ -107,7 +107,7 @@ class VeiculoDAO implements DAO
                     WHERE 
                     veiculo_id = :veiculo_id";
 
-            $stmt = $this->pdo->prepare($sql);            
+            $stmt = $this->pdo->prepare($sql);
 
             // Bind dos parâmetros
             $stmt->bindParam(':veiculo_placa', $registro['veiculo_placa'], PDO::PARAM_STR);
@@ -145,7 +145,7 @@ class VeiculoDAO implements DAO
                     :veiculo_modelo
                     )";
 
-            $stmt = $this->pdo->prepare($sql);            
+            $stmt = $this->pdo->prepare($sql);
 
             // Bind dos parâmetros
             $stmt->bindParam(':veiculo_placa', $registro['veiculo_placa'], PDO::PARAM_STR);

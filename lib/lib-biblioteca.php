@@ -5,6 +5,10 @@
 
 // Desenvolvimento
 error_reporting(E_ALL & ~E_DEPRECATED);
+date_default_timezone_set('America/Sao_Paulo');
+require_once '../fpdf/fpdf.php';
+require_once '../cookie/cookie.php';
+require_once '../componentes/pdf.php';
 require_once '../erp-dao/dao.php';
 require_once '../sql/sql.php';
 require_once 'lib-remover-acentos.php';
@@ -13,7 +17,6 @@ require_once 'lib-remover-caracteres.php';
 require_once 'lib-formatar-dados.php';
 require_once 'lib-string.php';
 require_once 'lib-formatar-numero.php';
-require_once '../fpdf/fpdf.php';
 require_once '../sql/sql-conexao.php';
 require_once '../relatorio.php';
 require_once '../erp-login/usuario-dao.php';

@@ -128,11 +128,8 @@ body {
     min-height: 100%;
     width: 100%;    
     align-items: flex-start; /* Alinha ao topo */
-    height: 100vh;        
-    font-family: "Inter", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 14px;
-    font-style: normal;
+    height: 100vh;            
+    font-optical-sizing: auto;   
     margin: auto 0;
     background-color: #fff;
 }

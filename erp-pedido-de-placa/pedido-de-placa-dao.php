@@ -85,10 +85,10 @@ class PedidoDePlacaDAO implements DAO
 
     public function relatorio($registro)
     {
-        if (isset($registro['pedido_de_placa_id'])) {
+        if (isset($registro['pedido_de_placa_id']) && !empty($registro['pedido_de_placa_id'])) {
             $SQL = 'SELECT * FROM pedido_de_placa' . ' WHERE pedido_de_placa_id = ' . $registro['pedido_de_placa_id'];
         } else {
-            $SQL = 'SELECT * FROM pedido_de_placa LIMIT 1';
+            $SQL = 'SELECT * FROM pedido_de_placa WHERE pedido_de_placa_id < 0 LIMIT 1';
         }
 
         $stmt = $this->pdo->prepare($SQL);

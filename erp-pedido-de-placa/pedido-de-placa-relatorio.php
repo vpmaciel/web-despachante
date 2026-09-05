@@ -1,25 +1,26 @@
 <?php
-require('../lib/lib-biblioteca.php');
 
-$pdf = new FPDF('P', 'mm', 'A4');
-$pdf->AddPage();
-$pdf->SetFont('Arial', '', 16);
+require_once '../lib/lib-biblioteca.php';
+
+require_once 'pedido-de-placa-dao.php';
 
 $pedidoDePlacaDAO = new PedidoDePlacaDAO();
 
-$stmt = $pedidoDePlacaDAO->relatorio();
+$pdf = new PDF('P', 'mm', 'A4');
+$pdf->AddPage();
+$pdf->SetFont('Arial', '', 12);
+
+$registro['pedido_de_placa_id'] =  Cookie::decryptCookie($_COOKIE['pedido_de_placa_id']);
+$stmt = $pedidoDePlacaDAO->relatorio($registro);
+
 $stmt->execute();
 
 $pdf->SetFillColor(255, 255, 255); // Cor de fundo da célula
 $pdf->SetTextColor(0); // Cor do texto
+$pdf->Cell(0, 10, mb_convert_encoding('Pedido de Placa', 'ISO-8859-1', 'UTF-8'), 0, 1, 'C'); // Cabeçalho da tabela
 
-$pdf->Cell(0, 10, 'Pedido de Placa', 0, 1, 'C'); // Cabeçalho da tabela
-
-if ($stmt->rowCount() === 0) {
-
-    $pdf->SetFont('Arial', 'B', 12);
-    $pdf->Cell(0, 10, mb_convert_encoding('Nenhum registro encontrado.', 'ISO-8859-1', 'UTF-8'), 0, 1, 'C' );
-
+if ($stmt->rowCount() === 0) {    
+    $pdf->Cell(0, 10, mb_convert_encoding('Nenhum registro encontrado.', 'ISO-8859-1', 'UTF-8'), 0, 1, 'C');
 } else {
     while ($registro = $stmt->fetch(PDO::FETCH_ASSOC)) {
         $pdf->Ln();
@@ -54,7 +55,6 @@ if (file_exists($file)) {
 
     readfile($file);
     exit;
-
 } else {
     http_response_code(404);
     echo "O arquivo não foi encontrado. Caminho: " . $file;
