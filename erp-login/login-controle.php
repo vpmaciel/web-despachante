@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 
 require_once '../lib/lib-biblioteca.php';
 
@@ -9,6 +10,21 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 $usuario_nome  = strtoupper(trim($_POST['usuario_nome'] ?? ''));
 $usuario_senha = strtoupper(trim($_POST['usuario_senha'] ?? ''));
+=======
+session_start(); // Sempre antes de qualquer saída
+
+require_once '../lib/lib-biblioteca.php';
+
+//setcookie('usuario_nome', '', time() - 3600, '/', '', false, true);
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Location: ../index.php');
+    exit;
+}
+
+$usuario_nome  = strtoupper(trim($_POST['usuario_nome'] ?? ''));
+$usuario_senha = trim($_POST['usuario_senha'] ?? '');
+>>>>>>> a30607087405ac6b0976a766b6067e7fcaad2420
 
 $usuarioDAO = new UsuarioDAO();
 $conexao = new Conexao();
@@ -35,7 +51,14 @@ $dados = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if ($dados && password_verify($usuario_senha, $dados['usuario_senha'])) {
 
+<<<<<<< HEAD
     setcookie('usuario_nome', $usuario_nome, time() + 3600, '/', '', false, true);
+=======
+    //setcookie('usuario_nome', $usuario_nome, time() + 1800, '/', '', false, true);
+
+    $_SESSION['usuario_nome'] = $usuario_nome;    
+    $_SESSION['ultimo_acesso'] = time(); // guarda timestamp atual
+>>>>>>> a30607087405ac6b0976a766b6067e7fcaad2420
 
     header('Location: ../erp-msg/sucesso.php?msg=Login realizado com sucesso!');
     exit;

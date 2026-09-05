@@ -1,5 +1,11 @@
 <?php
 
+require_once __DIR__ . '/../erp-dao/DAO.php';
+
+require_once __DIR__ . '/../sql/sql-conexao.php';
+
+require_once __DIR__ . '/../componentes/pdf.php';
+
 class ClienteDAO implements DAO
 {
     private $pdo;

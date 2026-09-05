@@ -9,19 +9,19 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!ehCadastro) return;
 
     const placaVeiculo = document.getElementById("servico_placa_veiculo");
-    const placaQuantidade = document.getElementById("servico_valor");
-    const renavam = document.getElementById("servico_descricao");
-    const cpfCnpjProprietario = document.getElementById("servico_cpf_cnpj_cliente");
-    const corPlaca = document.getElementById("servico_telefone_cliente");       
+    const servicoValor = document.getElementById("servico_valor");
+    const servicoDescricao = document.getElementById("servico_descricao");
+    const servicoCpfCnpjCliente = document.getElementById("servico_cpf_cnpj_cliente");
+    const servicoTelefoneCliente = document.getElementById("servico_telefone_cliente");       
 
     const validator = new Validator(form);
 
     validator.add(() => Validator.validarPlaca(placaVeiculo, true, 'PLACA DO VEÍCULO: '));
-    validator.add(() => Validator.validarNumero(placaQuantidade, true, 'QUANTIDADE DE PLACAS: '));
-    validator.add(() => Validator.validarNumero(renavam, true, 'RENAVAM: '));
-    validator.add(() => Validator.validarCpfCnpj(cpfCnpjProprietario, true, 'CPF | CNPJ DO PROPRIETÁRIO: '));
-    validator.add(() => Validator.validarNome(corPlaca, true, 'COR DA PLACA: '));
-    validator.add(() => Validator.validarNome(tipoPlaca, true, 'TIPO DE PLACA: '));
+    validator.add(() => Validator.validarNumero(servicoValor, true, 'VALOR (R$): '));
+    validator.add(() => Validator.validarNome(servicoDescricao, true, 'DESCRIÇÃO: '));
+    validator.add(() => Validator.validarCpfCnpj(servicoCpfCnpjCliente, true, 'CPF | CNPJ DO CLIENTE: '));
+    validator.add(() => Validator.validarTelefone(servicoTelefoneCliente, true, 'TELEFONE DO CLIENTE: '));
+    
 
     form.addEventListener("submit", function (e) {
         if (!validator.run()) {

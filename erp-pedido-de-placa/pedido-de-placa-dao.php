@@ -1,4 +1,11 @@
 <?php
+
+require_once __DIR__ . '/../erp-dao/DAO.php';
+
+require_once __DIR__ . '/../sql/sql-conexao.php';
+
+require_once __DIR__ . '/../componentes/pdf.php';
+
 class PedidoDePlacaDAO implements DAO
 {
 
@@ -124,6 +131,12 @@ class PedidoDePlacaDAO implements DAO
             $stmt->bindParam('pedido_de_placa_tipo_placa', $registro['pedido_de_placa_tipo_placa'], PDO::PARAM_STR);
             return $stmt->execute();
         } catch (PDOException $e) {
+
+            if ($e->errorInfo[1] == 1062) {
+
+                header("Location: ../erp-msg/erro.php?msg=PLACA já cadastrada&voltar=true");
+                exit;
+            }
             exit("Erro: " . $e->getMessage());
         }
 
@@ -169,9 +182,14 @@ class PedidoDePlacaDAO implements DAO
             // Executar a query
             return $stmt->execute();
         } catch (PDOException $e) {
+            if ($e->errorInfo[1] == 1062) {
+
+                header("Location: ../erp-msg/erro.php?msg=PLACA já cadastrada&voltar=true");
+                exit;
+            }
             exit("Erro: " . $e->getMessage());
         }
 
         return false;
-    }    
+    }
 }

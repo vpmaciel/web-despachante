@@ -6,43 +6,51 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+
     var cookieConsent = document.getElementById('cookieConsent');
     var acceptCookies = document.getElementById('acceptCookies');
     var declineCookies = document.getElementById('declineCookies');
 
-    function setCookie(name, value, days) {
-        var expires = "";
-        if (days) {
-            var date = new Date();
-            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-            expires = "; expires=" + date.toUTCString();
-        }
-        document.cookie = name + "=" + (value || "") + expires + "; path=/";
+    // Criar cookie em minutos
+    function setCookieMinutes(name, value, minutes) {
+        var date = new Date();
+        date.setTime(date.getTime() + (minutes * 60 * 1000));
+        document.cookie = name + "=" + value +
+            "; expires=" + date.toUTCString() +
+            "; path=/";
     }
 
+    // Ler cookie
     function getCookie(name) {
         var nameEQ = name + "=";
         var ca = document.cookie.split(';');
         for (var i = 0; i < ca.length; i++) {
-            var c = ca[i];
-            while (c.charAt(0) === ' ') c = c.substring(1, c.length);
-            if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+            var c = ca[i].trim();
+            if (c.indexOf(nameEQ) === 0) {
+                return c.substring(nameEQ.length);
+            }
         }
         return null;
     }
 
-    // Verifica se o cookie de consentimento está presente
-    if (!getCookie('cookieConsent')) {
+    // Verifica consentimento
+    var consent = getCookie('cookieConsent');
+
+    // 🔥 Mostra banner somente se NÃO aceitou
+    if (consent !== 'accepted') {
         cookieConsent.style.display = 'block';
     }
 
+    // ✅ Aceitar → salva e esconde
     acceptCookies.addEventListener('click', function () {
-        setCookie('cookieConsent', 'accepted', 1); // Define o cookie por 1 dias
+        setCookieMinutes('cookieConsent', 'accepted', 60);
         cookieConsent.style.display = 'none';
     });
 
+    // ❌ Recusar → não salva e NÃO trava
     declineCookies.addEventListener('click', function () {
-        window.location.href = '/web-despachante/index.php'; // Redireciona para a pasta desejada
+        // Apenas não faz nada
+        // O banner continua visível, mas sem bloquear nada
     });
 
 });

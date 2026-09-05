@@ -1,6 +1,8 @@
 <?php
 
-require_once '../lib/lib-sessao.php';
+require_once '../config/auth.php';
+
+require_once '../config/session.php';
 
 require_once '../lib/lib-biblioteca.php';
 

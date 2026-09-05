@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const validator = new Validator(form);
 
-    validator.add(() => Validator.validarPlaca(placaVeiculo, true, 'PLACA DO VEÍCUL: '));
+    validator.add(() => Validator.validarPlaca(placaVeiculo, true, 'PLACA DO VEÍCULO: '));
     validator.add(() => Validator.validarNumero(cpfCnpjProprietario, false, 'CPF | CNPJ DO PROPRIETÁRIO: '));
     validator.add(() => Validator.validarNome(nomeProprietario, true, 'NOME DO PROPRIETÁRIO: '));
     validator.add(() => Validator.validarNome(marcaVeiculo, true, 'MARCA DO VEÍCULO: '));

@@ -1,6 +1,14 @@
 <?php
 
-require_once '../lib/lib-biblioteca.php';
+require_once '../config/auth.php';
+
+require_once '../config/session.php';
+
+require_once 'servico-dao.php';
+
+require_once '../cookie/cookie.php';
+
+require_once '../relatorio.php';
 
 $servicoDAO = new ServicoDAO();
 

@@ -1,4 +1,11 @@
 <?php
+
+require_once __DIR__ . '/../erp-dao/DAO.php';
+
+require_once __DIR__ . '/../sql/sql-conexao.php';
+
+require_once __DIR__ . '/../componentes/pdf.php';
+
 class VeiculoDAO implements DAO
 {
 
@@ -118,6 +125,12 @@ class VeiculoDAO implements DAO
             $stmt->bindParam(':veiculo_id', $registro['veiculo_id'], PDO::PARAM_INT);
             return $stmt->execute();
         } catch (PDOException $e) {
+
+            if ($e->errorInfo[1] == 1062) {
+
+                header("Location: ../erp-msg/erro.php?msg=PLACA já cadastrada&voltar=true");
+                exit;
+            }
             exit("Erro: " . $e->getMessage());
         }
 
@@ -157,6 +170,12 @@ class VeiculoDAO implements DAO
             // Executar a query
             return $stmt->execute();
         } catch (PDOException $e) {
+
+            if ($e->errorInfo[1] == 1062) {
+
+                header("Location: ../erp-msg/erro.php?msg=PLACA já cadastrada&voltar=true");
+                exit;
+            }
             exit("Erro: " . $e->getMessage());
         }
 

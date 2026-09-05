@@ -1,5 +1,5 @@
 const mapeamentoPaginas = {
-    'home': 'Login | Logoff',
+    'home': 'Login | Logout',
     'cliente': 'Cliente',
     'sucesso': 'Mensagem',
     'erro': 'Mensagem',
@@ -7,28 +7,51 @@ const mapeamentoPaginas = {
     'servico': 'Serviço',
     'veiculo': 'Veículo',
 };
-// Encontra a página atual
+
 function definirPaginaAtual() {
+
     const url = window.location.href;
-    
+
     for (const [pagina, titulo] of Object.entries(mapeamentoPaginas)) {
+
         if (url.includes(pagina)) {
-            // Define a cor do menu ativo
+
             let elementoMenu = document.getElementById(pagina);
+
             if (elementoMenu) {
                 elementoMenu.style.color = '#579EBB';
             }
-            
-            // Define o título da página com o formato solicitado                
-                let tituloElemento = document.getElementById('titulo');
 
-                if (tituloElemento) {
-                    tituloElemento.textContent = titulo;
+            let tituloElemento = document.getElementById('titulo');
+            let statusElemento = document.getElementById('statusUsuario');
+
+            if (tituloElemento) {
+
+                if (usuarioNome) {
+
+                    tituloElemento.textContent = titulo.replace('Login | Logout', 'Logout');
+
+                    if (statusElemento) {
+                        statusElemento.textContent = "Usuário logado: " + usuarioNome;
+                    }
+
+                } else {
+
+                    tituloElemento.textContent = titulo.replace('Login | Logout', 'Login');
+
+                    if (statusElemento) {
+                        statusElemento.textContent = "Usuário não logado";
+                    }
+
                 }
-            break; // Para no primeiro match encontrado
+
+            }
+
+            break;
         }
+
     }
+
 }
 
-// Executa quando o DOM estiver carregado
 document.addEventListener('DOMContentLoaded', definirPaginaAtual);

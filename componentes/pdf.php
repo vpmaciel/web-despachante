@@ -1,4 +1,8 @@
 <?php
+<<<<<<< HEAD
+=======
+require_once __DIR__ . '/../fpdf/fpdf.php';
+>>>>>>> a30607087405ac6b0976a766b6067e7fcaad2420
 
 class PDF extends FPDF
 {
