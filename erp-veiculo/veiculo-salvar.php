@@ -4,6 +4,8 @@ require_once '../config/auth.php';
 
 require_once '../config/session.php';
 
+require_once 'veiculo-dao.php';
+
 $veiculoDAO = new VeiculoDAO();
 
 //	Obtém os dados do formulário, trata-os e os coloca em um array

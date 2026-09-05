@@ -22,26 +22,17 @@ function definirPaginaAtual() {
                 elementoMenu.style.color = '#579EBB';
             }
 
-            let tituloElemento = document.getElementById('titulo');
-            let statusElemento = document.getElementById('statusUsuario');
+            let tituloElemento = document.getElementById('titulo');            
 
             if (tituloElemento) {
 
                 if (usuarioNome) {
 
-                    tituloElemento.textContent = titulo.replace('Login | Logout', 'Logout');
-
-                    if (statusElemento) {
-                        statusElemento.textContent = "Usuário logado: " + usuarioNome;
-                    }
+                    tituloElemento.textContent = titulo.replace('Login | Logout', 'Logout');                  
 
                 } else {
 
                     tituloElemento.textContent = titulo.replace('Login | Logout', 'Login');
-
-                    if (statusElemento) {
-                        statusElemento.textContent = "Usuário não logado";
-                    }
 
                 }
 
