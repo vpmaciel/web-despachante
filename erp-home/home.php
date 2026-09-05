@@ -1,11 +1,6 @@
 <?php
 require_once '../config/auth.php';
 
-<<<<<<< HEAD
-
-=======
-require_once '../sessao.php';
->>>>>>> a30607087405ac6b0976a766b6067e7fcaad2420
 
 require_once '../lib/lib-biblioteca.php';
 
@@ -27,11 +22,7 @@ require_once '../menu.php';
 
 $usuario = array();
 
-<<<<<<< HEAD
 if (!isset($_COOKIE['usuario_nome'])) {
-=======
-if (!isset($_SESSION['usuario_nome'])) {
->>>>>>> a30607087405ac6b0976a766b6067e7fcaad2420
     $form_open = '<form action="../erp-login/login-controle.php" method="post">';
 } else {
     $form_open = '<form action="../erp-login/logout.php" method="post">';
@@ -39,14 +30,7 @@ if (!isset($_SESSION['usuario_nome'])) {
 
 echo $form_open;
 
-<<<<<<< HEAD
 if (!isset($_COOKIE['usuario_nome'])) {
-=======
-echo '<br>';
-
-if (!isset($_SESSION['usuario_nome'])) {
-    echo open_table;
->>>>>>> a30607087405ac6b0976a766b6067e7fcaad2420
 
     echo open_table;
 
@@ -62,17 +46,12 @@ if (!isset($_SESSION['usuario_nome'])) {
 
     echo open_tr . open_td . open_label . '' . close_lable . close_td . close_tr;
 
-<<<<<<< HEAD
     $submit = '<input type="submit" value="Entrar">';   
-=======
-    $submit = '<input type="submit" value="Entrar">';
->>>>>>> a30607087405ac6b0976a766b6067e7fcaad2420
 
     echo open_tr . open_td . $submit . close_td . close_tr;
 
     echo close_table;
 } else {
-<<<<<<< HEAD
 
     echo '<br>';
     $submit = '<input type="submit" value="Logoff">';
@@ -80,13 +59,6 @@ if (!isset($_SESSION['usuario_nome'])) {
 }
 
 
-=======
-    $submit = '<input type="submit" value="Logoff" style="display: block; margin: 0 auto;">';
-
-    echo open_tr . open_td . $submit . close_td . close_tr;
-}
-
->>>>>>> a30607087405ac6b0976a766b6067e7fcaad2420
 echo close_form;
 
 echo '<script src="home.js"></script>';

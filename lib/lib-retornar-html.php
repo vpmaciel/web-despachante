@@ -18,7 +18,7 @@ const close_tr = '</tr>';
 const open_th = '<th>';
 const open_th_2 = '<td colspan="2" style="text-align: right">';
 const close_th = '</th>';
-const open_h1 = '<h1 id="titulo">';
+const open_h1 = '<h5 id="titulo">';
 const close_h1 = '</h1>';
 const open_h2 = '<h2>';
 const close_h2 = '</h2>';

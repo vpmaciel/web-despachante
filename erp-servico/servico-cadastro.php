@@ -8,16 +8,9 @@ require_once '../sessao.php';
 
 require_once '../lib/lib-biblioteca.php';
 
-<<<<<<< HEAD
 $cookieCriptografado = Cookie::encryptCookie($_GET['servico_id'] ?? '');
 
 setcookie('servico_id', $cookieCriptografado, time() + 3600, '/');
-=======
-if (isset($_GET['servico_id'])) {
-    $cookieCriptografado = Cookie::encryptCookie($_GET['servico_id'] ?? '');    
-    setcookie('servico_id', $cookieCriptografado, time() + 3600, '/');
-}
->>>>>>> a30607087405ac6b0976a766b6067e7fcaad2420
 
 echo doctype;
 

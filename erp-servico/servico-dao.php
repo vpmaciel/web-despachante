@@ -94,11 +94,7 @@ class ServicoDAO implements DAO
             $SQL = 'SELECT * FROM servico' . ' WHERE servico_id = ' . $registro['servico_id'];
         } else {
             $SQL = 'SELECT * FROM servico WHERE servico_id < 0 LIMIT 1';
-<<<<<<< HEAD
         }        
-=======
-        }
->>>>>>> a30607087405ac6b0976a766b6067e7fcaad2420
         $stmt = $this->pdo->prepare($SQL);
         return $stmt;
     }

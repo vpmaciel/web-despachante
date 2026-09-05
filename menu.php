@@ -13,8 +13,6 @@ echo 'const usuarioNome = ' . (isset($_SESSION['usuario_nome']) ? json_encode($_
 echo '</script>';
 echo '</div>';
 
-require_once '../cookies.php';
-
 echo open_h1 . 'Login' . close_h1;
 
 $_SESSION['ultimo_acesso'] = time();
