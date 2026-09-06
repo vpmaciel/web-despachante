@@ -1,6 +1,3 @@
-//  <a id="relatorio" href="veiculo-relatorio.php" download>
-
-
 const mapeamentoPaginas = {
     'home': 'Login | Logout',
     'cliente': 'Cliente',
@@ -13,8 +10,7 @@ const mapeamentoPaginas = {
 
 function definirPaginaAtual() {
 
-    const url = window.location.href;
-
+    const url = window.location.href;    
 
     // Verifica se a URL contém "editar" e remove o botão de relatório
     if (!url.includes('editar')) {
@@ -54,7 +50,6 @@ function definirPaginaAtual() {
         }
 
     }
-
 }
 
 document.addEventListener('DOMContentLoaded', definirPaginaAtual);

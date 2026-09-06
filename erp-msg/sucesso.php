@@ -28,8 +28,9 @@ if (isset($_GET['msg'])) {
     echo '<br><br><span class="sucesso">' . $_GET['msg'] . '</span>';
 } else {
     echo '<br><span class="sucesso">' . 'Operação realizada com sucesso !' . '</span>';
+    
 }
-
+echo '<br><br><a href="' . $_SESSION['url'] . '" style="text-decoration: none; color: #3B748C; font-weight: bold;">&laquo; Voltar</a>';
 echo close_div;
 
 ?>

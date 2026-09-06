@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 require_once '../lib/lib-biblioteca.php';
 
@@ -35,7 +36,7 @@ $dados = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if ($dados && password_verify($usuario_senha, $dados['usuario_senha'])) {
 
-    setcookie('usuario_nome', $usuario_nome, time() + 3600, '/', '', false, true);
+    $_SESSION['usuario_nome'] = $usuario_nome;
 
     header('Location: ../erp-msg/sucesso.php?msg=Login realizado com sucesso!');
     exit;

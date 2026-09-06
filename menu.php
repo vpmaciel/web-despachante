@@ -16,3 +16,10 @@ echo '</div>';
 echo open_h1 . 'Login' . close_h1;
 
 $_SESSION['ultimo_acesso'] = time();
+
+// Se não estiver na página de sucesso nem na de erro, salva a URL atual na sessão
+if (!str_contains($_SERVER['PHP_SELF'], 'sucesso') && !str_contains($_SERVER['PHP_SELF'], 'erro')) {
+    $_SESSION['url'] = $_SERVER['PHP_SELF'];
+}
+    
+
