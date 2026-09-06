@@ -37,7 +37,7 @@ textarea:focus {
     resize: none;
     text-align: left;
     background-color: #E5E5E5;
-    color: #579EBB;
+    color: #3B748C;
 }
 
 
@@ -79,7 +79,7 @@ td {
     border: none;
     text-align: left;
     border: 1px solid #fff;
-    color: #579EBB;
+    color: #3B748C;
 }
 
 th {
@@ -165,7 +165,7 @@ input[type="file"] {
 label,
 span {    
     text-align: left;
-    color: #579EBB;
+    color: #3B748C;
 }
 
 span {
@@ -260,5 +260,5 @@ span {
 #statusUsuario { 
     padding-top: 5px;        
     text-align: center;    
-    color: #579EBB;
+    color: #3B748C;
 }

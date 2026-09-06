@@ -1,3 +1,6 @@
+//  <a id="relatorio" href="veiculo-relatorio.php" download>
+
+
 const mapeamentoPaginas = {
     'home': 'Login | Logout',
     'cliente': 'Cliente',
@@ -12,7 +15,16 @@ function definirPaginaAtual() {
 
     const url = window.location.href;
 
-    for (const [pagina, titulo] of Object.entries(mapeamentoPaginas)) {
+
+    // Verifica se a URL contém "editar" e remove o botão de relatório
+    if (!url.includes('editar')) {
+        let botaoRelatorio = document.getElementById('relatorio');
+        if (botaoRelatorio) {
+            botaoRelatorio.remove();
+        }
+    }
+
+    for (const [pagina, titulo] of Object.entries(mapeamentoPaginas)) {     
 
         if (url.includes(pagina)) {
 
